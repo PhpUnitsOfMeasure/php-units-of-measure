@@ -79,7 +79,7 @@ abstract class Measurement
      *
      * @param  string $unit The starting unit of measure
      *
-     * @throws Exception when a unit definition is missing the transfer function
+     * @throws \Exception when a unit definition is missing the transfer function
      *
      * @return Closure The function you would apply to convert to native units
      */
@@ -88,7 +88,7 @@ abstract class Measurement
         $definition = $this->findUnitDefinition($unit);
 
         if (!array_key_exists('to_native_unit', $definition)) {
-            throw new Exception('Improper unit definition, missing conversion function to native units');
+            throw new \Exception('Improper unit definition, missing conversion function to native units');
         }
 
         return $definition['to_native_unit'];
@@ -100,7 +100,7 @@ abstract class Measurement
      *
      * @param  string $unit The ending unit of measure
      *
-     * @throws Exception when a unit definition is missing the transfer function
+     * @throws \Exception when a unit definition is missing the transfer function
      *
      * @return Closure The function you would apply to convert from native units
      */
@@ -109,7 +109,7 @@ abstract class Measurement
         $definition = $this->findUnitDefinition($unit);
 
         if (!array_key_exists('from_native_unit', $definition)) {
-            throw new Exception('Improper unit definition, missing conversion function from native units');
+            throw new \Exception('Improper unit definition, missing conversion function from native units');
         }
 
         return $definition['from_native_unit'];
@@ -122,7 +122,7 @@ abstract class Measurement
      *
      * @param  string $unit The starting unit of measure
      *
-     * @throws Exception when an unknown unit of measure is given
+     * @throws \Exception when an unknown unit of measure is given
      *
      * @return array the unit definition array
      */
@@ -134,7 +134,7 @@ abstract class Measurement
             }
         }
 
-        throw new Exception("Unknown unit of measure ($unit)");
+        throw new \Exception("Unknown unit of measure ($unit)");
     }
 
     /**
