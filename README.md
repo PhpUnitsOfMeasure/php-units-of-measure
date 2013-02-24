@@ -2,7 +2,7 @@
 master: [![Build Status](https://travis-ci.org/triplepoint/php-units-of-measure.png?branch=master)](https://travis-ci.org/triplepoint/php-units-of-measure)
 
 ## Introduction
-This is a PHP library for representing and converting physics units of measure.
+This is a PHP library for representing and converting physical units of measure.
 
 ## Installation
 This library is best included in your projects via composer.  See the [Composer website](http://getcomposer.org/)
