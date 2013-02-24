@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="Triplepoint">
+
+    <description>The triplepoint coding standard.</description>
+
+    <exclude-pattern>vendor/*</exclude-pattern>
+
+    <rule ref="PSR2" />
+
+</ruleset>

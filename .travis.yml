@@ -1,0 +1,20 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
+matrix:
+  allow_failures:
+    - php: 5.5
+
+before_script:
+    - composer install --verbose --dev --prefer-dist -o
+
+script:
+    - ./vendor/bin/phpunit -c ./tests
+    - ./vendor/bin/phpcs --encoding=utf-8 --extensions=php --standard=./tests/phpcs.xml -nsp ./
+
+notifications:
+    email: false

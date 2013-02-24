@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+    bootstrap="phpunit_bootstrap.php"
+    colors="true"
+    verbose="true"
+>
+
+    <testsuites>
+        <testsuite name="Standard Test Suite">
+            <directory>./</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+    </logging>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../source</directory>
+        </whitelist>
+        <blacklist>
+            <directory suffix=".php">../vendor</directory>
+        </blacklist>
+    </filter>
+
+</phpunit>
