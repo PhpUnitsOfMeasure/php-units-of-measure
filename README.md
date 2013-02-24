@@ -11,14 +11,18 @@ for more details, and see the [Packagist.org site for this library](https://pack
 ## Use
 TODO
 
-## Testing and Development
-First, install Composer:
+## API Documentation
+API documentation (such as it is) is handled through GitApiDoc.
+- http://gitapidoc.com/api/triplepoint/php-units-of-measure
+
+## Testing and Contributing
+After cloning this repository, install Composer:
 
 ``` bash
 cd {path_to_project_root}
 php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
 ```
-For development, install with the dev dependencies:
+Since this is for development, install with the dev dependencies:
 
 ``` bash
 ./composer.phar install --verbose --prefer-dist --dev
@@ -27,10 +31,6 @@ For development, install with the dev dependencies:
 ### Continuous Integration
 Continuous integration is handled through Travis-CI.
 - https://travis-ci.org/triplepoint/php-units-of-measure
-
-### API Documentation
-API documentation (such as it is) is handled through GitApiDoc.
-- http://gitapidoc.com/api/triplepoint/php-units-of-measure
 
 ### Unit Tests
 All the tests associated with this project can be manually run with:
