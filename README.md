@@ -9,7 +9,43 @@ This library is best included in your projects via composer.  See the [Composer 
 for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/triplepoint/php-units-of-measure)
 
 ## Use
-TODO
+The basic use of these objects is in encapsulating physical quantities in such a way
+that you don't have to keep track of which unit they're represented in.  For instance:
+
+``` php
+use PhpUnitsOfMeasure\Length;
+
+$height = new Length(6.16, 'feet');
+echo $height->toUnit('m');   
+
+// would print 1.87757, which is 6.16 feet in meters.
+```
+
+Having this abstraction allows you to create interfaces that accept physical quantities
+without requiring them to be in a particular unit.  For example, this function assumes the
+height is a float of a particular unit (presumably feet):
+
+``` php
+function isTooTallToRideThisTrain( $height )
+{
+  return $height > 5;
+}
+
+// Calling the function requires that the input is already converted to feet
+isTooTallToRideThisTrain(6);   
+```
+
+Whereas this version allows for height to be provided in whatever unit is convenient:
+
+``` php
+function isTooTallToRideThisTrain( Length $height )
+{
+  return $height->toUnit('ft') > 5;
+}
+
+// Calling the function now allows any unit to be used
+isTooTallToRideThisTrain( new Length(2, 'm') );   
+```
 
 ## API Documentation
 API documentation (such as it is) is handled through GitApiDoc.
