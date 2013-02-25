@@ -9,7 +9,7 @@ This library is best included in your projects via composer.  See the [Composer 
 for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/triplepoint/php-units-of-measure)
 
 ## Use
-The basic use of these objects is in encapsulating physical quantities in such a way
+The utility of this library is in encapsulating physical quantities in such a way
 that you don't have to keep track of which unit they're represented in.  For instance:
 
 ``` php
