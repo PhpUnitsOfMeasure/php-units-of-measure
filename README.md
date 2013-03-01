@@ -13,10 +13,10 @@ The utility of this library is in encapsulating physical quantities in such a wa
 that you don't have to keep track of which unit they're represented in.  For instance:
 
 ``` php
-use PhpUnitsOfMeasure\Length;
+use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 
 $height = new Length(6.16, 'feet');
-echo $height->toUnit('m');   
+echo $height->toUnit('m');
 
 // would print 1.87757, which is 6.16 feet in meters.
 ```
@@ -32,19 +32,21 @@ function isTooTallToRideThisTrain( $height )
 }
 
 // Calling the function requires that the input is already converted to feet
-isTooTallToRideThisTrain(6);   
+isTooTallToRideThisTrain(6);
 ```
 
 Whereas this version allows for height to be provided in whatever unit is convenient:
 
 ``` php
+use PhpUnitsOfMeasure\PhysicalQuantity\Length;
+
 function isTooTallToRideThisTrain( Length $height )
 {
   return $height->toUnit('ft') > 5;
 }
 
 // Calling the function now allows any unit to be used
-isTooTallToRideThisTrain( new Length(2, 'm') );   
+isTooTallToRideThisTrain( new Length(2, 'm') );
 ```
 
 ## API Documentation
