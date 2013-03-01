@@ -1,5 +1,8 @@
 <?php
-namespace PhpUnitsOfMeasure;
+namespace PhpUnitsOfMeasure\PhysicalQuantity;
+
+use \PhpUnitsOfMeasure\PhysicalQuantity;
+use \PhpUnitsOfMeasure\UnitOfMeasure;
 
 class Temperature extends PhysicalQuantity
 {
@@ -13,7 +16,7 @@ class Temperature extends PhysicalQuantity
     {
         parent::__construct($value, $unit);
 
-        // Degrees Kelvin
+        // Degree Kelvin
         $new_unit = new UnitOfMeasure(
             '°K',
             function ($x) { return $x; },
@@ -23,7 +26,7 @@ class Temperature extends PhysicalQuantity
         $new_unit->addAlias('kelvin');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Degrees Celsius
+        // Degree Celsius
         $new_unit = new UnitOfMeasure(
             '°C',
             function ($x) { return $x - 273.15; },
@@ -33,7 +36,7 @@ class Temperature extends PhysicalQuantity
         $new_unit->addAlias('celsius');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Degrees Fahrenheit
+        // Degree Fahrenheit
         $new_unit = new UnitOfMeasure(
             '°F',
             function ($x) { return ($x * 9 / 5) - 459.67; },

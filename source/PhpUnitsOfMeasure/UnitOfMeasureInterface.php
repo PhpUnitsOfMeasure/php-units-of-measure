@@ -1,6 +1,23 @@
 <?php
 namespace PhpUnitsOfMeasure;
 
+/**
+ * Classes that implement this interface represent
+ * units of measure of physical quantities.  In addition
+ * to handling their names and various aliases, these
+ * objects are capable of converting values to and
+ * from an externally-agreed-upon native unit of measure.
+ *
+ * The native unit of measure can be any arbitrary
+ * unit compatible wit the physical quantity to which
+ * this unit of measure belongs, however all the units of measure
+ * for a particular physical quantity must agree on the same
+ * native unit.
+ *
+ * For instance, all units of measure for Length must agree
+ * that the meter is the native unit to and from which all values are
+ * converted.
+ */
 interface UnitOfMeasureInterface
 {
     /**

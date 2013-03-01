@@ -1,5 +1,8 @@
 <?php
-namespace PhpUnitsOfMeasure;
+namespace PhpUnitsOfMeasure\PhysicalQuantity;
+
+use \PhpUnitsOfMeasure\PhysicalQuantity;
+use \PhpUnitsOfMeasure\UnitOfMeasure;
 
 class Pressure extends PhysicalQuantity
 {
@@ -41,7 +44,7 @@ class Pressure extends PhysicalQuantity
         $new_unit->addAlias('bar');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Inches of Mercury
+        // Inch of Mercury
         $new_unit = new UnitOfMeasure(
             'inHg',
             function ($x) { return $x / 3.386389e3; },
@@ -50,7 +53,7 @@ class Pressure extends PhysicalQuantity
         $new_unit->addAlias('inches of mercury');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Milimeters of Mercury
+        // Milimeter of Mercury
         $new_unit = new UnitOfMeasure(
             'mmHg',
             function ($x) { return $x / 133.3224; },
@@ -60,7 +63,7 @@ class Pressure extends PhysicalQuantity
         $new_unit->addAlias('torr');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Pounds per Square Inch
+        // Pound per Square Inch
         $new_unit = new UnitOfMeasure(
             'psi',
             function ($x) { return $x / 6.894757e3; },
@@ -70,4 +73,3 @@ class Pressure extends PhysicalQuantity
         $this->registerUnitOfMeasure($new_unit);
     }
 }
-

@@ -2,7 +2,7 @@
 
 namespace PhpUnitsOfMeasureTest;
 
-use PhpUnitsOfMeasure\Length;
+use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 
 class LengthTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,6 +24,6 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     {
         $value = new Length(1.234, 'meters');
 
-        $this->assertEquals('1.2340 m', (string) $value);
+        $this->assertEquals('1.234 m', (string) $value);
     }
 }

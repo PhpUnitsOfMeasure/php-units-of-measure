@@ -1,5 +1,8 @@
 <?php
-namespace PhpUnitsOfMeasure;
+namespace PhpUnitsOfMeasure\PhysicalQuantity;
+
+use \PhpUnitsOfMeasure\PhysicalQuantity;
+use \PhpUnitsOfMeasure\UnitOfMeasure;
 
 class Length extends PhysicalQuantity
 {
@@ -13,7 +16,7 @@ class Length extends PhysicalQuantity
     {
         parent::__construct($value, $unit);
 
-        // Meters
+        // Meter
         $new_unit = new UnitOfMeasure(
             'm',
             function ($x) { return $x; },
@@ -23,7 +26,7 @@ class Length extends PhysicalQuantity
         $new_unit->addAlias('meters');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Feet
+        // Foot
         $new_unit = new UnitOfMeasure(
             'ft',
             function ($x) { return $x / 0.3048; },
@@ -33,7 +36,7 @@ class Length extends PhysicalQuantity
         $new_unit->addAlias('feet');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Inches
+        // Inch
         $new_unit = new UnitOfMeasure(
             'in',
             function ($x) { return $x / 0.0254; },
@@ -43,7 +46,7 @@ class Length extends PhysicalQuantity
         $new_unit->addAlias('inches');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Miles
+        // Mile
         $new_unit = new UnitOfMeasure(
             'mi',
             function ($x) { return $x / 1609.344; },
@@ -53,7 +56,7 @@ class Length extends PhysicalQuantity
         $new_unit->addAlias('miles');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Yards
+        // Yard
         $new_unit = new UnitOfMeasure(
             'yd',
             function ($x) { return $x / 0.9144; },
