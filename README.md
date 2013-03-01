@@ -18,6 +18,7 @@ API documentation (such as it is) is handled through GitApiDoc.
 ## Testing and Contributing
 After cloning this repository, install Composer:
 
+### Setting Up
 ``` bash
 cd {path_to_project_root}
 php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
@@ -27,6 +28,8 @@ Since this is for development, install with the dev dependencies:
 ``` bash
 ./composer.phar install --verbose --prefer-dist --dev
 ```
+
+### Adding new Units of Measure
 
 ### Continuous Integration
 Continuous integration is handled through Travis-CI.

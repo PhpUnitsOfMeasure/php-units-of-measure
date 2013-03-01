@@ -1,39 +1,46 @@
 <?php
 namespace PhpUnitsOfMeasure;
 
-class Temperature extends Measurement
+class Temperature extends PhysicalQuantity
 {
     /**
-     * @see \PhpUnitsOfMeasure\Measurement::getNativeUnitOfMeasure()
+     * Configure all the standard units of measure
+     * to which this quantity can be converted.
+     *
+     * @return void
      */
-    protected function getNativeUnitOfMeasure()
+    public function __construct($value, $unit)
     {
-        return '°K';
-    }
+        parent::__construct($value, $unit);
 
-    /**
-     * @see \PhpUnitsOfMeasure\Measurement::getUnitDefinitions()
-     */
-    protected function getUnitDefinitions()
-    {
-        return array(
-            '°C' => array(
-                'aliases'          => array('C', 'celsius'),
-                'to_native_unit'   => function ($x) { return $x + 273.15; },
-                'from_native_unit' => function ($x) { return $x - 273.15; },
-            ),
-
-            '°F' => array(
-                'aliases'          => array('F', 'fahrenheit'),
-                'to_native_unit'   => function ($x) { return ($x + 459.67) * 5 / 9; },
-                'from_native_unit' => function ($x) { return ($x * 9 / 5) - 459.67; },
-            ),
-
-            '°K' => array(
-                'aliases'          => array('K', 'kelvin'),
-                'to_native_unit'   => function ($x) { return $x; },
-                'from_native_unit' => function ($x) { return $x; },
-            ),
+        // Degrees Kelvin
+        $new_unit = new UnitOfMeasure(
+            '°K',
+            function ($x) { return $x; },
+            function ($x) { return $x; }
         );
+        $new_unit->addAlias('K');
+        $new_unit->addAlias('kelvin');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Degrees Celsius
+        $new_unit = new UnitOfMeasure(
+            '°C',
+            function ($x) { return $x - 273.15; },
+            function ($x) { return $x + 273.15; }
+        );
+        $new_unit->addAlias('C');
+        $new_unit->addAlias('celsius');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Degrees Fahrenheit
+        $new_unit = new UnitOfMeasure(
+            '°F',
+            function ($x) { return ($x * 9 / 5) - 459.67; },
+            function ($x) { return ($x + 459.67) * 5 / 9; }
+        );
+        $new_unit->addAlias('F');
+        $new_unit->addAlias('fahrenheit');
+        $this->registerUnitOfMeasure($new_unit);
     }
 }

@@ -1,52 +1,73 @@
 <?php
 namespace PhpUnitsOfMeasure;
 
-class Pressure extends Measurement
+class Pressure extends PhysicalQuantity
 {
     /**
-     * @see \PhpUnitsOfMeasure\Measurement::getNativeUnitOfMeasure()
+     * Configure all the standard units of measure
+     * to which this quantity can be converted.
+     *
+     * @return void
      */
-    protected function getNativeUnitOfMeasure()
+    public function __construct($value, $unit)
     {
-        return 'Pa';
-    }
+        parent::__construct($value, $unit);
 
-    /**
-     * @see \PhpUnitsOfMeasure\Measurement::getUnitDefinitions()
-     */
-    protected function getUnitDefinitions()
-    {
-        return array(
-            'atm' => array(
-                'aliases'          => array('atmosphere', 'atmospheres'),
-                'to_native_unit'   => function ($x) { return $x * 101325; },
-                'from_native_unit' => function ($x) { return $x / 101325; },
-            ),
-            'bar' => array(
-                'aliases'          => array('bar'),
-                'to_native_unit'   => function ($x) { return $x * 1e5; },
-                'from_native_unit' => function ($x) { return $x / 1e5; },
-            ),
-            'inHg' => array(
-                'aliases'          => array('inches of mercury'),
-                'to_native_unit'   => function ($x) { return $x * 3.386389e3; },
-                'from_native_unit' => function ($x) { return $x / 3.386389e3; },
-            ),
-            'mmHg' => array(
-                'aliases'          => array('milimeters of mercury', 'torr'),
-                'to_native_unit'   => function ($x) { return $x * 133.3224; },
-                'from_native_unit' => function ($x) { return $x / 133.3224; },
-            ),
-            'Pa' => array(
-                'aliases'          => array('pascal'),
-                'to_native_unit'   => function ($x) { return $x; },
-                'from_native_unit' => function ($x) { return $x; },
-            ),
-            'psi' => array(
-                'aliases'          => array('pounds per square inch'),
-                'to_native_unit'   => function ($x) { return $x * 6.894757e3; },
-                'from_native_unit' => function ($x) { return $x / 6.894757e3; },
-            ),
+        // Pascal
+        $new_unit = new UnitOfMeasure(
+            'Pa',
+            function ($x) { return $x; },
+            function ($x) { return $x; }
         );
+        $new_unit->addAlias('pascal');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Atmosphere
+        $new_unit = new UnitOfMeasure(
+            'atm',
+            function ($x) { return $x / 101325; },
+            function ($x) { return $x * 101325; }
+        );
+        $new_unit->addAlias('atmosphere');
+        $new_unit->addAlias('atmospheres');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Bar
+        $new_unit = new UnitOfMeasure(
+            'bar',
+            function ($x) { return $x / 1e5; },
+            function ($x) { return $x * 1e5; }
+        );
+        $new_unit->addAlias('bar');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Inches of Mercury
+        $new_unit = new UnitOfMeasure(
+            'inHg',
+            function ($x) { return $x / 3.386389e3; },
+            function ($x) { return $x * 3.386389e3; }
+        );
+        $new_unit->addAlias('inches of mercury');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Milimeters of Mercury
+        $new_unit = new UnitOfMeasure(
+            'mmHg',
+            function ($x) { return $x / 133.3224; },
+            function ($x) { return $x * 133.3224; }
+        );
+        $new_unit->addAlias('milimeters of mercury');
+        $new_unit->addAlias('torr');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Pounds per Square Inch
+        $new_unit = new UnitOfMeasure(
+            'psi',
+            function ($x) { return $x / 6.894757e3; },
+            function ($x) { return $x * 6.894757e3; }
+        );
+        $new_unit->addAlias('pounds per square inch');
+        $this->registerUnitOfMeasure($new_unit);
     }
 }
+
