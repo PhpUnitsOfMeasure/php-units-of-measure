@@ -106,7 +106,7 @@ abstract class PhysicalQuantity
     protected function findUnitDefinition($unit)
     {
         foreach ($this->unit_definitions as $unit_of_measure) {
-            if ($unit === $unit_of_measure->getName() || $unit_of_measure->isAlias($unit)) {
+            if ($unit === $unit_of_measure->getName() || $unit_of_measure->isAliasOf($unit)) {
                 return $unit_of_measure;
             }
         }

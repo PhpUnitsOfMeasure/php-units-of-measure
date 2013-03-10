@@ -73,9 +73,9 @@ class UnitOfMeasure implements UnitOfMeasureInterface
     }
 
     /**
-     * @see \PhpUnitsOfMeasure\UnitOfMeasureInterface::isAlias
+     * @see \PhpUnitsOfMeasure\UnitOfMeasureInterface::isAliasOf
      */
-    public function isAlias($unit)
+    public function isAliasOf($unit)
     {
         return in_array($unit, $this->aliases);
     }

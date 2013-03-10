@@ -43,7 +43,7 @@ interface UnitOfMeasureInterface
      *
      * @return boolean
      */
-    public function isAlias($unit);
+    public function isAliasOf($unit);
 
     /**
      * Convert the given value from the native unit of measure to
