@@ -19,8 +19,12 @@ class Mass extends PhysicalQuantity
         // Kilogram
         $new_unit = new UnitOfMeasure(
             'kg',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
         $new_unit->addAlias('kilogram');
         $new_unit->addAlias('kilograms');

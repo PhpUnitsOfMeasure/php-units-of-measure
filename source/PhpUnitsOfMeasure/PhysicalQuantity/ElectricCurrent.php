@@ -19,8 +19,12 @@ class ElectricCurrent extends PhysicalQuantity
         // Ampere
         $new_unit = new UnitOfMeasure(
             'A',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
         $new_unit->addAlias('amp');
         $new_unit->addAlias('amps');

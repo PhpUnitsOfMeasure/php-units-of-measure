@@ -19,8 +19,12 @@ class Acceleration extends PhysicalQuantity
         // meters per second squared
         $new_unit = new UnitOfMeasure(
             'm/s^2',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
         $new_unit->addAlias('meter per second squared');
         $new_unit->addAlias('meters per second squared');

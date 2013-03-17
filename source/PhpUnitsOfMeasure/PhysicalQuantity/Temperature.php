@@ -19,8 +19,12 @@ class Temperature extends PhysicalQuantity
         // Degree Kelvin
         $new_unit = new UnitOfMeasure(
             '°K',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
         $new_unit->addAlias('K');
         $new_unit->addAlias('kelvin');
@@ -29,8 +33,12 @@ class Temperature extends PhysicalQuantity
         // Degree Celsius
         $new_unit = new UnitOfMeasure(
             '°C',
-            function ($x) { return $x - 273.15; },
-            function ($x) { return $x + 273.15; }
+            function ($x) {
+                return $x - 273.15;
+            },
+            function ($x) {
+                return $x + 273.15;
+            }
         );
         $new_unit->addAlias('C');
         $new_unit->addAlias('celsius');
@@ -39,8 +47,12 @@ class Temperature extends PhysicalQuantity
         // Degree Fahrenheit
         $new_unit = new UnitOfMeasure(
             '°F',
-            function ($x) { return ($x * 9 / 5) - 459.67; },
-            function ($x) { return ($x + 459.67) * 5 / 9; }
+            function ($x) {
+                return ($x * 9 / 5) - 459.67;
+            },
+            function ($x) {
+                return ($x + 459.67) * 5 / 9;
+            }
         );
         $new_unit->addAlias('F');
         $new_unit->addAlias('fahrenheit');

@@ -14,8 +14,12 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
 
         $this->assertEquals('quatloos', $uom->getName());
@@ -29,8 +33,12 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
 
         $uom->addAlias('ooltauqs');
@@ -46,8 +54,12 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
 
         $uom->addAlias('ooltauqs');
@@ -62,8 +74,12 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) { return $x * 1.1234; },
-            function ($x) { return false; }
+            function ($x) {
+                return $x * 1.1234;
+            },
+            function ($x) {
+                return false;
+            }
         );
 
         $this->assertSame(11.234, $uom->convertValueFromNativeUnitOfMeasure(10));
@@ -76,8 +92,12 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) { return false; },
-            function ($x) { return $x * 1.1234; }
+            function ($x) {
+                return false;
+            },
+            function ($x) {
+                return $x * 1.1234;
+            }
         );
 
         $this->assertSame(11.234, $uom->convertValueToNativeUnitOfMeasure(10));

@@ -19,8 +19,12 @@ class LuminousIntensity extends PhysicalQuantity
         // Candela
         $new_unit = new UnitOfMeasure(
             'cd',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
         $new_unit->addAlias('candela');
         $this->registerUnitOfMeasure($new_unit);

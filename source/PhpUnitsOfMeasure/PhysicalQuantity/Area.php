@@ -19,8 +19,12 @@ class Area extends PhysicalQuantity
         // meters squared
         $new_unit = new UnitOfMeasure(
             'm^2',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
         $new_unit->addAlias('meter squared');
         $new_unit->addAlias('meters squared');

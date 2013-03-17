@@ -19,8 +19,12 @@ class Velocity extends PhysicalQuantity
         // meter per second
         $new_unit = new UnitOfMeasure(
             'm/s',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
         $new_unit->addAlias('meters per second');
         $new_unit->addAlias('meter per second');

@@ -19,8 +19,12 @@ class Volume extends PhysicalQuantity
         // Cubic meter
         $new_unit = new UnitOfMeasure(
             'm^3',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
         $new_unit->addAlias('cubic meter');
         $new_unit->addAlias('cubic meters');

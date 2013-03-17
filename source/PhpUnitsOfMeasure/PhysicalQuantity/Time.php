@@ -19,8 +19,12 @@ class Time extends PhysicalQuantity
         // Second
         $new_unit = new UnitOfMeasure(
             's',
-            function ($x) { return $x; },
-            function ($x) { return $x; }
+            function ($x) {
+                return $x;
+            },
+            function ($x) {
+                return $x;
+            }
         );
         $new_unit->addAlias('second');
         $new_unit->addAlias('seconds');
