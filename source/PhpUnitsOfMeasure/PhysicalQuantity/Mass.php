@@ -98,6 +98,7 @@ class Mass extends PhysicalQuantity
                 return $x * 4.535924e-1;
             }
         );
+        $new_unit->addAlias('lbs');
         $new_unit->addAlias('pound');
         $new_unit->addAlias('pounds');
         $this->registerUnitOfMeasure($new_unit);
