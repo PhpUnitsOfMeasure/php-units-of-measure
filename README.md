@@ -63,7 +63,7 @@ $quantity = new \PhpUnitsOfMeasure\PhysicalQuantity\Mass(6, 'pounds');
 echo $quantity; // '6 lbs'
 ```
 
-### Aritmetic Operators
+### Arithmetic Operators
 There's also support for addition and subtraction.  The `PhysicalQuantity` objects are immutable, and as such
 these arithmetic methods return new quantity objects representing the results:
 
