@@ -35,10 +35,10 @@ class Area extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'mm^2',
             function ($x) {
-                return $x / pow(10, -6);
+                return $x / 1e-6;
             },
             function ($x) {
-                return $x * pow(10, -6);
+                return $x * 1e-6;
             }
         );
         $new_unit->addAlias('mm²');
@@ -50,10 +50,10 @@ class Area extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'cm^2',
             function ($x) {
-                return $x / pow(10, -4);
+                return $x / 1e-4;
             },
             function ($x) {
-                return $x * pow(10, -4);
+                return $x * 1e-4;
             }
         );
         $new_unit->addAlias('cm²');
@@ -65,10 +65,10 @@ class Area extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'dm^2',
             function ($x) {
-                return $x / 0.01;
+                return $x / 1e-2;
             },
             function ($x) {
-                return $x * 0.01;
+                return $x * 1e-2;
             }
         );
         $new_unit->addAlias('dm²');
@@ -80,10 +80,10 @@ class Area extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'km^2',
             function ($x) {
-                return $x / 1000000;
+                return $x / 1e6;
             },
             function ($x) {
-                return $x * 1000000;
+                return $x * 1e6;
             }
         );
         $new_unit->addAlias('km²');
@@ -95,10 +95,10 @@ class Area extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'ft^2',
             function ($x) {
-                return $x / 0.0929;
+                return $x / 9.290304e-2;
             },
             function ($x) {
-                return $x * 0.0929;
+                return $x * 9.290304e-2;
             }
         );
         $new_unit->addAlias('ft²');
@@ -110,10 +110,10 @@ class Area extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'in^2',
             function ($x) {
-                return $x / 6.45 * pow(10, -4);
+                return $x / 6.4516e-4;
             },
             function ($x) {
-                return $x * 6.45 * pow(10, -4);
+                return $x * 6.4516e-4;
             }
         );
         $new_unit->addAlias('in²');
@@ -125,10 +125,10 @@ class Area extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'mi^2',
             function ($x) {
-                return $x / 2589987.83;
+                return $x / 2.589988e6;
             },
             function ($x) {
-                return $x * 2589987.83;
+                return $x * 2.589988e6;
             }
         );
         $new_unit->addAlias('mi²');
@@ -140,10 +140,10 @@ class Area extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'yd^2',
             function ($x) {
-                return $x / 0.8361;
+                return $x / 8.361274e-1;
             },
             function ($x) {
-                return $x * 0.8361;
+                return $x * 8.361274e-1;
             }
         );
         $new_unit->addAlias('yd²');

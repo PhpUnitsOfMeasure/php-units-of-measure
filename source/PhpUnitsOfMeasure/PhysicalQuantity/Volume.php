@@ -35,10 +35,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'mm^3',
             function ($x) {
-                return $x / pow(10, -9);
+                return $x / 1e-9;
             },
             function ($x) {
-                return $x * pow(10, -9);
+                return $x * 1e-9;
             }
         );
         $new_unit->addAlias('mm³');
@@ -50,10 +50,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'cm^3',
             function ($x) {
-                return $x / pow(10, -6);
+                return $x / 1e-6;
             },
             function ($x) {
-                return $x * pow(10, -6);
+                return $x * 1e-6;
             }
         );
         $new_unit->addAlias('cm³');
@@ -65,10 +65,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'dm^3',
             function ($x) {
-                return $x / pow(10, -3);
+                return $x / 1e-3;
             },
             function ($x) {
-                return $x * pow(10, -3);
+                return $x * 1e-3;
             }
         );
         $new_unit->addAlias('dm³');
@@ -80,10 +80,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'km^3',
             function ($x) {
-                return $x / 1000000000;
+                return $x / 1e9;
             },
             function ($x) {
-                return $x * 1000000000;
+                return $x * 1e9;
             }
         );
         $new_unit->addAlias('km³');
@@ -95,10 +95,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'ft^3',
             function ($x) {
-                return $x / 0.03;
+                return $x / 2.831685e-2;
             },
             function ($x) {
-                return $x * 0.03;
+                return $x * 2.831685e-2;
             }
         );
         $new_unit->addAlias('ft³');
@@ -110,10 +110,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'in^3',
             function ($x) {
-                return $x / 1.64 * pow(10, -5);
+                return $x / 1.638706e-5;
             },
             function ($x) {
-                return $x * 1.64 * pow(10, -5);
+                return $x * 1.638706e-5;
             }
         );
         $new_unit->addAlias('in³');
@@ -125,10 +125,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'yd^3',
             function ($x) {
-                return $x / 0.76;
+                return $x / 7.645549e-1;
             },
             function ($x) {
-                return $x * 0.76;
+                return $x * 7.645549e-1;
             }
         );
         $new_unit->addAlias('yd³');
@@ -140,10 +140,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'ml',
             function ($x) {
-                return $x / pow(10, -6);
+                return $x / 1e-6;
             },
             function ($x) {
-                return $x * pow(10, -6);
+                return $x * 1e-6;
             }
         );
         $new_unit->addAlias('milliliter');
@@ -154,10 +154,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'cl',
             function ($x) {
-                return $x / pow(10, -5);
+                return $x / 1e-5;
             },
             function ($x) {
-                return $x * pow(10, -5);
+                return $x * 1e-5;
             }
         );
         $new_unit->addAlias('centiliter');
@@ -168,10 +168,10 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'dl',
             function ($x) {
-                return $x / pow(10, -4);
+                return $x / 1e-4;
             },
             function ($x) {
-                return $x * pow(10, -4);
+                return $x * 1e-4;
             }
         );
         $new_unit->addAlias('deciliter');
@@ -182,52 +182,52 @@ class Volume extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'l',
             function ($x) {
-                return $x / pow(10, -3);
+                return $x / 1e-3;
             },
             function ($x) {
-                return $x * pow(10, -3);
+                return $x * 1e-3;
             }
         );
         $new_unit->addAlias('liter');
         $new_unit->addAlias('liters');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Decalitre
+        // Decaliter
         $new_unit = new UnitOfMeasure(
             'dal',
             function ($x) {
-                return $x / 0.01;
+                return $x / 1e-2;
             },
             function ($x) {
-                return $x * 0.01;
+                return $x * 1e-2;
             }
         );
-        $new_unit->addAlias('decalitre');
-        $new_unit->addAlias('decalitres');
+        $new_unit->addAlias('decaliter');
+        $new_unit->addAlias('decaliters');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Hectolitre
+        // Hectoliter
         $new_unit = new UnitOfMeasure(
             'hl',
             function ($x) {
-                return $x / 0.1;
+                return $x / 1e-1;
             },
             function ($x) {
-                return $x * 0.1;
+                return $x * 1e-1;
             }
         );
-        $new_unit->addAlias('hectolitre');
-        $new_unit->addAlias('hectolitres');
+        $new_unit->addAlias('hectoliter');
+        $new_unit->addAlias('hectoliters');
         $this->registerUnitOfMeasure($new_unit);
 
         // Cup
         $new_unit = new UnitOfMeasure(
             'cup',
             function ($x) {
-                return $x / 0.00023659;
+                return $x / 2.365882e-4;
             },
             function ($x) {
-                return $x * 0.00023659;
+                return $x * 2.365882e-4;
             }
         );
         $new_unit->addAlias('cup');

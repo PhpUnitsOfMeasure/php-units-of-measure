@@ -34,10 +34,10 @@ class Mass extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'mg',
             function ($x) {
-                return $x / pow(10, -6);
+                return $x / 1e-6;
             },
             function ($x) {
-                return $x * pow(10, -6);
+                return $x * 1e-6;
             }
         );
         $new_unit->addAlias('milligram');
@@ -46,12 +46,12 @@ class Mass extends PhysicalQuantity
 
         // Centigram
         $new_unit = new UnitOfMeasure(
-            'mg',
+            'cg',
             function ($x) {
-                return $x / pow(10, -5);
+                return $x / 1e-5;
             },
             function ($x) {
-                return $x * pow(10, -5);
+                return $x * 1e-5;
             }
         );
         $new_unit->addAlias('centigram');
@@ -62,24 +62,24 @@ class Mass extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'g',
             function ($x) {
-                return $x / pow(10, -3);
+                return $x / 1e-3;
             },
             function ($x) {
-                return $x * pow(10, -3);
+                return $x * 1e-3;
             }
         );
         $new_unit->addAlias('gram');
         $new_unit->addAlias('grams');
         $this->registerUnitOfMeasure($new_unit);
 
-        // Tonne
+        // Tonne (metric)
         $new_unit = new UnitOfMeasure(
             't',
             function ($x) {
-                return $x / 1000;
+                return $x / 1e3;
             },
             function ($x) {
-                return $x * 1000;
+                return $x * 1e3;
             }
         );
         $new_unit->addAlias('ton');
@@ -92,10 +92,10 @@ class Mass extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'lb',
             function ($x) {
-                return $x / 0.45;
+                return $x / 4.535924e-1;
             },
             function ($x) {
-                return $x * 0.45;
+                return $x * 4.535924e-1;
             }
         );
         $new_unit->addAlias('pound');
@@ -106,10 +106,10 @@ class Mass extends PhysicalQuantity
         $new_unit = new UnitOfMeasure(
             'oz',
             function ($x) {
-                return $x / 0.03;
+                return $x / 2.834952e-2;
             },
             function ($x) {
-                return $x * 0.03;
+                return $x * 2.834952e-2;
             }
         );
         $new_unit->addAlias('ounce');
