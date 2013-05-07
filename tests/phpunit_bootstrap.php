@@ -1,4 +1,4 @@
 <?php
 
 $loader = require __DIR__ . '/../vendor/autoload.php';
-$loader->add('PhpUnitsOfMeasure', __DIR__);
+$loader->add('PhpUnitsOfMeasureTest', __DIR__);
