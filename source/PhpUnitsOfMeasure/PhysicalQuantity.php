@@ -45,17 +45,16 @@ abstract class PhysicalQuantity
     }
 
     /**
-     * Display the value as a string, in the native unit of measure
+     * Display the value as a string, in the original unit of measure
      *
-     * @return string The pretty-print version of the value, in the native unit of measure
+     * @return string The pretty-print version of the value, in the original unit of measure
      */
     public function __toString()
     {
-        $original_unit = $this->findUnitDefinition($this->original_unit);
+        $original_unit = $this->findUnitOfMeasureByNameOrAlias($this->original_unit);
+        $canonical_unit_name = $original_unit->getName();
 
-        $native_unit_value = $original_unit->convertValueToNativeUnitOfMeasure($this->original_value);
-
-        return $native_unit_value . ' ' . $original_unit->getName();
+        return $this->original_value . ' ' . $canonical_unit_name;
     }
 
     /**
@@ -82,11 +81,11 @@ abstract class PhysicalQuantity
      */
     public function toUnit($unit)
     {
-        $original_unit = $this->findUnitDefinition($this->original_unit);
-        $to_unit       = $this->findUnitDefinition($unit);
-
+        $original_unit     = $this->findUnitOfMeasureByNameOrAlias($this->original_unit);
         $native_unit_value = $original_unit->convertValueToNativeUnitOfMeasure($this->original_value);
-        $to_unit_value     = $to_unit->convertValueFromNativeUnitOfMeasure($native_unit_value);
+
+        $to_unit       = $this->findUnitOfMeasureByNameOrAlias($unit);
+        $to_unit_value = $to_unit->convertValueFromNativeUnitOfMeasure($native_unit_value);
 
         return $to_unit_value;
     }
@@ -102,7 +101,7 @@ abstract class PhysicalQuantity
      *
      * @return \PhpUnitsOfMeasure\UnitOfMeasureInterface
      */
-    protected function findUnitDefinition($unit)
+    protected function findUnitOfMeasureByNameOrAlias($unit)
     {
         foreach ($this->unit_definitions as $unit_of_measure) {
             if ($unit === $unit_of_measure->getName() || $unit_of_measure->isAliasOf($unit)) {

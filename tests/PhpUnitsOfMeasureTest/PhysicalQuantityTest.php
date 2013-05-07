@@ -21,7 +21,7 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers \PhpUnitsOfMeasure\PhysicalQuantity::registerUnitOfMeasure
      * @covers \PhpUnitsOfMeasure\PhysicalQuantity::toUnit
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::findUnitDefinition
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::findUnitOfMeasureByNameOrAlias
      */
     public function testUnitConverts()
     {
@@ -58,7 +58,7 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::findUnitDefinition
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::findUnitOfMeasureByNameOrAlias
      * @expectedException \PhpUnitsOfMeasure\Exception\UnknownUnitOfMeasure
      */
     public function testUnknownUnit()
@@ -94,9 +94,6 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
         $new_unit->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('quatloos'));
-        $new_unit->expects($this->once())
-            ->method('convertValueToNativeUnitOfMeasure')
-            ->will($this->returnValue(1.234));
 
         $value->registerUnitOfMeasure($new_unit);
 

@@ -56,11 +56,11 @@ between typical units of measure.  For example:
 $quantity = new \PhpUnitsOfMeasure\PhysicalQuantity\Mass(6, 'lbs');
 echo $quantity->toUnit('g');
 ```
-It's also possible to implicity cast a quantity to a string, which will display its native value:
+It's also possible to implicity cast a quantity to a string, which will display its original value:
 
 ``` php
-$quantity = new \PhpUnitsOfMeasure\PhysicalQuantity\Mass(6, 'lbs');
-echo $quantity; // '2.72155 kg'
+$quantity = new \PhpUnitsOfMeasure\PhysicalQuantity\Mass(6, 'pounds');
+echo $quantity; // '6 lbs'
 ```
 
 ### Adding new Units of Measure to Existing Quantities
