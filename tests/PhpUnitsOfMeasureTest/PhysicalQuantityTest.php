@@ -59,7 +59,7 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers \PhpUnitsOfMeasure\PhysicalQuantity::findUnitDefinition
-     * @expectedException \Exception
+     * @expectedException \PhpUnitsOfMeasure\Exception\UnknownUnitOfMeasure
      */
     public function testUnknownUnit()
     {

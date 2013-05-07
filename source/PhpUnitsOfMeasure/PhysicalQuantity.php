@@ -31,8 +31,7 @@ abstract class PhysicalQuantity
     protected $unit_definitions = array();
 
     /**
-     * Store the value, after converting it to
-     * the native unit of measure.
+     * Store the value and its original unit.
      *
      * @param float  $value The scalar value of the measurement
      * @param string $unit  The unit of measure in which this value is provided
@@ -99,7 +98,7 @@ abstract class PhysicalQuantity
      *
      * @param  string $unit The starting unit of measure
      *
-     * @throws \Exception when an unknown unit of measure is given
+     * @throws \PhpUnitsOfMeasure\Exception\UnknownUnitOfMeasure when an unknown unit of measure is given
      *
      * @return \PhpUnitsOfMeasure\UnitOfMeasureInterface
      */
@@ -111,6 +110,6 @@ abstract class PhysicalQuantity
             }
         }
 
-        throw new \Exception("Unknown unit of measure ($unit)");
+        throw new Exception\UnknownUnitOfMeasure("Unknown unit of measure ($unit)");
     }
 }
