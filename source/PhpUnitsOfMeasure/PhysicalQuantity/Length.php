@@ -30,6 +30,62 @@ class Length extends PhysicalQuantity
         $new_unit->addAlias('meters');
         $this->registerUnitOfMeasure($new_unit);
 
+        // Millimeter
+        $new_unit = new UnitOfMeasure(
+            'mm',
+            function ($x) {
+                return $x / 0.001;
+            },
+            function ($x) {
+                return $x * 0.001;
+            }
+        );
+        $new_unit->addAlias('millimeter');
+        $new_unit->addAlias('millimeters');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Centimeter
+        $new_unit = new UnitOfMeasure(
+            'cm',
+            function ($x) {
+                return $x / 0.01;
+            },
+            function ($x) {
+                return $x * 0.01;
+            }
+        );
+        $new_unit->addAlias('centimeter');
+        $new_unit->addAlias('centimeters');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Decimeter
+        $new_unit = new UnitOfMeasure(
+            'dm',
+            function ($x) {
+                return $x / 0.1;
+            },
+            function ($x) {
+                return $x * 0.1;
+            }
+        );
+        $new_unit->addAlias('decimeter');
+        $new_unit->addAlias('decimeters');
+        $this->registerUnitOfMeasure($new_unit);
+
+        // Kilometer
+        $new_unit = new UnitOfMeasure(
+            'km',
+            function ($x) {
+                return $x / 1000;
+            },
+            function ($x) {
+                return $x * 1000;
+            }
+        );
+        $new_unit->addAlias('kilometer');
+        $new_unit->addAlias('kilometers');
+        $this->registerUnitOfMeasure($new_unit);
+
         // Foot
         $new_unit = new UnitOfMeasure(
             'ft',
