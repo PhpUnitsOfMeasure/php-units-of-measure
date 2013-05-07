@@ -91,6 +91,50 @@ abstract class PhysicalQuantity
     }
 
     /**
+     * Add a given quantity to this quantity, and return a new quantity object.
+     *
+     * Note that the new quantity's original unit will be the same as this object's.
+     *
+     * @param PhysicalQuantity $quantity The quantity to add to this one
+     *
+     * @throws \PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch when there is a mismatch between physical quantities
+     *
+     * @return PhysicalQuantity the new quantity
+     */
+    public function add(PhysicalQuantity $quantity)
+    {
+        if (get_class($quantity) !== get_class($this)) {
+            throw new Exception\PhysicalQuantityMismatch('Cannot add type ('.get_class($quantity).') to type ('.get_class($this).').');
+        }
+
+        $new_value = $this->original_value + $quantity->toUnit($this->original_unit);
+
+        return new static($new_value, $this->original_unit);
+    }
+
+    /**
+     * Subtract a given quantity from this quantity, and return a new quantity object.
+     *
+     * Note that the new quantity's original unit will be the same as this object's.
+     *
+     * @param PhysicalQuantity $quantity The quantity to subtract from this one
+     *
+     * @throws \PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch when there is a mismatch between physical quantities
+     *
+     * @return PhysicalQuantity the new quantity
+     */
+    public function subtract(PhysicalQuantity $quantity)
+    {
+        if (get_class($quantity) !== get_class($this)) {
+            throw new Exception\PhysicalQuantityMismatch('Cannot subtract type ('.get_class($quantity).') from type ('.get_class($this).').');
+        }
+
+        $new_value = $this->original_value - $quantity->toUnit($this->original_unit);
+
+        return new static($new_value, $this->original_unit);
+    }
+
+    /**
      * Get the unit definition that matches the given unit of measure name.
      *
      * Note that this can match either the index or the aliases.
@@ -109,6 +153,6 @@ abstract class PhysicalQuantity
             }
         }
 
-        throw new Exception\UnknownUnitOfMeasure("Unknown unit of measure ($unit)");
+        throw new Exception\UnknownUnitOfMeasure('Unknown unit of measure ($unit)');
     }
 }

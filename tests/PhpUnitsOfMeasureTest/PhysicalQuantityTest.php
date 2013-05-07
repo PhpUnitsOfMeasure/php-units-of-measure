@@ -54,7 +54,7 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
 
         $value_in_galimpwids = $value->toUnit('galimpwid');
 
-        $this->assertEquals(2.468, $value_in_galimpwids);
+        $this->assertSame(2.468, $value_in_galimpwids);
     }
 
     /**
@@ -97,6 +97,56 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
 
         $value->registerUnitOfMeasure($new_unit);
 
-        $this->assertEquals('1.234 quatloos', (string) $value);
+        $this->assertSame('1.234 quatloos', (string) $value);
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::add
+     */
+    public function testAdd()
+    {
+        $first  = new \PhpUnitsOfMeasure\PhysicalQuantity\Volume(6, 'liters');
+        $second = new \PhpUnitsOfMeasure\PhysicalQuantity\Volume(6, 'cups');
+
+        $sum = $first->add($second);
+        $this->assertSame('7.4195292 l', (string) $sum);
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::add
+     *
+     * @expectedException \PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch
+     */
+    public function testAddThrowsExceptionOnQuantityMismatch()
+    {
+        $first  = new \PhpUnitsOfMeasure\PhysicalQuantity\Volume(6, 'liters');
+        $second = new \PhpUnitsOfMeasure\PhysicalQuantity\Mass(6, 'g');
+
+        $sum = $first->add($second);
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::subtract
+     */
+    public function testSubtract()
+    {
+        $first  = new \PhpUnitsOfMeasure\PhysicalQuantity\Volume(6, 'liters');
+        $second = new \PhpUnitsOfMeasure\PhysicalQuantity\Volume(6, 'cups');
+
+        $difference = $first->subtract($second);
+        $this->assertSame('4.5804708 l', (string) $difference);
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::subtract
+     *
+     * @expectedException \PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch
+     */
+    public function testSubtractThrowsExceptionOnQuantityMismatch()
+    {
+        $first  = new \PhpUnitsOfMeasure\PhysicalQuantity\Volume(6, 'liters');
+        $second = new \PhpUnitsOfMeasure\PhysicalQuantity\Mass(6, 'g');
+
+        $sum = $first->subtract($second);
     }
 }

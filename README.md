@@ -48,7 +48,7 @@ This library is best included in your projects via composer.  See the [Composer 
 for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/triplepoint/php-units-of-measure).
 
 ## Use
-### Basic Usage
+### Conversion
 As in the examples above, the basic usage of this library is in representing physical quantities and converting
 between typical units of measure.  For example:
 
@@ -61,6 +61,21 @@ It's also possible to implicity cast a quantity to a string, which will display 
 ``` php
 $quantity = new \PhpUnitsOfMeasure\PhysicalQuantity\Mass(6, 'pounds');
 echo $quantity; // '6 lbs'
+```
+
+### Aritmetic Operators
+There's also support for addition and subtraction.  The `PhysicalQuantity` objects are immutable, and as such
+these arithmetic methods return new quantity objects representing the results:
+
+``` php
+$first  = new \PhpUnitsOfMeasure\PhysicalQuantity\Volume(6, 'liters');
+$second = new \PhpUnitsOfMeasure\PhysicalQuantity\Volume(6, 'cups');
+
+$sum = $first->add($second);
+echo $sum; // 7.4195292 l
+
+$difference = $first->subtract($second);
+echo $difference; // 4.5804708 l
 ```
 
 ### Adding new Units of Measure to Existing Quantities
