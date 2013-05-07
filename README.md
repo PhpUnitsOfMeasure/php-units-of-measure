@@ -45,7 +45,7 @@ isTooTallToRideThisTrain( new Length(2, 'm') );
 
 ## Installation
 This library is best included in your projects via composer.  See the [Composer website](http://getcomposer.org/)
-for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/triplepoint/php-units-of-measure)
+for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/triplepoint/php-units-of-measure).
 
 ## Use
 ### Basic Usage
@@ -68,7 +68,7 @@ Ocassionally, you will need to add a new unit of measure to a pre-existing quant
 
 For example, let's say in a project you need a new measure of length, called "cubits".  You have two
 options: you can permanently add the new unit of measure to the `\PhpUnitsOfMeasure\PhysicalQuantity\Length`
-class (and submit a pull request to get it added permanently, if appropriate), or you can add the
+class (and submit a pull request to get it added upstream, if appropriate), or you can add the
 unit temporarily at run time, inside your calling code.
 
 #### Adding a New Unit of Measure at Runtime
@@ -119,6 +119,9 @@ only it would be done inside the constructor of the quantity class.  For example
 
 ``` php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
+
+use \PhpUnitsOfMeasure\PhysicalQuantity;
+use \PhpUnitsOfMeasure\UnitOfMeasure;
 
 class Length extends PhysicalQuantity
 {
@@ -173,7 +176,7 @@ unit is that all of the quantity's other units of measure will convert to and fr
 important to be aware of a quantity's native unit when writing conversions for new units of measure.
 
 ### Adding new Aliases to Existing Units
-It may occassionally come up that the right unit of measure exists for the right physical quantity, but there's a missing
+It may come up that the right unit of measure exists for the right physical quantity, but there's a missing
 alias for the unit.  For example, if you thought 'footses' was an obviously lacking alias for the Length unit 'ft', you could
 temporarily add the alias like this:
 
