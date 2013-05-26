@@ -24,10 +24,13 @@ class Acceleration extends PhysicalQuantity
             },
             function ($x) {
                 return $x;
-            }
+            },
+            array(
+                'm/s²'
+                'meter per second squared',
+                'meters per second squared'
+            )
         );
-        $new_unit->addAlias('meter per second squared');
-        $new_unit->addAlias('meters per second squared');
         $this->registerUnitOfMeasure($new_unit);
     }
 }
