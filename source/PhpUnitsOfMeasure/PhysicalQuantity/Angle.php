@@ -32,5 +32,19 @@ class Angle extends PhysicalQuantity
         $new_unit->addAlias('degrees');
         $this->registerUnitOfMeasure($new_unit);
 
+        // Radians
+        $new_unit = new UnitOfMeasure(
+            'rad',
+            function ($x) {
+                return $x * M_PI / 180;
+            },
+            function ($x) {
+                return $x / M_PI * 180;
+            }
+        );
+        $new_unit->addAlias('rads');
+        $new_unit->addAlias('radian');
+        $new_unit->addAlias('radians');
+        $this->registerUnitOfMeasure($new_unit);
     }
 }
