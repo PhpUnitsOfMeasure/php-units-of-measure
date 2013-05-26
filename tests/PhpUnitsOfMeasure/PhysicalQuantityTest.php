@@ -1,9 +1,6 @@
 <?php
 
-namespace PhpUnitsOfMeasureTest;
-
-use PhpUnitsOfMeasure\PhysicalQuantity;
-use PhpUnitsOfMeasure\UnitOfMeasureInterface;
+namespace PhpUnitsOfMeasure;
 
 class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
 {
