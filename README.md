@@ -180,7 +180,9 @@ class Length extends PhysicalQuantity
 
 Now any new object of class `Length` that gets instantiated will come with the cubits unit already built in.
 
-### Adding New Quantities
+### Adding New Physical Quantities
+[Physical quantities](http://en.wikipedia.org/wiki/Physical_quantity) are categories of measurable values, like mass, length, force, etc.
+
 For physical quantities that are not already present in this library, it will be necessary to write a class
 to support a new one.  All physical quantities extend the `\PhpUnitsOfMeasure\PhysicalQuantity` class, and typically
 have only a constructor method which creates the quantity's units of measure.  See above for examples on how to add
@@ -251,7 +253,7 @@ vendor/bin/phpunit -c ./tests/phpunit.xml.dist ./tests
 ```
 
 ### CodeSniffer
-Codesniffer verifies that coding standards are being met.  Once the project is build with development dependencies, you can run the checks with:
+Codesniffer verifies that coding standards are being met.  Once the project is built with development dependencies, you can run the checks with:
 
 ``` bash
 vendor/bin/phpcs --encoding=utf-8 --extensions=php --standard=./tests/phpcs.xml -nsp ./
