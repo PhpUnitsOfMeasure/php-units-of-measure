@@ -26,6 +26,8 @@ class Time extends PhysicalQuantity
                 return $x;
             }
         );
+        $new_unit->addAlias('sec');
+        $new_unit->addAlias('secs');
         $new_unit->addAlias('second');
         $new_unit->addAlias('seconds');
         $this->registerUnitOfMeasure($new_unit);
