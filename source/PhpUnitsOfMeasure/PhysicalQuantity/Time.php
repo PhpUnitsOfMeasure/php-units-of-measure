@@ -47,5 +47,21 @@ class Time extends PhysicalQuantity
         $new_unit->addAlias('minute');
         $new_unit->addAlias('minutes');
         $this->registerUnitOfMeasure($new_unit);
+
+        // Hours
+        $new_unit = new UnitOfMeasure(
+            'h',
+            function ($x) {
+                return $x / 3600;
+            },
+            function ($x) {
+                return $x * 3600;
+            }
+        );
+        $new_unit->addAlias('hr');
+        $new_unit->addAlias('hrs');
+        $new_unit->addAlias('hour');
+        $new_unit->addAlias('hours');
+        $this->registerUnitOfMeasure($new_unit);
     }
 }
