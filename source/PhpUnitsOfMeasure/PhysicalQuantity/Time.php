@@ -31,5 +31,21 @@ class Time extends PhysicalQuantity
         $new_unit->addAlias('second');
         $new_unit->addAlias('seconds');
         $this->registerUnitOfMeasure($new_unit);
+
+        // Minutes
+        $new_unit = new UnitOfMeasure(
+            'm',
+            function ($x) {
+                return $x / 60;
+            },
+            function ($x) {
+                return $x * 60;
+            }
+        );
+        $new_unit->addAlias('min');
+        $new_unit->addAlias('mins');
+        $new_unit->addAlias('minute');
+        $new_unit->addAlias('minutes');
+        $this->registerUnitOfMeasure($new_unit);
     }
 }
