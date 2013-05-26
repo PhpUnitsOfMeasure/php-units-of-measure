@@ -24,11 +24,13 @@ class Area extends PhysicalQuantity
             },
             function ($x) {
                 return $x;
-            }
+            },
+            array(
+                'm²',
+                'meter squared',
+                'meters squared'
+            )
         );
-        $new_unit->addAlias('m²');
-        $new_unit->addAlias('meter squared');
-        $new_unit->addAlias('meters squared');
         $this->registerUnitOfMeasure($new_unit);
 
         // Millimeter squared
@@ -39,11 +41,13 @@ class Area extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-6;
-            }
+            },
+            array(
+                'mm²',
+                'millimeter squared',
+                'millimeters squared'
+            )
         );
-        $new_unit->addAlias('mm²');
-        $new_unit->addAlias('millimeter squared');
-        $new_unit->addAlias('millimeters squared');
         $this->registerUnitOfMeasure($new_unit);
 
         // Centimeter squared
@@ -54,11 +58,13 @@ class Area extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-4;
-            }
+            },
+            array(
+                'cm²',
+                'centimeter squared',
+                'centimeters squared'
+            )
         );
-        $new_unit->addAlias('cm²');
-        $new_unit->addAlias('centimeter squared');
-        $new_unit->addAlias('centimeters squared');
         $this->registerUnitOfMeasure($new_unit);
 
         // Decimeter squared
@@ -69,11 +75,13 @@ class Area extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-2;
-            }
+            },
+            array(
+                'dm²',
+                'decimeter squared',
+                'decimeters squared'
+            )
         );
-        $new_unit->addAlias('dm²');
-        $new_unit->addAlias('decimeter squared');
-        $new_unit->addAlias('decimeters squared');
         $this->registerUnitOfMeasure($new_unit);
 
         // Kilometer squared
@@ -84,11 +92,13 @@ class Area extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e6;
-            }
+            },
+            array(
+                'km²',
+                'kilometer squared',
+                'kilometers squared'
+            )
         );
-        $new_unit->addAlias('km²');
-        $new_unit->addAlias('kilometer squared');
-        $new_unit->addAlias('kilometers squared');
         $this->registerUnitOfMeasure($new_unit);
 
         // Foot squared
@@ -99,11 +109,13 @@ class Area extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 9.290304e-2;
-            }
+            },
+            array(
+                'ft²',
+                'foot squared',
+                'feet squared'
+            )
         );
-        $new_unit->addAlias('ft²');
-        $new_unit->addAlias('foot squared');
-        $new_unit->addAlias('feet squared');
         $this->registerUnitOfMeasure($new_unit);
 
         // Inch squared
@@ -114,11 +126,13 @@ class Area extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 6.4516e-4;
-            }
+            },
+            array(
+                'in²',
+                'inch squared',
+                'inches squared'
+            )
         );
-        $new_unit->addAlias('in²');
-        $new_unit->addAlias('inch squared');
-        $new_unit->addAlias('inches squared');
         $this->registerUnitOfMeasure($new_unit);
 
         // Mile squared
@@ -129,7 +143,12 @@ class Area extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 2.589988e6;
-            }
+            },
+            array(
+                'mi²',
+                'mile squared',
+                'miles squared'
+            )
         );
         $new_unit->addAlias('mi²');
         $new_unit->addAlias('mile squared');
@@ -144,7 +163,12 @@ class Area extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 8.361274e-1;
-            }
+            },
+            array(
+                'yd²',
+                'yard squared',
+                'yards squared'
+            )
         );
         $new_unit->addAlias('yd²');
         $new_unit->addAlias('yard squared');
