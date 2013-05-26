@@ -77,5 +77,19 @@ class Time extends PhysicalQuantity
         $new_unit->addAlias('day');
         $new_unit->addAlias('days');
         $this->registerUnitOfMeasure($new_unit);
+
+        // Weeks
+        $new_unit = new UnitOfMeasure(
+            'w',
+            function ($x) {
+                return $x / 604800;
+            },
+            function ($x) {
+                return $x * 604800;
+            }
+        );
+        $new_unit->addAlias('week');
+        $new_unit->addAlias('weeks');
+        $this->registerUnitOfMeasure($new_unit);
     }
 }
