@@ -63,5 +63,19 @@ class Time extends PhysicalQuantity
         $new_unit->addAlias('hour');
         $new_unit->addAlias('hours');
         $this->registerUnitOfMeasure($new_unit);
+
+        // Days
+        $new_unit = new UnitOfMeasure(
+            'd',
+            function ($x) {
+                return $x / 86400;
+            },
+            function ($x) {
+                return $x * 86400;
+            }
+        );
+        $new_unit->addAlias('day');
+        $new_unit->addAlias('days');
+        $this->registerUnitOfMeasure($new_unit);
     }
 }
