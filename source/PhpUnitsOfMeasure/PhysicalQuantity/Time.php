@@ -92,5 +92,19 @@ class Time extends PhysicalQuantity
         $new_unit->addAlias('week');
         $new_unit->addAlias('weeks');
         $this->registerUnitOfMeasure($new_unit);
+
+        // Months, understood as 30 days
+        $new_unit = new UnitOfMeasure(
+            'mth',
+            function ($x) {
+                return $x / 2592000;
+            },
+            function ($x) {
+                return $x * 2592000;
+            }
+        );
+        $new_unit->addAlias('month');
+        $new_unit->addAlias('months');
+        $this->registerUnitOfMeasure($new_unit);
     }
 }
