@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpUnitsOfMeasureTest;
+namespace PhpUnitsOfMeasure;
 
 use PhpUnitsOfMeasure\UnitOfMeasure;
 
