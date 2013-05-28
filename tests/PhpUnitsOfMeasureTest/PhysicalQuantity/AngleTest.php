@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpUnitsOfMeasure\PhysicalQuantity;
+namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 class AngleTest extends \PHPUnit_Framework_TestCase
 {
