@@ -89,6 +89,7 @@ class Time extends PhysicalQuantity
             }
         );
         $new_unit->addAlias('wk');
+        $new_unit->addAlias('wks');
         $new_unit->addAlias('week');
         $new_unit->addAlias('weeks');
         $this->registerUnitOfMeasure($new_unit);
