@@ -2,9 +2,7 @@
 master: [![Build Status](https://travis-ci.org/triplepoint/php-units-of-measure.png?branch=master)](https://travis-ci.org/triplepoint/php-units-of-measure)
 
 ## Introduction
-This is a PHP library for representing and converting physical units of measure.  The utility of this library
-is in encapsulating physical quantities in such a way that you don't have to keep track of which
-unit they're represented in.  For instance:
+This is a PHP library for representing and converting physical units of measure.  The utility of this library is in encapsulating physical quantities in such a way that you don't have to keep track of which unit they're represented in.  For instance:
 
 ``` php
 use PhpUnitsOfMeasure\PhysicalQuantity\Length;
@@ -15,9 +13,7 @@ echo $height->toUnit('m');
 // would print 1.87757, which is 6.16 feet in meters.
 ```
 
-Having this abstraction allows you to create interfaces that accept physical quantities
-without requiring them to be in a particular unit.  For example, this function assumes the
-height is a float of a particular unit (presumably feet):
+Having this abstraction allows you to create interfaces that accept physical quantities without requiring them to be in a particular unit.  For example, this function assumes the height is a float of a particular unit (presumably feet):
 
 ``` php
 // Tied to a specific unit of measure
@@ -46,13 +42,11 @@ isTooTallToRideThisTrain( new Length(2, 'm') );
 ```
 
 ## Installation
-This library is best included in your projects via composer.  See the [Composer website](http://getcomposer.org/)
-for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/triplepoint/php-units-of-measure).
+This library is best included in your projects via composer.  See the [Composer website](http://getcomposer.org/) for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/triplepoint/php-units-of-measure).
 
 ## Use
 ### Conversion
-As in the examples above, the basic usage of this library is in representing physical quantities and converting
-between typical units of measure.  For example:
+As in the examples above, the basic usage of this library is in representing physical quantities and converting between typical units of measure.  For example:
 
 ``` php
 $quantity = new \PhpUnitsOfMeasure\PhysicalQuantity\Mass(6, 'lbs');
@@ -66,8 +60,7 @@ echo $quantity; // '6 lbs'
 ```
 
 ### Arithmetic Operators
-There's also support for addition and subtraction.  The `PhysicalQuantity` objects are immutable, and as such
-these arithmetic methods return new quantity objects representing the results:
+There's also support for addition and subtraction.  The `PhysicalQuantity` objects are immutable, and as such these arithmetic methods return new quantity objects representing the results:
 
 ``` php
 $first  = new \PhpUnitsOfMeasure\PhysicalQuantity\Volume(6, 'liters');
@@ -83,10 +76,7 @@ echo $difference; // 4.5804708 l
 ### Adding new Units of Measure to Existing Quantities
 Ocassionally, you will need to add a new unit of measure to a pre-existing quantity.
 
-For example, let's say in a project you need a new measure of length, called "cubits".  You have two
-options: you can permanently add the new unit of measure to the `\PhpUnitsOfMeasure\PhysicalQuantity\Length`
-class (and submit a pull request to get it added upstream, if appropriate), or you can add the
-unit temporarily at run time, inside your calling code.
+For example, let's say in a project you need a new measure of length, called "cubits".  You have two options: you can permanently add the new unit of measure to a child class of the `\PhpUnitsOfMeasure\PhysicalQuantity\Length` class (or add it directly to that class and submit a pull request to get it added upstream, if appropriate), or you can add the unit temporarily at run time, inside your calling code.
 
 #### Adding a New Unit of Measure at Runtime
 To add a new unit of measure to an existing quantity at run time, you'd do this:
@@ -128,11 +118,9 @@ echo $length->toUnit('feet'); // '21'
 ```
 
 #### Permanently Adding a New Unit of Measure to a Physical Quantity
-The above method only applies to the specific Length object and is therefore temporary; it would
-be necessary to repeat this process every time you created a new measurement and wanted to use cubits.
+The above method only applies to the specific Length object and is therefore temporary; it would be necessary to repeat this process every time you created a new measurement and wanted to use cubits.
 
-A new unit of measure can be permanently added to a physical quantity class by essentially the same process,
-only it would be done inside the constructor of the quantity class.  For example:
+A new unit of measure can be permanently added to a physical quantity class by essentially the same process, only it would be done inside the constructor of the quantity class.  For example:
 
 ``` php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
@@ -185,19 +173,12 @@ Now any new object of class `Length` that gets instantiated will come with the c
 ### Adding New Physical Quantities
 [Physical quantities](http://en.wikipedia.org/wiki/Physical_quantity) are categories of measurable values, like mass, length, force, etc.
 
-For physical quantities that are not already present in this library, it will be necessary to write a class
-to support a new one.  All physical quantities extend the `\PhpUnitsOfMeasure\PhysicalQuantity` class, and typically
-have only a constructor method which creates the quantity's units of measure.  See above for examples on how to add
-new units to a quantity class.
+For physical quantities that are not already present in this library, it will be necessary to write a class to support a new one.  All physical quantities extend the `\PhpUnitsOfMeasure\PhysicalQuantity` class, and typically have only a constructor method which creates the quantity's units of measure.  See above for examples on how to add new units to a quantity class.
 
-Note that every physical quantity has a chosen "native unit" which is typically the SI standard.  The main point for this
-unit is that all of the quantity's other units of measure will convert to and from this chosen native unit.  It's
-important to be aware of a quantity's native unit when writing conversions for new units of measure.
+Note that every physical quantity has a chosen "native unit" which is typically the SI standard.  The main point for this unit is that all of the quantity's other units of measure will convert to and from this chosen native unit.  It's important to be aware of a quantity's native unit when writing conversions for new units of measure.
 
 ### Adding new Aliases to Existing Units
-It may come up that the right unit of measure exists for the right physical quantity, but there's a missing
-alias for the unit.  For example, if you thought 'footses' was an obviously lacking alias for the Length unit 'ft', you could
-temporarily add the alias like this:
+It may come up that the right unit of measure exists for the right physical quantity, but there's a missing alias for the unit.  For example, if you thought 'footses' was an obviously lacking alias for the Length unit 'ft', you could temporarily add the alias like this:
 
 ``` php
 use \PhpUnitsOfMeasure\PhysicalQuantity\Length;
@@ -222,12 +203,9 @@ API documentation (such as it is) is handled through GitApiDoc.
 - http://gitapidoc.com/api/triplepoint/php-units-of-measure
 
 ## Testing and Contributing
-Pull requests are welcome, especially regarding new units of measure or new physical quantities.  However, please note that there
-are many sources for conversion factors, and not all are careful to respect known precision.
+Pull requests are welcome, especially regarding new units of measure or new physical quantities.  However, please note that there are many sources for conversion factors, and not all are careful to respect known precision.
 
-In the United States, the standards body for measurement is NIST, and they've published [NIST Special Publication 1038 "The International
-System of Units (SI) - Conversion factors for General Use"](http://www.nist.gov/pml/wmd/metric/upload/SP1038.pdf).  This guide
-contains the approved conversion factors between various units and the base SI units.
+In the United States, the standards body for measurement is NIST, and they've published [NIST Special Publication 1038 "The International System of Units (SI) - Conversion factors for General Use"](http://www.nist.gov/pml/wmd/metric/upload/SP1038.pdf).  This guide contains the approved conversion factors between various units and the base SI units.
 
 Also note that any new physical quantities should have the appropriate SI unit chosen for their native unit of measure.
 
