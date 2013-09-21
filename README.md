@@ -20,6 +20,7 @@ without requiring them to be in a particular unit.  For example, this function a
 height is a float of a particular unit (presumably feet):
 
 ``` php
+// Tied to a specific unit of measure
 function isTooTallToRideThisTrain( $height )
 {
   return $height > 5;
@@ -34,6 +35,7 @@ Whereas this version allows for height to be provided in whatever unit is conven
 ``` php
 use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 
+// Free to operate on lengths in any unit of measure
 function isTooTallToRideThisTrain( Length $height )
 {
   return $height->toUnit('ft') > 5;
