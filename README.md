@@ -76,7 +76,7 @@ echo $difference; // 4.5804708 l
 ### Adding new Units of Measure to Existing Quantities
 Ocassionally, you will need to add a new unit of measure to a pre-existing quantity.
 
-For example, let's say in a project you need a new measure of length, called "cubits".  You have two options: you can permanently add the new unit of measure to a child class of the `\PhpUnitsOfMeasure\PhysicalQuantity\Length` class (or add it directly to that class and submit a pull request to get it added upstream, if appropriate), or you can add the unit temporarily at run time, inside your calling code.
+For example, let's say in a project you need a new measure of length, called "cubits".  You have two options: you can permanently add the new unit of measure to a new child class of the `\PhpUnitsOfMeasure\PhysicalQuantity\Length` class (or add it directly to that class and submit a pull request to get it added upstream, if appropriate), or you can add the unit temporarily at run time, inside your calling code.
 
 #### Adding a New Unit of Measure at Runtime
 To add a new unit of measure to an existing quantity at run time, you'd do this:
