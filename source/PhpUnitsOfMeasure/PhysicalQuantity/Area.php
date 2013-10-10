@@ -174,5 +174,40 @@ class Area extends PhysicalQuantity
         $new_unit->addAlias('yard squared');
         $new_unit->addAlias('yards squared');
         $this->registerUnitOfMeasure($new_unit);
+
+
+        $new_unit = new UnitOfMeasure(
+            'ha',
+            function ($x) {
+                return $x / 10000;
+            },
+            function ($x) {
+                return $x * 10000;
+            },
+            array(
+                'hectare',
+                'hectares'
+            )
+        );
+
+        $this->registerUnitOfMeasure($new_unit);
+
+
+        // International Acre
+        $new_unit = new UnitOfMeasure(
+            'ac',
+            function ($x) {
+                return $x / 4046.8564224;
+            },
+            function ($x) {
+                return $x * 4046.8564224;
+            },
+            array(
+                'acre',
+                'acres'
+            )
+        );
+
+        $this->registerUnitOfMeasure($new_unit);
     }
 }
