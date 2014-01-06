@@ -26,7 +26,7 @@ class Acceleration extends PhysicalQuantity
                 return $x;
             },
             array(
-                'm/s²'
+                'm/s²',
                 'meter per second squared',
                 'meters per second squared'
             )
