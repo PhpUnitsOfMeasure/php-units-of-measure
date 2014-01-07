@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
@@ -7,6 +7,15 @@ use PHPUnit_Framework_TestCase;
 
 class AreaTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * Verify that the object instantiates without error.
+     *
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Area\__construct()
+     */
+    public function testConstructorSucceeds()
+    {
+        $target = new Area(1, 'm^2');
+    }
 
     public function testToHectares()
     {
@@ -15,17 +24,16 @@ class AreaTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(30000, $area->toUnit("m^2"));
     }
 
-
     /**
      * There aren't lots of super nice conversions between ac -> m^2,
-     * so we'll check that it's close. 
-     * 
+     * so we'll check that it's close.
+     *
      * @return [type] [description]
      */
     public function testToAcres()
     {
         $area = new Area(13, 'ac');
-        
+
         $area = round($area->toUnit("m^2"), 6);
 
         $this->assertEquals(52609.133491, $area);
