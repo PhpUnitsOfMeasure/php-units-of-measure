@@ -9,7 +9,7 @@ class PressureTest extends \PHPUnit_Framework_TestCase
     /**
      * Verify that the object instantiates without error.
      *
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Pressure\__construct()
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Pressure::__construct()
      */
     public function testConstructorSucceeds()
     {

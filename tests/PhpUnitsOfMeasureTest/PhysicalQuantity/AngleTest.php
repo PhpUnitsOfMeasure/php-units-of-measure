@@ -9,7 +9,7 @@ class AngleTest extends \PHPUnit_Framework_TestCase
     /**
      * Verify that the object instantiates without error.
      *
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Angle\__construct()
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Angle::__construct()
      */
     public function testConstructorSucceeds()
     {
