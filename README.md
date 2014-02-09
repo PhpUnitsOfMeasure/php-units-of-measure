@@ -238,3 +238,5 @@ Codesniffer verifies that coding standards are being met.  Once the project is b
 ``` bash
 vendor/bin/phpcs --encoding=utf-8 --extensions=php --standard=./tests/phpcs.xml -nsp ./
 ```
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/triplepoint/php-units-of-measure/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
