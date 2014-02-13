@@ -30,7 +30,7 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      *
      * @var callable
      */
-    protected $from_native_unit;
+    protected $fromNativeUnit;
 
     /**
      * A callable that can convert a value in this unit of measure
@@ -38,24 +38,24 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      *
      * @var callable
      */
-    protected $to_native_unit;
+    protected $toNativeUnit;
 
     /**
      * Configure this object's mandatory properties.
      *
-     * @param string   $name             This unit of measure's canonical name
-     * @param callable $from_native_unit The callable that can cast values into this unit of measure from the native unit of measure
-     * @param callable $to_native_unit   The callable that can cast values into the native unit from this unit of measure
+     * @param string   $name           This unit of measure's canonical name
+     * @param callable $fromNativeUnit The callable that can cast values into this unit of measure from the native unit of measure
+     * @param callable $toNativeUnit   The callable that can cast values into the native unit from this unit of measure
      * @param array    $aliases
      *
      * @return void
      */
-    public function __construct($name, $from_native_unit, $to_native_unit, $aliases = array())
+    public function __construct($name, $fromNativeUnit, $toNativeUnit, $aliases = array())
     {
-        $this->name             = $name;
-        $this->from_native_unit = $from_native_unit;
-        $this->to_native_unit   = $to_native_unit;
-        $this->aliases          = $aliases;
+        $this->name           = $name;
+        $this->fromNativeUnit = $fromNativeUnit;
+        $this->toNativeUnit   = $toNativeUnit;
+        $this->aliases        = $aliases;
     }
 
     /**
@@ -87,7 +87,7 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      */
     public function convertValueFromNativeUnitOfMeasure($value)
     {
-        $callable = $this->from_native_unit;
+        $callable = $this->fromNativeUnit;
         return $callable($value);
     }
 
@@ -96,7 +96,7 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      */
     public function convertValueToNativeUnitOfMeasure($value)
     {
-        $callable = $this->to_native_unit;
+        $callable = $this->toNativeUnit;
         return $callable($value);
     }
 }

@@ -31,30 +31,30 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
         );
 
         // Quatloos
-        $new_unit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
-        $new_unit->expects($this->any())
+        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
+        $newUnit->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('quatloos'));
-        $new_unit->expects($this->once())
+        $newUnit->expects($this->once())
             ->method('convertValueToNativeUnitOfMeasure')
             ->will($this->returnValue(1.234));
 
-        $value->registerUnitOfMeasure($new_unit);
+        $value->registerUnitOfMeasure($newUnit);
 
         // Galactic Imperial Widgets (let's say it's defined as 2 quatloos)
-        $new_unit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
-        $new_unit->expects($this->any())
+        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
+        $newUnit->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('galimpwid'));
-        $new_unit->expects($this->once())
+        $newUnit->expects($this->once())
             ->method('convertValueFromNativeUnitOfMeasure')
             ->will($this->returnValue(2.468));
 
-        $value->registerUnitOfMeasure($new_unit);
+        $value->registerUnitOfMeasure($newUnit);
 
-        $value_in_galimpwids = $value->toUnit('galimpwid');
+        $valueInGalimpwids = $value->toUnit('galimpwid');
 
-        $this->assertSame(2.468, $value_in_galimpwids);
+        $this->assertSame(2.468, $valueInGalimpwids);
     }
 
     /**
@@ -69,14 +69,14 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
         );
 
         // Quatloos
-        $new_unit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
-        $new_unit->expects($this->any())
+        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
+        $newUnit->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('quatloos'));
 
-        $value->registerUnitOfMeasure($new_unit);
+        $value->registerUnitOfMeasure($newUnit);
 
-        $value_in_galimpwids = $value->toUnit('galimpwid');
+        $valueInGalimpwids = $value->toUnit('galimpwid');
     }
 
     /**
@@ -90,12 +90,12 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
         );
 
         // Quatloos
-        $new_unit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
-        $new_unit->expects($this->any())
+        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
+        $newUnit->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('quatloos'));
 
-        $value->registerUnitOfMeasure($new_unit);
+        $value->registerUnitOfMeasure($newUnit);
 
         $this->assertSame('1.234 quatloos', (string) $value);
     }

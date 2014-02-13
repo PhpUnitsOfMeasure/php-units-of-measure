@@ -15,9 +15,9 @@ class Temperature extends PhysicalQuantity
     public function __construct($value, $unit)
     {
         parent::__construct($value, $unit);
-        
+
         // Kelvin
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'K',
             function ($x) {
                 return $x;
@@ -26,12 +26,12 @@ class Temperature extends PhysicalQuantity
                 return $x;
             }
         );
-        $new_unit->addAlias('°K');
-        $new_unit->addAlias('kelvin');
-        $this->registerUnitOfMeasure($new_unit);
-        
+        $newUnit->addAlias('°K');
+        $newUnit->addAlias('kelvin');
+        $this->registerUnitOfMeasure($newUnit);
+
         // Degree Celsius
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             '°C',
             function ($x) {
                 return $x - 273.15;
@@ -40,12 +40,12 @@ class Temperature extends PhysicalQuantity
                 return $x + 273.15;
             }
         );
-        $new_unit->addAlias('C');
-        $new_unit->addAlias('celsius');
-        $this->registerUnitOfMeasure($new_unit);
-        
+        $newUnit->addAlias('C');
+        $newUnit->addAlias('celsius');
+        $this->registerUnitOfMeasure($newUnit);
+
         // Degree Fahrenheit
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             '°F',
             function ($x) {
                 return ($x * 9 / 5) - 459.67;
@@ -54,12 +54,12 @@ class Temperature extends PhysicalQuantity
                 return ($x + 459.67) * 5/9;
             }
         );
-        $new_unit->addAlias('F');
-        $new_unit->addAlias('fahrenheit');
-        $this->registerUnitOfMeasure($new_unit);
-                
+        $newUnit->addAlias('F');
+        $newUnit->addAlias('fahrenheit');
+        $this->registerUnitOfMeasure($newUnit);
+
         // Degree Rankine
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             '°R',
             function ($x) {
                 return $x * 9/5;
@@ -68,12 +68,12 @@ class Temperature extends PhysicalQuantity
                 return $x * 5/9;
             }
         );
-        $new_unit->addAlias('R');
-        $new_unit->addAlias('rankine');
-        $this->registerUnitOfMeasure($new_unit);
-        
+        $newUnit->addAlias('R');
+        $newUnit->addAlias('rankine');
+        $this->registerUnitOfMeasure($newUnit);
+
         // Degree Delisle
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             '°De',
             function ($x) {
                 return (373.15 - $x) * 3/2;
@@ -82,12 +82,12 @@ class Temperature extends PhysicalQuantity
                 return 373.15 - $x * 2/3;
             }
         );
-        $new_unit->addAlias('De');
-        $new_unit->addAlias('delisle');
-        $this->registerUnitOfMeasure($new_unit);
-        
+        $newUnit->addAlias('De');
+        $newUnit->addAlias('delisle');
+        $this->registerUnitOfMeasure($newUnit);
+
         // Degree Newton
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             '°N',
             function ($x) {
                 return ($x - 273.15) * 33/100;
@@ -96,12 +96,12 @@ class Temperature extends PhysicalQuantity
                 return $x * 100/33 + 273.15;
             }
         );
-        $new_unit->addAlias('N');
-        $new_unit->addAlias('newton');
-        $this->registerUnitOfMeasure($new_unit);
-        
+        $newUnit->addAlias('N');
+        $newUnit->addAlias('newton');
+        $this->registerUnitOfMeasure($newUnit);
+
         // Degree Réaumur
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             '°Ré',
             function ($x) {
                 return ($x - 273.15) * 4/5;
@@ -110,15 +110,15 @@ class Temperature extends PhysicalQuantity
                 return $x * 5/4 + 273.15;
             }
         );
-        $new_unit->addAlias('°Re');
-        $new_unit->addAlias('Ré');
-        $new_unit->addAlias('Re');
-        $new_unit->addAlias('réaumur');
-        $new_unit->addAlias('reaumur');
-        $this->registerUnitOfMeasure($new_unit);
-        
+        $newUnit->addAlias('°Re');
+        $newUnit->addAlias('Ré');
+        $newUnit->addAlias('Re');
+        $newUnit->addAlias('réaumur');
+        $newUnit->addAlias('reaumur');
+        $this->registerUnitOfMeasure($newUnit);
+
         // Degree Rømer
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             '°Rø',
             function ($x) {
                 return ($x - 273.15) * 21/40 + 7.5;
@@ -127,11 +127,11 @@ class Temperature extends PhysicalQuantity
                 return ($x - 7.5) * 40/21 + 273.15;
             }
         );
-        $new_unit->addAlias('°Ro');
-        $new_unit->addAlias('Rø');
-        $new_unit->addAlias('Ro');
-        $new_unit->addAlias('rømer');
-        $new_unit->addAlias('romer');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('°Ro');
+        $newUnit->addAlias('Rø');
+        $newUnit->addAlias('Ro');
+        $newUnit->addAlias('rømer');
+        $newUnit->addAlias('romer');
+        $this->registerUnitOfMeasure($newUnit);
     }
 }

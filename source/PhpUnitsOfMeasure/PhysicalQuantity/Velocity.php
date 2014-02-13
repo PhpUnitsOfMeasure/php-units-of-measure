@@ -17,7 +17,7 @@ class Velocity extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // meter per second
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'm/s',
             function ($x) {
                 return $x;
@@ -26,8 +26,8 @@ class Velocity extends PhysicalQuantity
                 return $x;
             }
         );
-        $new_unit->addAlias('meters per second');
-        $new_unit->addAlias('meter per second');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('meters per second');
+        $newUnit->addAlias('meter per second');
+        $this->registerUnitOfMeasure($newUnit);
     }
 }

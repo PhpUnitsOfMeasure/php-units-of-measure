@@ -17,7 +17,7 @@ class Angle extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Degrees
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             '°',
             function ($x) {
                 return $x;
@@ -26,14 +26,14 @@ class Angle extends PhysicalQuantity
                 return $x;
             }
         );
-        $new_unit->addAlias('deg');
-        $new_unit->addAlias('degs');
-        $new_unit->addAlias('degree');
-        $new_unit->addAlias('degrees');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('deg');
+        $newUnit->addAlias('degs');
+        $newUnit->addAlias('degree');
+        $newUnit->addAlias('degrees');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Radians
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'rad',
             function ($x) {
                 return $x * M_PI / 180;
@@ -42,9 +42,9 @@ class Angle extends PhysicalQuantity
                 return $x / M_PI * 180;
             }
         );
-        $new_unit->addAlias('rads');
-        $new_unit->addAlias('radian');
-        $new_unit->addAlias('radians');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('rads');
+        $newUnit->addAlias('radian');
+        $newUnit->addAlias('radians');
+        $this->registerUnitOfMeasure($newUnit);
     }
 }

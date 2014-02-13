@@ -17,7 +17,7 @@ class Pressure extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Pascal
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'Pa',
             function ($x) {
                 return $x;
@@ -26,11 +26,11 @@ class Pressure extends PhysicalQuantity
                 return $x;
             }
         );
-        $new_unit->addAlias('pascal');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('pascal');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Atmosphere
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'atm',
             function ($x) {
                 return $x / 101325;
@@ -39,12 +39,12 @@ class Pressure extends PhysicalQuantity
                 return $x * 101325;
             }
         );
-        $new_unit->addAlias('atmosphere');
-        $new_unit->addAlias('atmospheres');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('atmosphere');
+        $newUnit->addAlias('atmospheres');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Bar
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'bar',
             function ($x) {
                 return $x / 1e5;
@@ -53,11 +53,11 @@ class Pressure extends PhysicalQuantity
                 return $x * 1e5;
             }
         );
-        $new_unit->addAlias('bar');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('bar');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Inch of Mercury
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'inHg',
             function ($x) {
                 return $x / 3.386389e3;
@@ -66,11 +66,11 @@ class Pressure extends PhysicalQuantity
                 return $x * 3.386389e3;
             }
         );
-        $new_unit->addAlias('inches of mercury');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('inches of mercury');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Milimeter of Mercury
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'mmHg',
             function ($x) {
                 return $x / 133.3224;
@@ -79,12 +79,12 @@ class Pressure extends PhysicalQuantity
                 return $x * 133.3224;
             }
         );
-        $new_unit->addAlias('milimeters of mercury');
-        $new_unit->addAlias('torr');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('milimeters of mercury');
+        $newUnit->addAlias('torr');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Pound per Square Inch
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'psi',
             function ($x) {
                 return $x / 6.894757e3;
@@ -93,7 +93,7 @@ class Pressure extends PhysicalQuantity
                 return $x * 6.894757e3;
             }
         );
-        $new_unit->addAlias('pounds per square inch');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('pounds per square inch');
+        $this->registerUnitOfMeasure($newUnit);
     }
 }

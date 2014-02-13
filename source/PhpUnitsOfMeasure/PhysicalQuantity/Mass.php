@@ -17,7 +17,7 @@ class Mass extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Kilogram
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'kg',
             function ($x) {
                 return $x;
@@ -26,12 +26,12 @@ class Mass extends PhysicalQuantity
                 return $x;
             }
         );
-        $new_unit->addAlias('kilogram');
-        $new_unit->addAlias('kilograms');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('kilogram');
+        $newUnit->addAlias('kilograms');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Milligram
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'mg',
             function ($x) {
                 return $x / 1e-6;
@@ -40,12 +40,12 @@ class Mass extends PhysicalQuantity
                 return $x * 1e-6;
             }
         );
-        $new_unit->addAlias('milligram');
-        $new_unit->addAlias('milligrams');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('milligram');
+        $newUnit->addAlias('milligrams');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Centigram
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'cg',
             function ($x) {
                 return $x / 1e-5;
@@ -54,12 +54,12 @@ class Mass extends PhysicalQuantity
                 return $x * 1e-5;
             }
         );
-        $new_unit->addAlias('centigram');
-        $new_unit->addAlias('centigrams');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('centigram');
+        $newUnit->addAlias('centigrams');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Gram
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'g',
             function ($x) {
                 return $x / 1e-3;
@@ -68,12 +68,12 @@ class Mass extends PhysicalQuantity
                 return $x * 1e-3;
             }
         );
-        $new_unit->addAlias('gram');
-        $new_unit->addAlias('grams');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('gram');
+        $newUnit->addAlias('grams');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Tonne (metric)
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             't',
             function ($x) {
                 return $x / 1e3;
@@ -82,14 +82,14 @@ class Mass extends PhysicalQuantity
                 return $x * 1e3;
             }
         );
-        $new_unit->addAlias('ton');
-        $new_unit->addAlias('tons');
-        $new_unit->addAlias('tonne');
-        $new_unit->addAlias('tonnes');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('ton');
+        $newUnit->addAlias('tons');
+        $newUnit->addAlias('tonne');
+        $newUnit->addAlias('tonnes');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Pound
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'lb',
             function ($x) {
                 return $x / 4.535924e-1;
@@ -98,13 +98,13 @@ class Mass extends PhysicalQuantity
                 return $x * 4.535924e-1;
             }
         );
-        $new_unit->addAlias('lbs');
-        $new_unit->addAlias('pound');
-        $new_unit->addAlias('pounds');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('lbs');
+        $newUnit->addAlias('pound');
+        $newUnit->addAlias('pounds');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Ounce
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'oz',
             function ($x) {
                 return $x / 2.834952e-2;
@@ -113,8 +113,8 @@ class Mass extends PhysicalQuantity
                 return $x * 2.834952e-2;
             }
         );
-        $new_unit->addAlias('ounce');
-        $new_unit->addAlias('ounces');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('ounce');
+        $newUnit->addAlias('ounces');
+        $this->registerUnitOfMeasure($newUnit);
     }
 }

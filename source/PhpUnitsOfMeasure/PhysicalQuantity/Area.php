@@ -17,7 +17,7 @@ class Area extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Meters squared
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'm^2',
             function ($x) {
                 return $x;
@@ -31,10 +31,10 @@ class Area extends PhysicalQuantity
                 'meters squared'
             )
         );
-        $this->registerUnitOfMeasure($new_unit);
+        $this->registerUnitOfMeasure($newUnit);
 
         // Millimeter squared
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'mm^2',
             function ($x) {
                 return $x / 1e-6;
@@ -48,10 +48,10 @@ class Area extends PhysicalQuantity
                 'millimeters squared'
             )
         );
-        $this->registerUnitOfMeasure($new_unit);
+        $this->registerUnitOfMeasure($newUnit);
 
         // Centimeter squared
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'cm^2',
             function ($x) {
                 return $x / 1e-4;
@@ -65,10 +65,10 @@ class Area extends PhysicalQuantity
                 'centimeters squared'
             )
         );
-        $this->registerUnitOfMeasure($new_unit);
+        $this->registerUnitOfMeasure($newUnit);
 
         // Decimeter squared
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'dm^2',
             function ($x) {
                 return $x / 1e-2;
@@ -82,10 +82,10 @@ class Area extends PhysicalQuantity
                 'decimeters squared'
             )
         );
-        $this->registerUnitOfMeasure($new_unit);
+        $this->registerUnitOfMeasure($newUnit);
 
         // Kilometer squared
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'km^2',
             function ($x) {
                 return $x / 1e6;
@@ -99,10 +99,10 @@ class Area extends PhysicalQuantity
                 'kilometers squared'
             )
         );
-        $this->registerUnitOfMeasure($new_unit);
+        $this->registerUnitOfMeasure($newUnit);
 
         // Foot squared
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'ft^2',
             function ($x) {
                 return $x / 9.290304e-2;
@@ -116,10 +116,10 @@ class Area extends PhysicalQuantity
                 'feet squared'
             )
         );
-        $this->registerUnitOfMeasure($new_unit);
+        $this->registerUnitOfMeasure($newUnit);
 
         // Inch squared
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'in^2',
             function ($x) {
                 return $x / 6.4516e-4;
@@ -133,10 +133,10 @@ class Area extends PhysicalQuantity
                 'inches squared'
             )
         );
-        $this->registerUnitOfMeasure($new_unit);
+        $this->registerUnitOfMeasure($newUnit);
 
         // Mile squared
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'mi^2',
             function ($x) {
                 return $x / 2.589988e6;
@@ -150,13 +150,13 @@ class Area extends PhysicalQuantity
                 'miles squared'
             )
         );
-        $new_unit->addAlias('mi²');
-        $new_unit->addAlias('mile squared');
-        $new_unit->addAlias('miles squared');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('mi²');
+        $newUnit->addAlias('mile squared');
+        $newUnit->addAlias('miles squared');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Yard squared
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'yd^2',
             function ($x) {
                 return $x / 8.361274e-1;
@@ -170,13 +170,13 @@ class Area extends PhysicalQuantity
                 'yards squared'
             )
         );
-        $new_unit->addAlias('yd²');
-        $new_unit->addAlias('yard squared');
-        $new_unit->addAlias('yards squared');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('yd²');
+        $newUnit->addAlias('yard squared');
+        $newUnit->addAlias('yards squared');
+        $this->registerUnitOfMeasure($newUnit);
 
 
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'ha',
             function ($x) {
                 return $x / 10000;
@@ -190,11 +190,11 @@ class Area extends PhysicalQuantity
             )
         );
 
-        $this->registerUnitOfMeasure($new_unit);
+        $this->registerUnitOfMeasure($newUnit);
 
 
         // International Acre
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'ac',
             function ($x) {
                 return $x / 4046.8564224;
@@ -208,6 +208,6 @@ class Area extends PhysicalQuantity
             )
         );
 
-        $this->registerUnitOfMeasure($new_unit);
+        $this->registerUnitOfMeasure($newUnit);
     }
 }

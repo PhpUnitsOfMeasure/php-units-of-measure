@@ -17,7 +17,7 @@ class ElectricCurrent extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Ampere
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'A',
             function ($x) {
                 return $x;
@@ -26,10 +26,10 @@ class ElectricCurrent extends PhysicalQuantity
                 return $x;
             }
         );
-        $new_unit->addAlias('amp');
-        $new_unit->addAlias('amps');
-        $new_unit->addAlias('ampere');
-        $new_unit->addAlias('amperes');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('amp');
+        $newUnit->addAlias('amps');
+        $newUnit->addAlias('ampere');
+        $newUnit->addAlias('amperes');
+        $this->registerUnitOfMeasure($newUnit);
     }
 }

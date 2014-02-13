@@ -13,14 +13,14 @@ abstract class PhysicalQuantity
      *
      * @var float
      */
-    protected $original_value;
+    protected $originalValue;
 
     /**
      * The original unit of measure's string representation.
      *
      * @var string
      */
-    protected $original_unit;
+    protected $originalUnit;
 
     /**
      * The collection of units of measure in which this value can
@@ -28,7 +28,7 @@ abstract class PhysicalQuantity
      *
      * @var \PhpUnitsOfMeasure\UnitOfMeasureInterface[]
      */
-    protected $unit_definitions = array();
+    protected $unitDefinitions = array();
 
     /**
      * Store the value and its original unit.
@@ -40,8 +40,8 @@ abstract class PhysicalQuantity
      */
     public function __construct($value, $unit)
     {
-        $this->original_value = $value;
-        $this->original_unit = $unit;
+        $this->originalValue = $value;
+        $this->originalUnit = $unit;
     }
 
     /**
@@ -51,10 +51,10 @@ abstract class PhysicalQuantity
      */
     public function __toString()
     {
-        $original_unit = $this->findUnitOfMeasureByNameOrAlias($this->original_unit);
-        $canonical_unit_name = $original_unit->getName();
+        $originalUnit = $this->findUnitOfMeasureByNameOrAlias($this->originalUnit);
+        $canonicalUnitName = $originalUnit->getName();
 
-        return $this->original_value . ' ' . $canonical_unit_name;
+        return $this->originalValue . ' ' . $canonicalUnitName;
     }
 
     /**
@@ -69,7 +69,7 @@ abstract class PhysicalQuantity
      */
     public function registerUnitOfMeasure(UnitOfMeasureInterface $unit)
     {
-        $this->unit_definitions[] = $unit;
+        $this->unitDefinitions[] = $unit;
     }
 
     /**
@@ -81,13 +81,13 @@ abstract class PhysicalQuantity
      */
     public function toUnit($unit)
     {
-        $original_unit     = $this->findUnitOfMeasureByNameOrAlias($this->original_unit);
-        $native_unit_value = $original_unit->convertValueToNativeUnitOfMeasure($this->original_value);
+        $originalUnit    = $this->findUnitOfMeasureByNameOrAlias($this->originalUnit);
+        $nativeUnitValue = $originalUnit->convertValueToNativeUnitOfMeasure($this->originalValue);
 
-        $to_unit       = $this->findUnitOfMeasureByNameOrAlias($unit);
-        $to_unit_value = $to_unit->convertValueFromNativeUnitOfMeasure($native_unit_value);
+        $toUnit      = $this->findUnitOfMeasureByNameOrAlias($unit);
+        $toUnitValue = $toUnit->convertValueFromNativeUnitOfMeasure($nativeUnitValue);
 
-        return $to_unit_value;
+        return $toUnitValue;
     }
 
     /**
@@ -107,9 +107,9 @@ abstract class PhysicalQuantity
             throw new Exception\PhysicalQuantityMismatch('Cannot add type ('.get_class($quantity).') to type ('.get_class($this).').');
         }
 
-        $new_value = $this->original_value + $quantity->toUnit($this->original_unit);
+        $newValue = $this->originalValue + $quantity->toUnit($this->originalUnit);
 
-        return new static($new_value, $this->original_unit);
+        return new static($newValue, $this->originalUnit);
     }
 
     /**
@@ -129,9 +129,9 @@ abstract class PhysicalQuantity
             throw new Exception\PhysicalQuantityMismatch('Cannot subtract type ('.get_class($quantity).') from type ('.get_class($this).').');
         }
 
-        $new_value = $this->original_value - $quantity->toUnit($this->original_unit);
+        $newValue = $this->originalValue - $quantity->toUnit($this->originalUnit);
 
-        return new static($new_value, $this->original_unit);
+        return new static($newValue, $this->originalUnit);
     }
 
     /**
@@ -147,9 +147,9 @@ abstract class PhysicalQuantity
      */
     protected function findUnitOfMeasureByNameOrAlias($unit)
     {
-        foreach ($this->unit_definitions as $unit_of_measure) {
-            if ($unit === $unit_of_measure->getName() || $unit_of_measure->isAliasOf($unit)) {
-                return $unit_of_measure;
+        foreach ($this->unitDefinitions as $unitOfMeasure) {
+            if ($unit === $unitOfMeasure->getName() || $unitOfMeasure->isAliasOf($unit)) {
+                return $unitOfMeasure;
             }
         }
 

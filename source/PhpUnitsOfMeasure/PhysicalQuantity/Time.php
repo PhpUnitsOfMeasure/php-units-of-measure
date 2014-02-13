@@ -17,7 +17,7 @@ class Time extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Second
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             's',
             function ($x) {
                 return $x;
@@ -26,14 +26,14 @@ class Time extends PhysicalQuantity
                 return $x;
             }
         );
-        $new_unit->addAlias('sec');
-        $new_unit->addAlias('secs');
-        $new_unit->addAlias('second');
-        $new_unit->addAlias('seconds');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('sec');
+        $newUnit->addAlias('secs');
+        $newUnit->addAlias('second');
+        $newUnit->addAlias('seconds');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Minutes
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'm',
             function ($x) {
                 return $x / 60;
@@ -42,14 +42,14 @@ class Time extends PhysicalQuantity
                 return $x * 60;
             }
         );
-        $new_unit->addAlias('min');
-        $new_unit->addAlias('mins');
-        $new_unit->addAlias('minute');
-        $new_unit->addAlias('minutes');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('min');
+        $newUnit->addAlias('mins');
+        $newUnit->addAlias('minute');
+        $newUnit->addAlias('minutes');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Hours
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'h',
             function ($x) {
                 return $x / 3600;
@@ -58,14 +58,14 @@ class Time extends PhysicalQuantity
                 return $x * 3600;
             }
         );
-        $new_unit->addAlias('hr');
-        $new_unit->addAlias('hrs');
-        $new_unit->addAlias('hour');
-        $new_unit->addAlias('hours');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('hr');
+        $newUnit->addAlias('hrs');
+        $newUnit->addAlias('hour');
+        $newUnit->addAlias('hours');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Days
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'd',
             function ($x) {
                 return $x / 86400;
@@ -74,12 +74,12 @@ class Time extends PhysicalQuantity
                 return $x * 86400;
             }
         );
-        $new_unit->addAlias('day');
-        $new_unit->addAlias('days');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('day');
+        $newUnit->addAlias('days');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Weeks, understood as 7 days
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'w',
             function ($x) {
                 return $x / 604800;
@@ -88,10 +88,10 @@ class Time extends PhysicalQuantity
                 return $x * 604800;
             }
         );
-        $new_unit->addAlias('wk');
-        $new_unit->addAlias('wks');
-        $new_unit->addAlias('week');
-        $new_unit->addAlias('weeks');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('wk');
+        $newUnit->addAlias('wks');
+        $newUnit->addAlias('week');
+        $newUnit->addAlias('weeks');
+        $this->registerUnitOfMeasure($newUnit);
     }
 }

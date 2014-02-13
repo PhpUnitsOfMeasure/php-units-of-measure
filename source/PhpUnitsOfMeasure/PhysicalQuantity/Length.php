@@ -17,7 +17,7 @@ class Length extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Meter
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'm',
             function ($x) {
                 return $x;
@@ -26,12 +26,12 @@ class Length extends PhysicalQuantity
                 return $x;
             }
         );
-        $new_unit->addAlias('meter');
-        $new_unit->addAlias('meters');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('meter');
+        $newUnit->addAlias('meters');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Millimeter
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'mm',
             function ($x) {
                 return $x / 0.001;
@@ -40,12 +40,12 @@ class Length extends PhysicalQuantity
                 return $x * 0.001;
             }
         );
-        $new_unit->addAlias('millimeter');
-        $new_unit->addAlias('millimeters');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('millimeter');
+        $newUnit->addAlias('millimeters');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Centimeter
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'cm',
             function ($x) {
                 return $x / 0.01;
@@ -54,12 +54,12 @@ class Length extends PhysicalQuantity
                 return $x * 0.01;
             }
         );
-        $new_unit->addAlias('centimeter');
-        $new_unit->addAlias('centimeters');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('centimeter');
+        $newUnit->addAlias('centimeters');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Decimeter
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'dm',
             function ($x) {
                 return $x / 0.1;
@@ -68,12 +68,12 @@ class Length extends PhysicalQuantity
                 return $x * 0.1;
             }
         );
-        $new_unit->addAlias('decimeter');
-        $new_unit->addAlias('decimeters');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('decimeter');
+        $newUnit->addAlias('decimeters');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Kilometer
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'km',
             function ($x) {
                 return $x / 1000;
@@ -82,12 +82,12 @@ class Length extends PhysicalQuantity
                 return $x * 1000;
             }
         );
-        $new_unit->addAlias('kilometer');
-        $new_unit->addAlias('kilometers');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('kilometer');
+        $newUnit->addAlias('kilometers');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Foot
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'ft',
             function ($x) {
                 return $x / 0.3048;
@@ -96,12 +96,12 @@ class Length extends PhysicalQuantity
                 return $x * 0.3048;
             }
         );
-        $new_unit->addAlias('foot');
-        $new_unit->addAlias('feet');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('foot');
+        $newUnit->addAlias('feet');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Inch
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'in',
             function ($x) {
                 return $x / 0.0254;
@@ -110,12 +110,12 @@ class Length extends PhysicalQuantity
                 return $x * 0.0254;
             }
         );
-        $new_unit->addAlias('inch');
-        $new_unit->addAlias('inches');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('inch');
+        $newUnit->addAlias('inches');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Mile
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'mi',
             function ($x) {
                 return $x / 1609.344;
@@ -124,12 +124,12 @@ class Length extends PhysicalQuantity
                 return $x * 1609.344;
             }
         );
-        $new_unit->addAlias('mile');
-        $new_unit->addAlias('miles');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('mile');
+        $newUnit->addAlias('miles');
+        $this->registerUnitOfMeasure($newUnit);
 
         // Yard
-        $new_unit = new UnitOfMeasure(
+        $newUnit = new UnitOfMeasure(
             'yd',
             function ($x) {
                 return $x / 0.9144;
@@ -138,8 +138,8 @@ class Length extends PhysicalQuantity
                 return $x * 0.9144;
             }
         );
-        $new_unit->addAlias('yard');
-        $new_unit->addAlias('yards');
-        $this->registerUnitOfMeasure($new_unit);
+        $newUnit->addAlias('yard');
+        $newUnit->addAlias('yards');
+        $this->registerUnitOfMeasure($newUnit);
     }
 }
