@@ -153,6 +153,6 @@ abstract class PhysicalQuantity
             }
         }
 
-        throw new Exception\UnknownUnitOfMeasure('Unknown unit of measure ($unit)');
+        throw new Exception\UnknownUnitOfMeasure("Unknown unit of measure ($unit)");
     }
 }
