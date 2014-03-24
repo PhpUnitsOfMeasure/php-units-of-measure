@@ -77,10 +77,13 @@ class Pressure extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 133.3224;
-            }
+            },
+            array(
+                'milimeters of mercury',
+                'milimetres of mercury',
+                'torr'
+            )
         );
-        $newUnit->addAlias('milimeters of mercury');
-        $newUnit->addAlias('torr');
         $this->registerUnitOfMeasure($newUnit);
 
         // Pound per Square Inch

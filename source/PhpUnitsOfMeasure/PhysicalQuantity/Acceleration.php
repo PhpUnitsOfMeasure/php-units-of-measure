@@ -28,7 +28,9 @@ class Acceleration extends PhysicalQuantity
             array(
                 'm/s²',
                 'meter per second squared',
-                'meters per second squared'
+                'meters per second squared',
+                'metre per second squared',
+                'metres per second squared'
             )
         );
         $this->registerUnitOfMeasure($newUnit);

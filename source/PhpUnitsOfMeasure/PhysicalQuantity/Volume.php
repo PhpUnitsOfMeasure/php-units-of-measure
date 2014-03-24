@@ -24,11 +24,15 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x;
-            }
+            },
+            array(
+                'm³',
+                'cubic meter',
+                'cubic meters',
+                'cubic metre',
+                'cubic metres'
+            )
         );
-        $newUnit->addAlias('m³');
-        $newUnit->addAlias('cubic meter');
-        $newUnit->addAlias('cubic meters');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic millimeter
@@ -39,11 +43,16 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-9;
-            }
+            },
+            array(
+                'mm³',
+                'cubic millimeter',
+                'cubic millimeters',
+                'cubic millimetre',
+                'cubic millimetres'
+            )
         );
-        $newUnit->addAlias('mm³');
-        $newUnit->addAlias('cubic millimeter');
-        $newUnit->addAlias('cubic millimeters');
+
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic centimeter
@@ -54,11 +63,15 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-6;
-            }
+            },
+            array(
+                'cm³',
+                'cubic centimeter',
+                'cubic centimeters',
+                'cubic centimetre',
+                'cubic centimetres'
+            )
         );
-        $newUnit->addAlias('cm³');
-        $newUnit->addAlias('cubic centimeter');
-        $newUnit->addAlias('cubic centimeters');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic decimeter
@@ -69,11 +82,15 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-3;
-            }
+            },
+            array(
+                'dm³',
+                'cubic decimeter',
+                'cubic decimeters',
+                'cubic decimetre',
+                'cubic decimetres'
+            )
         );
-        $newUnit->addAlias('dm³');
-        $newUnit->addAlias('cubic decimeter');
-        $newUnit->addAlias('cubic decimeters');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic kilometer
@@ -84,11 +101,16 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e9;
-            }
+            },
+            array(
+                'km³',
+                'cubic kilometer',
+                'cubic kilometers',
+                'cubic kilometre',
+                'cubic kilometres'
+            )
         );
-        $newUnit->addAlias('km³');
-        $newUnit->addAlias('cubic kilometer');
-        $newUnit->addAlias('cubic kilometers');
+
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic foot
@@ -144,10 +166,14 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-6;
-            }
+            },
+            array(
+                'milliliter',
+                'milliliters',
+                'millilitre',
+                'millilitres'
+            )
         );
-        $newUnit->addAlias('milliliter');
-        $newUnit->addAlias('milliliters');
         $this->registerUnitOfMeasure($newUnit);
 
         // Centiliters
@@ -158,10 +184,14 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-5;
-            }
+            },
+            array(
+                'centiliter',
+                'centiliters',
+                'centilitre',
+                'centilitres'
+            )
         );
-        $newUnit->addAlias('centiliter');
-        $newUnit->addAlias('centiliters');
         $this->registerUnitOfMeasure($newUnit);
 
         // Deciliter
@@ -172,10 +202,14 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-4;
-            }
+            },
+            array(
+                'deciliter',
+                'deciliters',
+                'decilitre',
+                'decilitres'
+            )
         );
-        $newUnit->addAlias('deciliter');
-        $newUnit->addAlias('deciliters');
         $this->registerUnitOfMeasure($newUnit);
 
         // Liter
@@ -186,10 +220,14 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-3;
-            }
+            },
+            array(
+                'liter',
+                'liters',
+                'litre',
+                'litres',
+            )
         );
-        $newUnit->addAlias('liter');
-        $newUnit->addAlias('liters');
         $this->registerUnitOfMeasure($newUnit);
 
         // Decaliter
@@ -200,10 +238,14 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-2;
-            }
+            },
+            array(
+                'decaliter',
+                'decaliters',
+                'decalitre',
+                'decalitres'
+            )
         );
-        $newUnit->addAlias('decaliter');
-        $newUnit->addAlias('decaliters');
         $this->registerUnitOfMeasure($newUnit);
 
         // Hectoliter
@@ -214,10 +256,14 @@ class Volume extends PhysicalQuantity
             },
             function ($x) {
                 return $x * 1e-1;
-            }
+            },
+            array(
+                'hectoliter',
+                'hectoliters',
+                'hectolitre',
+                'hectolitres'
+            )
         );
-        $newUnit->addAlias('hectoliter');
-        $newUnit->addAlias('hectoliters');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cup

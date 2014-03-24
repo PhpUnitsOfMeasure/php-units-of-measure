@@ -28,7 +28,9 @@ class Area extends PhysicalQuantity
             array(
                 'm²',
                 'meter squared',
-                'meters squared'
+                'meters squared',
+                'metre squared',
+                'metres squared'
             )
         );
         $this->registerUnitOfMeasure($newUnit);
@@ -45,7 +47,9 @@ class Area extends PhysicalQuantity
             array(
                 'mm²',
                 'millimeter squared',
-                'millimeters squared'
+                'millimeters squared',
+                'millimetre squared',
+                'millimetres squared'
             )
         );
         $this->registerUnitOfMeasure($newUnit);
@@ -62,7 +66,9 @@ class Area extends PhysicalQuantity
             array(
                 'cm²',
                 'centimeter squared',
-                'centimeters squared'
+                'centimeters squared',
+                'centimetre squared',
+                'centimetres squared'
             )
         );
         $this->registerUnitOfMeasure($newUnit);
@@ -79,7 +85,9 @@ class Area extends PhysicalQuantity
             array(
                 'dm²',
                 'decimeter squared',
-                'decimeters squared'
+                'decimeters squared',
+                'decimetre squared',
+                'decimetres squared'
             )
         );
         $this->registerUnitOfMeasure($newUnit);
@@ -96,7 +104,9 @@ class Area extends PhysicalQuantity
             array(
                 'km²',
                 'kilometer squared',
-                'kilometers squared'
+                'kilometers squared',
+                'kilometre squared',
+                'kilometres squared'
             )
         );
         $this->registerUnitOfMeasure($newUnit);
@@ -150,9 +160,6 @@ class Area extends PhysicalQuantity
                 'miles squared'
             )
         );
-        $newUnit->addAlias('mi²');
-        $newUnit->addAlias('mile squared');
-        $newUnit->addAlias('miles squared');
         $this->registerUnitOfMeasure($newUnit);
 
         // Yard squared
@@ -170,9 +177,6 @@ class Area extends PhysicalQuantity
                 'yards squared'
             )
         );
-        $newUnit->addAlias('yd²');
-        $newUnit->addAlias('yard squared');
-        $newUnit->addAlias('yards squared');
         $this->registerUnitOfMeasure($newUnit);
 
 
@@ -189,7 +193,6 @@ class Area extends PhysicalQuantity
                 'hectares'
             )
         );
-
         $this->registerUnitOfMeasure($newUnit);
 
 
@@ -207,7 +210,6 @@ class Area extends PhysicalQuantity
                 'acres'
             )
         );
-
         $this->registerUnitOfMeasure($newUnit);
     }
 }
