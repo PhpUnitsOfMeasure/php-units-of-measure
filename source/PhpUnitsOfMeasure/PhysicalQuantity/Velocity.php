@@ -24,10 +24,14 @@ class Velocity extends PhysicalQuantity
             },
             function ($x) {
                 return $x;
-            }
+            },
+            array(
+                'meters per second',
+                'meter per second',
+                'metres per second',
+                'metre per second',
+            )
         );
-        $newUnit->addAlias('meters per second');
-        $newUnit->addAlias('meter per second');
         $this->registerUnitOfMeasure($newUnit);
     }
 }
