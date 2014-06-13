@@ -60,8 +60,8 @@ abstract class PhysicalQuantity
     /**
      * Register a new Unit of Measure with this quantity.
      *
-     * The meaning here is that this new unit of measure is one of the units to
-     * which measurements of this physical quantity can be converted.
+     * The intended use is to register a new unit of measure to which measurements
+     * of this physical quantity can be converted.
      *
      * @param \PhpUnitsOfMeasure\UnitOfMeasureInterface $unit The new unit of measure
      *
