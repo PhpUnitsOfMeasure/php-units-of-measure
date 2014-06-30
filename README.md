@@ -210,18 +210,17 @@ In the United States, the standards body for measurement is NIST, and they've pu
 Also note that any new physical quantities should have the appropriate SI unit chosen for their native unit of measure.
 
 ### Local Testing Environment
-The included /vagrant directory contains a virtual machine environment suitable for running the necessary unit tests.  To bring up the machine, make sure you have Vagrant and Virtualbox installed, and:
+There's a Vagrant virtual machine configuration included which is suitable for running the necessary unit tests.  To bring up the machine, make sure you have Vagrant and Virtualbox installed, and from the project root directory:
 
 
 ``` bash
-cd vagrant
 vagrant up
 vagrant ssh
 cd /project
 ```
 
 ### Setting Up for Testing
-The virtual machine development environment already has Composer installed.  To install this project's dev dependencies:
+The virtual machine development environment already has Composer installed.  Once you're ssh'ed into the virtual machine, install this project's dev dependencies:
 
 ``` bash
 rm -rf vendor
