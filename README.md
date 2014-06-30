@@ -209,21 +209,24 @@ In the United States, the standards body for measurement is NIST, and they've pu
 
 Also note that any new physical quantities should have the appropriate SI unit chosen for their native unit of measure.
 
+### Local Testing Environment
+The included /vagrant directory contains a virtual machine environment suitable for running the necessary unit tests.  To bring up the machine, make sure you have Vagrant and Virtualbox installed, and:
+
+
+``` bash
+cd vagrant
+vagrant up
+vagrant ssh
+cd /project
+```
+
 ### Setting Up for Testing
-After cloning this repository, install Composer:
-``` bash
-cd {path_to_project_root}
-php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
-```
-Since this is for development, install with the dev dependencies:
+The virtual machine development environment already has Composer installed.  To install this project's dev dependencies:
 
 ``` bash
-./composer.phar install --verbose --prefer-dist --dev
+rm -rf vendor
+composer install --verbose --prefer-dist --dev
 ```
-
-### Continuous Integration
-Continuous integration is handled through Travis-CI.
-- https://travis-ci.org/triplepoint/php-units-of-measure
 
 ### Unit Tests
 All the tests associated with this project can be manually run with:
@@ -238,3 +241,7 @@ Codesniffer verifies that coding standards are being met.  Once the project is b
 ``` bash
 vendor/bin/phpcs --encoding=utf-8 --extensions=php --standard=./tests/phpcs.xml -nsp ./
 ```
+
+### Continuous Integration
+The above tests are automatically run against Github commits with Travis-CI.
+- https://travis-ci.org/triplepoint/php-units-of-measure
