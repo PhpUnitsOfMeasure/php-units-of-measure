@@ -9,7 +9,7 @@ class ElectricCurrentTest extends \PHPUnit_Framework_TestCase
     /**
      * Verify that the object instantiates without error.
      *
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\ElectricVoltage::__construct()
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Voltage::__construct()
      */
     public function testConstructorSucceeds()
     {
