@@ -4,7 +4,7 @@ namespace PhpUnitsOfMeasure\PhysicalQuantity;
 use PhpUnitsOfMeasure\PhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 
-class ElectricCurrent extends PhysicalQuantity
+class Frequency extends PhysicalQuantity
 {
     /**
      * Configure all the standard units of measure
@@ -18,7 +18,7 @@ class ElectricCurrent extends PhysicalQuantity
 
         // Ampere
         $newUnit = new UnitOfMeasure(
-            'A',
+            'Hz',
             function ($x) {
                 return $x;
             },
@@ -26,34 +26,14 @@ class ElectricCurrent extends PhysicalQuantity
                 return $x;
             },
             array(
-                'amp',
-                'amps',
-                'ampre',
-                'ampres'
+                'hertz'
             )
         );
         $this->registerUnitOfMeasure($newUnit);
 
-        // Milliampere
+        // Kilohertz
         $newUnit = new UnitOfMeasure(
-            'mA',
-            function ($x) {
-                return $x / 0.001;
-            },
-            function ($x) {
-                return $x * 0.001;
-            },
-            array(
-                'milliampere',
-                'milliamperes',
-                'milliamp',
-                'milliamps'
-            )
-        );
-
-        // Kiloampere
-        $newUnit = new UnitOfMeasure(
-            'kA',
+            'kHz',
             function ($x) {
                 return $x / 1000;
             },
@@ -61,12 +41,37 @@ class ElectricCurrent extends PhysicalQuantity
                 return $x * 1000;
             },
             array(
-                'kiloampere',
-                'kiloamperes',
-                'kiloamp',
-                'kiloamps'
+                'kilohertz',
             )
         );
         $this->registerUnitOfMeasure($newUnit);
+
+        // Megahertz
+        $newUnit = new UnitOfMeasure(
+            'MHz',
+            function ($x) {
+                return $x / pow(10,6);
+            },
+            function ($x) {
+                return $x * pow(10,6);
+            },
+            array(
+                'megahertz',
+            )
+        );
+
+        // Gigahertz
+        $newUnit = new UnitOfMeasure(
+            'GHz',
+            function ($x) {
+                return $x / pow(10,9);
+            },
+            function ($x) {
+                return $x * pow(10,9);
+            },
+            array(
+                'gigahertz',
+            )
+        );
     }
 }

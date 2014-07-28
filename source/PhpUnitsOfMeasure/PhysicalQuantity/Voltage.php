@@ -1,10 +1,10 @@
 <?php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
-use PhpUnitsOfMeasure\PhysicalQuantity;
-use PhpUnitsOfMeasure\UnitOfMeasure;
+use \PhpUnitsOfMeasure\PhysicalQuantity;
+use \PhpUnitsOfMeasure\UnitOfMeasure;
 
-class ElectricCurrent extends PhysicalQuantity
+class Voltage extends PhysicalQuantity
 {
     /**
      * Configure all the standard units of measure
@@ -16,9 +16,9 @@ class ElectricCurrent extends PhysicalQuantity
     {
         parent::__construct($value, $unit);
 
-        // Ampere
+        // Volt
         $newUnit = new UnitOfMeasure(
-            'A',
+            'V',
             function ($x) {
                 return $x;
             },
@@ -26,17 +26,15 @@ class ElectricCurrent extends PhysicalQuantity
                 return $x;
             },
             array(
-                'amp',
-                'amps',
-                'ampre',
-                'ampres'
+                'volt',
+                'volts'
             )
         );
         $this->registerUnitOfMeasure($newUnit);
 
-        // Milliampere
+        // Millivolt
         $newUnit = new UnitOfMeasure(
-            'mA',
+            'mV',
             function ($x) {
                 return $x / 0.001;
             },
@@ -44,27 +42,10 @@ class ElectricCurrent extends PhysicalQuantity
                 return $x * 0.001;
             },
             array(
-                'milliampere',
-                'milliamperes',
-                'milliamp',
-                'milliamps'
-            )
-        );
-
-        // Kiloampere
-        $newUnit = new UnitOfMeasure(
-            'kA',
-            function ($x) {
-                return $x / 1000;
-            },
-            function ($x) {
-                return $x * 1000;
-            },
-            array(
-                'kiloampere',
-                'kiloamperes',
-                'kiloamp',
-                'kiloamps'
+                'millivolt',
+                'millivolts',
+                'milli-volt',
+                'milli-volts'
             )
         );
         $this->registerUnitOfMeasure($newUnit);
