@@ -21,6 +21,13 @@ namespace PhpUnitsOfMeasure;
 interface UnitOfMeasureInterface
 {
     /**
+     * Get the canonical name of this unit of measure.
+     *
+     * @return string The canonical naoe of this unit of measure.
+     */
+    public function getName();
+
+    /**
      * Add a new alias for this unit of measure
      *
      * @param string $alias The new alias
@@ -28,13 +35,6 @@ interface UnitOfMeasureInterface
      * @return void
      */
     public function addAlias($alias);
-
-    /**
-     * Get the canonical name of this unit of measure.
-     *
-     * @return string The canonical naoe of this unit of measure.
-     */
-    public function getName();
 
     /**
      * Is the given unit an alias of this unit of measure?

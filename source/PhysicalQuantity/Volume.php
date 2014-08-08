@@ -17,265 +17,121 @@ class Volume extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Cubic meter
-        $newUnit = new UnitOfMeasure(
-            'm^3',
-            function ($x) {
-                return $x;
-            },
-            function ($x) {
-                return $x;
-            },
-            array(
-                'm³',
-                'cubic meter',
-                'cubic meters',
-                'cubic metre',
-                'cubic metres'
-            )
-        );
+        $newUnit = UnitOfMeasure::NativeUnitFactory('m^3');
+        $newUnit->addAlias('m³');
+        $newUnit->addAlias('cubic meter');
+        $newUnit->addAlias('cubic meters');
+        $newUnit->addAlias('cubic metre');
+        $newUnit->addAlias('cubic metres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic millimeter
-        $newUnit = new UnitOfMeasure(
-            'mm^3',
-            function ($x) {
-                return $x / 1e-9;
-            },
-            function ($x) {
-                return $x * 1e-9;
-            },
-            array(
-                'mm³',
-                'cubic millimeter',
-                'cubic millimeters',
-                'cubic millimetre',
-                'cubic millimetres'
-            )
-        );
-
+        $newUnit = UnitOfMeasure::LinearUnitFactory('mm^3', 1e-9);
+        $newUnit->addAlias('mm³');
+        $newUnit->addAlias('cubic millimeter');
+        $newUnit->addAlias('cubic millimeters');
+        $newUnit->addAlias('cubic millimetre');
+        $newUnit->addAlias('cubic millimetres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic centimeter
-        $newUnit = new UnitOfMeasure(
-            'cm^3',
-            function ($x) {
-                return $x / 1e-6;
-            },
-            function ($x) {
-                return $x * 1e-6;
-            },
-            array(
-                'cm³',
-                'cubic centimeter',
-                'cubic centimeters',
-                'cubic centimetre',
-                'cubic centimetres'
-            )
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('cm^3', 1e-6);
+        $newUnit->addAlias('cm³');
+        $newUnit->addAlias('cubic centimeter');
+        $newUnit->addAlias('cubic centimeters');
+        $newUnit->addAlias('cubic centimetre');
+        $newUnit->addAlias('cubic centimetres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic decimeter
-        $newUnit = new UnitOfMeasure(
-            'dm^3',
-            function ($x) {
-                return $x / 1e-3;
-            },
-            function ($x) {
-                return $x * 1e-3;
-            },
-            array(
-                'dm³',
-                'cubic decimeter',
-                'cubic decimeters',
-                'cubic decimetre',
-                'cubic decimetres'
-            )
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('dm^3', 1e-3);
+        $newUnit->addAlias('dm³');
+        $newUnit->addAlias('cubic decimeter');
+        $newUnit->addAlias('cubic decimeters');
+        $newUnit->addAlias('cubic decimetre');
+        $newUnit->addAlias('cubic decimetres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic kilometer
-        $newUnit = new UnitOfMeasure(
-            'km^3',
-            function ($x) {
-                return $x / 1e9;
-            },
-            function ($x) {
-                return $x * 1e9;
-            },
-            array(
-                'km³',
-                'cubic kilometer',
-                'cubic kilometers',
-                'cubic kilometre',
-                'cubic kilometres'
-            )
-        );
-
+        $newUnit = UnitOfMeasure::LinearUnitFactory('km^3', 1e9);
+        $newUnit->addAlias('km³');
+        $newUnit->addAlias('cubic kilometer');
+        $newUnit->addAlias('cubic kilometers');
+        $newUnit->addAlias('cubic kilometre');
+        $newUnit->addAlias('cubic kilometres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic foot
-        $newUnit = new UnitOfMeasure(
-            'ft^3',
-            function ($x) {
-                return $x / 2.831685e-2;
-            },
-            function ($x) {
-                return $x * 2.831685e-2;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('ft^3', 2.831685e-2);
         $newUnit->addAlias('ft³');
         $newUnit->addAlias('cubic foot');
         $newUnit->addAlias('cubic feet');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic inch
-        $newUnit = new UnitOfMeasure(
-            'in^3',
-            function ($x) {
-                return $x / 1.638706e-5;
-            },
-            function ($x) {
-                return $x * 1.638706e-5;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('in^3', 1.638706e-5);
         $newUnit->addAlias('in³');
         $newUnit->addAlias('cubic inch');
         $newUnit->addAlias('cubic inches');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic yard
-        $newUnit = new UnitOfMeasure(
-            'yd^3',
-            function ($x) {
-                return $x / 7.645549e-1;
-            },
-            function ($x) {
-                return $x * 7.645549e-1;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('yd^3', 7.645549e-1);
         $newUnit->addAlias('yd³');
         $newUnit->addAlias('cubic yard');
         $newUnit->addAlias('cubic yards');
         $this->registerUnitOfMeasure($newUnit);
 
         // Milliliters
-        $newUnit = new UnitOfMeasure(
-            'ml',
-            function ($x) {
-                return $x / 1e-6;
-            },
-            function ($x) {
-                return $x * 1e-6;
-            },
-            array(
-                'milliliter',
-                'milliliters',
-                'millilitre',
-                'millilitres'
-            )
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('ml', 1e-6);
+        $newUnit->addAlias('milliliter');
+        $newUnit->addAlias('milliliters');
+        $newUnit->addAlias('millilitre');
+        $newUnit->addAlias('millilitres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Centiliters
-        $newUnit = new UnitOfMeasure(
-            'cl',
-            function ($x) {
-                return $x / 1e-5;
-            },
-            function ($x) {
-                return $x * 1e-5;
-            },
-            array(
-                'centiliter',
-                'centiliters',
-                'centilitre',
-                'centilitres'
-            )
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('cl', 1e-5);
+        $newUnit->addAlias('centiliter');
+        $newUnit->addAlias('centiliters');
+        $newUnit->addAlias('centilitre');
+        $newUnit->addAlias('centilitres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Deciliter
-        $newUnit = new UnitOfMeasure(
-            'dl',
-            function ($x) {
-                return $x / 1e-4;
-            },
-            function ($x) {
-                return $x * 1e-4;
-            },
-            array(
-                'deciliter',
-                'deciliters',
-                'decilitre',
-                'decilitres'
-            )
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('dl', 1e-4);
+        $newUnit->addAlias('deciliter');
+        $newUnit->addAlias('deciliters');
+        $newUnit->addAlias('decilitre');
+        $newUnit->addAlias('decilitres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Liter
-        $newUnit = new UnitOfMeasure(
-            'l',
-            function ($x) {
-                return $x / 1e-3;
-            },
-            function ($x) {
-                return $x * 1e-3;
-            },
-            array(
-                'liter',
-                'liters',
-                'litre',
-                'litres',
-            )
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('l', 1e-3);
+        $newUnit->addAlias('liter');
+        $newUnit->addAlias('liters');
+        $newUnit->addAlias('litre');
+        $newUnit->addAlias('litres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Decaliter
-        $newUnit = new UnitOfMeasure(
-            'dal',
-            function ($x) {
-                return $x / 1e-2;
-            },
-            function ($x) {
-                return $x * 1e-2;
-            },
-            array(
-                'decaliter',
-                'decaliters',
-                'decalitre',
-                'decalitres'
-            )
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('dal', 1e-2);
+        $newUnit->addAlias('decaliter');
+        $newUnit->addAlias('decaliters');
+        $newUnit->addAlias('decalitre');
+        $newUnit->addAlias('decalitres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Hectoliter
-        $newUnit = new UnitOfMeasure(
-            'hl',
-            function ($x) {
-                return $x / 1e-1;
-            },
-            function ($x) {
-                return $x * 1e-1;
-            },
-            array(
-                'hectoliter',
-                'hectoliters',
-                'hectolitre',
-                'hectolitres'
-            )
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('hl', 1e-1);
+        $newUnit->addAlias('hectoliter');
+        $newUnit->addAlias('hectoliters');
+        $newUnit->addAlias('hectolitre');
+        $newUnit->addAlias('hectolitres');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cup
-        $newUnit = new UnitOfMeasure(
-            'cup',
-            function ($x) {
-                return $x / 2.365882e-4;
-            },
-            function ($x) {
-                return $x * 2.365882e-4;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('cup', 2.365882e-4);
         $newUnit->addAlias('cup');
         $newUnit->addAlias('cups');
         $this->registerUnitOfMeasure($newUnit);

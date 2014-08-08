@@ -17,22 +17,12 @@ class Acceleration extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // meters per second squared
-        $newUnit = new UnitOfMeasure(
-            'm/s^2',
-            function ($x) {
-                return $x;
-            },
-            function ($x) {
-                return $x;
-            },
-            array(
-                'm/s²',
-                'meter per second squared',
-                'meters per second squared',
-                'metre per second squared',
-                'metres per second squared'
-            )
-        );
+        $newUnit = UnitOfMeasure::NativeUnitFactory('m/s^2');
+        $newUnit->addAlias('m/s²');
+        $newUnit->addAlias('meter per second squared');
+        $newUnit->addAlias('meters per second squared');
+        $newUnit->addAlias('metre per second squared');
+        $newUnit->addAlias('metres per second squared');
         $this->registerUnitOfMeasure($newUnit);
     }
 }

@@ -17,15 +17,7 @@ class LuminousIntensity extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Candela
-        $newUnit = new UnitOfMeasure(
-            'cd',
-            function ($x) {
-                return $x;
-            },
-            function ($x) {
-                return $x;
-            }
-        );
+        $newUnit = UnitOfMeasure::NativeUnitFactory('cd');
         $newUnit->addAlias('candela');
         $this->registerUnitOfMeasure($newUnit);
     }

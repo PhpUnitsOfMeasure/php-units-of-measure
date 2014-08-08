@@ -4,7 +4,7 @@ namespace PhpUnitsOfMeasure;
 /**
  * This class is the parent of all the physical quantity classes, and
  * provides the infrastructure necessary for storing quantities and converting
- * then between different units of measure.
+ * between different units of measure.
  */
 abstract class PhysicalQuantity
 {

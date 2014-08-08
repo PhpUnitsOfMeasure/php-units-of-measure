@@ -41,29 +41,57 @@ class UnitOfMeasure implements UnitOfMeasureInterface
     protected $toNativeUnit;
 
     /**
+     * For the special case of units that have a linear conversion factor, this factory
+     * method simplifies the construction of the unit of measure.
+     *
+     * Think of the fromNativeUnitFactor as the number you'd multiply the native unit by
+     * to get to this unit of measure.
+     *
+     * @param string $name                 This unit of measure's canonical name
+     * @param float  $fromNativeUnitFactor The factor to scale the unit by where factor * base unit = this unit
+     *
+     * @return void
+     */
+    static public function LinearUnitFactory($name, $fromNativeUnitFactor)
+    {
+        return new static(
+            $name,
+            function ($x) use ($fromNativeUnitFactor) {
+                return $x / $fromNativeUnitFactor;
+            },
+            function ($x) use ($fromNativeUnitFactor) {
+                return $x * $fromNativeUnitFactor;
+            }
+        );
+    }
+
+    /**
+     * This is a special case of the linear unit factory above, for use in generating the native unit of measure
+     * for a given physical quantity.  By definition, the conversion factor is 1.
+     *
+     * @param string $name This unit of measure's canonical name
+     *
+     * @return void
+     */
+    static public function NativeUnitFactory($name)
+    {
+        return static::LinearUnitFactory($name, 1);
+    }
+
+    /**
      * Configure this object's mandatory properties.
      *
      * @param string   $name           This unit of measure's canonical name
      * @param callable $fromNativeUnit The callable that can cast values into this unit of measure from the native unit of measure
      * @param callable $toNativeUnit   The callable that can cast values into the native unit from this unit of measure
-     * @param array    $aliases
      *
      * @return void
      */
-    public function __construct($name, $fromNativeUnit, $toNativeUnit, $aliases = array())
+    public function __construct($name, callable $fromNativeUnit, callable $toNativeUnit)
     {
         $this->name           = $name;
         $this->fromNativeUnit = $fromNativeUnit;
         $this->toNativeUnit   = $toNativeUnit;
-        $this->aliases        = $aliases;
-    }
-
-    /**
-     * @see \PhpUnitsOfMeasure\UnitOfMeasureInterface::addAlias
-     */
-    public function addAlias($alias)
-    {
-        $this->aliases[] = $alias;
     }
 
     /**
@@ -72,6 +100,14 @@ class UnitOfMeasure implements UnitOfMeasureInterface
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @see \PhpUnitsOfMeasure\UnitOfMeasureInterface::addAlias
+     */
+    public function addAlias($alias)
+    {
+        $this->aliases[] = $alias;
     }
 
     /**

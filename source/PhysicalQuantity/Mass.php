@@ -17,71 +17,31 @@ class Mass extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Kilogram
-        $newUnit = new UnitOfMeasure(
-            'kg',
-            function ($x) {
-                return $x;
-            },
-            function ($x) {
-                return $x;
-            }
-        );
+        $newUnit = UnitOfMeasure::NativeUnitFactory('kg');
         $newUnit->addAlias('kilogram');
         $newUnit->addAlias('kilograms');
         $this->registerUnitOfMeasure($newUnit);
 
         // Milligram
-        $newUnit = new UnitOfMeasure(
-            'mg',
-            function ($x) {
-                return $x / 1e-6;
-            },
-            function ($x) {
-                return $x * 1e-6;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('mg', 1e-6);
         $newUnit->addAlias('milligram');
         $newUnit->addAlias('milligrams');
         $this->registerUnitOfMeasure($newUnit);
 
         // Centigram
-        $newUnit = new UnitOfMeasure(
-            'cg',
-            function ($x) {
-                return $x / 1e-5;
-            },
-            function ($x) {
-                return $x * 1e-5;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('cg', 1e-5);
         $newUnit->addAlias('centigram');
         $newUnit->addAlias('centigrams');
         $this->registerUnitOfMeasure($newUnit);
 
         // Gram
-        $newUnit = new UnitOfMeasure(
-            'g',
-            function ($x) {
-                return $x / 1e-3;
-            },
-            function ($x) {
-                return $x * 1e-3;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('g', 1e-3);
         $newUnit->addAlias('gram');
         $newUnit->addAlias('grams');
         $this->registerUnitOfMeasure($newUnit);
 
         // Tonne (metric)
-        $newUnit = new UnitOfMeasure(
-            't',
-            function ($x) {
-                return $x / 1e3;
-            },
-            function ($x) {
-                return $x * 1e3;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('t', 1e3);
         $newUnit->addAlias('ton');
         $newUnit->addAlias('tons');
         $newUnit->addAlias('tonne');
@@ -89,30 +49,14 @@ class Mass extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Pound
-        $newUnit = new UnitOfMeasure(
-            'lb',
-            function ($x) {
-                return $x / 4.535924e-1;
-            },
-            function ($x) {
-                return $x * 4.535924e-1;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('lb', 4.535924e-1);
         $newUnit->addAlias('lbs');
         $newUnit->addAlias('pound');
         $newUnit->addAlias('pounds');
         $this->registerUnitOfMeasure($newUnit);
 
         // Ounce
-        $newUnit = new UnitOfMeasure(
-            'oz',
-            function ($x) {
-                return $x / 2.834952e-2;
-            },
-            function ($x) {
-                return $x * 2.834952e-2;
-            }
-        );
+        $newUnit = UnitOfMeasure::LinearUnitFactory('oz', 2.834952e-2);
         $newUnit->addAlias('ounce');
         $newUnit->addAlias('ounces');
         $this->registerUnitOfMeasure($newUnit);
