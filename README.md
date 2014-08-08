@@ -13,7 +13,7 @@ echo $height->toUnit('m');
 // would print 1.87757, which is 6.16 feet in meters.
 ```
 
-Having this abstraction allows you to create interfaces that accept physical quantities without requiring them to be in a particular unit.  For example, this function assumes the height is a float of a particular unit (presumably feet):
+Having this abstraction allows you to create interfaces that accept physical quantities without requiring them to be in a particular unit.  For example, this function assumes the height is a float of a particular unit (presumably feet), and is therefore indesirably tied to a specific unit of measure:
 
 ``` php
 // Tied to a specific unit of measure
@@ -115,6 +115,24 @@ $length->registerUnitOfMeasure($cubit);
 
 // Now that the unit is registered, you can cast the measurement to any other measure of length
 echo $length->toUnit('feet'); // '21'
+```
+
+Note that when creating instances of UnitOfMeasure, there are a couple of convenience static factory methods.  The first lets you instantiate units of measure which have linear scaling factors from the native unit. That is, the conversion function fits into the form `Unit Value = F * Native Value`, where `F` is the scaling factor.
+
+``` php
+$megameter = UnitOfMeasure::linearUnitFactory('Mm', 1e6);
+$megameter->addAlias('Megameter');
+$megameter->addAlias('Megametre');
+$length->registerUnitOfMeasure($megameter);
+```
+
+The other convenience method is a special case of the scaling factor factory method where the scaling factor is set to 1, and serves as a convenient way of generating the native unit of measure.  All PhysicalQuantity classes must have one and only one native unit, so this method will probably only be called once per PhysicalQuantity class:
+
+``` php
+$meter = UnitOfMeasure::nativeUnitFactory('m');
+$meter->addAlias('meter');
+$meter->addAlias('metre');
+$length->registerUnitOfMeasure($meter);
 ```
 
 #### Permanently Adding a New Unit of Measure to a Physical Quantity
