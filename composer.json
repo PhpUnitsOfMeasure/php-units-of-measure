@@ -31,13 +31,18 @@
     },
 
     "require-dev": {
-        "phpunit/phpunit":           "3.7.*",
-        "squizlabs/php_codesniffer": "1.4.*"
+        "phpunit/phpunit":           "4.1.*",
+        "squizlabs/php_codesniffer": "1.5.*"
     },
 
     "autoload": {
-        "psr-0": {
-            "PhpUnitsOfMeasure": "source/"
+        "psr-4": {
+            "PhpUnitsOfMeasure\\": "source/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+             "PhpUnitsOfMeasureTest\\": "tests/"
         }
     }
 }
