@@ -17,7 +17,7 @@ class Time extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Second
-        $newUnit = UnitOfMeasure::NativeUnitFactory('s');
+        $newUnit = UnitOfMeasure::nativeUnitFactory('s');
         $newUnit->addAlias('sec');
         $newUnit->addAlias('secs');
         $newUnit->addAlias('second');
@@ -25,7 +25,7 @@ class Time extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Minutes
-        $newUnit = UnitOfMeasure::LinearUnitFactory('m', 60);
+        $newUnit = UnitOfMeasure::linearUnitFactory('m', 60);
         $newUnit->addAlias('min');
         $newUnit->addAlias('mins');
         $newUnit->addAlias('minute');
@@ -33,7 +33,7 @@ class Time extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Hours
-        $newUnit = UnitOfMeasure::LinearUnitFactory('h', 3600);
+        $newUnit = UnitOfMeasure::linearUnitFactory('h', 3600);
         $newUnit->addAlias('hr');
         $newUnit->addAlias('hrs');
         $newUnit->addAlias('hour');
@@ -41,13 +41,13 @@ class Time extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Days
-        $newUnit = UnitOfMeasure::LinearUnitFactory('d', 86400);
+        $newUnit = UnitOfMeasure::linearUnitFactory('d', 86400);
         $newUnit->addAlias('day');
         $newUnit->addAlias('days');
         $this->registerUnitOfMeasure($newUnit);
 
         // Weeks, understood as 7 days
-        $newUnit = UnitOfMeasure::LinearUnitFactory('w', 604800);
+        $newUnit = UnitOfMeasure::linearUnitFactory('w', 604800);
         $newUnit->addAlias('wk');
         $newUnit->addAlias('wks');
         $newUnit->addAlias('week');

@@ -17,7 +17,7 @@ class Volume extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Cubic meter
-        $newUnit = UnitOfMeasure::NativeUnitFactory('m^3');
+        $newUnit = UnitOfMeasure::nativeUnitFactory('m^3');
         $newUnit->addAlias('m³');
         $newUnit->addAlias('cubic meter');
         $newUnit->addAlias('cubic meters');
@@ -26,7 +26,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic millimeter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('mm^3', 1e-9);
+        $newUnit = UnitOfMeasure::linearUnitFactory('mm^3', 1e-9);
         $newUnit->addAlias('mm³');
         $newUnit->addAlias('cubic millimeter');
         $newUnit->addAlias('cubic millimeters');
@@ -35,7 +35,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic centimeter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('cm^3', 1e-6);
+        $newUnit = UnitOfMeasure::linearUnitFactory('cm^3', 1e-6);
         $newUnit->addAlias('cm³');
         $newUnit->addAlias('cubic centimeter');
         $newUnit->addAlias('cubic centimeters');
@@ -44,7 +44,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic decimeter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('dm^3', 1e-3);
+        $newUnit = UnitOfMeasure::linearUnitFactory('dm^3', 1e-3);
         $newUnit->addAlias('dm³');
         $newUnit->addAlias('cubic decimeter');
         $newUnit->addAlias('cubic decimeters');
@@ -53,7 +53,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic kilometer
-        $newUnit = UnitOfMeasure::LinearUnitFactory('km^3', 1e9);
+        $newUnit = UnitOfMeasure::linearUnitFactory('km^3', 1e9);
         $newUnit->addAlias('km³');
         $newUnit->addAlias('cubic kilometer');
         $newUnit->addAlias('cubic kilometers');
@@ -62,28 +62,28 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic foot
-        $newUnit = UnitOfMeasure::LinearUnitFactory('ft^3', 2.831685e-2);
+        $newUnit = UnitOfMeasure::linearUnitFactory('ft^3', 2.831685e-2);
         $newUnit->addAlias('ft³');
         $newUnit->addAlias('cubic foot');
         $newUnit->addAlias('cubic feet');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic inch
-        $newUnit = UnitOfMeasure::LinearUnitFactory('in^3', 1.638706e-5);
+        $newUnit = UnitOfMeasure::linearUnitFactory('in^3', 1.638706e-5);
         $newUnit->addAlias('in³');
         $newUnit->addAlias('cubic inch');
         $newUnit->addAlias('cubic inches');
         $this->registerUnitOfMeasure($newUnit);
 
         // Cubic yard
-        $newUnit = UnitOfMeasure::LinearUnitFactory('yd^3', 7.645549e-1);
+        $newUnit = UnitOfMeasure::linearUnitFactory('yd^3', 7.645549e-1);
         $newUnit->addAlias('yd³');
         $newUnit->addAlias('cubic yard');
         $newUnit->addAlias('cubic yards');
         $this->registerUnitOfMeasure($newUnit);
 
         // Milliliters
-        $newUnit = UnitOfMeasure::LinearUnitFactory('ml', 1e-6);
+        $newUnit = UnitOfMeasure::linearUnitFactory('ml', 1e-6);
         $newUnit->addAlias('milliliter');
         $newUnit->addAlias('milliliters');
         $newUnit->addAlias('millilitre');
@@ -91,7 +91,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Centiliters
-        $newUnit = UnitOfMeasure::LinearUnitFactory('cl', 1e-5);
+        $newUnit = UnitOfMeasure::linearUnitFactory('cl', 1e-5);
         $newUnit->addAlias('centiliter');
         $newUnit->addAlias('centiliters');
         $newUnit->addAlias('centilitre');
@@ -99,7 +99,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Deciliter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('dl', 1e-4);
+        $newUnit = UnitOfMeasure::linearUnitFactory('dl', 1e-4);
         $newUnit->addAlias('deciliter');
         $newUnit->addAlias('deciliters');
         $newUnit->addAlias('decilitre');
@@ -107,7 +107,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Liter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('l', 1e-3);
+        $newUnit = UnitOfMeasure::linearUnitFactory('l', 1e-3);
         $newUnit->addAlias('liter');
         $newUnit->addAlias('liters');
         $newUnit->addAlias('litre');
@@ -115,7 +115,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Decaliter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('dal', 1e-2);
+        $newUnit = UnitOfMeasure::linearUnitFactory('dal', 1e-2);
         $newUnit->addAlias('decaliter');
         $newUnit->addAlias('decaliters');
         $newUnit->addAlias('decalitre');
@@ -123,7 +123,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Hectoliter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('hl', 1e-1);
+        $newUnit = UnitOfMeasure::linearUnitFactory('hl', 1e-1);
         $newUnit->addAlias('hectoliter');
         $newUnit->addAlias('hectoliters');
         $newUnit->addAlias('hectolitre');
@@ -131,7 +131,7 @@ class Volume extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Cup
-        $newUnit = UnitOfMeasure::LinearUnitFactory('cup', 2.365882e-4);
+        $newUnit = UnitOfMeasure::linearUnitFactory('cup', 2.365882e-4);
         $newUnit->addAlias('cup');
         $newUnit->addAlias('cups');
         $this->registerUnitOfMeasure($newUnit);

@@ -17,7 +17,7 @@ class ElectricCurrent extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Ampere
-        $newUnit = UnitOfMeasure::NativeUnitFactory('A');
+        $newUnit = UnitOfMeasure::nativeUnitFactory('A');
         $newUnit->addAlias('amp');
         $newUnit->addAlias('amps');
         $newUnit->addAlias('ampere');

@@ -52,7 +52,7 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      *
      * @return void
      */
-    static public function LinearUnitFactory($name, $fromNativeUnitFactor)
+    public static function linearUnitFactory($name, $fromNativeUnitFactor)
     {
         return new static(
             $name,
@@ -73,9 +73,9 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      *
      * @return void
      */
-    static public function NativeUnitFactory($name)
+    public static function nativeUnitFactory($name)
     {
-        return static::LinearUnitFactory($name, 1);
+        return static::linearUnitFactory($name, 1);
     }
 
     /**

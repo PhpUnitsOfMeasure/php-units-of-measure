@@ -17,7 +17,7 @@ class Length extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Meter
-        $newUnit = UnitOfMeasure::NativeUnitFactory('m');
+        $newUnit = UnitOfMeasure::nativeUnitFactory('m');
         $newUnit->addAlias('meter');
         $newUnit->addAlias('meters');
         $newUnit->addAlias('metre');
@@ -25,7 +25,7 @@ class Length extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Millimeter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('mm', 0.001);
+        $newUnit = UnitOfMeasure::linearUnitFactory('mm', 0.001);
         $newUnit->addAlias('millimeter');
         $newUnit->addAlias('millimeters');
         $newUnit->addAlias('millimetre');
@@ -33,7 +33,7 @@ class Length extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Centimeter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('cm', 0.01);
+        $newUnit = UnitOfMeasure::linearUnitFactory('cm', 0.01);
         $newUnit->addAlias('centimeter');
         $newUnit->addAlias('centimeters');
         $newUnit->addAlias('centimetre');
@@ -41,7 +41,7 @@ class Length extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Decimeter
-        $newUnit = UnitOfMeasure::LinearUnitFactory('dm', 0.1);
+        $newUnit = UnitOfMeasure::linearUnitFactory('dm', 0.1);
         $newUnit->addAlias('decimeter');
         $newUnit->addAlias('decimeters');
         $newUnit->addAlias('decimetre');
@@ -49,7 +49,7 @@ class Length extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Kilometer
-        $newUnit = UnitOfMeasure::LinearUnitFactory('km', 1000);
+        $newUnit = UnitOfMeasure::linearUnitFactory('km', 1000);
         $newUnit->addAlias('kilometer');
         $newUnit->addAlias('kilometers');
         $newUnit->addAlias('kilometre');
@@ -57,25 +57,25 @@ class Length extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Foot
-        $newUnit = UnitOfMeasure::LinearUnitFactory('ft', 0.3048);
+        $newUnit = UnitOfMeasure::linearUnitFactory('ft', 0.3048);
         $newUnit->addAlias('foot');
         $newUnit->addAlias('feet');
         $this->registerUnitOfMeasure($newUnit);
 
         // Inch
-        $newUnit = UnitOfMeasure::LinearUnitFactory('in', 0.0254);
+        $newUnit = UnitOfMeasure::linearUnitFactory('in', 0.0254);
         $newUnit->addAlias('inch');
         $newUnit->addAlias('inches');
         $this->registerUnitOfMeasure($newUnit);
 
         // Mile
-        $newUnit = UnitOfMeasure::LinearUnitFactory('mi', 1609.344);
+        $newUnit = UnitOfMeasure::linearUnitFactory('mi', 1609.344);
         $newUnit->addAlias('mile');
         $newUnit->addAlias('miles');
         $this->registerUnitOfMeasure($newUnit);
 
         // Yard
-        $newUnit = UnitOfMeasure::LinearUnitFactory('yd', 0.9144);
+        $newUnit = UnitOfMeasure::linearUnitFactory('yd', 0.9144);
         $newUnit->addAlias('yard');
         $newUnit->addAlias('yards');
         $this->registerUnitOfMeasure($newUnit);
