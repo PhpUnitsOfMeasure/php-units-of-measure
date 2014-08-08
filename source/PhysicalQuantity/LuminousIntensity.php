@@ -1,8 +1,8 @@
 <?php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
-use \PhpUnitsOfMeasure\PhysicalQuantity;
-use \PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\PhysicalQuantity;
+use PhpUnitsOfMeasure\UnitOfMeasure;
 
 class LuminousIntensity extends PhysicalQuantity
 {
