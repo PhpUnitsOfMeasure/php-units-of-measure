@@ -1,3 +1,11 @@
+## v1.2.0 (August 16th, 2014)
+- Drop support for PHP 5.3
+- Moved to PSR-4 namespace convention
+- Drop support for an array of names passed in the constructor as a way to specify aliases for UnitOfMeasure obvjects; addAlias() now required.
+- Add UnitOfMeasure::nativeUnitFactory() and UnitOfMeasure::linearUnitFactory() convenience factory methods
+- Add optional spelling for 'metres' and 'litres'
+- Add Vagrant-based testing virtual machine, for convenience
+
 ## v1.1.2 (February 9th, 2014)
  - New units of measure on Area: hectares, international acres
  - New units of measure on Temperature: Rankin, Delisle, Newton, Réaumur, Rømer
