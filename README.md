@@ -88,8 +88,8 @@ For example, let's say in a project you need a new measure of length, called "cu
 To add a new unit of measure to an existing quantity at run time, you'd do this:
 
 ``` php
-use \PhpUnitsOfMeasure\PhysicalQuantity\Length;
-use \PhpUnitsOfMeasure\PhysicalQuantity\UnitOfMeasure;
+use PhpUnitsOfMeasure\PhysicalQuantity\Length;
+use PhpUnitsOfMeasure\PhysicalQuantity\UnitOfMeasure;
 
 // It's ok to use cubits here, since the conversion doesn't happen until later
 $length = new Length(14, 'cubits');
@@ -149,8 +149,8 @@ A new unit of measure can be permanently added to a `PhysicalQuantity` class by 
 ``` php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
-use \PhpUnitsOfMeasure\PhysicalQuantity;
-use \PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\PhysicalQuantity;
+use PhpUnitsOfMeasure\UnitOfMeasure;
 
 class Length extends PhysicalQuantity
 {
@@ -186,7 +186,7 @@ Note that every physical quantity has a chosen "native unit" which is typically 
 It may come up that the desired unit of measure exists for a given physical quantity, but there's a missing alias for the unit.  For example, if you thought 'footses' was an obviously lacking alias for the `Length` unit 'ft', you could temporarily add the alias like this:
 
 ``` php
-use \PhpUnitsOfMeasure\PhysicalQuantity\Length;
+use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 
 // It's ok to use footses here, since the conversion doesn't happen until later
 $length = new Length(4, 'footses');
@@ -202,10 +202,6 @@ echo $length->toUnit('m'); // '1.2192'
 ```
 
 And of course, if you need to add the alias permanently, you can do so in the constructor of the quantity's class.
-
-## API Documentation
-API documentation (such as it is) is handled through GitApiDoc.
-- http://gitapidoc.com/api/triplepoint/php-units-of-measure
 
 ## Testing and Contributing
 Pull requests are welcome, especially regarding new units of measure or new physical quantities.  However, please note that there are many sources for conversion factors, and not all are careful to respect known precision.
