@@ -51,15 +51,7 @@ class Temperature extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Degree Rankine
-        $newUnit = new UnitOfMeasure(
-            '°R',
-            function ($x) {
-                return $x * 9/5;
-            },
-            function ($x) {
-                return $x * 5/9;
-            }
-        );
+        $newUnit = UnitOfMeasure::linearUnitFactory('°R', 5/9);
         $newUnit->addAlias('R');
         $newUnit->addAlias('rankine');
         $this->registerUnitOfMeasure($newUnit);
