@@ -28,7 +28,7 @@ abstract class PhysicalQuantity
      *
      * @var \PhpUnitsOfMeasure\UnitOfMeasureInterface[]
      */
-    protected $unitDefinitions = array();
+    protected $unitDefinitions = [];
 
     /**
      * Store the value and its original unit.

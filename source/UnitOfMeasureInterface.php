@@ -9,7 +9,7 @@ namespace PhpUnitsOfMeasure;
  * from an externally-agreed-upon native unit of measure.
  *
  * The native unit of measure can be any arbitrary
- * unit compatible wit the physical quantity to which
+ * unit compatible with the physical quantity to which
  * this unit of measure belongs, however all the units of measure
  * for a particular physical quantity must agree on the same
  * native unit.

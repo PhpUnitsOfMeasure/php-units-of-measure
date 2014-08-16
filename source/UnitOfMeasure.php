@@ -22,7 +22,7 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      *
      * @var string[]
      */
-    protected $aliases = array();
+    protected $aliases = [];
 
     /**
      * A callable that can convert a value in this quantity's
@@ -44,23 +44,33 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      * For the special case of units that have a linear conversion factor, this factory
      * method simplifies the construction of the unit of measure.
      *
-     * Think of the fromNativeUnitFactor as the number you'd multiply the native unit by
-     * to get to this unit of measure.
+     * For example the relationship between meters and feet is a simple multiplicative factor of
+     * 0.3048 meters in a foot.  Converting back and forth between these two units is a mater of
+     * multiplication or division by this scaling factor.
      *
-     * @param string $name                 This unit of measure's canonical name
-     * @param float  $fromNativeUnitFactor The factor to scale the unit by where factor * base unit = this unit
+     * In constrast, converting Celsius to Fahrenheit involves an offset calculation, and cannot
+     * be represented by a simple conversion factor.  In such cases this class's constructor should be
+     * invoked directly.
+     *
+     * To help in getting the multiplication and division right, think of the toNativeUnitFactor
+     * as the number you'd multiply this unit by to get to the native unit of measure.  In
+     * other words:
+     * 'Value in the native unit of measure' = 'Value in this unit of measure' * toNativeUnitFactor
+     *
+     * @param string $name               This unit of measure's canonical name
+     * @param float  $toNativeUnitFactor The factor to scale the unit by where factor * base unit = this unit
      *
      * @return void
      */
-    public static function linearUnitFactory($name, $fromNativeUnitFactor)
+    public static function linearUnitFactory($name, $toNativeUnitFactor)
     {
         return new static(
             $name,
-            function ($x) use ($fromNativeUnitFactor) {
-                return $x / $fromNativeUnitFactor;
+            function ($valueInNativeUnit) use ($toNativeUnitFactor) {
+                return $valueInNativeUnit / $toNativeUnitFactor;
             },
-            function ($x) use ($fromNativeUnitFactor) {
-                return $x * $fromNativeUnitFactor;
+            function ($valueInThisUnit) use ($toNativeUnitFactor) {
+                return $valueInThisUnit * $toNativeUnitFactor;
             }
         );
     }
