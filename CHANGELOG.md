@@ -1,7 +1,7 @@
 ## v1.2.0 (August 16th, 2014)
 - Drop support for PHP 5.3
 - Moved to PSR-4 namespace convention
-- Drop support for an array of names passed in the constructor as a way to specify aliases for UnitOfMeasure obvjects; addAlias() now required.
+- Drop support for an array of names passed in the constructor as a way to specify aliases for UnitOfMeasure objects; addAlias() now required.
 - Add UnitOfMeasure::nativeUnitFactory() and UnitOfMeasure::linearUnitFactory() convenience factory methods
 - Add optional spelling for 'metres' and 'litres'
 - Add Vagrant-based testing virtual machine, for convenience
