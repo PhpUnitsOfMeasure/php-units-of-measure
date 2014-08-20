@@ -1,0 +1,364 @@
+<div class="centerArea">
+<div id="viewControl" style="margin-top:10px;">
+    <button class="btnTileView" type="button" title="Tile View"/>
+    <button class="btnListView" type="button" title="List View"/>
+</div>
+<div class="resultCount">
+    <p class="results"><span style="color:#1986FF;">3012</span> Products Found Matching Your Search</p>
+</div>
+<div class="resultPagination">
+    <table cellspacing="0" cellpadding="0" style="float:left;">
+        <tr>
+            <td><span style="color:#666; margin-right:15px; padding:0px; ">Showing Results: 1 - 9</span></td>
+            <td class="pagination-current">1</td>
+            <td class="pagination">2</td>
+            <td class="pagination">3</td>
+            <td class="pagination">4</td>
+            <td class="pagination">5</td>
+        </tr>
+    </table>
+</div>
+<div class="resultFilters">
+    <table cellspacing="0" cellpadding="0">
+        <tr> <!-- Search Results Filter 01 -->
+            <td style="width:150px;" colspan="1">
+                <h7>Type</h7>
+            </td>
+            <td style="width:40px;" colspan="1"><p class="seeAllFilter">See All</p></td>
+            <td colspan="1" style="width:45px;">
+                <a href="#"
+                   onclick="toggle_panel('resultFilter01'); toggle_panel('hideFilter01'); toggle_visibility('showFilter01');">
+                    <p class="hideFilter" style="display:block;" id="hideFilter01">Hide</p></a>
+                <a href="#"
+                   onclick="toggle_visibility('resultFilter01'); toggle_panel('showFilter01'); toggle_visibility('hideFilter01');">
+                    <p class="hideFilter" style="display:none;" id="showFilter01">Show</p></a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" id="resultFilter01">
+                <input type="checkbox" class="styled-checkbox" id="filterOption1"/>
+                <label for="filterOption1" class="styled-label">Analog-to-Digital Converters</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption2"/>
+                <label for="filterOption2" class="styled-label">Digital-to-Analog Converters</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption3"/>
+                <label for="filterOption3" class="styled-label">Inductance to Digital Converters</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption4"/>
+                <label for="filterOption4" class="styled-label">RMS to DC Converters</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption5"/>
+                <label for="filterOption5" class="styled-label">V/F & F/V Converters</label><br/>
+            </td>
+        </tr>
+        <!-- End Search Results Filter 01 - copy above code for each filter, update the IDs for the Hide/Show functionality -->
+        <tr>
+            <td colspan="3"><img src="http://javerett.playground.powell.com/hhp_assets/icon-dotted-line.png"/></td>
+        </tr>
+        <tr> <!-- Search Results Filter 02 -->
+            <td style="width:150px;" colspan="1">
+                <h7>Moisture Sensitivity Level</h7>
+            </td>
+            <td style="width:40px;" colspan="1"><p class="seeAllFilter">See All</p></td>
+            <td colspan="1" style="width:45px;">
+                <a href="#"
+                   onclick="toggle_panel('resultFilter02'); toggle_panel('hideFilter02'); toggle_visibility('showFilter02');">
+                    <p class="hideFilter" style="display:block;" id="hideFilter02">Hide</p></a>
+                <a href="#"
+                   onclick="toggle_visibility('resultFilter02'); toggle_panel('showFilter02'); toggle_visibility('hideFilter02');">
+                    <p class="hideFilter" style="display:none;" id="showFilter02">Show</p></a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" id="resultFilter02">
+                <input type="checkbox" class="styled-checkbox" id="filterOption7"/>
+                <label for="filterOption7" class="styled-label">MSL 1 - Unlimited</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption8"/>
+                <label for="filterOption8" class="styled-label">MSL 2 – 1 year</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption9"/>
+                <label for="filterOption9" class="styled-label">MSL 2A – 4 weeks</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption10"/>
+                <label for="filterOption10" class="styled-label">MSL 3 – 168 hours</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption11"/>
+                <label for="filterOption11" class="styled-label">MSL 4 – 72 hours</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption12"/>
+                <label for="filterOption12" class="styled-label">MSL 5 – 48 hours</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption13"/>
+                <label for="filterOption13" class="styled-label">MSL 5A – 24 hours</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption14"/>
+                <label for="filterOption14" class="styled-label">MSL 6 – Mandatory Bake before use</label><br/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><img src="http://javerett.playground.powell.com/hhp_assets/icon-dotted-line.png"/></td>
+        </tr>
+        <tr> <!-- Search Results Filter 04 -->
+            <td style="width:150px;" colspan="1">
+                <h7>Percent Accuracy</h7>
+            </td>
+            <td style="width:40px;" colspan="1"><p class="seeAllFilter">See All</p></td>
+            <td colspan="1" style="width:45px;">
+                <a href="#"
+                   onclick="toggle_panel('resultFilter04'); toggle_panel('hideFilter04'); toggle_visibility('showFilter04');">
+                    <p class="hideFilter" style="display:block;" id="hideFilter04">Hide</p></a>
+                <a href="#"
+                   onclick="toggle_visibility('resultFilter04'); toggle_panel('showFilter04'); toggle_visibility('hideFilter04');">
+                    <p class="hideFilter" style="display:none;" id="showFilter04">Show</p></a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" id="resultFilter04">
+                <input type="checkbox" class="styled-checkbox" id="filterOption15"/>
+                <label for="filterOption15" class="styled-label">Less than 0.1%</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption16"/>
+                <label for="filterOption16" class="styled-label">0.1% - 0.2%</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption16"/>
+                <label for="filterOption16" class="styled-label">0.2% - 0.25%</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption17"/>
+                <label for="filterOption17" class="styled-label">0.25% - 0.3%</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption18"/>
+                <label for="filterOption18" class="styled-label">0.3% - 5%</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption19"/>
+                <label for="filterOption19" class="styled-label">0.5% - 1%</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption20"/>
+                <label for="filterOption20" class="styled-label">Greater than 1%</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><img src="http://javerett.playground.powell.com/hhp_assets/icon-dotted-line.png"/></td>
+        </tr>
+        <tr> <!-- Search Results Filter 05 -->
+            <td style="width:150px;" colspan="1">
+                <h7>Min Operating Temp</h7>
+            </td>
+            <td style="width:40px;" colspan="1"><p class="seeAllFilter">See All</p></td>
+            <td colspan="1" style="width:45px;">
+                <a href="#"
+                   onclick="toggle_panel('resultFilter05'); toggle_panel('hideFilter05'); toggle_visibility('showFilter05');">
+                    <p class="hideFilter" style="display:block;" id="hideFilter05">Hide</p></a>
+                <a href="#"
+                   onclick="toggle_visibility('resultFilter05'); toggle_panel('showFilter05'); toggle_visibility('hideFilter05');">
+                    <p class="hideFilter" style="display:none;" id="showFilter05">Show</p></a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" id="resultFilter05">
+                <input type="checkbox" class="styled-checkbox" id="filterOption21"/>
+                <label for="filterOption21" class="styled-label">-55°C</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption22"/>
+                <label for="filterOption22" class="styled-label">-40°C</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption23"/>
+                <label for="filterOption23" class="styled-label">-25°C</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption24"/>
+                <label for="filterOption24" class="styled-label">-20°C><br/>
+                    <input type="checkbox" class="styled-checkbox" id="filterOption25"/>
+                    <label for="filterOption25" class="styled-label">-10°C</label><br/>
+                    <input type="checkbox" class="styled-checkbox" id="filterOption26"/>
+                    <label for="filterOption26" class="styled-label">0°C</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><img src="http://javerett.playground.powell.com/hhp_assets/icon-dotted-line.png"/></td>
+        </tr>
+        <tr> <!-- Search Results Filter 05 -->
+            <td style="width:150px;" colspan="1">
+                <h7>Max Operating Temp</h7>
+            </td>
+            <td style="width:40px;" colspan="1"><p class="seeAllFilter">See All</p></td>
+            <td colspan="1" style="width:45px;">
+                <a href="#"
+                   onclick="toggle_panel('resultFilter05'); toggle_panel('hideFilter05'); toggle_visibility('showFilter06');">
+                    <p class="hideFilter" style="display:block;" id="hideFilter06">Hide</p></a>
+                <a href="#"
+                   onclick="toggle_visibility('resultFilter06'); toggle_panel('showFilter05'); toggle_visibility('hideFilter06');">
+                    <p class="hideFilter" style="display:none;" id="showFilter05">Show</p></a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" id="resultFilter06">
+                <input type="checkbox" class="styled-checkbox" id="filterOption21"/>
+                <label for="filterOption21" class="styled-label">0°C</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption23"/>
+                <label for="filterOption23" class="styled-label">85°C</label><br/>
+                <input type="checkbox" class="styled-checkbox" id="filterOption24"/>
+                <label for="filterOption24" class="styled-label">105°C><br/>
+                    <input type="checkbox" class="styled-checkbox" id="filterOption26"/>
+                    <label for="filterOption26" class="styled-label">140°C</label>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="productGallery">
+    <div class="productTileView" id="productResult001">  <!-- Use this Product as an example for the rest -->
+        <div class="productImage"><img width="150px" src="http://javerett.playground.powell.com/hhp_assets/4243140.jpg"
+                                       style="vertical-align:middle;"/></div>
+        <a href="product-details.html">
+            <h8>DAC, 16BIT, 125SPS, SOIC-16</h8>
+        </a>
+
+        <p class="partNumber">Part No. AD421BRZ</p>
+
+        <p class="partQty">Qty: 2139 </p>
+
+        <p class="partManufacturer">ANALOG DEVICES</p>
+
+        <div class="productPriceTable">
+            <p style="padding-right:0px;"><span class="partPrice">$11.78</span><span
+                    class="partPriceBreak"> - 1+<span><a href="#" onclick="toggle_visibility('pricing');"><img
+                    src="http://javerett.playground.powell.com/hhp_assets/blue-arrow.gif"
+                    alt="Click to view Pricing Table" style="margin-left:5px; cursor:pointer;"/></a></p>
+
+            <div class="pricingTableDetails" id="pricing">
+                <p style="padding-right:0px;"><span class="partPrice">$11.78</span><span
+                        class="partPriceBreak"> - 1+<span></p>
+
+                <p style="padding-right:0px;"><span class="partPrice">$11.78</span><span
+                        class="partPriceBreak"> - 10+<span></p>
+
+                <p style="padding-right:0px;"><span class="partPrice">$11.78</span><span
+                        class="partPriceBreak"> - 25+<span></p>
+
+                <p style="padding-right:0px;"><span class="partPrice">$11.06</span><span
+                        class="partPriceBreak"> - 50+<span></p>
+
+                <p style="padding-right:0px;"><span class="partPrice">$10.43</span><span
+                        class="partPriceBreak"> - 50+<span></p>
+
+                <p style="padding-right:0px;"><span class="partPriceBreak"><b>Price For:</b> Each</span></p>
+
+                <p style="padding-right:0px;"><span class="partPriceBreak"><b>Min. Order Qty:</b> 1</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="productTileView" id="productResult002" style="margin-left:20px;">
+        <div class="productImage"><img width="150px" src="http://javerett.playground.powell.com/hhp_assets/4533046.jpg"
+                                       style="vertical-align:middle;"/></div>
+        <h8>RESOLVER TO DIGITAL CONV</h8>
+        <p class="partNumber">Part No. AD2S1210ASTZ </p>
+
+        <p class="partQty">Qty: 16</p>
+
+        <p class="partManufacturer">ANALOG DEVICES</p>
+
+        <div class="productPriceTable">
+            <p style="padding-right:0px;"><span class="partPrice"> $22.72</span><span class="partPriceBreak"> - 1+<span><img
+                    src="http://javerett.playground.powell.com/hhp_assets/blue-arrow.gif"
+                    alt="Click to view Pricing Table" style="margin-left:5px; cursor:pointer;"/></p>
+        </div>
+    </div>
+    <div class="productTileView" id="productResult003" style="margin-left:20px;">
+        <div class="productImage"><img width="150px" src="http://javerett.playground.powell.com/hhp_assets/4243287.jpg"
+                                       style="vertical-align:middle;"/></div>
+        <h8>ADC, 16BIT, PARALLEL, JLCC-44</h8>
+        <p class="partNumber">Part No. AD2S82AHPZ</p>
+
+        <p class="partQty">Qty: 3</p>
+
+        <p class="partManufacturer">ANALOG DEVICES</p>
+
+        <div class="productPriceTable">
+            <p style="padding-right:0px;"><span class="partPrice">$71.99 </span><span class="partPriceBreak"> - 1+<span><img
+                    src="http://javerett.playground.powell.com/hhp_assets/blue-arrow.gif"
+                    alt="Click to view Pricing Table" style="margin-left:5px; cursor:pointer;"/></p>
+        </div>
+    </div>
+    <div class="productTileView" id="productResult004">
+        <div class="productImage"><img width="150px" src="http://javerett.playground.powell.com/hhp_assets/4767732.jpg"
+                                       style="vertical-align:middle;"/></div>
+        <h8>DAC, 24BIT, 192KSPS, SSOP-28</h8>
+        <p class="partNumber">Part No. AD1852JRSZ</p>
+
+        <p class="partQty">Qty: 4</p>
+
+        <p class="partManufacturer">ANALOG DEVICES</p>
+
+        <div class="productPriceTable">
+            <p style="padding-right:0px;"><span class="partPrice">$19.69</span><span
+                    class="partPriceBreak"> - 1+<span><img
+                    src="http://javerett.playground.powell.com/hhp_assets/blue-arrow.gif"
+                    alt="Click to view Pricing Table" style="margin-left:5px; cursor:pointer;"/></p>
+        </div>
+    </div>
+    <div class="productTileView" id="productResult005" style="margin-left:20px;">
+        <div class="productImage"><img width="150px" src="http://javerett.playground.powell.com/hhp_assets/4734221.jpg"
+                                       style="vertical-align:middle;"/></div>
+        <h8>ADC, 10BIT, 200KSPS, DIP-16</h8>
+        <p class="partNumber">Part No. Part No. MCP3008</p>
+
+        <p class="partQty">Qty: 915 </p>
+
+        <p class="partManufacturer">MICROCHIP</p>
+
+        <div class="productPriceTable">
+            <p style="padding-right:0px;"><span class="partPrice">$2.19</span><span
+                    class="partPriceBreak"> - 1+<span><img
+                    src="http://javerett.playground.powell.com/hhp_assets/blue-arrow.gif"
+                    alt="Click to view Pricing Table" style="margin-left:5px; cursor:pointer;"/></p>
+        </div>
+    </div>
+    <div class="productTileView" id="productResult006" style="margin-left:20px;">
+        <div class="productImage"><img height="150px" src="http://javerett.playground.powell.com/hhp_assets/4243098.jpg"
+                                       style="vertical-align:middle;"/></div>
+        <h8>RMS TO DC CONV, 2.3MHZ, 12mA</h8>
+        <p class="partNumber">Part No. AD536ASH</p>
+
+        <p class="partQty">Qty: 4</p>
+
+        <p class="partManufacturer">ANALOG DEVICES</p>
+
+        <div class="productPriceTable">
+            <p style="padding-right:0px;"><span class="partPrice">$62.19</span><span
+                    class="partPriceBreak"> - 1+<span><img
+                    src="http://javerett.playground.powell.com/hhp_assets/blue-arrow.gif"
+                    alt="Click to view Pricing Table" style="margin-left:5px; cursor:pointer;"/></p>
+        </div>
+    </div>
+    <div class="productTileView" id="productResult008">
+        <div class="productImage"><img height="150px" src="http://javerett.playground.powell.com/hhp_assets/4243098.jpg"
+                                       style="vertical-align:middle;"/></div>
+        <h8>RMS-DC CONV, 1%, 1.5MHZ, TO-100-10</h8>
+        <p class="partNumber">Part No. AD636JHZ</p>
+
+        <p class="partQty">Qty: 30</p>
+
+        <p class="partManufacturer">ANALOG DEVICES</p>
+
+        <div class="productPriceTable">
+            <p style="padding-right:0px;"><span class="partPrice">$18.25</span><span
+                    class="partPriceBreak"> - 1+<span><img
+                    src="http://javerett.playground.powell.com/hhp_assets/blue-arrow.gif"
+                    alt="Click to view Pricing Table" style="margin-left:5px; cursor:pointer;"/></p>
+        </div>
+    </div>
+    <div class="productTileView" id="productResult009" style="margin-left:20px;">
+        <div class="productImage"><img width="150px" src="http://javerett.playground.powell.com/hhp_assets/4784330.jpg"
+                                       style="vertical-align:middle;"/></div>
+        <h8>DAC, 12BIT, DIP-8</h8>
+        <p class="partNumber">Part No. MCP4921</p>
+
+        <p class="partQty">Qty: 498</p>
+
+        <p class="partManufacturer">MICROCHIP</p>
+
+        <div class="productPriceTable">
+            <p style="padding-right:0px;"><span class="partPrice">$1.97</span><span
+                    class="partPriceBreak"> - 1+<span><img
+                    src="http://javerett.playground.powell.com/hhp_assets/blue-arrow.gif"
+                    alt="Click to view Pricing Table" style="margin-left:5px; cursor:pointer;"/></p>
+        </div>
+    </div>
+    <div class="productTileView" id="productResult009" style="margin-left:20px;">
+        <div class="productImage"><img width="150px" src="http://javerett.playground.powell.com/hhp_assets/4824254.jpg"
+                                       style="vertical-align:middle;"/></div>
+        <h8>DAC, 12BIT, 20.4MSPS</h8>
+        <p class="partNumber">Part No. AD5445YCPZ</p>
+
+        <p class="partQty">Qty: 71</p>
+
+        <p class="partManufacturer">ANALOG DEVICES</p>
+
+        <div class="productPriceTable">
+            <p style="padding-right:0px;"><span class="partPrice">$16.07</span><span
+                    class="partPriceBreak"> - 1+<span><img
+                    src="http://javerett.playground.powell.com/hhp_assets/blue-arrow.gif"
+                    alt="Click to view Pricing Table" style="margin-left:5px; cursor:pointer;"/></p>
+        </div>
+    </div>
+</div></div>

@@ -1,8 +1,8 @@
 <?php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
-use \PhpUnitsOfMeasure\PhysicalQuantity;
-use \PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\PhysicalQuantity;
+use PhpUnitsOfMeasure\UnitOfMeasure;
 
 class LuminousIntensity extends PhysicalQuantity
 {
@@ -17,15 +17,7 @@ class LuminousIntensity extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Candela
-        $newUnit = new UnitOfMeasure(
-            'cd',
-            function ($x) {
-                return $x;
-            },
-            function ($x) {
-                return $x;
-            }
-        );
+        $newUnit = UnitOfMeasure::nativeUnitFactory('cd');
         $newUnit->addAlias('candela');
         $this->registerUnitOfMeasure($newUnit);
     }

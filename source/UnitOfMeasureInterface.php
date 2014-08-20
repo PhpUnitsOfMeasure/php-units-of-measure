@@ -9,7 +9,7 @@ namespace PhpUnitsOfMeasure;
  * from an externally-agreed-upon native unit of measure.
  *
  * The native unit of measure can be any arbitrary
- * unit compatible wit the physical quantity to which
+ * unit compatible with the physical quantity to which
  * this unit of measure belongs, however all the units of measure
  * for a particular physical quantity must agree on the same
  * native unit.
@@ -21,6 +21,13 @@ namespace PhpUnitsOfMeasure;
 interface UnitOfMeasureInterface
 {
     /**
+     * Get the canonical name of this unit of measure.
+     *
+     * @return string The canonical naoe of this unit of measure.
+     */
+    public function getName();
+
+    /**
      * Add a new alias for this unit of measure
      *
      * @param string $alias The new alias
@@ -28,13 +35,6 @@ interface UnitOfMeasureInterface
      * @return void
      */
     public function addAlias($alias);
-
-    /**
-     * Get the canonical name of this unit of measure.
-     *
-     * @return string The canonical naoe of this unit of measure.
-     */
-    public function getName();
 
     /**
      * Is the given unit an alias of this unit of measure?

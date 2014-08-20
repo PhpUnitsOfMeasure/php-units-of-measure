@@ -14,7 +14,7 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
     {
         $value = $this->getMockForAbstractClass(
             '\PhpUnitsOfMeasure\PhysicalQuantity',
-            array(1.234, 'quatloos')
+            [1.234, 'quatloos']
         );
     }
 
@@ -27,7 +27,7 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
     {
         $value = $this->getMockForAbstractClass(
             '\PhpUnitsOfMeasure\PhysicalQuantity',
-            array(1.234, 'quatloos')
+            [1.234, 'quatloos']
         );
 
         // Quatloos
@@ -65,7 +65,7 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
     {
         $value = $this->getMockForAbstractClass(
             '\PhpUnitsOfMeasure\PhysicalQuantity',
-            array(1.234, 'quatloos')
+            [1.234, 'quatloos']
         );
 
         // Quatloos
@@ -86,7 +86,7 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
     {
         $value = $this->getMockForAbstractClass(
             '\PhpUnitsOfMeasure\PhysicalQuantity',
-            array(1.234, 'quatloos')
+            [1.234, 'quatloos']
         );
 
         // Quatloos

@@ -17,6 +17,7 @@ class ElectricCurrent extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Ampere
+<<<<<<< HEAD:source/PhpUnitsOfMeasure/PhysicalQuantity/ElectricCurrent.php
         $newUnit = new UnitOfMeasure(
             'A',
             function ($x) {
@@ -67,6 +68,13 @@ class ElectricCurrent extends PhysicalQuantity
                 'kiloamps'
             )
         );
+=======
+        $newUnit = UnitOfMeasure::nativeUnitFactory('A');
+        $newUnit->addAlias('amp');
+        $newUnit->addAlias('amps');
+        $newUnit->addAlias('ampere');
+        $newUnit->addAlias('amperes');
+>>>>>>> Github_Main/master:source/PhysicalQuantity/ElectricCurrent.php
         $this->registerUnitOfMeasure($newUnit);
     }
 }

@@ -1,8 +1,8 @@
 <?php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
-use \PhpUnitsOfMeasure\PhysicalQuantity;
-use \PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\PhysicalQuantity;
+use PhpUnitsOfMeasure\UnitOfMeasure;
 
 class Temperature extends PhysicalQuantity
 {
@@ -17,15 +17,7 @@ class Temperature extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Kelvin
-        $newUnit = new UnitOfMeasure(
-            'K',
-            function ($x) {
-                return $x;
-            },
-            function ($x) {
-                return $x;
-            }
-        );
+        $newUnit = UnitOfMeasure::nativeUnitFactory('K');
         $newUnit->addAlias('°K');
         $newUnit->addAlias('kelvin');
         $this->registerUnitOfMeasure($newUnit);
@@ -59,15 +51,7 @@ class Temperature extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Degree Rankine
-        $newUnit = new UnitOfMeasure(
-            '°R',
-            function ($x) {
-                return $x * 9/5;
-            },
-            function ($x) {
-                return $x * 5/9;
-            }
-        );
+        $newUnit = UnitOfMeasure::linearUnitFactory('°R', 5/9);
         $newUnit->addAlias('R');
         $newUnit->addAlias('rankine');
         $this->registerUnitOfMeasure($newUnit);

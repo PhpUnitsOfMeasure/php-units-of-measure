@@ -14,11 +14,11 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) {
-                return $x;
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
             },
-            function ($x) {
-                return $x;
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
             }
         );
 
@@ -33,11 +33,11 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) {
-                return $x;
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
             },
-            function ($x) {
-                return $x;
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
             }
         );
 
@@ -54,11 +54,11 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) {
-                return $x;
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
             },
-            function ($x) {
-                return $x;
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
             }
         );
 
@@ -74,10 +74,10 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) {
-                return $x * 1.1234;
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit * 1.1234;
             },
-            function ($x) {
+            function ($valueInThisUnit) {
                 return false;
             }
         );
@@ -92,11 +92,11 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     {
         $uom = new UnitOfMeasure(
             'quatloos',
-            function ($x) {
+            function ($valueInNativeUnit) {
                 return false;
             },
-            function ($x) {
-                return $x * 1.1234;
+            function ($valueInThisUnit) {
+                return $valueInThisUnit * 1.1234;
             }
         );
 
