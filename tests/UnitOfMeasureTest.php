@@ -27,6 +27,31 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers \PhpUnitsOfMeasure\UnitOfMeasure::addAlias
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::getAliases
+     */
+    public function testGetAliases()
+    {
+        $uom = new UnitOfMeasure(
+            'quatloos',
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
+            },
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
+            }
+        );
+
+        $uom->addAlias('ooltauqs');
+        $uom->addAlias('schmoos');
+
+        $this->assertEquals(
+            ['ooltauqs', 'schmoos'],
+            $uom->getAliases()
+        );
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::addAlias
      * @covers \PhpUnitsOfMeasure\UnitOfMeasure::isAliasOf
      */
     public function testIsAliasOf()

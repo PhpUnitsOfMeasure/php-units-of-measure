@@ -121,6 +121,14 @@ class UnitOfMeasure implements UnitOfMeasureInterface
     }
 
     /**
+     * @see \PhpUnitsOfMeasure\UnitOfMeasureInterface::getAliases
+     */
+    public function getAliases()
+    {
+        return $this->aliases;
+    }
+
+    /**
      * @see \PhpUnitsOfMeasure\UnitOfMeasureInterface::isAliasOf
      */
     public function isAliasOf($unit)

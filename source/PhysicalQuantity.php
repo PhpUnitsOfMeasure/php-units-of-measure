@@ -91,6 +91,29 @@ abstract class PhysicalQuantity
     }
 
     /**
+     * Get the list of all supported unit names, with the option
+     * to include the units' aliases as well.
+     *
+     * @param  boolean $withAliases Include all the unit alias names in the list
+     *
+     * @return array the collection of unit names
+     */
+    public function getSupportedUnits($withAliases = false)
+    {
+        $units = [];
+        foreach ($this->unitDefinitions as $unitOfMeasure) {
+            $units[] = $unitOfMeasure->getName();
+            if ($withAliases) {
+                foreach ($unitOfMeasure->getAliases() as $alias) {
+                    $units[] = $alias;
+                }
+            }
+        }
+
+        return $units;
+    }
+
+    /**
      * Add a given quantity to this quantity, and return a new quantity object.
      *
      * Note that the new quantity's original unit will be the same as this object's.

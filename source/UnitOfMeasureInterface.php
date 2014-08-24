@@ -37,6 +37,13 @@ interface UnitOfMeasureInterface
     public function addAlias($alias);
 
     /**
+     * Get the list of alternate names for this unit
+     *
+     * @return array The collection of aliases
+     */
+    public function getAliases();
+
+    /**
      * Is the given unit an alias of this unit of measure?
      *
      * @param  string $unit A string representation of a potential alias of this unit of measure

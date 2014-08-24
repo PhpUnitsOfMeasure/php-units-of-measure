@@ -101,6 +101,79 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::getSupportedUnits
+     */
+    public function testgetSupportedUnits()
+    {
+        $value = $this->getMockForAbstractClass(
+            '\PhpUnitsOfMeasure\PhysicalQuantity',
+            [1.234, 'quatloos']
+        );
+
+        // Quatloos
+        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
+        $newUnit->expects($this->any())
+            ->method('getName')
+            ->will($this->returnValue('quatloos'));
+        $newUnit->expects($this->any())
+            ->method('getAliases')
+            ->will($this->returnValue(['qa', 'qs']));
+
+        $value->registerUnitOfMeasure($newUnit);
+
+        // Schmoos
+        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
+        $newUnit->expects($this->any())
+            ->method('getName')
+            ->will($this->returnValue('schmoos'));
+        $newUnit->expects($this->any())
+            ->method('getAliases')
+            ->will($this->returnValue(['sc', 'sm']));
+
+        $value->registerUnitOfMeasure($newUnit);
+
+        $this->assertSame(['quatloos', 'schmoos'], $value->getSupportedUnits());
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::getSupportedUnits
+     */
+    public function testgetSupportedUnitsWithAliases()
+    {
+        $value = $this->getMockForAbstractClass(
+            '\PhpUnitsOfMeasure\PhysicalQuantity',
+            [1.234, 'quatloos']
+        );
+
+        // Quatloos
+        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
+        $newUnit->expects($this->any())
+            ->method('getName')
+            ->will($this->returnValue('quatloos'));
+        $newUnit->expects($this->any())
+            ->method('getAliases')
+            ->will($this->returnValue(['qa', 'qs']));
+
+        $value->registerUnitOfMeasure($newUnit);
+
+        // Schmoos
+        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
+        $newUnit->expects($this->any())
+            ->method('getName')
+            ->will($this->returnValue('schmoos'));
+        $newUnit->expects($this->any())
+            ->method('getAliases')
+            ->will($this->returnValue(['sc', 'sm']));
+
+        $value->registerUnitOfMeasure($newUnit);
+
+        $this->assertSame(
+            ['quatloos', 'qa', 'qs', 'schmoos', 'sc', 'sm'],
+            $value->getSupportedUnits(true)
+        );
+    }
+
+    /**
      * @covers \PhpUnitsOfMeasure\PhysicalQuantity::add
      */
     public function testAdd()
