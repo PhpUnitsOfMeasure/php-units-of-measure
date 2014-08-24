@@ -17,12 +17,12 @@ class Time extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Second
-        $newUnit = UnitOfMeasure::nativeUnitFactory('s');
-        $newUnit->addAlias('sec');
-        $newUnit->addAlias('secs');
-        $newUnit->addAlias('second');
-        $newUnit->addAlias('seconds');
-        $this->registerUnitOfMeasure($newUnit);
+        $second = UnitOfMeasure::nativeUnitFactory('s');
+        $second->addAlias('sec');
+        $second->addAlias('secs');
+        $second->addAlias('second');
+        $second->addAlias('seconds');
+        $this->registerUnitOfMeasure($second);
 
         // Minutes
         $newUnit = UnitOfMeasure::linearUnitFactory('m', 60);

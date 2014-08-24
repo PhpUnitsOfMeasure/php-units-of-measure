@@ -17,13 +17,13 @@ class Area extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Meters squared
-        $newUnit = UnitOfMeasure::nativeUnitFactory('m^2');
-        $newUnit->addAlias('m²');
-        $newUnit->addAlias('meter squared');
-        $newUnit->addAlias('meters squared');
-        $newUnit->addAlias('metre squared');
-        $newUnit->addAlias('metres squared');
-        $this->registerUnitOfMeasure($newUnit);
+        $metersquared = UnitOfMeasure::nativeUnitFactory('m^2');
+        $metersquared->addAlias('m²');
+        $metersquared->addAlias('meter squared');
+        $metersquared->addAlias('meters squared');
+        $metersquared->addAlias('metre squared');
+        $metersquared->addAlias('metres squared');
+        $this->registerUnitOfMeasure($metersquared);
 
         // Millimeter squared
         $newUnit = UnitOfMeasure::linearUnitFactory('mm^2', 1e-6);

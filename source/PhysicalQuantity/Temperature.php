@@ -17,10 +17,10 @@ class Temperature extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Kelvin
-        $newUnit = UnitOfMeasure::nativeUnitFactory('K');
-        $newUnit->addAlias('°K');
-        $newUnit->addAlias('kelvin');
-        $this->registerUnitOfMeasure($newUnit);
+        $kelvin = UnitOfMeasure::nativeUnitFactory('K');
+        $kelvin->addAlias('°K');
+        $kelvin->addAlias('kelvin');
+        $this->registerUnitOfMeasure($kelvin);
 
         // Degree Celsius
         $newUnit = new UnitOfMeasure(

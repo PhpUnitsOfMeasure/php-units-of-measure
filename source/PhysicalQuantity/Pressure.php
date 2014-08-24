@@ -17,9 +17,9 @@ class Pressure extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Pascal
-        $newUnit = UnitOfMeasure::nativeUnitFactory('Pa');
-        $newUnit->addAlias('pascal');
-        $this->registerUnitOfMeasure($newUnit);
+        $pascal = UnitOfMeasure::nativeUnitFactory('Pa');
+        $pascal->addAlias('pascal');
+        $this->registerUnitOfMeasure($pascal);
 
         // Atmosphere
         $newUnit = UnitOfMeasure::linearUnitFactory('atm', 101325);
