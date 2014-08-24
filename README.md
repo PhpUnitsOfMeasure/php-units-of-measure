@@ -123,6 +123,7 @@ $length->registerUnitOfMeasure($cubit);
 echo $length->toUnit('feet'); // '21'
 ```
 
+##### Shorthand Factory Methods
 Note that when creating instances of `UnitOfMeasure`, there are a couple of convenience static factory methods.  The first lets you instantiate units of measure which have linear scaling factors from the native unit. That is, the conversion function fits into the form `'Value in the native unit of measure' = 'Value in this unit of measure' * F`, where `F` is the scaling factor.
 
 ``` php
@@ -140,6 +141,48 @@ $meter->addAlias('meter');
 $meter->addAlias('metre');
 $length->registerUnitOfMeasure($meter);
 ```
+
+##### Automatically Generating Metric Units
+For units that use the metric system, there's a convenience trait available for `PhysicalQuantity` classes which will automatically generate the full continuum of metric units from a single unit.  For instance:
+
+``` php
+namespace PhpUnitsOfMeasure\PhysicalQuantity;
+
+use PhpUnitsOfMeasure\PhysicalQuantity;
+use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasSIUnitsTrait;
+
+class Mass extends PhysicalQuantity
+{
+    use HasSIUnitsTrait;
+
+    public function __construct($value, $unit)
+    {
+        parent::__construct($value, $unit);
+
+        $kilogram = UnitOfMeasure::nativeUnitFactory('kg');
+        $kilogram->addAlias('kilogram');
+        $kilogram->addAlias('kilograms');
+        $this->registerUnitOfMeasure($kilogram);
+
+        $this->addMissingSIPrefixedUnits(
+            $kilogram,
+            1e-3,
+            '%pg',
+            [
+                '%Pgram',
+                '%Pgrams',
+            ]
+        );
+    }
+}
+```
+
+Here we're generating the native unit for mass, kilogram, adding it to the quantity as usual, and then using it to generate the spectrum of SI units by calling the `addMissingSIPrefixedUnits()` method provided by the `HasSIUnitsTrait` trait.
+
+Of note, the second parameter (1e-3) is denoting that while kilograms are the native unit for Mass, there's a factor of 1/1000 between the kilogram and the base metric unit of mass: the gram.  For units such as seconds or meters where the native unit for the `PhysicalQuantity` class is also the base unit for the metric prefix system, this factor would be 1.
+
+The 3rd and 4th parameters contain templates for the units' names and alternate aliases, respectively. The replacement strings '%p' and '%P' are used to denote the abbreviated and long-form metric prefixes.  For instance, '%pg' would generate the series `..., 'mg', 'cg', 'dg', 'g', ...`, while the template '%Pgram' would generate the series `..., 'milligram', 'centigram', 'decigram', 'gram', ...` .
 
 #### Permanently Adding a New Unit of Measure to a Physical Quantity
 The above method only applies to the specific instantiation of `Length` and is therefore temporary; it would be necessary to repeat this process every time you created a new `Length` object measurement and wanted to use cubits.
