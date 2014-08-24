@@ -253,5 +253,4 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
 
         return $newUnit;
     }
-
 }
