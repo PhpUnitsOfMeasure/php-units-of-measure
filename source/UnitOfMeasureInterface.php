@@ -23,7 +23,7 @@ interface UnitOfMeasureInterface
     /**
      * Get the canonical name of this unit of measure.
      *
-     * @return string The canonical naoe of this unit of measure.
+     * @return string The canonical name of this unit of measure.
      */
     public function getName();
 
@@ -31,6 +31,8 @@ interface UnitOfMeasureInterface
      * Add a new alias for this unit of measure
      *
      * @param string $alias The new alias
+     *
+     * @throws \PhpUnitsOfMeasure\Exception\NonStringUnitName If The alias name is not a string.
      *
      * @return void
      */
@@ -48,6 +50,8 @@ interface UnitOfMeasureInterface
      *
      * @param  string $unit A string representation of a potential alias of this unit of measure
      *
+     * @throws \PhpUnitsOfMeasure\Exception\NonStringUnitName If The unit name is not a string.
+     *
      * @return boolean
      */
     public function isAliasOf($unit);
@@ -62,6 +66,8 @@ interface UnitOfMeasureInterface
      *
      * @param  float $value The quantity to convert from this unit of measure
      *
+     * @throws \PhpUnitsOfMeasure\Exception\NonNumericValue If The value is not numeric.
+     *
      * @return float the new value in the native unit
      */
     public function convertValueFromNativeUnitOfMeasure($value);
@@ -75,6 +81,8 @@ interface UnitOfMeasureInterface
      * on what that unit is.
      *
      * @param  float $value The quantity to convert from the native unit of measure
+     *
+     * @throws \PhpUnitsOfMeasure\Exception\NonNumericValue If The value is not numeric.
      *
      * @return float the new value in this unit of measure
      */
