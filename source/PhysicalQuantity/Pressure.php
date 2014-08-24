@@ -54,10 +54,10 @@ class Pressure extends PhysicalQuantity
         $newUnit->addAlias('inches of mercury');
         $this->registerUnitOfMeasure($newUnit);
 
-        // Milimeter of Mercury
+        // Millimeter of Mercury
         $newUnit = UnitOfMeasure::linearUnitFactory('mmHg', 133.3224);
-        $newUnit->addAlias('milimeters of mercury');
-        $newUnit->addAlias('milimetres of mercury');
+        $newUnit->addAlias('millimeters of mercury');
+        $newUnit->addAlias('millimetres of mercury');
         $newUnit->addAlias('torr');
         $this->registerUnitOfMeasure($newUnit);
 

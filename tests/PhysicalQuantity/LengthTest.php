@@ -148,7 +148,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testToMilimeters()
+    public function testToMillimeters()
     {
         $quantity = new Length(5, 'm');
         $this->assertEquals(5000, $quantity->toUnit('mm'));
