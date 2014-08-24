@@ -5,7 +5,7 @@
 - Add new method getSupportedUnits() to Physical Quantities
 - Add new method getAliases() to Units of Measure
 - Add arcminute and arcsecond as angle units
-- Add all SI prefix units to meters, kilograms, seconds, amps, kelvin, candela, pascal, bar, radians, degrees, arcminutes, and arcseconds
+- Add all SI prefix units to meters, kilograms, seconds, amps, kelvin, candela, pascal, bar, radians, degrees, and arcseconds
 
 ## v1.2.0 (August 16th, 2014)
 - Drop support for PHP 5.3
