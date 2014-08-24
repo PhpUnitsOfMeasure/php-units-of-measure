@@ -26,7 +26,67 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::__construct
+     * @expectedException \PhpUnitsOfMeasure\Exception\NonStringUnitName
+     */
+    public function testConstructWithNonStringName()
+    {
+        $uom = new UnitOfMeasure(
+            42,
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
+            },
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
+            }
+        );
+    }
+
+    /**
      * @covers \PhpUnitsOfMeasure\UnitOfMeasure::addAlias
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::getAliases
+     */
+    public function testGetAliases()
+    {
+        $uom = new UnitOfMeasure(
+            'quatloos',
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
+            },
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
+            }
+        );
+
+        $uom->addAlias('ooltauqs');
+        $uom->addAlias('schmoos');
+
+        $this->assertEquals(
+            ['ooltauqs', 'schmoos'],
+            $uom->getAliases()
+        );
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::addAlias
+     * @expectedException \PhpUnitsOfMeasure\Exception\NonStringUnitName
+     */
+    public function testAddAliasWithNonStringAlias()
+    {
+        $uom = new UnitOfMeasure(
+            'quatloos',
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
+            },
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
+            }
+        );
+
+        $uom->addAlias(42);
+    }
+
+    /**
      * @covers \PhpUnitsOfMeasure\UnitOfMeasure::isAliasOf
      */
     public function testIsAliasOf()
@@ -47,7 +107,6 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::addAlias
      * @covers \PhpUnitsOfMeasure\UnitOfMeasure::isAliasOf
      */
     public function testIsNotAliasOf()
@@ -65,6 +124,27 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
         $uom->addAlias('ooltauqs');
 
         $this->assertFalse($uom->isAliasOf('wampii'));
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::isAliasOf
+     * @expectedException \PhpUnitsOfMeasure\Exception\NonStringUnitName
+     */
+    public function testIsAliasOfWithNonStringAlias()
+    {
+        $uom = new UnitOfMeasure(
+            'quatloos',
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
+            },
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
+            }
+        );
+
+        $uom->addAlias('ooltauqs');
+
+        $this->assertFalse($uom->isAliasOf(42));
     }
 
     /**
@@ -86,6 +166,25 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::convertValueFromNativeUnitOfMeasure
+     * @expectedException \PhpUnitsOfMeasure\Exception\NonNumericValue
+     */
+    public function testConvertValueFromNativeUnitOfMeasureWithNonNumericalValue()
+    {
+        $uom = new UnitOfMeasure(
+            'quatloos',
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit * 1.1234;
+            },
+            function ($valueInThisUnit) {
+                return false;
+            }
+        );
+
+        $this->assertSame(11.234, $uom->convertValueFromNativeUnitOfMeasure('string'));
+    }
+
+    /**
      * @covers \PhpUnitsOfMeasure\UnitOfMeasure::convertValueToNativeUnitOfMeasure
      */
     public function testConvertValueToNativeUnitOfMeasure()
@@ -101,5 +200,24 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame(11.234, $uom->convertValueToNativeUnitOfMeasure(10));
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::convertValueToNativeUnitOfMeasure
+     * @expectedException \PhpUnitsOfMeasure\Exception\NonNumericValue
+     */
+    public function testConvertValueToNativeUnitOfMeasureWithNonNumericalValue()
+    {
+        $uom = new UnitOfMeasure(
+            'quatloos',
+            function ($valueInNativeUnit) {
+                return false;
+            },
+            function ($valueInThisUnit) {
+                return $valueInThisUnit * 1.1234;
+            }
+        );
+
+        $this->assertSame(11.234, $uom->convertValueToNativeUnitOfMeasure('string'));
     }
 }

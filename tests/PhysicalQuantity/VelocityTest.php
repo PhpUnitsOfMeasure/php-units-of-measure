@@ -4,15 +4,18 @@ namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Velocity;
 
-class VelocityTest extends \PHPUnit_Framework_TestCase
+class VelocityTest extends AbstractPhysicalQuantityTestCase
 {
-    /**
-     * Verify that the object instantiates without error.
-     *
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Velocity::__construct()
-     */
-    public function testConstructorSucceeds()
+    protected $supportedUnitsWithAliases = [
+        'm/s',
+        'meters per second',
+        'meter per second',
+        'metres per second',
+        'metre per second',
+    ];
+
+    protected function instantiateTestQuantity()
     {
-        $target = new Velocity(1, 'm/s');
+        return new Velocity(1, 'm/s');
     }
 }

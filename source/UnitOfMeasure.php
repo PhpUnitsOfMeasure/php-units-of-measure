@@ -99,6 +99,10 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      */
     public function __construct($name, callable $fromNativeUnit, callable $toNativeUnit)
     {
+        if (!is_string($name)) {
+            throw new Exception\NonStringUnitName("Alias ($name) must be a string value.");
+        }
+
         $this->name           = $name;
         $this->fromNativeUnit = $fromNativeUnit;
         $this->toNativeUnit   = $toNativeUnit;
@@ -117,7 +121,19 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      */
     public function addAlias($alias)
     {
+        if (!is_string($alias)) {
+            throw new Exception\NonStringUnitName("Alias ($alias) must be a string value.");
+        }
+
         $this->aliases[] = $alias;
+    }
+
+    /**
+     * @see \PhpUnitsOfMeasure\UnitOfMeasureInterface::getAliases
+     */
+    public function getAliases()
+    {
+        return $this->aliases;
     }
 
     /**
@@ -125,6 +141,10 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      */
     public function isAliasOf($unit)
     {
+        if (!is_string($unit)) {
+            throw new Exception\NonStringUnitName("Alias ($unit) must be a string value.");
+        }
+
         return in_array($unit, $this->aliases);
     }
 
@@ -133,6 +153,10 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      */
     public function convertValueFromNativeUnitOfMeasure($value)
     {
+        if (!is_numeric($value)) {
+            throw new Exception\NonNumericValue("Value ($value) must be numeric.");
+        }
+
         $callable = $this->fromNativeUnit;
         return $callable($value);
     }
@@ -142,6 +166,10 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      */
     public function convertValueToNativeUnitOfMeasure($value)
     {
+        if (!is_numeric($value)) {
+            throw new Exception\NonNumericValue("Value ($value) must be numeric.");
+        }
+
         $callable = $this->toNativeUnit;
         return $callable($value);
     }

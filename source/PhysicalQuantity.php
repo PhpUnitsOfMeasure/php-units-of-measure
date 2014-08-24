@@ -36,10 +36,21 @@ abstract class PhysicalQuantity
      * @param float  $value The scalar value of the measurement
      * @param string $unit  The unit of measure in which this value is provided
      *
+     * @throws \PhpUnitsOfMeasure\Exception\NonNumericValue If the value is not numeric
+     * @throws \PhpUnitsOfMeasure\Exception\NonStringUnitName If the unit is not a string
+     *
      * @return void
      */
     public function __construct($value, $unit)
     {
+        if (!is_numeric($value)) {
+            throw new Exception\NonNumericValue("Value ($value) must be numeric.");
+        }
+
+        if (!is_string($unit)) {
+            throw new Exception\NonStringUnitName("Alias ($unit) must be a string value.");
+        }
+
         $this->originalValue = $value;
         $this->originalUnit = $unit;
     }
@@ -69,6 +80,22 @@ abstract class PhysicalQuantity
      */
     public function registerUnitOfMeasure(UnitOfMeasureInterface $unit)
     {
+        $currentUnits = $this->getSupportedUnits(true);
+
+        $newUnitName = $unit->getName();
+
+        if (in_array($newUnitName, $currentUnits)) {
+            throw new Exception\DuplicateUnitNameOrAlias('The unit name ('.$newUnitName.') is already a registered unit for this quantity');
+        }
+
+        $newAliases = $unit->getAliases();
+
+        foreach ($newAliases as $newUnitAlias) {
+            if (in_array($newUnitAlias, $currentUnits)) {
+                throw new Exception\DuplicateUnitNameOrAlias('The unit alias ('.$newUnitAlias.') is already a registered unit for this quantity');
+            }
+        }
+
         $this->unitDefinitions[] = $unit;
     }
 
@@ -88,6 +115,29 @@ abstract class PhysicalQuantity
         $toUnitValue = $toUnit->convertValueFromNativeUnitOfMeasure($nativeUnitValue);
 
         return $toUnitValue;
+    }
+
+    /**
+     * Get the list of all supported unit names, with the option
+     * to include the units' aliases as well.
+     *
+     * @param boolean $withAliases Include all the unit alias names in the list
+     *
+     * @return array the collection of unit names
+     */
+    public function getSupportedUnits($withAliases = false)
+    {
+        $units = [];
+        foreach ($this->unitDefinitions as $unitOfMeasure) {
+            $units[] = $unitOfMeasure->getName();
+            if ($withAliases) {
+                foreach ($unitOfMeasure->getAliases() as $alias) {
+                    $units[] = $alias;
+                }
+            }
+        }
+
+        return $units;
     }
 
     /**

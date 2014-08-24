@@ -3,9 +3,12 @@ namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
 class Length extends PhysicalQuantity
 {
+    use HasSIUnitsTrait;
+
     /**
      * Configure all the standard units of measure
      * to which this quantity can be converted.
@@ -17,44 +20,24 @@ class Length extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Meter
-        $newUnit = UnitOfMeasure::nativeUnitFactory('m');
-        $newUnit->addAlias('meter');
-        $newUnit->addAlias('meters');
-        $newUnit->addAlias('metre');
-        $newUnit->addAlias('metres');
-        $this->registerUnitOfMeasure($newUnit);
+        $meter = UnitOfMeasure::nativeUnitFactory('m');
+        $meter->addAlias('meter');
+        $meter->addAlias('meters');
+        $meter->addAlias('metre');
+        $meter->addAlias('metres');
+        $this->registerUnitOfMeasure($meter);
 
-        // Millimeter
-        $newUnit = UnitOfMeasure::linearUnitFactory('mm', 0.001);
-        $newUnit->addAlias('millimeter');
-        $newUnit->addAlias('millimeters');
-        $newUnit->addAlias('millimetre');
-        $newUnit->addAlias('millimetres');
-        $this->registerUnitOfMeasure($newUnit);
-
-        // Centimeter
-        $newUnit = UnitOfMeasure::linearUnitFactory('cm', 0.01);
-        $newUnit->addAlias('centimeter');
-        $newUnit->addAlias('centimeters');
-        $newUnit->addAlias('centimetre');
-        $newUnit->addAlias('centimetres');
-        $this->registerUnitOfMeasure($newUnit);
-
-        // Decimeter
-        $newUnit = UnitOfMeasure::linearUnitFactory('dm', 0.1);
-        $newUnit->addAlias('decimeter');
-        $newUnit->addAlias('decimeters');
-        $newUnit->addAlias('decimetre');
-        $newUnit->addAlias('decimetres');
-        $this->registerUnitOfMeasure($newUnit);
-
-        // Kilometer
-        $newUnit = UnitOfMeasure::linearUnitFactory('km', 1000);
-        $newUnit->addAlias('kilometer');
-        $newUnit->addAlias('kilometers');
-        $newUnit->addAlias('kilometre');
-        $newUnit->addAlias('kilometres');
-        $this->registerUnitOfMeasure($newUnit);
+        $this->addMissingSIPrefixedUnits(
+            $meter,
+            1,
+            '%pm',
+            [
+                '%Pmeter',
+                '%Pmeters',
+                '%Pmetre',
+                '%Pmetres'
+            ]
+        );
 
         // Foot
         $newUnit = UnitOfMeasure::linearUnitFactory('ft', 0.3048);

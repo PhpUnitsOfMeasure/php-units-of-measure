@@ -3,18 +3,67 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Area;
-use PHPUnit_Framework_TestCase;
 
-class AreaTest extends PHPUnit_Framework_TestCase
+class AreaTest extends AbstractPhysicalQuantityTestCase
 {
-    /**
-     * Verify that the object instantiates without error.
-     *
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Area::__construct()
-     */
-    public function testConstructorSucceeds()
+    protected $supportedUnitsWithAliases = [
+        'm^2',
+        'm²',
+        'meter squared',
+        'meters squared',
+        'metre squared',
+        'metres squared',
+        'mm^2',
+        'mm²',
+        'millimeter squared',
+        'millimeters squared',
+        'millimetre squared',
+        'millimetres squared',
+        'cm^2',
+        'cm²',
+        'centimeter squared',
+        'centimeters squared',
+        'centimetre squared',
+        'centimetres squared',
+        'dm^2',
+        'dm²',
+        'decimeter squared',
+        'decimeters squared',
+        'decimetre squared',
+        'decimetres squared',
+        'km^2',
+        'km²',
+        'kilometer squared',
+        'kilometers squared',
+        'kilometre squared',
+        'kilometres squared',
+        'ft^2',
+        'ft²',
+        'foot squared',
+        'feet squared',
+        'in^2',
+        'in²',
+        'inch squared',
+        'inches squared',
+        'mi^2',
+        'mi²',
+        'mile squared',
+        'miles squared',
+        'yd^2',
+        'yd²',
+        'yard squared',
+        'yards squared',
+        'ha',
+        'hectare',
+        'hectares',
+        'ac',
+        'acre',
+        'acres',
+    ];
+
+    protected function instantiateTestQuantity()
     {
-        $target = new Area(1, 'm^2');
+        return new Area(1, 'm^2');
     }
 
     public function testToHectares()

@@ -17,13 +17,13 @@ class Volume extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Cubic meter
-        $newUnit = UnitOfMeasure::nativeUnitFactory('m^3');
-        $newUnit->addAlias('m³');
-        $newUnit->addAlias('cubic meter');
-        $newUnit->addAlias('cubic meters');
-        $newUnit->addAlias('cubic metre');
-        $newUnit->addAlias('cubic metres');
-        $this->registerUnitOfMeasure($newUnit);
+        $cubicmeter = UnitOfMeasure::nativeUnitFactory('m^3');
+        $cubicmeter->addAlias('m³');
+        $cubicmeter->addAlias('cubic meter');
+        $cubicmeter->addAlias('cubic meters');
+        $cubicmeter->addAlias('cubic metre');
+        $cubicmeter->addAlias('cubic metres');
+        $this->registerUnitOfMeasure($cubicmeter);
 
         // Cubic millimeter
         $newUnit = UnitOfMeasure::linearUnitFactory('mm^3', 1e-9);

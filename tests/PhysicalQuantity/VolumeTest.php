@@ -4,15 +4,88 @@ namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Volume;
 
-class VolumeTest extends \PHPUnit_Framework_TestCase
+class VolumeTest extends AbstractPhysicalQuantityTestCase
 {
-    /**
-     * Verify that the object instantiates without error.
-     *
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Volume::__construct()
-     */
-    public function testConstructorSucceeds()
+    protected $supportedUnitsWithAliases = [
+        'm^3',
+        'm³',
+        'cubic meter',
+        'cubic meters',
+        'cubic metre',
+        'cubic metres',
+        'mm^3',
+        'mm³',
+        'cubic millimeter',
+        'cubic millimeters',
+        'cubic millimetre',
+        'cubic millimetres',
+        'cm^3',
+        'cm³',
+        'cubic centimeter',
+        'cubic centimeters',
+        'cubic centimetre',
+        'cubic centimetres',
+        'dm^3',
+        'dm³',
+        'cubic decimeter',
+        'cubic decimeters',
+        'cubic decimetre',
+        'cubic decimetres',
+        'km^3',
+        'km³',
+        'cubic kilometer',
+        'cubic kilometers',
+        'cubic kilometre',
+        'cubic kilometres',
+        'ft^3',
+        'ft³',
+        'cubic foot',
+        'cubic feet',
+        'in^3',
+        'in³',
+        'cubic inch',
+        'cubic inches',
+        'yd^3',
+        'yd³',
+        'cubic yard',
+        'cubic yards',
+        'ml',
+        'milliliter',
+        'milliliters',
+        'millilitre',
+        'millilitres',
+        'cl',
+        'centiliter',
+        'centiliters',
+        'centilitre',
+        'centilitres',
+        'dl',
+        'deciliter',
+        'deciliters',
+        'decilitre',
+        'decilitres',
+        'l',
+        'liter',
+        'liters',
+        'litre',
+        'litres',
+        'dal',
+        'decaliter',
+        'decaliters',
+        'decalitre',
+        'decalitres',
+        'hl',
+        'hectoliter',
+        'hectoliters',
+        'hectolitre',
+        'hectolitres',
+        'cup',
+        'cup',
+        'cups',
+    ];
+
+    protected function instantiateTestQuantity()
     {
-        $target = new Volume(1, 'm^3');
+        return new Volume(1, 'm^3');
     }
 }
