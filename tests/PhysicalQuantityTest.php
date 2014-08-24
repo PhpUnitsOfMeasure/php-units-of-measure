@@ -7,19 +7,6 @@ use PhpUnitsOfMeasure\UnitOfMeasureInterface;
 
 class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
 {
-    protected function getMockUnitOfMeasure($name, $aliases = [])
-    {
-        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
-        $newUnit->expects($this->any())
-            ->method('getName')
-            ->will($this->returnValue($name));
-                $newUnit->expects($this->any())
-            ->method('getAliases')
-            ->will($this->returnValue($aliases));
-
-        return $newUnit;
-    }
-
     /**
      * @covers \PhpUnitsOfMeasure\PhysicalQuantity::__construct
      */
@@ -28,6 +15,30 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
         $value = $this->getMockForAbstractClass(
             '\PhpUnitsOfMeasure\PhysicalQuantity',
             [1.234, 'quatloos']
+        );
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::__construct
+     * @expectedException \PhpUnitsOfMeasure\Exception\NonNumericValue
+     */
+    public function testInstantiateNewUnitNonNumericValue()
+    {
+        $value = $this->getMockForAbstractClass(
+            '\PhpUnitsOfMeasure\PhysicalQuantity',
+            ['string', 'quatloos']
+        );
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\PhysicalQuantity::__construct
+     * @expectedException \PhpUnitsOfMeasure\Exception\NonStringUnitName
+     */
+    public function testInstantiateNewUnitNonStringUnit()
+    {
+        $value = $this->getMockForAbstractClass(
+            '\PhpUnitsOfMeasure\PhysicalQuantity',
+            [1.234, 42]
         );
     }
 
@@ -229,4 +240,18 @@ class PhysicalQuantityTest extends \PHPUnit_Framework_TestCase
 
         $sum = $first->subtract($second);
     }
+
+    protected function getMockUnitOfMeasure($name, $aliases = [])
+    {
+        $newUnit = $this->getMock('\PhpUnitsOfMeasure\UnitOfMeasureInterface');
+        $newUnit->expects($this->any())
+            ->method('getName')
+            ->will($this->returnValue($name));
+                $newUnit->expects($this->any())
+            ->method('getAliases')
+            ->will($this->returnValue($aliases));
+
+        return $newUnit;
+    }
+
 }
