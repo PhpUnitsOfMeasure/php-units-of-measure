@@ -1,4 +1,4 @@
-## v1.3.0 ()
+## v1.3.0 (August 23rd, 2014)
 - Add support for automatically generating metric-prefixed units from a single base unit
 - Throw an exception on registering units of measure with names or aliases that collide with existing units on that quantity
 - Disallow values that aren't numerical and unit names that aren't strings (ie, type checking)
