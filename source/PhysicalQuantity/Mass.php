@@ -3,9 +3,12 @@ namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
 class Mass extends PhysicalQuantity
 {
+    use HasSIUnitsTrait;
+
     /**
      * Configure all the standard units of measure
      * to which this quantity can be converted.
@@ -17,28 +20,20 @@ class Mass extends PhysicalQuantity
         parent::__construct($value, $unit);
 
         // Kilogram
-        $newUnit = UnitOfMeasure::nativeUnitFactory('kg');
-        $newUnit->addAlias('kilogram');
-        $newUnit->addAlias('kilograms');
-        $this->registerUnitOfMeasure($newUnit);
+        $kilogram = UnitOfMeasure::nativeUnitFactory('kg');
+        $kilogram->addAlias('kilogram');
+        $kilogram->addAlias('kilograms');
+        $this->registerUnitOfMeasure($kilogram);
 
-        // Milligram
-        $newUnit = UnitOfMeasure::linearUnitFactory('mg', 1e-6);
-        $newUnit->addAlias('milligram');
-        $newUnit->addAlias('milligrams');
-        $this->registerUnitOfMeasure($newUnit);
-
-        // Centigram
-        $newUnit = UnitOfMeasure::linearUnitFactory('cg', 1e-5);
-        $newUnit->addAlias('centigram');
-        $newUnit->addAlias('centigrams');
-        $this->registerUnitOfMeasure($newUnit);
-
-        // Gram
-        $newUnit = UnitOfMeasure::linearUnitFactory('g', 1e-3);
-        $newUnit->addAlias('gram');
-        $newUnit->addAlias('grams');
-        $this->registerUnitOfMeasure($newUnit);
+        $this->addMissingSIPrefixedUnits(
+            $kilogram,
+            1e-3,
+            '%pg',
+            [
+                '%Pgram',
+                '%Pgrams',
+            ]
+        );
 
         // Tonne (metric)
         $newUnit = UnitOfMeasure::linearUnitFactory('t', 1e3);
