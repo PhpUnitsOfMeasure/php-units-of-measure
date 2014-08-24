@@ -3,9 +3,12 @@ namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
 class Pressure extends PhysicalQuantity
 {
+    use HasSIUnitsTrait;
+
     /**
      * Configure all the standard units of measure
      * to which this quantity can be converted.
@@ -21,6 +24,15 @@ class Pressure extends PhysicalQuantity
         $pascal->addAlias('pascal');
         $this->registerUnitOfMeasure($pascal);
 
+        $this->addMissingSIPrefixedUnits(
+            $pascal,
+            1,
+            '%pPa',
+            [
+                '%Ppascal',
+            ]
+        );
+
         // Atmosphere
         $newUnit = UnitOfMeasure::linearUnitFactory('atm', 101325);
         $newUnit->addAlias('atmosphere');
@@ -28,9 +40,14 @@ class Pressure extends PhysicalQuantity
         $this->registerUnitOfMeasure($newUnit);
 
         // Bar
-        $newUnit = UnitOfMeasure::linearUnitFactory('bar', 1e5);
-        $newUnit->addAlias('bar');
-        $this->registerUnitOfMeasure($newUnit);
+        $bar = UnitOfMeasure::linearUnitFactory('bar', 1e5);
+        $this->registerUnitOfMeasure($bar);
+
+        $this->addMissingSIPrefixedUnits(
+            $bar,
+            1,
+            '%pbar'
+        );
 
         // Inch of Mercury
         $newUnit = UnitOfMeasure::linearUnitFactory('inHg', 3.386389e3);

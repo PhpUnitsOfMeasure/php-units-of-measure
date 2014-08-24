@@ -3,9 +3,12 @@ namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
 class LuminousIntensity extends PhysicalQuantity
 {
+    use HasSIUnitsTrait;
+
     /**
      * Configure all the standard units of measure
      * to which this quantity can be converted.
@@ -20,5 +23,14 @@ class LuminousIntensity extends PhysicalQuantity
         $candela = UnitOfMeasure::nativeUnitFactory('cd');
         $candela->addAlias('candela');
         $this->registerUnitOfMeasure($candela);
+
+        $this->addMissingSIPrefixedUnits(
+            $candela,
+            1,
+            '%pcd',
+            [
+                '%Pcandela',
+            ]
+        );
     }
 }

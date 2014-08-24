@@ -3,9 +3,12 @@ namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
 class Temperature extends PhysicalQuantity
 {
+    use HasSIUnitsTrait;
+
     /**
     * Configure all the standard units of measure
     * to which this quantity can be converted.
@@ -21,6 +24,15 @@ class Temperature extends PhysicalQuantity
         $kelvin->addAlias('°K');
         $kelvin->addAlias('kelvin');
         $this->registerUnitOfMeasure($kelvin);
+
+        $this->addMissingSIPrefixedUnits(
+            $kelvin,
+            1,
+            '%pK',
+            [
+                '%Pkelvin',
+            ]
+        );
 
         // Degree Celsius
         $newUnit = new UnitOfMeasure(

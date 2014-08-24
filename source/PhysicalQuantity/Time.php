@@ -3,9 +3,12 @@ namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
 class Time extends PhysicalQuantity
 {
+    use HasSIUnitsTrait;
+
     /**
      * Configure all the standard units of measure
      * to which this quantity can be converted.
@@ -23,6 +26,18 @@ class Time extends PhysicalQuantity
         $second->addAlias('second');
         $second->addAlias('seconds');
         $this->registerUnitOfMeasure($second);
+
+        $this->addMissingSIPrefixedUnits(
+            $second,
+            1,
+            '%ps',
+            [
+                '%Psec',
+                '%Psecs',
+                '%Psecond',
+                '%Pseconds'
+            ]
+        );
 
         // Minutes
         $newUnit = UnitOfMeasure::linearUnitFactory('m', 60);
