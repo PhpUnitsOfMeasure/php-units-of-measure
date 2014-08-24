@@ -1,3 +1,6 @@
+## v1.3.1 (August 23rd, 2014)
+- Added information in the README about the new SI prefix units generation
+
 ## v1.3.0 (August 23rd, 2014)
 - Add support for automatically generating metric-prefixed units from a single base unit
 - Throw an exception on registering units of measure with names or aliases that collide with existing units on that quantity
