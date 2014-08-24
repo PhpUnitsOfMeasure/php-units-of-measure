@@ -4,15 +4,87 @@ namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Pressure;
 
-class PressureTest extends \PHPUnit_Framework_TestCase
+class PressureTest extends AbstractPhysicalQuantityTestCase
 {
-    /**
-     * Verify that the object instantiates without error.
-     *
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Pressure::__construct()
-     */
-    public function testConstructorSucceeds()
+    protected $supportedUnitsWithAliases = [
+        'Pa',
+        'pascal',
+        'YPa',
+        'yottapascal',
+        'ZPa',
+        'zettapascal',
+        'EPa',
+        'exapascal',
+        'PPa',
+        'petapascal',
+        'TPa',
+        'terapascal',
+        'GPa',
+        'gigapascal',
+        'MPa',
+        'megapascal',
+        'kPa',
+        'kilopascal',
+        'hPa',
+        'hectopascal',
+        'daPa',
+        'decapascal',
+        'dPa',
+        'decipascal',
+        'cPa',
+        'centipascal',
+        'mPa',
+        'millipascal',
+        'µPa',
+        'micropascal',
+        'nPa',
+        'nanopascal',
+        'pPa',
+        'picopascal',
+        'fPa',
+        'femtopascal',
+        'aPa',
+        'attopascal',
+        'zPa',
+        'zeptopascal',
+        'yPa',
+        'yoctopascal',
+        'atm',
+        'atmosphere',
+        'atmospheres',
+        'bar',
+        'Ybar',
+        'Zbar',
+        'Ebar',
+        'Pbar',
+        'Tbar',
+        'Gbar',
+        'Mbar',
+        'kbar',
+        'hbar',
+        'dabar',
+        'dbar',
+        'cbar',
+        'mbar',
+        'µbar',
+        'nbar',
+        'pbar',
+        'fbar',
+        'abar',
+        'zbar',
+        'ybar',
+        'inHg',
+        'inches of mercury',
+        'mmHg',
+        'millimeters of mercury',
+        'millimetres of mercury',
+        'torr',
+        'psi',
+        'pounds per square inch',
+    ];
+
+    protected function instantiateTestQuantity()
     {
-        $target = new Pressure(1, 'Pa');
+        return new Pressure(1, 'Pa');
     }
 }

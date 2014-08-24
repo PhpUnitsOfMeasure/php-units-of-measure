@@ -4,15 +4,19 @@ namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Acceleration;
 
-class AccelerationTest extends \PHPUnit_Framework_TestCase
+class AccelerationTest extends AbstractPhysicalQuantityTestCase
 {
-    /**
-     * Verify that the object instantiates without error.
-     *
-     * @covers \PhpUnitsOfMeasure\PhysicalQuantity\Acceleration::__construct()
-     */
-    public function testConstructorSucceeds()
+    protected $supportedUnitsWithAliases = [
+        'm/s^2',
+        'm/s²',
+        'meter per second squared',
+        'meters per second squared',
+        'metre per second squared',
+        'metres per second squared',
+    ];
+
+    protected function instantiateTestQuantity()
     {
-        $target = new Acceleration(1, 'm/s^2');
+        return new Acceleration(1, 'm/s^2');
     }
 }
