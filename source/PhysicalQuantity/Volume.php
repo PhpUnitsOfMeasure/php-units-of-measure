@@ -132,8 +132,35 @@ class Volume extends PhysicalQuantity
 
         // Cup
         $newUnit = UnitOfMeasure::linearUnitFactory('cup', 2.365882e-4);
-        $newUnit->addAlias('cup');
         $newUnit->addAlias('cups');
+        $this->registerUnitOfMeasure($newUnit);
+
+        // Gallon
+        $newUnit = UnitOfMeasure::linearUnitFactory('gallon', 3.7854118e-3);
+        $newUnit->addAlias('gallons');
+        $newUnit->addAlias('us gal');
+        $this->registerUnitOfMeasure($newUnit);
+
+        // Quart
+        $newUnit = UnitOfMeasure::linearUnitFactory('quart', 9.4635295e-4);
+        $newUnit->addAlias('quarts');
+        $newUnit->addAlias('qt');
+        $newUnit->addAlias('qts');
+        $newUnit->addAlias('liq qt');
+        $this->registerUnitOfMeasure($newUnit);
+
+        // Fluid Ounce
+        $newUnit = UnitOfMeasure::linearUnitFactory('fluid ounce', 2.957353e-5);
+        $newUnit->addAlias('fluid ounces');
+        $newUnit->addAlias('fluid-ounce');
+        $newUnit->addAlias('fl oz');
+        $this->registerUnitOfMeasure($newUnit);
+
+        // Pint
+        $newUnit = UnitOfMeasure::linearUnitFactory('pint', 4.73176475e-4);
+        $newUnit->addAlias('pints');
+        $newUnit->addAlias('pt');
+        $newUnit->addAlias('liq pt');
         $this->registerUnitOfMeasure($newUnit);
     }
 }
