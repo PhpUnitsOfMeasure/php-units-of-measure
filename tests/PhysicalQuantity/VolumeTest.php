@@ -80,12 +80,39 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         'hectolitre',
         'hectolitres',
         'cup',
-        'cup',
         'cups',
+        'gallon',
+        'gallons',
+        'us gal',
+        'quart',
+        'quarts',
+        'qt',
+        'qts',
+        'liq qt',
+        'fluid ounce',
+        'fluid ounces',
+        'fluid-ounce',
+        'fl oz',
+        'pint',
+        'pints',
+        'pt',
+        'liq pt',
     ];
 
     protected function instantiateTestQuantity()
     {
         return new Volume(1, 'm^3');
+    }
+
+    public function test4QuartsInGallon()
+    {
+        $volume = new Volume(4, 'quarts');
+        $this->assertEquals(1, $volume->toUnit('gallon'));
+    }
+
+    public function test8PintsInGallon()
+    {
+        $volume = new Volume(8, 'pints');
+        $this->assertEquals(1, $volume->toUnit('gallon'));
     }
 }
