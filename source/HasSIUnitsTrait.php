@@ -9,117 +9,6 @@ namespace PhpUnitsOfMeasure;
 trait HasSIUnitsTrait
 {
     /**
-     * The standard set of SI prefixes
-     */
-    protected $siPrefixes = [
-        [
-            'abbr_prefix' => 'Y',
-            'long_prefix' => 'yotta',
-            'factor'      => 1e24
-        ],
-        [
-            'abbr_prefix' => 'Z',
-            'long_prefix' => 'zetta',
-            'factor'      => 1e21
-        ],
-        [
-            'abbr_prefix' => 'E',
-            'long_prefix' => 'exa',
-            'factor'      => 1e18
-        ],
-        [
-            'abbr_prefix' => 'P',
-            'long_prefix' => 'peta',
-            'factor'      => 1e15
-        ],
-        [
-            'abbr_prefix' => 'T',
-            'long_prefix' => 'tera',
-            'factor'      => 1e12
-        ],
-        [
-            'abbr_prefix' => 'G',
-            'long_prefix' => 'giga',
-            'factor'      => 1e9
-        ],
-        [
-            'abbr_prefix' => 'M',
-            'long_prefix' => 'mega',
-            'factor'      => 1e6
-        ],
-        [
-            'abbr_prefix' => 'k',
-            'long_prefix' => 'kilo',
-            'factor'      => 1e3
-        ],
-        [
-            'abbr_prefix' => 'h',
-            'long_prefix' => 'hecto',
-            'factor'      => 1e2
-        ],
-        [
-            'abbr_prefix' => 'da',
-            'long_prefix' => 'deca',
-            'factor'      => 1e1
-        ],
-        [
-            'abbr_prefix' => '',
-            'long_prefix' => '',
-            'factor'      => 1
-        ],
-        [
-            'abbr_prefix' => 'd',
-            'long_prefix' => 'deci',
-            'factor'      => 1e-1
-        ],
-        [
-            'abbr_prefix' => 'c',
-            'long_prefix' => 'centi',
-            'factor'      => 1e-2
-        ],
-        [
-            'abbr_prefix' => 'm',
-            'long_prefix' => 'milli',
-            'factor'      => 1e-3
-        ],
-        [
-            'abbr_prefix' => 'µ',
-            'long_prefix' => 'micro',
-            'factor'      => 1e-6
-        ],
-        [
-            'abbr_prefix' => 'n',
-            'long_prefix' => 'nano',
-            'factor'      => 1e-9
-        ],
-        [
-            'abbr_prefix' => 'p',
-            'long_prefix' => 'pico',
-            'factor'      => 1e-12
-        ],
-        [
-            'abbr_prefix' => 'f',
-            'long_prefix' => 'femto',
-            'factor'      => 1e-15
-        ],
-        [
-            'abbr_prefix' => 'a',
-            'long_prefix' => 'atto',
-            'factor'      => 1e-18
-        ],
-        [
-            'abbr_prefix' => 'z',
-            'long_prefix' => 'zepto',
-            'factor'      => 1e-21
-        ],
-        [
-            'abbr_prefix' => 'y',
-            'long_prefix' => 'yocto',
-            'factor'      => 1e-24
-        ],
-    ];
-
-    /**
      * Given the patterns for generating the names and aliases,
      * generate the various metric units of measure and add
      * them to this physical quantity.
@@ -147,20 +36,128 @@ trait HasSIUnitsTrait
      * @param  string        $namePattern        The pattern to apply to the base unit's name to generate a new SI unit name
      * @param  array         $aliasPatterns      The collection of alias patterns to use in generating a new SI unit's aliases
      */
-    protected function addMissingSIPrefixedUnits(
+    protected static function addMissingSIPrefixedUnits(
         UnitOfMeasure $siUnit,
         $toBaseSiUnitFactor,
         $namePattern,
         array $aliasPatterns = []
     ) {
+        /**
+         * The standard set of SI prefixes
+         */
+        $siPrefixes = [
+            [
+                'abbr_prefix' => 'Y',
+                'long_prefix' => 'yotta',
+                'factor'      => 1e24
+            ],
+            [
+                'abbr_prefix' => 'Z',
+                'long_prefix' => 'zetta',
+                'factor'      => 1e21
+            ],
+            [
+                'abbr_prefix' => 'E',
+                'long_prefix' => 'exa',
+                'factor'      => 1e18
+            ],
+            [
+                'abbr_prefix' => 'P',
+                'long_prefix' => 'peta',
+                'factor'      => 1e15
+            ],
+            [
+                'abbr_prefix' => 'T',
+                'long_prefix' => 'tera',
+                'factor'      => 1e12
+            ],
+            [
+                'abbr_prefix' => 'G',
+                'long_prefix' => 'giga',
+                'factor'      => 1e9
+            ],
+            [
+                'abbr_prefix' => 'M',
+                'long_prefix' => 'mega',
+                'factor'      => 1e6
+            ],
+            [
+                'abbr_prefix' => 'k',
+                'long_prefix' => 'kilo',
+                'factor'      => 1e3
+            ],
+            [
+                'abbr_prefix' => 'h',
+                'long_prefix' => 'hecto',
+                'factor'      => 1e2
+            ],
+            [
+                'abbr_prefix' => 'da',
+                'long_prefix' => 'deca',
+                'factor'      => 1e1
+            ],
+            [
+                'abbr_prefix' => '',
+                'long_prefix' => '',
+                'factor'      => 1
+            ],
+            [
+                'abbr_prefix' => 'd',
+                'long_prefix' => 'deci',
+                'factor'      => 1e-1
+            ],
+            [
+                'abbr_prefix' => 'c',
+                'long_prefix' => 'centi',
+                'factor'      => 1e-2
+            ],
+            [
+                'abbr_prefix' => 'm',
+                'long_prefix' => 'milli',
+                'factor'      => 1e-3
+            ],
+            [
+                'abbr_prefix' => 'µ',
+                'long_prefix' => 'micro',
+                'factor'      => 1e-6
+            ],
+            [
+                'abbr_prefix' => 'n',
+                'long_prefix' => 'nano',
+                'factor'      => 1e-9
+            ],
+            [
+                'abbr_prefix' => 'p',
+                'long_prefix' => 'pico',
+                'factor'      => 1e-12
+            ],
+            [
+                'abbr_prefix' => 'f',
+                'long_prefix' => 'femto',
+                'factor'      => 1e-15
+            ],
+            [
+                'abbr_prefix' => 'a',
+                'long_prefix' => 'atto',
+                'factor'      => 1e-18
+            ],
+            [
+                'abbr_prefix' => 'z',
+                'long_prefix' => 'zepto',
+                'factor'      => 1e-21
+            ],
+            [
+                'abbr_prefix' => 'y',
+                'long_prefix' => 'yocto',
+                'factor'      => 1e-24
+            ],
+        ];
+
         // Determine the conversion factor from the no-prefix SI unit to the physical quantity's native unit
         $noPrefixToNativeUnitFactor = $siUnit->convertValueToNativeUnitOfMeasure(1) * $toBaseSiUnitFactor;
 
-        // Identify the current set of unit names, so we can avoid duplicates
-        $existingUnitNames = $this->getSupportedUnits(true);
-
         // For each of the standard SI prefixes, attempt to register a new unit of measure
-        foreach ($this->siPrefixes as $prefixDefinition) {
+        foreach ($siPrefixes as $prefixDefinition) {
 
             // Build a closure for resolving a pattern into a unit name
             $parsePattern = function ($pattern) use ($prefixDefinition) {
@@ -173,11 +170,8 @@ trait HasSIUnitsTrait
                 );
             };
 
-            // Generate the base name of the new unit, and if it's already present skip this unit
+            // Generate the base name of the new unit
             $name = $parsePattern($namePattern);
-            if (in_array($name, $existingUnitNames)) {
-                continue;
-            }
 
             // Determine the factor that converts the new unit into the physical quantity's
             //   native unit of measure.
@@ -186,17 +180,16 @@ trait HasSIUnitsTrait
             // Instantiate the new unit of measure
             $newUnit = UnitOfMeasure::linearUnitFactory($name, $toNativeUnitFactor);
 
-            // Generate the aliases of the new unit, and if any are already present, skip this unit
+            // Generate the aliases of the new unit
             foreach ($aliasPatterns as $aliasPattern) {
                 $newUnitAlias = $parsePattern($aliasPattern);
-                if (in_array($newUnitAlias, $existingUnitNames)) {
-                    continue 2;
-                }
                 $newUnit->addAlias($newUnitAlias);
             }
 
-            // Add the new unit of measure to this physical quantity
-            $this->registerUnitOfMeasure($newUnit);
+            // If the unit doesn't conflict with any of the already-existing units, register it
+            if (!static::unitNameOrAliasesAlreadyRegistered($newUnit)) {
+                static::addUnit($newUnit);
+            }
         }
     }
 }

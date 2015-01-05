@@ -64,7 +64,7 @@ echo $quantity; // '6 lbs'
 ```
 
 ### Arithmetic Operators
-There's also support for addition and subtraction.  The values of `PhysicalQuantity` objects are immutable, and so these arithmetic methods return new quantity objects representing the results:
+There's also support for addition and subtraction.  The values of objects which implement the `PhysicalQuantityInterface` interface are immutable, and so these arithmetic methods return new quantity objects representing the results:
 
 ``` php
 use PhpUnitsOfMeasure\PhysicalQuantity\Volume;
@@ -91,7 +91,7 @@ To add a new unit of measure to an existing quantity at run time, you'd do this:
 use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 use PhpUnitsOfMeasure\PhysicalQuantity\UnitOfMeasure;
 
-// It's ok to use cubits here, since the conversion doesn't happen until later
+// It's ok to create objects with cubits before the new unit is registered, since the conversion doesn't happen until an output method is called
 $length = new Length(14, 'cubits');
 
 // Build a new Unit of Measure object which represents the new unit, and which knows how to convert between
@@ -116,8 +116,8 @@ $cubit = new UnitOfMeasure(
 $cubit->addAlias('cubit');
 $cubit->addAlias('cubits');
 
-// Register the new unit of measure with the quantity object
-$length->registerUnitOfMeasure($cubit);
+// Register the new unit of measure with the quantity class
+Length::addUnit($cubit);
 
 // Now that the unit is registered, you can cast the measurement to any other measure of length
 echo $length->toUnit('feet'); // '21'
@@ -130,42 +130,43 @@ Note that when creating instances of `UnitOfMeasure`, there are a couple of conv
 $megameter = UnitOfMeasure::linearUnitFactory('Mm', 1e6);
 $megameter->addAlias('Megameter');
 $megameter->addAlias('Megametre');
-$length->registerUnitOfMeasure($megameter);
+Length::addUnit($megameter);
 ```
 
-The other convenience method is a special case of the above scaling factor factory method where the scaling factor is set to exactly 1, and serves as a convenient way of generating the native unit of measure.  All `PhysicalQuantity` classes must have one and only one native unit, so this method will probably only be called once per `PhysicalQuantity` class:
+The other convenience method is a special case of the above scaling factor factory method where the scaling factor is set to exactly 1, and serves as a convenient way of generating the native unit of measure.  All `PhysicalQuantityInterface` classes must have one and only one native unit, so this method will probably only be called once per `PhysicalQuantityInterface` class:
 
 ``` php
 $meter = UnitOfMeasure::nativeUnitFactory('m');
 $meter->addAlias('meter');
 $meter->addAlias('metre');
-$length->registerUnitOfMeasure($meter);
+Length::addUnit($meter);
 ```
 
 ##### Automatically Generating Metric Units
-For units that use the metric system, there's a convenience trait available for `PhysicalQuantity` classes which will automatically generate the full continuum of metric units from a single unit.  For instance:
+For units that use the metric system, there's a convenience trait available for `PhysicalQuantityInterface` classes which will automatically generate the full continuum of metric units from a single unit.  For instance:
 
 ``` php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
-use PhpUnitsOfMeasure\PhysicalQuantity;
+use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
-class Mass extends PhysicalQuantity
+class Mass extends AbstractPhysicalQuantity
 {
     use HasSIUnitsTrait;
 
-    public function __construct($value, $unit)
-    {
-        parent::__construct($value, $unit);
+    protected static $unitDefinitions;
 
+    protected static function initialize()
+    {
+        // Kilogram
         $kilogram = UnitOfMeasure::nativeUnitFactory('kg');
         $kilogram->addAlias('kilogram');
         $kilogram->addAlias('kilograms');
-        $this->registerUnitOfMeasure($kilogram);
+        static::addUnit($kilogram);
 
-        $this->addMissingSIPrefixedUnits(
+        static::addMissingSIPrefixedUnits(
             $kilogram,
             1e-3,
             '%pg',
@@ -178,29 +179,29 @@ class Mass extends PhysicalQuantity
 }
 ```
 
-Here we're generating the native unit for mass, kilogram, adding it to the quantity as usual, and then using it to generate the spectrum of SI units by calling the `addMissingSIPrefixedUnits()` method provided by the `HasSIUnitsTrait` trait.
+Here we're generating the native unit for mass, kilogram, adding it to the quantity as usual, and then using it to generate the spectrum of SI units by calling the `addMissingSIPrefixedUnits()` static method provided by the `HasSIUnitsTrait` trait.
 
-Of note, the second parameter (1e-3) is denoting that while kilograms are the native unit for Mass, there's a factor of 1/1000 between the kilogram and the base metric unit of mass: the gram.  For units such as seconds or meters where the native unit for the `PhysicalQuantity` class is also the base unit for the metric prefix system, this factor would be 1.
+Of note, the second parameter (1e-3) is denoting that while kilograms are the native unit for Mass, there's a factor of 1/1000 between the kilogram and the base metric unit of mass: the gram.  For units such as seconds or meters where the native unit for the physical quantity is also the base unit for the metric prefix system, this factor would be 1.
 
 The 3rd and 4th parameters contain templates for the units' names and alternate aliases, respectively. The replacement strings '%p' and '%P' are used to denote the abbreviated and long-form metric prefixes.  For instance, '%pg' would generate the series `..., 'mg', 'cg', 'dg', 'g', ...`, while the template '%Pgram' would generate the series `..., 'milligram', 'centigram', 'decigram', 'gram', ...` .
 
 #### Permanently Adding a New Unit of Measure to a Physical Quantity
-The above method only applies to the specific instantiation of `Length` and is therefore temporary; it would be necessary to repeat this process every time you created a new `Length` object measurement and wanted to use cubits.
+The examples above for adding new units of measure to physical quantities allow you to register new units for the duration of the PHP execution, but are lost once execution terminates; it would be necessary to repeat this process every time you created a new program with `Length` measurements and wanted to use cubits.
 
-A new unit of measure can be permanently added to a `PhysicalQuantity` class by essentially the same process, only it would be done inside the constructor of the quantity class.  For example:
+A new unit of measure can be permanently added to a `PhysicalQuantityInterface` class by essentially the same process, only it would be done inside the constructor of the quantity class.  For example:
 
 ``` php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
-use PhpUnitsOfMeasure\PhysicalQuantity;
+use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 
-class Length extends PhysicalQuantity
+class Length extends AbstractPhysicalQuantity
 {
-    public function __construct($value, $unit)
-    {
-        parent::__construct($value, $unit);
+    protected static $unitDefinitions;
 
+    protected static function initialize()
+    {
         // ...
         // ...
         // Here's all the pre-existing unit definitions for Length
@@ -211,17 +212,17 @@ class Length extends PhysicalQuantity
         $cubit = UnitOfMeasure::linearUnitFactory('cb', 0.4572);
         $cubit->addAlias('cubit');
         $cubit->addAlias('cubits');
-        $this->registerUnitOfMeasure($cubit);
+        static::addUnit($cubit);
     }
 }
 ```
 
-Now any new object of class `Length` that gets instantiated will come with the cubits unit already built in.  Note that here we used the more concise linear unit factory method, but the result is equivalent to the expanded form calling the constructor, as used above.
+Now any program which uses `Length` will start with the cubits unit already built in.  Note that here we used the more concise linear unit factory method, but the result is equivalent to the expanded form calling the `UnitOfMeasure` constructor, as used above.
 
 ### Adding New Physical Quantities
 [Physical quantities](http://en.wikipedia.org/wiki/Physical_quantity) are categories of measurable values, like mass, length, force, etc.
 
-For physical quantities that are not already present in this library, it will be necessary to write a class to support a new one.  All physical quantities extend the `\PhpUnitsOfMeasure\PhysicalQuantity` class, and typically have only a constructor method which creates the quantity's units of measure.  See above for examples on how to add new units to a quantity class.
+For physical quantities that are not already present in this library, it will be necessary to write a class to support a new one.  All physical quantities implement the `\PhpUnitsOfMeasure\PhysicalQuantityInterface` interface, typically extend the `\PhpUnitsOfMeasure\AbstractPhysicalQuantity` class, and typically have only an `initialize()` method which creates the quantity's units of measure.  See above for examples on how to add new units to a quantity class.
 
 Note that every physical quantity has a chosen "native unit" which is typically the SI standard.  The main point for this unit is that all of the quantity's other units of measure will convert to and from this chosen native unit.  It's important to be aware of a quantity's native unit when writing conversions for new units of measure.
 
@@ -235,16 +236,16 @@ use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 $length = new Length(4, 'footses');
 
 // Fetch the unit of measure object that represents the 'ft' unit
-$foot = $length->findUnitDefinition('ft');
+$footUnit = Length::getUnit('ft');
 
 // Any alias names for this unit can be added here, to make it easier to use variations
-$foot->addAlias('footses');
+$footUnit->addAlias('footses');
 
-// Now that the unit is registered, you can cast the measurement to any other measure of length
+// Now that the unit has been modified with its new alias, you can cast the measurement to any other measure of length
 echo $length->toUnit('m'); // '1.2192'
 ```
 
-And of course, if you need to add the alias permanently, you can do so in the constructor of the quantity's class.
+And of course, if you need to add the alias permanently, you can do so in the initialize() method of the quantity's class, as shown above.
 
 ## Testing and Contributing
 Pull requests are welcome, especially regarding new units of measure or new physical quantities.  However, please note that there are many sources for conversion factors, and not all are careful to respect known precision.

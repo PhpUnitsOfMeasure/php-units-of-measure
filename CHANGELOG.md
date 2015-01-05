@@ -1,3 +1,17 @@
+## v2.0.0 ()
+- Registered units of measure are now properties of PhysicalQuantity classes, and not individual instances of those classes.  As such, registering a new unit with a given PhysicalQuantity will make that unit immediately available to all inntances of that class.
+   - PhysicalQuantity classes no longer define their units in their constructor, and instead have a new initialize() static method
+   - The previously-existing registerUnitOfMeasure() method on physical quantity objects has been replaced with a new static addUnit() method
+   - The HasSoUnitsTrait method addMissingSIPrefixedUnits is now static
+- Added the toNativeUnit() method, to return values in their native unit of measure
+- Added the isEquivalentQuantity() method, to support future situations where it's not obvious whether two physical quantities represent the same quantity type
+- getSupportedUnits() is no longer available on physical quantities
+- The PhysicalQuantity parent class is now named AbstractPhysicalQuantity
+- Add a new DemonstrationTests test file, to demonstrate and test typical use cases
+- All library exceptions extend from AbstractPhysicalQuantityException, making catching easier
+- Added an interface for PhysicalQuantities, to support future work where not all physical quantity classes necessarily have the same parent
+
+
 ## v1.3.1 (August 23rd, 2014)
 - Added information in the README about the new SI prefix units generation
 
