@@ -22,7 +22,8 @@ function isTooTallToRideThisTrain( $height )
   return $height > 5;
 }
 
-// Calling the function requires that you first convert whatever quantity you have into the expected units:
+// Calling the function requires that you first convert whatever quantity
+// you have into the expected units:
 isTooTallToRideThisTrain(2 / 0.3048);
 ```
 
@@ -64,7 +65,7 @@ echo $quantity; // '6 lbs'
 ```
 
 ### Arithmetic Operators
-There's also support for addition and subtraction.  The values of objects which implement the `PhysicalQuantityInterface` interface are immutable, and so these arithmetic methods return new quantity objects representing the results:
+There's also support for addition and subtraction.  The values of the physical quantity objects are immutable, and so these arithmetic methods return new quantity objects representing the results:
 
 ``` php
 use PhpUnitsOfMeasure\PhysicalQuantity\Volume;
@@ -91,35 +92,42 @@ To add a new unit of measure to an existing quantity at run time, you'd do this:
 use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 use PhpUnitsOfMeasure\PhysicalQuantity\UnitOfMeasure;
 
-// It's ok to create objects with cubits before the new unit is registered, since the conversion doesn't happen until an output method is called
+// It's ok to create objects with cubits before the new unit is registered, since
+// the conversion doesn't happen until an output method is called
 $length = new Length(14, 'cubits');
 
-// Build a new Unit of Measure object which represents the new unit, and which knows how to convert between
-// the new unit and the quantity's native unit (in this case, meters).
+// Build a new Unit of Measure object which represents the new unit, and which
+// knows how to convert between the new unit and the quantity's native unit
+// (in this case, meters).
 $cubit = new UnitOfMeasure(
 
-    // This is the official name of this unit - typically it's the standard abbreviation
+    // This is the official name of this unit - typically it's the standard
+    // abbreviation
     'cb',
 
-    // The second parameter is a closure that converts from the native unit to this unit
+    // The second parameter is a closure that converts from the native unit
+    // to this unit
     function ($valueInNativeUnit) {
         return $valueInNativeUnit / 0.4572;
     },
 
-    // The third parameter is a closure that converts from this unit to the native unit
+    // The third parameter is a closure that converts from this unit to the
+    // native unit
     function ($valueInThisUnit) {
         return $valueInThisUnit * 0.4572;
     }
 );
 
-// Any alias names for this unit can be added here, to make it easier to use variations
+// Any alias names for this unit can be added here, to make it easier to use
+// variations
 $cubit->addAlias('cubit');
 $cubit->addAlias('cubits');
 
 // Register the new unit of measure with the quantity class
 Length::addUnit($cubit);
 
-// Now that the unit is registered, you can cast the measurement to any other measure of length
+// Now that the unit is registered, you can cast the measurement to any other
+// measure of length
 echo $length->toUnit('feet'); // '21'
 ```
 
@@ -232,16 +240,19 @@ It may come up that the desired unit of measure exists for a given physical quan
 ``` php
 use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 
-// It's ok to use footses here, since the conversion doesn't happen until later
+// It's ok to use footses here, since the conversion doesn't happen
+// until later
 $length = new Length(4, 'footses');
 
 // Fetch the unit of measure object that represents the 'ft' unit
 $footUnit = Length::getUnit('ft');
 
-// Any alias names for this unit can be added here, to make it easier to use variations
+// Any alias names for this unit can be added here, to make it easier
+// to use variations
 $footUnit->addAlias('footses');
 
-// Now that the unit has been modified with its new alias, you can cast the measurement to any other measure of length
+// Now that the unit has been modified with its new alias, you can cast
+// the measurement to any other measure of length
 echo $length->toUnit('m'); // '1.2192'
 ```
 
