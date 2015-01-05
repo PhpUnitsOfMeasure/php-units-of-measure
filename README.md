@@ -105,13 +105,13 @@ $cubit = new UnitOfMeasure(
     // abbreviation
     'cb',
 
-    // The second parameter is a closure that converts from the native unit
+    // The second parameter is a function that converts from the native unit
     // to this unit
     function ($valueInNativeUnit) {
         return $valueInNativeUnit / 0.4572;
     },
 
-    // The third parameter is a closure that converts from this unit to the
+    // The third parameter is a function that converts from this unit to the
     // native unit
     function ($valueInThisUnit) {
         return $valueInThisUnit * 0.4572;
@@ -141,7 +141,7 @@ $megameter->addAlias('Megametre');
 Length::addUnit($megameter);
 ```
 
-The other convenience method is a special case of the above scaling factor factory method where the scaling factor is set to exactly 1, and serves as a convenient way of generating the native unit of measure.  All `PhysicalQuantityInterface` classes must have one and only one native unit, so this method will probably only be called once per `PhysicalQuantityInterface` class:
+The other convenience method is a special case of the above scaling factor factory method where the scaling factor is set to exactly 1, and serves as a convenient way of generating the native unit of measure.  All physical quantities must have one and only one native unit, so this method will probably only be called once per Physical Quantity class:
 
 ``` php
 $meter = UnitOfMeasure::nativeUnitFactory('m');
@@ -151,7 +151,7 @@ Length::addUnit($meter);
 ```
 
 ##### Automatically Generating Metric Units
-For units that use the metric system, there's a convenience trait available for `PhysicalQuantityInterface` classes which will automatically generate the full continuum of metric units from a single unit.  For instance:
+For units that use the metric system, there's a convenience trait available for classes which implement`PhysicalQuantityInterface` which will automatically generate the full continuum of metric units from a single unit.  For instance:
 
 ``` php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
@@ -196,7 +196,7 @@ The 3rd and 4th parameters contain templates for the units' names and alternate 
 #### Permanently Adding a New Unit of Measure to a Physical Quantity
 The examples above for adding new units of measure to physical quantities allow you to register new units for the duration of the PHP execution, but are lost once execution terminates; it would be necessary to repeat this process every time you created a new program with `Length` measurements and wanted to use cubits.
 
-A new unit of measure can be permanently added to a `PhysicalQuantityInterface` class by essentially the same process, only it would be done inside the constructor of the quantity class.  For example:
+A new unit of measure can be permanently added to a Physical Quantity class by essentially the same process as the one-time examples, only it would be done inside the constructor of the quantity class.  For example:
 
 ``` php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
@@ -225,12 +225,12 @@ class Length extends AbstractPhysicalQuantity
 }
 ```
 
-Now any program which uses `Length` will start with the cubits unit already built in.  Note that here we used the more concise linear unit factory method, but the result is equivalent to the expanded form calling the `UnitOfMeasure` constructor, as used above.
+Now any program which uses `Length` will start with the cubits unit already built in.  Note that here we used the more concise linear unit factory method, but the result is equivalent to the expanded form calling the `UnitOfMeasure` constructor, as used above.  Also, notice that the `static` keyword was used instead of the class name, though either would be acceptable in this case.
 
 ### Adding New Physical Quantities
 [Physical quantities](http://en.wikipedia.org/wiki/Physical_quantity) are categories of measurable values, like mass, length, force, etc.
 
-For physical quantities that are not already present in this library, it will be necessary to write a class to support a new one.  All physical quantities implement the `\PhpUnitsOfMeasure\PhysicalQuantityInterface` interface, typically extend the `\PhpUnitsOfMeasure\AbstractPhysicalQuantity` class, and typically have only an `initialize()` method which creates the quantity's units of measure.  See above for examples on how to add new units to a quantity class.
+For physical quantities that are not already present in this library, it will be necessary to write a class to support a new one.  All physical quantities implement the `\PhpUnitsOfMeasure\PhysicalQuantityInterface` interface, typically extend the `\PhpUnitsOfMeasure\AbstractPhysicalQuantity` class, and typically have only an `initialize()` method which creates the quantity's units of measure.  See above for typical examples of physical quantity classes and of how to add new units to a quantity class.
 
 Note that every physical quantity has a chosen "native unit" which is typically the SI standard.  The main point for this unit is that all of the quantity's other units of measure will convert to and from this chosen native unit.  It's important to be aware of a quantity's native unit when writing conversions for new units of measure.
 
