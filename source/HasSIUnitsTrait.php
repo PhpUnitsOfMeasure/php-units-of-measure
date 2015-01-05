@@ -158,7 +158,7 @@ trait HasSIUnitsTrait
 
         // For each of the standard SI prefixes, attempt to register a new unit of measure
         foreach ($siPrefixes as $prefixDefinition) {
-            // Build a closure for resolving a pattern into a unit name
+            // Build a function for resolving a pattern into a unit name
             $parsePattern = function ($pattern) use ($prefixDefinition) {
                 return strtr(
                     $pattern,
