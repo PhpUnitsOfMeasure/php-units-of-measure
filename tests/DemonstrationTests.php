@@ -44,22 +44,22 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         // Note that each unit can be referred to by several names
         // (for example sopee, sopees, s).
         $a = new Wigginess(1, 'sopee');
-        $this->assertInstanceOf(Wigginess::class, $a);
+        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
 
         $a = new Wigginess(2.123, 'sopees');
-        $this->assertInstanceOf(Wigginess::class, $a);
+        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
 
         $a = new Wigginess(2.6, 's');
-        $this->assertInstanceOf(Wigginess::class, $a);
+        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
 
         $a = new Wigginess(1, 'tumpet');
-        $this->assertInstanceOf(Wigginess::class, $a);
+        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
 
         $a = new Wigginess(2.123, 'tumpets');
-        $this->assertInstanceOf(Wigginess::class, $a);
+        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
 
         $a = new Wigginess(2.6, 't');
-        $this->assertInstanceOf(Wigginess::class, $a);
+        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
     }
 
     public function testStringConversionForQuantities()
@@ -164,7 +164,7 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         // for an example of how this is done.
         $a = new Woogosity(21, 'plurp');
 
-        $this->assertInstanceOf(Woogosity::class, $a);
+        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Woogosity', $a);
         $this->assertSame(21*4.5 * 1e3, $a->toUnit('millilupees'));
         $this->assertSame(21*4.5 * 1e3, $a->toUnit('ml'));
         $this->assertSame(21*4.5 / 1e6, $a->toUnit('megalupees'));
@@ -179,7 +179,7 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         $b = new Wigginess(2, 'tumpet');
         $c = $a->add($b);
 
-        $this->assertInstanceOf(Wigginess::class, $c);
+        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $c);
         $this->assertSame(3 + (2*2.5), $c->toUnit('sopee'));
     }
 
@@ -192,7 +192,7 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         $b = new Wigginess(2, 'tumpet');
         $c = $a->subtract($b);
 
-        $this->assertInstanceOf(Wigginess::class, $c);
+        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $c);
         $this->assertSame(3 - (2*2.5), $c->toUnit('sopee'));
     }
 }

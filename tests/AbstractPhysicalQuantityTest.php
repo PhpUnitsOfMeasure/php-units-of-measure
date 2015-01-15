@@ -24,7 +24,7 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
 {
     protected function getTestUnitOfMeasure($name, $aliases = [])
     {
-        $newUnit = $this->getMockBuilder(UnitOfMeasureInterface::class)
+        $newUnit = $this->getMockBuilder('PhpUnitsOfMeasure\UnitOfMeasureInterface')
             ->getMock();
         $newUnit->method('getName')
             ->willReturn($name);
@@ -172,7 +172,7 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
         $diffString
     ) {
         if ($shouldThrowException) {
-            $this->setExpectedException(PhysicalQuantityMismatch::class);
+            $this->setExpectedException('PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch');
         }
 
         $sum = $firstValue->add($secondValue);
@@ -194,7 +194,7 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
         $diffString
     ) {
         if ($shouldThrowException) {
-            $this->setExpectedException(PhysicalQuantityMismatch::class);
+            $this->setExpectedException('PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch');
         }
 
         $difference = $firstValue->subtract($secondValue);
