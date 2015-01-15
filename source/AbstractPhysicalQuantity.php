@@ -87,7 +87,9 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
      * Initialize the static properties of this quantity class, such as the set of
      * default units of measure.
      */
-    abstract protected static function initialize();
+    protected static function initialize()
+    {
+    }
 
 
     /**
