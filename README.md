@@ -196,7 +196,7 @@ The 3rd and 4th parameters contain templates for the units' names and alternate 
 #### Permanently Adding a New Unit of Measure to a Physical Quantity
 The examples above for adding new units of measure to physical quantities allow you to register new units for the duration of the PHP execution, but are lost once execution terminates; it would be necessary to repeat this process every time you created a new program with `Length` measurements and wanted to use cubits.
 
-A new unit of measure can be permanently added to a Physical Quantity class by essentially the same process as the one-time examples, only it would be done inside the constructor of the quantity class.  For example:
+A new unit of measure can be permanently added to a Physical Quantity class by essentially the same process as the one-time examples, only it would be done inside the initialize() method of the quantity class.  For example:
 
 ``` php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
