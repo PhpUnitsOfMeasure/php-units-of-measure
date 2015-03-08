@@ -60,7 +60,7 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      * @param string $name               This unit of measure's canonical name
      * @param float  $toNativeUnitFactor The factor to scale the unit by where factor * base unit = this unit
      *
-     * @return void
+     * @return self
      */
     public static function linearUnitFactory($name, $toNativeUnitFactor)
     {
@@ -81,7 +81,7 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      *
      * @param string $name This unit of measure's canonical name
      *
-     * @return void
+     * @return self
      */
     public static function nativeUnitFactory($name)
     {
@@ -95,7 +95,7 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      * @param callable $fromNativeUnit The callable that can cast values into this unit of measure from the native unit of measure
      * @param callable $toNativeUnit   The callable that can cast values into the native unit from this unit of measure
      *
-     * @return void
+     * @throws Exception\NonStringUnitName
      */
     public function __construct($name, callable $fromNativeUnit, callable $toNativeUnit)
     {
