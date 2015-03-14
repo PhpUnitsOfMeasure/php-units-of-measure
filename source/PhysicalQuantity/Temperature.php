@@ -1,31 +1,25 @@
 <?php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
-use PhpUnitsOfMeasure\PhysicalQuantity;
+use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
-class Temperature extends PhysicalQuantity
+class Temperature extends AbstractPhysicalQuantity
 {
     use HasSIUnitsTrait;
 
-    /**
-    * Configure all the standard units of measure
-    * to which this quantity can be converted.
-    *
-    * @return void
-    */
-    public function __construct($value, $unit)
-    {
-        parent::__construct($value, $unit);
+    protected static $unitDefinitions;
 
+    protected static function initialize()
+    {
         // Kelvin
         $kelvin = UnitOfMeasure::nativeUnitFactory('K');
         $kelvin->addAlias('°K');
         $kelvin->addAlias('kelvin');
-        $this->registerUnitOfMeasure($kelvin);
+        static::addUnit($kelvin);
 
-        $this->addMissingSIPrefixedUnits(
+        static::addMissingSIPrefixedUnits(
             $kelvin,
             1,
             '%pK',
@@ -46,7 +40,7 @@ class Temperature extends PhysicalQuantity
         );
         $newUnit->addAlias('C');
         $newUnit->addAlias('celsius');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
 
         // Degree Fahrenheit
         $newUnit = new UnitOfMeasure(
@@ -60,13 +54,13 @@ class Temperature extends PhysicalQuantity
         );
         $newUnit->addAlias('F');
         $newUnit->addAlias('fahrenheit');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
 
         // Degree Rankine
         $newUnit = UnitOfMeasure::linearUnitFactory('°R', 5/9);
         $newUnit->addAlias('R');
         $newUnit->addAlias('rankine');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
 
         // Degree Delisle
         $newUnit = new UnitOfMeasure(
@@ -80,7 +74,7 @@ class Temperature extends PhysicalQuantity
         );
         $newUnit->addAlias('De');
         $newUnit->addAlias('delisle');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
 
         // Degree Newton
         $newUnit = new UnitOfMeasure(
@@ -94,7 +88,7 @@ class Temperature extends PhysicalQuantity
         );
         $newUnit->addAlias('N');
         $newUnit->addAlias('newton');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
 
         // Degree Réaumur
         $newUnit = new UnitOfMeasure(
@@ -111,7 +105,7 @@ class Temperature extends PhysicalQuantity
         $newUnit->addAlias('Re');
         $newUnit->addAlias('réaumur');
         $newUnit->addAlias('reaumur');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
 
         // Degree Rømer
         $newUnit = new UnitOfMeasure(
@@ -128,6 +122,6 @@ class Temperature extends PhysicalQuantity
         $newUnit->addAlias('Ro');
         $newUnit->addAlias('rømer');
         $newUnit->addAlias('romer');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
     }
 }

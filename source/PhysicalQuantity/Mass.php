@@ -1,31 +1,25 @@
 <?php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
-use PhpUnitsOfMeasure\PhysicalQuantity;
+use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
-class Mass extends PhysicalQuantity
+class Mass extends AbstractPhysicalQuantity
 {
     use HasSIUnitsTrait;
 
-    /**
-     * Configure all the standard units of measure
-     * to which this quantity can be converted.
-     *
-     * @return void
-     */
-    public function __construct($value, $unit)
-    {
-        parent::__construct($value, $unit);
+    protected static $unitDefinitions;
 
+    protected static function initialize()
+    {
         // Kilogram
         $kilogram = UnitOfMeasure::nativeUnitFactory('kg');
         $kilogram->addAlias('kilogram');
         $kilogram->addAlias('kilograms');
-        $this->registerUnitOfMeasure($kilogram);
+        static::addUnit($kilogram);
 
-        $this->addMissingSIPrefixedUnits(
+        static::addMissingSIPrefixedUnits(
             $kilogram,
             1e-3,
             '%pg',
@@ -41,19 +35,19 @@ class Mass extends PhysicalQuantity
         $newUnit->addAlias('tons');
         $newUnit->addAlias('tonne');
         $newUnit->addAlias('tonnes');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
 
         // Pound
         $newUnit = UnitOfMeasure::linearUnitFactory('lb', 4.535924e-1);
         $newUnit->addAlias('lbs');
         $newUnit->addAlias('pound');
         $newUnit->addAlias('pounds');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
 
         // Ounce
         $newUnit = UnitOfMeasure::linearUnitFactory('oz', 2.834952e-2);
         $newUnit->addAlias('ounce');
         $newUnit->addAlias('ounces');
-        $this->registerUnitOfMeasure($newUnit);
+        static::addUnit($newUnit);
     }
 }

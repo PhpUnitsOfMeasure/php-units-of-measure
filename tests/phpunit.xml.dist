@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.4/phpunit.xsd"
     colors="true"
-    verbose="true"
->
+    verbose="true">
 
     <testsuites>
         <testsuite name="Standard Test Suite">
@@ -11,17 +12,16 @@
         </testsuite>
     </testsuites>
 
-    <logging>
-        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
-    </logging>
-
     <filter>
-        <whitelist>
-            <directory suffix=".php">../source</directory>
-        </whitelist>
         <blacklist>
             <directory suffix=".php">../vendor</directory>
         </blacklist>
+        <whitelist>
+            <directory suffix=".php">../source</directory>
+        </whitelist>
     </filter>
 
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+    </logging>
 </phpunit>
