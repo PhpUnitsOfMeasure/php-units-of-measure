@@ -45,6 +45,17 @@ isTooTallToRideThisTrain( new Length(2, 'm') );
 ## Installation
 This library is best included in your projects via Composer.  See the [Composer website](http://getcomposer.org/) for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/triplepoint/php-units-of-measure).
 
+If you'd prefer to manually include this library as a dependency in your project, then it is recommended that you use a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant PHP autoloader.  The mapping between this project's root namespace and its base directory is:
+- vendor namespace 'PhpUnitsOfMeasure\' maps to the library's base directory 'source/'
+
+See the documentation of your autoloader for further instructions.
+
+### Project Tags and Versions
+This project follows the guidelines set out in [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html).  In general, versions are of the form 'X.Y.Z', and increments to X denote backward-incompatible major changes.
+
+It is recommended that if your project includes this project as a dependency and you are using an automated dependency management tool such as [Composer](http://getcomposer.org/), then you should 'pin' the major version (X) and allow only variations in 'Y' (minor changes) and 'Z' (bugfixes).  See the documentation of your dependency manager for more details.
+
+
 ## Use
 ### Conversion
 As in the examples above, the basic usage of this library is in representing physical quantities and converting between typical units of measure.  For example:
@@ -264,6 +275,16 @@ Pull requests are welcome, especially regarding new units of measure or new phys
 In the United States, the standards body for measurement is NIST, and they've published [NIST Special Publication 1038 "The International System of Units (SI) - Conversion factors for General Use"](http://www.nist.gov/pml/wmd/metric/upload/SP1038.pdf).  This guide contains the approved conversion factors between various units and the base SI units.
 
 Also note that any new physical quantities should have the appropriate SI unit chosen for their native unit of measure.
+
+### Pull Requests and Merging
+The workflow for this repository loosely follows [gitflow](http://nvie.com/posts/a-successful-git-branching-model/) and goes as follows:
+- To develop new contributions, fork or branch from the `develop` branch of the main repository
+- Pull requests and contribution merges are always made to the `develop` branch of the main repository
+- From time to time, `develop` is merged into `master` by a project maintainer using --no-ff, and a new tag and version are released
+
+In this way, no feature-development work is ever directly contributed to `master`; merges to master only ever come from `develop` when a new version is being cut or from a bugfix branch, and are never fast-forward merges.  this maintains the `master` branch as a series of released production versions of the code, while `develop` is always the sum of the approved and merged contributions from developers.
+
+End users of this repository should only use tagged commits in production.  Users interested in the current 'soon-to-be-released' code may use `develop`, with the understanding that it changes quickly.  All other existing branches (if any) should be considered 'feature' branches in development, and not yet ready for use.
 
 ### Local Testing Environment
 There's a Vagrant virtual machine configuration included which is suitable for running the necessary unit tests.  To bring up the machine, make sure you have Vagrant and Virtualbox installed, and from the project root directory:
