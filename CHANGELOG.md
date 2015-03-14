@@ -1,4 +1,4 @@
-## v2.0.0 (January 4th, 2015)
+## v2.0.0 (March 14th, 2015)
 - Registered units of measure are now properties of PhysicalQuantity classes, and not individual instances of those classes.  As such, registering a new unit with a given PhysicalQuantity will make that unit immediately available to all inntances of that class.
    - PhysicalQuantity classes no longer define their units in their constructor, and instead have a new initialize() static method
    - The previously-existing registerUnitOfMeasure() method on physical quantity objects has been replaced with a new static addUnit() method
