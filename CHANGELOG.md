@@ -1,5 +1,5 @@
-## v1.3.2 (March 15th, 2015)
-- Loosened Composer requirement on PHP version to 5.3.* (was previously 5.3.5).
+## v1.3.3 (March 15th, 2015)
+- Loosened Composer requirement on PHP version to >=5.3.0 (was previously 5.3.5).
 
 ## v1.3.1 (August 23rd, 2014)
 - Added information in the README about the new SI prefix units generation
