@@ -27,7 +27,7 @@
     },
 
     "require": {
-        "php": ">=5.3.5"
+        "php": "5.3.*"
     },
 
     "require-dev": {
