@@ -11,6 +11,8 @@
 - All library exceptions extend from AbstractPhysicalQuantityException, making catching easier
 - Added an interface for PhysicalQuantities, to support future work where not all physical quantity classes necessarily have the same parent
 
+## v1.3.2 (March 15th, 2015)
+- Loosened Composer requirement on PHP version to 5.3.* (was previously 5.3.5).
 
 ## v1.3.1 (August 23rd, 2014)
 - Added information in the README about the new SI prefix units generation
