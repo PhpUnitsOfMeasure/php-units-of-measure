@@ -86,5 +86,4 @@ class EnergyTest extends AbstractPhysicalQuantityTestCase
         $quantity = new Energy(1, 'Wh');
         $this->assertEquals(3600, $quantity->toUnit('joule'));
     }
-
 }
