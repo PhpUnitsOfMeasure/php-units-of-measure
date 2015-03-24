@@ -166,4 +166,9 @@ class LengthTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(2, $quantity->toUnit('mil'));
     }
 
+    public function testToAstronomicalUnit()
+    {
+        $quantity = new Length(150000000, 'km');
+        $this->assertEquals(1.0026880683402668, $quantity->toUnit('AU'));
+    }
 }

@@ -67,5 +67,10 @@ class Length extends AbstractPhysicalQuantity
         // Scandinavian mil
         $newUnit = UnitOfMeasure::linearUnitFactory('mil', 10000);
         static::addUnit($newUnit);
+
+        // Astronomical Unit
+        $newUnit = UnitOfMeasure::linearUnitFactory('AU', 149597870700);
+        $newUnit->addAlias('au');
+        static::addUnit($newUnit);
     }
 }
