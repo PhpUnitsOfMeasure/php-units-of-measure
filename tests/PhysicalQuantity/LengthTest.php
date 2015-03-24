@@ -129,6 +129,10 @@ class LengthTest extends AbstractPhysicalQuantityTestCase
         'nmi',
         'nautical mile',
         'mil',
+        'AU',
+        'au',
+        'astronomical unit',
+        'astronomical units',
     ];
 
     protected function instantiateTestQuantity()

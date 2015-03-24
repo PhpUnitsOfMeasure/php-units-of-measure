@@ -60,6 +60,7 @@ class Length extends AbstractPhysicalQuantity
         // Nautical mile
         $newUnit = UnitOfMeasure::linearUnitFactory('M', 1852);
         $newUnit->addAlias('nautical mile');
+        $newUnit->addAlias('nautical miles');
         $newUnit->addAlias('nmi');
         $newUnit->addAlias('NM');
         static::addUnit($newUnit);
@@ -71,6 +72,8 @@ class Length extends AbstractPhysicalQuantity
         // Astronomical Unit
         $newUnit = UnitOfMeasure::linearUnitFactory('AU', 149597870700);
         $newUnit->addAlias('au');
+        $newUnit->addAlias('astronomical unit');
+        $newUnit->addAlias('astronomical units');
         static::addUnit($newUnit);
     }
 }
