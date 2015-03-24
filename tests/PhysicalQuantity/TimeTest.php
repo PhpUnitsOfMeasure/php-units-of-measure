@@ -195,5 +195,4 @@ class TimeTest extends AbstractPhysicalQuantityTestCase
         $angle = new Time(365.25, 'd');
         $this->assertEquals(1, $angle->toUnit('jyr'));
     }
-
 }

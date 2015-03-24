@@ -57,5 +57,4 @@ class SpeedTest extends AbstractPhysicalQuantityTestCase
         $speed = new Speed(2, 'm/s');
         $this->assertEquals(3.8876923435786983, $speed->toUnit('knot'));
     }
-
 }
