@@ -56,5 +56,16 @@ class Length extends AbstractPhysicalQuantity
         $newUnit->addAlias('yard');
         $newUnit->addAlias('yards');
         static::addUnit($newUnit);
+
+        // Nautical mile
+        $newUnit = UnitOfMeasure::linearUnitFactory('M', 1852);
+        $newUnit->addAlias('nautical mile');
+        $newUnit->addAlias('nmi');
+        $newUnit->addAlias('NM');
+        static::addUnit($newUnit);
+
+        // Scandinavian mil
+        $newUnit = UnitOfMeasure::linearUnitFactory('mil', 10000);
+        static::addUnit($newUnit);
     }
 }

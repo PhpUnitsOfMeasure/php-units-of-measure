@@ -124,6 +124,11 @@ class LengthTest extends AbstractPhysicalQuantityTestCase
         'yd',
         'yard',
         'yards',
+        'M',
+        'NM',
+        'nmi',
+        'nautical mile',
+        'mil',
     ];
 
     protected function instantiateTestQuantity()
@@ -148,4 +153,17 @@ class LengthTest extends AbstractPhysicalQuantityTestCase
         $quantity = new Length(2, 'ft');
         $this->assertEquals(24, $quantity->toUnit('in'));
     }
+
+    public function testToNauticalMiles()
+    {
+        $quantity = new Length(3704, 'm');
+        $this->assertEquals(2, $quantity->toUnit('nmi'));
+    }
+
+    public function testToScandinavianMil()
+    {
+        $quantity = new Length(20000, 'm');
+        $this->assertEquals(2, $quantity->toUnit('mil'));
+    }
+
 }
