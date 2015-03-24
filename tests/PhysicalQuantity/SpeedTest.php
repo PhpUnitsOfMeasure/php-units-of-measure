@@ -8,10 +8,25 @@ class SpeedTest extends AbstractPhysicalQuantityTestCase
 {
     protected $supportedUnitsWithAliases = [
         'm/s',
+        'meters/sec',
         'meters per second',
         'meter per second',
         'metres per second',
         'metre per second',
+        'km/h',
+        'km/hour',
+        'kilometer per hour',
+        'kilometers per hour',
+        'kilometre per hour',
+        'kilometres per hour',
+        'ft/s',
+        'feet/sec',
+        'feet per second',
+        'mph',
+        'miles/hour',
+        'miles per hour',
+        'knot',
+        'knots',
     ];
 
     protected function instantiateTestQuantity()
