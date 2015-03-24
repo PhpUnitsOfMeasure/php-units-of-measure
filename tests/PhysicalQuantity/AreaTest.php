@@ -76,8 +76,6 @@ class AreaTest extends AbstractPhysicalQuantityTestCase
     /**
      * There aren't lots of super nice conversions between ac -> m^2,
      * so we'll check that it's close.
-     *
-     * @return [type] [description]
      */
     public function testToAcres()
     {
@@ -86,5 +84,17 @@ class AreaTest extends AbstractPhysicalQuantityTestCase
         $area = round($area->toUnit("m^2"), 6);
 
         $this->assertEquals(52609.133491, $area);
+    }
+
+    public function testToAre()
+    {
+        $area = new Area(100, 'm^2');
+        $this->assertEquals(1, $area->toUnit('are'));
+    }
+
+    public function testToDecare()
+    {
+        $area = new Area(1000, 'm^2');
+        $this->assertEquals(1, $area->toUnit('decare'));
     }
 }

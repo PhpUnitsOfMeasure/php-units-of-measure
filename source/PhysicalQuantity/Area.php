@@ -83,12 +83,23 @@ class Area extends AbstractPhysicalQuantity
         $newUnit->addAlias('yards squared');
         static::addUnit($newUnit);
 
+        // Are
+        $newUnit = UnitOfMeasure::linearUnitFactory('a', 100);
+        $newUnit->addAlias('are');
+        $newUnit->addAlias('ares');
+        static::addUnit($newUnit);
+
+        // Decare
+        $newUnit = UnitOfMeasure::linearUnitFactory('daa', 1000);
+        $newUnit->addAlias('decare');
+        $newUnit->addAlias('decares');
+        static::addUnit($newUnit);
+
         // Hectare
         $newUnit = UnitOfMeasure::linearUnitFactory('ha', 10000);
         $newUnit->addAlias('hectare');
         $newUnit->addAlias('hectares');
         static::addUnit($newUnit);
-
 
         // International Acre
         $newUnit = UnitOfMeasure::linearUnitFactory('ac', 4046.8564224);
