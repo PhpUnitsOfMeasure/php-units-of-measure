@@ -4,7 +4,7 @@ namespace PhpUnitsOfMeasure\PhysicalQuantity;
 use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 
-class Speed extends AbstractPhysicalQuantity
+class Velocity extends AbstractPhysicalQuantity
 {
     protected static $unitDefinitions;
 

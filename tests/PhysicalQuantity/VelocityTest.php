@@ -2,9 +2,9 @@
 
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
-use PhpUnitsOfMeasure\PhysicalQuantity\Speed;
+use PhpUnitsOfMeasure\PhysicalQuantity\Velocity;
 
-class SpeedTest extends AbstractPhysicalQuantityTestCase
+class VelocityTest extends AbstractPhysicalQuantityTestCase
 {
     protected $supportedUnitsWithAliases = [
         'm/s',
@@ -31,30 +31,30 @@ class SpeedTest extends AbstractPhysicalQuantityTestCase
 
     protected function instantiateTestQuantity()
     {
-        return new Speed(1, 'm/s');
+        return new Velocity(1, 'm/s');
     }
 
     public function testToKilometersPerHour()
     {
-        $speed = new Speed(1, 'km/h');
+        $speed = new Velocity(1, 'km/h');
         $this->assertEquals(0.277778, $speed->toUnit('m/s'));
     }
 
     public function testToFeetPerSecond()
     {
-        $speed = new Speed(2, 'm/s');
+        $speed = new Velocity(2, 'm/s');
         $this->assertEquals(6.561679790026246, $speed->toUnit('ft/s'));
     }
 
     public function testToKmPerHour()
     {
-        $speed = new Speed(2, 'mph');
+        $speed = new Velocity(2, 'mph');
         $this->assertEquals(3.2186854250516594, $speed->toUnit('km/h'));
     }
 
     public function testToKnot()
     {
-        $speed = new Speed(2, 'm/s');
+        $speed = new Velocity(2, 'm/s');
         $this->assertEquals(3.8876923435786983, $speed->toUnit('knot'));
     }
 }
