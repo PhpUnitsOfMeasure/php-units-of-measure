@@ -63,12 +63,6 @@ class Time extends AbstractPhysicalQuantity
         $newUnit->addAlias('weeks');
         static::addUnit($newUnit);
 
-        // Months, understood as 30 days
-        $newUnit = UnitOfMeasure::linearUnitFactory('mon', 2592000);
-        $newUnit->addAlias('month');
-        $newUnit->addAlias('months');
-        static::addUnit($newUnit);
-
         // Gregorian year, understood as 365.2425 days
         $newUnit = UnitOfMeasure::linearUnitFactory('yr', 31556952);
         $newUnit->addAlias('year');

@@ -130,9 +130,6 @@ class TimeTest extends AbstractPhysicalQuantityTestCase
         'wks',
         'week',
         'weeks',
-        'mon',
-        'month',
-        'months',
         'yr',
         'year',
         'years',
@@ -176,12 +173,6 @@ class TimeTest extends AbstractPhysicalQuantityTestCase
     {
         $angle = new Time(14, 'd');
         $this->assertEquals(2, $angle->toUnit('week'));
-    }
-
-    public function testToMonths()
-    {
-        $angle = new Time(30, 'd');
-        $this->assertEquals(1, $angle->toUnit('month'));
     }
 
     public function testToGregorianYears()
