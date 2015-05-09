@@ -82,6 +82,9 @@ class MassTest extends AbstractPhysicalQuantityTestCase
         'oz',
         'ounce',
         'ounces',
+        'st',
+        'stone',
+        'stones',
     ];
 
     protected function instantiateTestQuantity()
@@ -99,5 +102,17 @@ class MassTest extends AbstractPhysicalQuantityTestCase
     {
         $quantity = new Mass(5, 'kg');
         $this->assertEquals(5*1e6, $quantity->toUnit('mg'));
+    }
+
+    public function testToPounds()
+    {
+        $quantity = new Mass(16, 'oz');
+        $this->assertEquals(1, $quantity->toUnit('pound'));
+    }
+
+    public function testToStones()
+    {
+        $quantity = new Mass(14, 'pound');
+        $this->assertEquals(1, $quantity->toUnit('st'));
     }
 }
