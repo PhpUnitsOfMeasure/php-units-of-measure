@@ -31,7 +31,7 @@ class Power extends AbstractPhysicalQuantity
         );
 
         $metricHorsePower = UnitOfMeasure::linearUnitFactory('PS', 735.49875);
-        $metricHorsePower->addAlias('pferdstärke'); // aka "metric horsepower"
+        $metricHorsePower->addAlias('pferdestärke'); // aka "metric horsepower"
 
         static::addUnit($metricHorsePower);
     }

@@ -17,7 +17,7 @@ class PowerTest extends AbstractPhysicalQuantityTestCase
         'milliwatt',
         'milliwatts',
         'PS',
-        'pferdstärker',
+        'pferdestärke',
     ];
 
     protected function instantiateTestQuantity()
