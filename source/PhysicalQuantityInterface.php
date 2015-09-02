@@ -7,6 +7,20 @@ namespace PhpUnitsOfMeasure;
 interface PhysicalQuantityInterface
 {
     /**
+     * Returns the original scalar value
+     *
+     * @return float
+     */
+    public function getOriginalValue();
+
+    /**
+     * Returns the original unit of measure
+     *
+     * @return UnitOfMeasure
+     */
+    public function getOriginalUnit();
+
+    /**
      * Fetch the measurement, in the given unit of measure
      *
      * @param  UnitOfMeasureInterface|string $unit The desired unit of measure, or a string name of one
@@ -18,7 +32,7 @@ interface PhysicalQuantityInterface
     /**
      * Fetch the measurement in the quantity's native unit of measure
      *
-     * @return float the measurement cast to the native unit of measurement
+     * @return PhysicalQuantityInterface the measurement cast to the native unit of measurement
      */
     public function toNativeUnit();
 

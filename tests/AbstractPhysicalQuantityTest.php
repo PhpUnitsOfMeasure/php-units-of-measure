@@ -101,6 +101,19 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
         $value = new Wonkicity(1.234, 42);
     }
 
+    public function testGetOriginalValue()
+    {
+        $value = new Wonkicity(1.234, 'u');
+        $this->assertEquals(1.234, $value->getOriginalValue());
+    }
+
+    public function testGetOriginalUnit()
+    {
+        $value = new Wonkicity(1.234, 'u');
+        $this->assertEquals('u', $value->getOriginalUnit()->getName());
+    }
+
+
     /**
      * @dataProvider quantityConversionsProvider
      * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::toUnit

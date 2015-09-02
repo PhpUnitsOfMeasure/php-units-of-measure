@@ -130,11 +130,39 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
     }
 
     /**
+     * @return float
+     */
+    public function getOriginalValue()
+    {
+        return $this->originalValue;
+    }
+
+    /**
+     * @return UnitOfMeasure
+     */
+    public function getOriginalUnit()
+    {
+        return static::getUnit($this->originalUnit);
+    }
+
+    /**
+     * @return UnitOfMeasure
+     */
+    public function getNativeUnit()
+    {
+        return static::getUnit($this->originalUnit);
+    }
+
+    /**
      * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::toUnit
      */
     public function toUnit($toUnit)
     {
-        return $this->toUnitOfMeasure(static::getUnit($toUnit));
+        if (is_string($toUnit)) {
+            $toUnit = static::getUnit($toUnit);
+        }
+
+        return $this->toUnitOfMeasure($toUnit);
     }
 
     /**
@@ -146,7 +174,7 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
      */
     private function toUnitOfMeasure(UnitOfMeasureInterface $unit)
     {
-        $thisValueInNativeUnit = $this->toNativeUnit();
+        $thisValueInNativeUnit = $this->toNativeUnit()->getOriginalValue();
         return $unit->convertValueFromNativeUnitOfMeasure($thisValueInNativeUnit);
     }
 
@@ -155,8 +183,11 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
      */
     public function toNativeUnit()
     {
-        return static::getUnit($this->originalUnit)
-            ->convertValueToNativeUnitOfMeasure($this->originalValue);
+        return new static(
+            static::getUnit($this->originalUnit)
+                  ->convertValueToNativeUnitOfMeasure($this->originalValue),
+            static::getUnit($this->originalUnit)->getName()
+        );
     }
 
     /**
@@ -179,7 +210,7 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
             ]);
         }
 
-        $quantityValueInThisOriginalUnit = $quantity->toUnitOfMeasure(static::getUnit($this->originalUnit));
+        $quantityValueInThisOriginalUnit = $quantity->toUnit(static::getUnit($this->originalUnit));
         $newValue = $this->originalValue + $quantityValueInThisOriginalUnit;
 
         return new static($newValue, static::getUnit($this->originalUnit)->getName());
@@ -197,7 +228,7 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
             ]);
         }
 
-        $quantityValueInThisOriginalUnit = $quantity->toUnitOfMeasure(static::getUnit($this->originalUnit));
+        $quantityValueInThisOriginalUnit = $quantity->toUnit(static::getUnit($this->originalUnit));
         $newValue = $this->originalValue - $quantityValueInThisOriginalUnit;
 
         return new static($newValue, static::getUnit($this->originalUnit)->getName());
