@@ -1,3 +1,0 @@
-[submodule "vagrant"]
-	path = vagrant
-	url = https://github.com/triplepoint/quick-vagrant.git
