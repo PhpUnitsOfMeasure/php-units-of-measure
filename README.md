@@ -8,7 +8,7 @@ This is a PHP library for representing and converting physical units of measure.
 use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 
 $height = new Length(6.16, 'feet');
-echo $height->toUnit('m');
+echo $height->toUnit('m')->getValue();
 
 // would print 1.87757, which is 6.16 feet in meters.
 ```
@@ -35,7 +35,7 @@ use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 // Free to operate on lengths in any unit of measure
 function isTooTallToRideThisTrain( Length $height )
 {
-  return $height->toUnit('ft') > 5;
+  return $height->toUnit('ft')->getValue() > 5;
 }
 
 // Calling the function now allows any unit to be used:
@@ -64,7 +64,7 @@ As in the examples above, the basic usage of this library is in representing phy
 use PhpUnitsOfMeasure\PhysicalQuantity\Mass;
 
 $quantity = new Mass(6, 'lbs');
-echo $quantity->toUnit('g');
+echo $quantity->toUnit('g')->getValue();
 ```
 It's also possible to implicity cast a quantity to a string, which will display its original value:
 
@@ -139,7 +139,7 @@ Length::addUnit($cubit);
 
 // Now that the unit is registered, you can cast the measurement to any other
 // measure of length
-echo $length->toUnit('feet'); // '21'
+echo $length->toUnit('feet'); // '21 feet'
 ```
 
 ##### Shorthand Factory Methods
@@ -162,7 +162,7 @@ Length::addUnit($meter);
 ```
 
 ##### Automatically Generating Metric Units
-For units that use the metric system, there's a convenience trait available for classes which implement`PhysicalQuantityInterface` which will automatically generate the full continuum of metric units from a single unit.  For instance:
+For units that use the metric system, there's a convenience trait available for classes which implement`PhysicalQuantity` which will automatically generate the full continuum of metric units from a single unit.  For instance:
 
 ``` php
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
@@ -256,7 +256,7 @@ use PhpUnitsOfMeasure\PhysicalQuantity\Length;
 $length = new Length(4, 'footses');
 
 // Fetch the unit of measure object that represents the 'ft' unit
-$footUnit = Length::getUnit('ft');
+$footUnit = Length::getUnitByNameOrAlias('ft');
 
 // Any alias names for this unit can be added here, to make it easier
 // to use variations
@@ -264,7 +264,7 @@ $footUnit->addAlias('footses');
 
 // Now that the unit has been modified with its new alias, you can cast
 // the measurement to any other measure of length
-echo $length->toUnit('m'); // '1.2192'
+echo $length->toUnit('m'); // '1.2192 m'
 ```
 
 And of course, if you need to add the alias permanently, you can do so in the initialize() method of the quantity's class, as shown above.
@@ -287,7 +287,7 @@ In this way, no feature-development work is ever directly contributed to `master
 End users of this repository should only use tagged commits in production.  Users interested in the current 'soon-to-be-released' code may use `develop`, with the understanding that it changes quickly.  All other existing branches (if any) should be considered 'feature' branches in development, and not yet ready for use.
 
 ### Local Testing Environment
-There's a Vagrant virtual machine configuration included which is suitable for running the necessary unit tests.  To bring up the machine, make sure you have Vagrant and Virtualbox installed, and from the project root directory:
+~~There's a Vagrant virtual machine configuration included which is suitable for running the necessary unit tests.  To bring up the machine, make sure you have Vagrant and Virtualbox installed, and from the project root directory:~~
 
 
 ``` bash
