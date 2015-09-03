@@ -238,5 +238,4 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame('quatloos', (string) $uom);
     }
-
 }
