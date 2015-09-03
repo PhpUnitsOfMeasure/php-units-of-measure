@@ -57,22 +57,22 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::getUnit
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::getUnitByNameOrAlias
      */
     public function testGetUnit()
     {
-        $unit = Wonkicity::getUnit('u');
+        $unit = Wonkicity::getUnitByNameOrAlias('u');
 
         $this->assertSame('u', $unit->getName());
     }
 
     /**
-     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::getUnit
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::getUnitByNameOrAlias
      * @expectedException \PhpUnitsOfMeasure\Exception\UnknownUnitOfMeasure
      */
     public function testGetUnitFailsOnUnknownUnit()
     {
-        Wonkicity::getUnit('someUnknownUnit');
+        Wonkicity::getUnitByNameOrAlias('someUnknownUnit');
     }
 
     /**
@@ -104,13 +104,13 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
     public function testGetOriginalValue()
     {
         $value = new Wonkicity(1.234, 'u');
-        $this->assertEquals(1.234, $value->getOriginalValue());
+        $this->assertEquals(1.234, $value->getValue());
     }
 
     public function testGetOriginalUnit()
     {
         $value = new Wonkicity(1.234, 'u');
-        $this->assertEquals('u', $value->getOriginalUnit()->getName());
+        $this->assertEquals('u', $value->getUnit()->getName());
     }
 
 
@@ -136,7 +136,7 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
         $arbitraryUnit,
         $valueInArbitraryUnit
     ) {
-        $this->assertSame($valueInArbitraryUnit, $value->toUnit($arbitraryUnit));
+        $this->assertSame($valueInArbitraryUnit, $value->toUnit($arbitraryUnit)->getValue());
     }
 
     /**
@@ -170,7 +170,7 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
     ) {
         $unserializedValue = unserialize(serialize($value));
 
-        $this->assertSame($valueInArbitraryUnit, $unserializedValue->toUnit($arbitraryUnit));
+        $this->assertSame($valueInArbitraryUnit, $unserializedValue->toUnit($arbitraryUnit)->getValue());
     }
 
     /**

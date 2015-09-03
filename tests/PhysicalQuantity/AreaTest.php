@@ -70,7 +70,7 @@ class AreaTest extends AbstractPhysicalQuantityTestCase
     {
         $area = new Area(3, 'ha');
 
-        $this->assertEquals(30000, $area->toUnit("m^2"));
+        $this->assertEquals(30000, $area->toUnit("m^2")->getValue());
     }
 
     /**
@@ -81,7 +81,7 @@ class AreaTest extends AbstractPhysicalQuantityTestCase
     {
         $area = new Area(13, 'ac');
 
-        $area = round($area->toUnit("m^2"), 6);
+        $area = round($area->toUnit("m^2")->getValue(), 6);
 
         $this->assertEquals(52609.133491, $area);
     }
@@ -89,12 +89,12 @@ class AreaTest extends AbstractPhysicalQuantityTestCase
     public function testToAre()
     {
         $area = new Area(100, 'm^2');
-        $this->assertEquals(1, $area->toUnit('are'));
+        $this->assertEquals(1, $area->toUnit('are')->getValue());
     }
 
     public function testToDecare()
     {
         $area = new Area(1000, 'm^2');
-        $this->assertEquals(1, $area->toUnit('decare'));
+        $this->assertEquals(1, $area->toUnit('decare')->getValue());
     }
 }

@@ -66,24 +66,24 @@ class EnergyTest extends AbstractPhysicalQuantityTestCase
     public function testToKilowattHour()
     {
         $quantity = new Energy(1000, 'Wh');
-        $this->assertEquals(1, $quantity->toUnit('kWh'));
+        $this->assertEquals(1, $quantity->toUnit('kWh')->getValue());
     }
 
     public function testToWattHour()
     {
         $quantity = new Energy(1, 'kWh');
-        $this->assertEquals(1000, $quantity->toUnit('Wh'));
+        $this->assertEquals(1000, $quantity->toUnit('Wh')->getValue());
     }
 
     public function testToMegaJoule()
     {
         $quantity = new Energy(1, 'kWh');
-        $this->assertEquals(3.6, $quantity->toUnit('megajoule'));
+        $this->assertEquals(3.6, $quantity->toUnit('megajoule')->getValue());
     }
 
     public function testToJoule()
     {
         $quantity = new Energy(1, 'Wh');
-        $this->assertEquals(3600, $quantity->toUnit('joule'));
+        $this->assertEquals(3600, $quantity->toUnit('joule')->getValue());
     }
 }

@@ -95,24 +95,24 @@ class MassTest extends AbstractPhysicalQuantityTestCase
     public function testToGrams()
     {
         $quantity = new Mass(5, 'kg');
-        $this->assertEquals(5000, $quantity->toUnit('g'));
+        $this->assertEquals(5000, $quantity->toUnit('g')->getValue());
     }
 
     public function testToMilligrams()
     {
         $quantity = new Mass(5, 'kg');
-        $this->assertEquals(5*1e6, $quantity->toUnit('mg'));
+        $this->assertEquals(5*1e6, $quantity->toUnit('mg')->getValue());
     }
 
     public function testToPounds()
     {
         $quantity = new Mass(16, 'oz');
-        $this->assertEquals(1, $quantity->toUnit('pound'));
+        $this->assertEquals(1, $quantity->toUnit('pound')->getValue());
     }
 
     public function testToStones()
     {
         $quantity = new Mass(14, 'pound');
-        $this->assertEquals(1, $quantity->toUnit('st'));
+        $this->assertEquals(1, $quantity->toUnit('st')->getValue());
     }
 }

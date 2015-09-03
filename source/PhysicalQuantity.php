@@ -4,40 +4,39 @@ namespace PhpUnitsOfMeasure;
 /**
  * classes which implement this interface represent individual physical quantities.
  */
-interface PhysicalQuantityInterface
+interface PhysicalQuantity
 {
     /**
-     * Returns the original scalar value
+     * Returns the scalar value this PhysicalQuantity was initialized
      *
      * @return float
      */
-    public function getOriginalValue();
+    public function getValue();
 
     /**
-     * Returns the original unit of measure
+     * Returns the unit of measure this PhysicalQuantity was initialized
      *
      * @return UnitOfMeasure
      */
-    public function getOriginalUnit();
+    public function getUnit();
 
     /**
-     * Fetch the measurement, in the given unit of measure
+     * Returns a new PhysicalQuantity in the given unit of measure
      *
      * @param  UnitOfMeasureInterface|string $unit The desired unit of measure, or a string name of one
-     *
-     * @return float The measurement cast in the requested units
+     * @return PhysicalQuantity
      */
     public function toUnit($unit);
 
     /**
-     * Fetch the measurement in the quantity's native unit of measure
+     * Returns a new PhysicalQuantity in the quantity's native unit of measure
      *
-     * @return PhysicalQuantityInterface the measurement cast to the native unit of measurement
+     * @return PhysicalQuantity
      */
     public function toNativeUnit();
 
     /**
-     * Display the value as a string, in the original unit of measure
+     * Display the value as a string, in the unit of measure this quantity was initialized with
      *
      * @return string The pretty-print version of the value, in the original unit of measure
      */
@@ -50,13 +49,13 @@ interface PhysicalQuantityInterface
      *
      * Also note that the two quantities must represent the same physical quantity.
      *
-     * @param PhysicalQuantityInterface $quantity The quantity to add to this one
+     * @param PhysicalQuantity $quantity The quantity to add to this one
      *
      * @throws \PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch when there is a mismatch between physical quantities
      *
-     * @return PhysicalQuantityInterface the new quantity
+     * @return PhysicalQuantity the new quantity
      */
-    public function add(PhysicalQuantityInterface $quantity);
+    public function add(PhysicalQuantity $quantity);
 
     /**
      * Subtract a given quantity from this quantity, and return a new quantity object.
@@ -65,13 +64,13 @@ interface PhysicalQuantityInterface
      *
      * Also note that the two quantities must represent the same physical quantity.
      *
-     * @param PhysicalQuantityInterface $quantity The quantity to subtract from this one
+     * @param PhysicalQuantity $quantity The quantity to subtract from this one
      *
      * @throws \PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch when there is a mismatch between physical quantities
      *
-     * @return PhysicalQuantityInterface the new quantity
+     * @return PhysicalQuantity the new quantity
      */
-    public function subtract(PhysicalQuantityInterface $quantity);
+    public function subtract(PhysicalQuantity $quantity);
 
     /**
      * Determine whether the given PhysicalQuantityInterface object represents the same
@@ -80,9 +79,9 @@ interface PhysicalQuantityInterface
      *
      * Note that this is not considering magnitude, and is only comparing dimensions.
      *
-     * @param PhysicalQuantityInterface $testQuantity
+     * @param PhysicalQuantity $testQuantity
      *
      * @return boolean True if the quantities are the same, false if not.
      */
-    public function isEquivalentQuantity(PhysicalQuantityInterface $testQuantity);
+    public function isEquivalentQuantity(PhysicalQuantity $testQuantity);
 }

@@ -148,42 +148,42 @@ class TimeTest extends AbstractPhysicalQuantityTestCase
     public function testToSeconds()
     {
         $angle = new Time(5, 'm');
-        $this->assertEquals(300, $angle->toUnit('seconds'));
+        $this->assertEquals(300, $angle->toUnit('seconds')->getValue());
     }
 
     public function testToMinutes()
     {
         $angle = new Time(360, 'sec');
-        $this->assertEquals(6, $angle->toUnit('min'));
+        $this->assertEquals(6, $angle->toUnit('min')->getValue());
     }
 
     public function testToHours()
     {
         $angle = new Time(120, 'mins');
-        $this->assertEquals(2, $angle->toUnit('hrs'));
+        $this->assertEquals(2, $angle->toUnit('hrs')->getValue());
     }
 
     public function testToDays()
     {
         $angle = new Time(72, 'hours');
-        $this->assertEquals(3, $angle->toUnit('days'));
+        $this->assertEquals(3, $angle->toUnit('days')->getValue());
     }
 
     public function testToWeeks()
     {
         $angle = new Time(14, 'd');
-        $this->assertEquals(2, $angle->toUnit('week'));
+        $this->assertEquals(2, $angle->toUnit('week')->getValue());
     }
 
     public function testToGregorianYears()
     {
         $angle = new Time(365.2425, 'd');
-        $this->assertEquals(1, $angle->toUnit('yr'));
+        $this->assertEquals(1, $angle->toUnit('yr')->getValue());
     }
 
     public function testToJulianYears()
     {
         $angle = new Time(365.25, 'd');
-        $this->assertEquals(1, $angle->toUnit('jyr'));
+        $this->assertEquals(1, $angle->toUnit('jyr')->getValue());
     }
 }

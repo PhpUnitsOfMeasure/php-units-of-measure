@@ -1,7 +1,7 @@
 <?php
 namespace PhpUnitsOfMeasure;
 
-abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
+abstract class AbstractPhysicalQuantity implements PhysicalQuantity
 {
     /**
      * The collection of units in which this quantity can be represented.
@@ -39,7 +39,7 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
      *
      * @return UnitOfMeasureInterface
      */
-    public static function getUnit($unit)
+    public static function getUnitByNameOrAlias($unit)
     {
         // If this class hasn't been initialized yet, do so now
         if (!is_array(static::$unitDefinitions)) {
@@ -130,36 +130,46 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
     }
 
     /**
+     * Returns the scalar value this PhysicalQuantity was initialized
+     *
      * @return float
      */
-    public function getOriginalValue()
+    public function getValue()
     {
         return $this->originalValue;
     }
 
     /**
+     * Returns the unit of measure this PhysicalQuantity was initialized
+     *
      * @return UnitOfMeasure
      */
-    public function getOriginalUnit()
+    public function getUnit()
     {
-        return static::getUnit($this->originalUnit);
+        return static::getUnitByNameOrAlias($this->originalUnit);
     }
 
     /**
-     * @return UnitOfMeasure
+     * Returns a new PhysicalQuantity in the quantity's native unit of measure
+     *
+     * @return PhysicalQuantity
      */
     public function getNativeUnit()
     {
-        return static::getUnit($this->originalUnit);
+        return static::getUnitByNameOrAlias($this->originalUnit);
     }
 
     /**
-     * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::toUnit
+     * Returns a new PhysicalQuantity in the given unit of measure
+     *
+     * @internal param UnitOfMeasureInterface|string $toUnit The desired unit of measure, or a string name of one
+     * @return PhysicalQuantity
+     * @throws Exception\UnknownUnitOfMeasure
      */
     public function toUnit($toUnit)
     {
         if (is_string($toUnit)) {
-            $toUnit = static::getUnit($toUnit);
+            $toUnit = static::getUnitByNameOrAlias($toUnit);
         }
 
         return $this->toUnitOfMeasure($toUnit);
@@ -170,12 +180,15 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
      *
      * @param UnitOfMeasureInterface $unit The object representing the target unit of measure.
      *
-     * @return float This quantity's value in the given unit of measure.
+     * @return PhysicalQuantity This quantity's value in the given unit of measure.
      */
     private function toUnitOfMeasure(UnitOfMeasureInterface $unit)
     {
-        $thisValueInNativeUnit = $this->toNativeUnit()->getOriginalValue();
-        return $unit->convertValueFromNativeUnitOfMeasure($thisValueInNativeUnit);
+        $thisValueInNativeUnit = $this->toNativeUnit()->getValue();
+        return new static(
+            $unit->convertValueFromNativeUnitOfMeasure($thisValueInNativeUnit),
+            $unit->getName()
+        );
     }
 
     /**
@@ -184,9 +197,9 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
     public function toNativeUnit()
     {
         return new static(
-            static::getUnit($this->originalUnit)
+            static::getUnitByNameOrAlias($this->originalUnit)
                   ->convertValueToNativeUnitOfMeasure($this->originalValue),
-            static::getUnit($this->originalUnit)->getName()
+            static::getUnitByNameOrAlias($this->originalUnit)->getName()
         );
     }
 
@@ -195,13 +208,13 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
      */
     public function __toString()
     {
-        return trim($this->originalValue . ' ' . static::getUnit($this->originalUnit)->getName());
+        return trim($this->originalValue . ' ' . static::getUnitByNameOrAlias($this->originalUnit)->getName());
     }
 
     /**
      * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::add
      */
-    public function add(PhysicalQuantityInterface $quantity)
+    public function add(PhysicalQuantity $quantity)
     {
         if (!$this->isEquivalentQuantity($quantity)) {
             throw new Exception\PhysicalQuantityMismatch([
@@ -210,16 +223,16 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
             ]);
         }
 
-        $quantityValueInThisOriginalUnit = $quantity->toUnit(static::getUnit($this->originalUnit));
+        $quantityValueInThisOriginalUnit = $quantity->toUnit(static::getUnitByNameOrAlias($this->originalUnit))->getValue();
         $newValue = $this->originalValue + $quantityValueInThisOriginalUnit;
 
-        return new static($newValue, static::getUnit($this->originalUnit)->getName());
+        return new static($newValue, static::getUnitByNameOrAlias($this->originalUnit)->getName());
     }
 
     /**
      * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::subtract
      */
-    public function subtract(PhysicalQuantityInterface $quantity)
+    public function subtract(PhysicalQuantity $quantity)
     {
         if (!$this->isEquivalentQuantity($quantity)) {
             throw new Exception\PhysicalQuantityMismatch([
@@ -228,16 +241,16 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
             ]);
         }
 
-        $quantityValueInThisOriginalUnit = $quantity->toUnit(static::getUnit($this->originalUnit));
+        $quantityValueInThisOriginalUnit = $quantity->toUnit(static::getUnitByNameOrAlias($this->originalUnit))->getValue();
         $newValue = $this->originalValue - $quantityValueInThisOriginalUnit;
 
-        return new static($newValue, static::getUnit($this->originalUnit)->getName());
+        return new static($newValue, static::getUnitByNameOrAlias($this->originalUnit)->getName());
     }
 
     /**
      * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::isEquivalentQuantity
      */
-    public function isEquivalentQuantity(PhysicalQuantityInterface $testQuantity)
+    public function isEquivalentQuantity(PhysicalQuantity $testQuantity)
     {
         return get_class($this) === get_class($testQuantity);
     }
