@@ -86,6 +86,15 @@ interface UnitOfMeasureInterface
      */
     public function convertValueToNativeUnitOfMeasure($value);
 
+
+    /**
+     * Returns true if this UnitOfMeasure is the native unit
+     *
+     * @return bool
+     */
+    public function isNativeUnit();
+
+
     /**
      * Display the unit as a string, in the native unit of measure
      *

@@ -48,7 +48,7 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      */
     public static function nativeUnitFactory($name)
     {
-        return static::linearUnitFactory($name, 1);
+        return new NativeUnitOfMeasure($name);
     }
 
     /**
@@ -152,6 +152,10 @@ class UnitOfMeasure implements UnitOfMeasureInterface
             throw new Exception\NonNumericValue([':value' => $value]);
         }
 
+        if ($this->isNativeUnit()) {
+            return $value;
+        }
+
         $callable = $this->fromNativeUnit;
         return $callable($value);
     }
@@ -163,6 +167,10 @@ class UnitOfMeasure implements UnitOfMeasureInterface
     {
         if (!is_numeric($value)) {
             throw new Exception\NonNumericValue([':value' => $value]);
+        }
+
+        if ($this->isNativeUnit()) {
+            return $value;
         }
 
         $callable = $this->toNativeUnit;
@@ -177,5 +185,15 @@ class UnitOfMeasure implements UnitOfMeasureInterface
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Returns true if this UnitOfMeasure is the native unit
+     *
+     * @return bool
+     */
+    public function isNativeUnit()
+    {
+        return $this instanceof NativeUnitOfMeasure;
     }
 }

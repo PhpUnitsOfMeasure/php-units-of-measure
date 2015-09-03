@@ -2,6 +2,7 @@
 
 namespace PhpUnitsOfMeasureTest;
 
+use PhpUnitsOfMeasure\NativeUnitOfMeasure;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 
 class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
@@ -237,5 +238,35 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame('quatloos', (string) $uom);
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::isNativeUnit
+     */
+    public function testIsNativeUnit()
+    {
+        $uom = new NativeUnitOfMeasure(
+            'quatloos'
+        );
+
+        $this->assertSame(true, $uom->isNativeUnit());
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::isNativeUnit
+     */
+    public function testIsNotNativeUnit()
+    {
+        $uom = new UnitOfMeasure(
+            'quatloos',
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
+            },
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
+            }
+        );
+
+        $this->assertSame(false, $uom->isNativeUnit());
     }
 }

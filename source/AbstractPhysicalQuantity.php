@@ -57,6 +57,31 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantity
     }
 
     /**
+     * Get the native unit of measure
+     *
+     * @throws Exception\UndefinedNativeUnitOfMeasure
+     *
+     * @return UnitOfMeasureInterface
+     */
+    public static function getNativeUnit()
+    {
+        // If this class hasn't been initialized yet, do so now
+        if (!is_array(static::$unitDefinitions)) {
+            static::$unitDefinitions = [];
+            static::initialize();
+        }
+
+        foreach (static::$unitDefinitions as $unitOfMeasure) {
+            if ($unitOfMeasure->isNativeUnit()) {
+                return $unitOfMeasure;
+            }
+        }
+
+        throw new Exception\UndefinedNativeUnitOfMeasure([':qty' => get_called_class()]);
+    }
+
+
+    /**
      * Given a unit of measure, determine if its name or any of its aliases conflict
      * with the set of already-known unit names and aliases.
      *
@@ -149,15 +174,6 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantity
         return static::getUnitByNameOrAlias($this->originalUnit);
     }
 
-    /**
-     * Returns a new PhysicalQuantity in the quantity's native unit of measure
-     *
-     * @return PhysicalQuantity
-     */
-    public function getNativeUnit()
-    {
-        return static::getUnitByNameOrAlias($this->originalUnit);
-    }
 
     /**
      * Returns a new PhysicalQuantity in the given unit of measure
@@ -199,7 +215,7 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantity
         return new static(
             static::getUnitByNameOrAlias($this->originalUnit)
                   ->convertValueToNativeUnitOfMeasure($this->originalValue),
-            static::getUnitByNameOrAlias($this->originalUnit)->getName()
+            static::getNativeUnit()->getName()
         );
     }
 
