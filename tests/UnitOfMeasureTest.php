@@ -220,4 +220,23 @@ class UnitOfMeasureTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(11.234, $uom->convertValueToNativeUnitOfMeasure('string'));
     }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\UnitOfMeasure::__toString
+     */
+    public function testToString()
+    {
+        $uom = new UnitOfMeasure(
+            'quatloos',
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit;
+            },
+            function ($valueInThisUnit) {
+                return $valueInThisUnit;
+            }
+        );
+
+        $this->assertSame('quatloos', (string) $uom);
+    }
+
 }

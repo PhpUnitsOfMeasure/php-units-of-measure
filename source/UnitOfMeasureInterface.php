@@ -85,4 +85,11 @@ interface UnitOfMeasureInterface
      * @return float the new value in this unit of measure
      */
     public function convertValueToNativeUnitOfMeasure($value);
+
+    /**
+     * Display the unit as a string, in the native unit of measure
+     *
+     * @return string
+     */
+    public function __toString();
 }

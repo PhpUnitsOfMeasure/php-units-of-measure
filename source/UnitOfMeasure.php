@@ -168,4 +168,14 @@ class UnitOfMeasure implements UnitOfMeasureInterface
         $callable = $this->toNativeUnit;
         return $callable($value);
     }
+
+    /**
+     * Display the unit as a string, in the native unit of measure
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
