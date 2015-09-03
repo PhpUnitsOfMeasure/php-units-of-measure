@@ -162,7 +162,7 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantity
     /**
      * Returns a new PhysicalQuantity in the given unit of measure
      *
-     * @internal param UnitOfMeasureInterface|string $toUnit The desired unit of measure, or a string name of one
+     * @param UnitOfMeasureInterface|string $toUnit The desired unit of measure, or a string name of one
      * @return PhysicalQuantity
      * @throws Exception\UnknownUnitOfMeasure
      */
