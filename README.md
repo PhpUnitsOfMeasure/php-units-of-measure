@@ -43,7 +43,7 @@ isTooTallToRideThisTrain( new Length(2, 'm') );
 ```
 
 ## Installation
-This library is best included in your projects via Composer.  See the [Composer website](http://getcomposer.org/) for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/PhpUnitsOfMeasure/php-units-of-measure).
+This library is best included in your projects via Composer.  See the [Composer website](http://getcomposer.org/) for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/php-units-of-measure/php-units-of-measure).
 
 If you'd prefer to manually include this library as a dependency in your project, then it is recommended that you use a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant PHP autoloader.  The mapping between this project's root namespace and its base directory is:
 - vendor namespace 'PhpUnitsOfMeasure\' maps to the library's base directory 'source/'
