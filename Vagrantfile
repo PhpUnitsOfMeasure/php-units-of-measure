@@ -22,6 +22,6 @@ end
 $script = <<SCRIPT
 apt-add-repository -y ppa:ondrej/php5-5.6
 apt-get update
-apt-get install -y php5-cli
+apt-get install -y php5-cli php5-xdebug
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
 SCRIPT
