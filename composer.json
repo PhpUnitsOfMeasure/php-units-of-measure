@@ -1,5 +1,5 @@
 {
-    "name":        "triplepoint/php-units-of-measure",
+    "name":        "PhpUnitsOfMeasure/php-units-of-measure",
 
     "description": "A PHP library for converting between standard units of measure.",
 
@@ -7,7 +7,7 @@
          "measurements", "data", "conversion"
      ],
 
-    "homepage":    "https://github.com/triplepoint/php-units-of-measure",
+    "homepage":    "https://github.com/PhpUnitsOfMeasure/php-units-of-measure",
 
     "license": "MIT",
 
@@ -22,8 +22,8 @@
 
     "support": {
         "email":  "jonathan@jonathan-hanson.org",
-        "issues": "https://github.com/triplepoint/php-units-of-measure/issues",
-        "source": "https://github.com/triplepoint/php-units-of-measure"
+        "issues": "https://github.com/PhpUnitsOfMeasure/php-units-of-measure/issues",
+        "source": "https://github.com/PhpUnitsOfMeasure/php-units-of-measure"
     },
 
     "require": {
