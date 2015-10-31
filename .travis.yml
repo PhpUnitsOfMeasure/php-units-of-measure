@@ -8,7 +8,7 @@ php:
 
 before_script:
     - composer self-update
-    - composer install --verbose --dev --prefer-source --no-interaction -o
+    - composer install --verbose --prefer-dist --no-interaction -o
 
 script:
     - ./vendor/bin/phpunit -c ./tests/phpunit.xml.dist ./tests
