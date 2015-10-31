@@ -301,7 +301,7 @@ The virtual machine development environment already has Composer installed.  Onc
 
 ``` bash
 rm -rf vendor
-composer update --verbose --prefer-dist --dev
+composer.phar update --verbose --prefer-dist
 ```
 
 ### Unit Tests
