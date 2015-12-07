@@ -165,6 +165,16 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantity
     }
 
     /**
+     * Returns the original unit of measure string this quantity was initialized
+     *
+     * @return string
+     */
+    public function getOriginalUnit()
+    {
+        return $this->originalUnit;
+    }
+
+    /**
      * Returns the unit of measure this PhysicalQuantity was initialized
      *
      * @return UnitOfMeasure
@@ -264,7 +274,19 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantity
     }
 
     /**
+     * @param PhysicalQuantity $quantity
+     * @return bool
+     */
+    public function equals(PhysicalQuantity $quantity)
+    {
+        return $this->toNativeUnit()->getValue() === $quantity->toNativeUnit()->getValue();
+    }
+
+
+    /**
      * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::isEquivalentQuantity
+     * @param PhysicalQuantity $testQuantity
+     * @return bool
      */
     public function isEquivalentQuantity(PhysicalQuantity $testQuantity)
     {

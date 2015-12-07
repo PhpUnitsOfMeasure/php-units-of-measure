@@ -73,6 +73,14 @@ interface PhysicalQuantity
     public function subtract(PhysicalQuantity $quantity);
 
     /**
+     * Compares this quantity with the given quantity
+     *
+     * @param PhysicalQuantity $quantity
+     * @return bool
+     */
+    public function equals(PhysicalQuantity $quantity);
+
+    /**
      * Determine whether the given PhysicalQuantityInterface object represents the same
      * physical quantity as this object.  This is used, for example, to determine if
      * two quantities can be added to or subtracted from each other.
