@@ -1,3 +1,16 @@
+## v2.0.1 (December 12th, 2015)
+- Migrated package from triplepoint/php-units-of-measure to php-units-of-measure/php-units-of-measure.
+- New physical quantity: Energy
+- New units of measure:
+  - Area: are and decare
+  - Length: nautical mile, mil, AU
+  - Mass: stone, also slightly changed definitions of lb and oz
+  - Time: yr, and jyr
+  - Velocity: km/h, ft/s, mph, knot
+- Automated CI testing now includes HHVM and PHP 7
+- Removed the heavy vagrant git submodule, it was a silly thing.
+- Expanded the Readme for better contribution and installation instructions.
+
 ## v2.0.0 (March 14th, 2015)
 - Registered units of measure are now properties of PhysicalQuantity classes, and not individual instances of those classes.  As such, registering a new unit with a given PhysicalQuantity will make that unit immediately available to all inntances of that class.
    - PhysicalQuantity classes no longer define their units in their constructor, and instead have a new initialize() static method
