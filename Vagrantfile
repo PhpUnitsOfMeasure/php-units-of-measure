@@ -1,23 +1,27 @@
-Vagrant.configure("2") do |config|
-    config.vm.box = "precise64"
-    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
-    config.vm.network :private_network, ip: "192.168.56.11"
-    config.ssh.forward_agent = true
-    config.vm.network :forwarded_port, guest: 80, host: 8080
+Vagrant.configure(2) do |config|
 
-    config.vm.provider :virtualbox do |v|
-        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        v.customize ["modifyvm", :id, "--memory", 512]
+    # Disable the default /vagrant synced folder and replace it
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+    config.vm.synced_folder ".", "/project"
+
+    # Virtualbox, for all instances
+    config.vm.provider "virtualbox" do |vb, override|
+        override.vm.box = "ubuntu/trusty64"
+        vb.memory = "1024" # in MB
+
+        override.vm.network "private_network", type: "dhcp"
+        override.ssh.forward_agent = true
     end
 
-    config.vm.synced_folder "./", "/project", :nfs => true
-
-    config.vm.provision "shell", path: "vagrant/provision_scripts/base.sh"
-    #config.vm.provision "shell", path: "vagrant/provision_scripts/nginx.sh"
-    config.vm.provision "shell", path: "vagrant/provision_scripts/php.sh"
-    #config.vm.provision "shell", path: "vagrant/provision_scripts/mysql.sh"
-    #config.vm.provision "shell", path: "vagrant/provision_scripts/memcached.sh"
-    #config.vm.provision "shell", path: "vagrant/provision_scripts/yuicompressor.sh"
-    #config.vm.provision "shell", path: "vagrant/provision_scripts/compass.sh"
+    config.vm.provision "shell", inline: $script
 end
+
+$script = <<SCRIPT
+apt-add-repository -y ppa:ondrej/php5-5.6
+apt-get update
+apt-get install -y php5-cli php5-xdebug
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
+SCRIPT

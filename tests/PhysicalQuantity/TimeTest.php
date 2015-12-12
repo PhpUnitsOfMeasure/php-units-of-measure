@@ -130,6 +130,14 @@ class TimeTest extends AbstractPhysicalQuantityTestCase
         'wks',
         'week',
         'weeks',
+        'yr',
+        'year',
+        'years',
+        'gregorian year',
+        'gregorian years',
+        'jyr',
+        'julian year',
+        'julian years',
     ];
 
     protected function instantiateTestQuantity()
@@ -165,5 +173,17 @@ class TimeTest extends AbstractPhysicalQuantityTestCase
     {
         $angle = new Time(14, 'd');
         $this->assertEquals(2, $angle->toUnit('week'));
+    }
+
+    public function testToGregorianYears()
+    {
+        $angle = new Time(365.2425, 'd');
+        $this->assertEquals(1, $angle->toUnit('yr'));
+    }
+
+    public function testToJulianYears()
+    {
+        $angle = new Time(365.25, 'd');
+        $this->assertEquals(1, $angle->toUnit('jyr'));
     }
 }

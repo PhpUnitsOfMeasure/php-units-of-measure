@@ -38,16 +38,22 @@ class Mass extends AbstractPhysicalQuantity
         static::addUnit($newUnit);
 
         // Pound
-        $newUnit = UnitOfMeasure::linearUnitFactory('lb', 4.535924e-1);
+        $newUnit = UnitOfMeasure::linearUnitFactory('lb', 4.5359237e-1);
         $newUnit->addAlias('lbs');
         $newUnit->addAlias('pound');
         $newUnit->addAlias('pounds');
         static::addUnit($newUnit);
 
         // Ounce
-        $newUnit = UnitOfMeasure::linearUnitFactory('oz', 2.834952e-2);
+        $newUnit = UnitOfMeasure::linearUnitFactory('oz', 4.5359237e-1 / 16);
         $newUnit->addAlias('ounce');
         $newUnit->addAlias('ounces');
+        static::addUnit($newUnit);
+
+        // Stone
+        $newUnit = UnitOfMeasure::linearUnitFactory('st', 4.5359237e-1 * 14);
+        $newUnit->addAlias('stone');
+        $newUnit->addAlias('stones');
         static::addUnit($newUnit);
     }
 }

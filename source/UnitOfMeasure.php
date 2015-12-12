@@ -8,10 +8,10 @@ class UnitOfMeasure implements UnitOfMeasureInterface
      * method simplifies the construction of the unit of measure.
      *
      * For example the relationship between meters and feet is a simple multiplicative factor of
-     * 0.3048 meters in a foot.  Converting back and forth between these two units is a mater of
+     * 0.3048 meters in a foot.  Converting back and forth between these two units is a matter of
      * multiplication or division by this scaling factor.
      *
-     * In constrast, converting Celsius to Fahrenheit involves an offset calculation, and cannot
+     * In contrast, converting Celsius to Fahrenheit involves an offset calculation, and cannot
      * be represented by a simple conversion factor.  In such cases this class's constructor should be
      * invoked directly.
      *
