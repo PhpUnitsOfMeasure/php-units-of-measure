@@ -35,6 +35,10 @@
         "squizlabs/php_codesniffer": "2.2.*"
     },
 
+    "replace": {
+        "triplepoint/php-units-of-measure": "*"
+    },
+    
     "autoload": {
         "psr-4": {
             "PhpUnitsOfMeasure\\": "source/"
