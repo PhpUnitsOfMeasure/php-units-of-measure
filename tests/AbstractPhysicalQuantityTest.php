@@ -205,6 +205,18 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::getUnitDefinitions
+     */
+    public function testGetAllUnits() {
+      $array = Wonkicity::getUnitDefinitions();
+
+      $this->assertTrue(is_array($array));
+
+      $expected = array(Wonkicity::getUnit('u'), Wonkicity::getUnit('v'));
+      $this->assertEquals($array, $expected);
+    }
+
+    /**
      * Attempting to register these units should throw a DuplicateUnitNameOrAlias.
      * 1) The name of the new unit to test
      * 2) The set of aliases for the new unit to test
