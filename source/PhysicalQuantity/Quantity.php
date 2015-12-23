@@ -5,7 +5,7 @@ use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 use PhpUnitsOfMeasure\HasSIUnitsTrait;
 
-class SolidAngle extends AbstractPhysicalQuantity
+class Quantity extends AbstractPhysicalQuantity
 {
     use HasSIUnitsTrait;
 
