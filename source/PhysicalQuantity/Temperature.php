@@ -39,7 +39,9 @@ class Temperature extends AbstractPhysicalQuantity
             }
         );
         $newUnit->addAlias('C');
+        $newUnit->addAlias('c');
         $newUnit->addAlias('celsius');
+		$newUnit->addAlias('Celsius');
         static::addUnit($newUnit);
 
         // Degree Fahrenheit
@@ -53,7 +55,9 @@ class Temperature extends AbstractPhysicalQuantity
             }
         );
         $newUnit->addAlias('F');
+        $newUnit->addAlias('f');
         $newUnit->addAlias('fahrenheit');
+		$newUnit->addAlias('Fahrenheit');
         static::addUnit($newUnit);
 
         // Degree Rankine
