@@ -54,10 +54,8 @@ class Temperature extends AbstractPhysicalQuantity
                 return ($x + 459.67) * 5/9;
             }
         );
-        $newUnit->addAlias('F');
         $newUnit->addAlias('f');
         $newUnit->addAlias('fahrenheit');
-		$newUnit->addAlias('Fahrenheit');
         static::addUnit($newUnit);
 
         // Degree Rankine
