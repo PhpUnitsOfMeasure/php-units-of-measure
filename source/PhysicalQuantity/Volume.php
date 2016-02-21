@@ -158,7 +158,7 @@ class Volume extends AbstractPhysicalQuantity
         // Fluid Ounce
         $newUnit = UnitOfMeasure::linearUnitFactory('fl oz', 2.957353e-5);
         $newUnit->addAlias('fluid ounce');
-        $newUnit->addAlias('fluid-ounces');
+        $newUnit->addAlias('fluid ounces');
         $newUnit->addAlias('fluid oz');
         $newUnit->addAlias('fl. oz.');
         $newUnit->addAlias('oz. fl.');
