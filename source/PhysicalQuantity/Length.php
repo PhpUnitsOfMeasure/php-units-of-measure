@@ -34,6 +34,13 @@ class Length extends AbstractPhysicalQuantity
         );
 
         // Foot
+        $newUnit = UnitOfMeasure::linearUnitFactory('ft', 100);
+        $newUnit->addAlias('cm');
+        $newUnit->addAlias('centimetre');
+        $newUnit->addAlias('centimetres');
+        static::addUnit($newUnit);
+
+        // Foot
         $newUnit = UnitOfMeasure::linearUnitFactory('ft', 0.3048);
         $newUnit->addAlias('foot');
         $newUnit->addAlias('feet');
