@@ -216,7 +216,8 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
      * Get the unit definition array
      * @return Array $unitDefinitions
      */
-    public static function getUnitDefinitions() {
+    public static function getUnitDefinitions()
+    {
         if (!is_array(static::$unitDefinitions)) {
             static::$unitDefinitions = [];
             static::initialize();

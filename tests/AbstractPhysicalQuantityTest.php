@@ -207,13 +207,14 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
     /**
      * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::getUnitDefinitions
      */
-    public function testGetAllUnits() {
-      $array = Wonkicity::getUnitDefinitions();
+    public function testGetAllUnits()
+    {
+        $array = Wonkicity::getUnitDefinitions();
 
-      $this->assertTrue(is_array($array));
+        $this->assertTrue(is_array($array));
 
-      $expected = array(Wonkicity::getUnit('u'), Wonkicity::getUnit('v'));
-      $this->assertEquals($array, $expected);
+        $expected = array(Wonkicity::getUnit('u'), Wonkicity::getUnit('v'));
+        $this->assertEquals($array, $expected);
     }
 
     /**
