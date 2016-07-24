@@ -71,6 +71,21 @@ class Time extends AbstractPhysicalQuantity
         $newUnit->addAlias('gregorian years');
         static::addUnit($newUnit);
 
+        // Decade
+        $newUnit = UnitOfMeasure::linearUnitFactory('decade', 315569520);
+        $newUnit->addAlias('decades');
+        static::addUnit($newUnit);
+
+        // Century
+        $newUnit = UnitOfMeasure::linearUnitFactory('century', 3155695200);
+        $newUnit->addAlias('centuries');
+        static::addUnit($newUnit);
+
+        // Millennium
+        $newUnit = UnitOfMeasure::linearUnitFactory('millennium', 31556952000);
+        $newUnit->addAlias('millennia');
+        static::addUnit($newUnit);
+
         // Julian year, understood as 365.25 days
         $newUnit = UnitOfMeasure::linearUnitFactory('jyr', 31557600);
         $newUnit->addAlias('julian year');

@@ -210,4 +210,18 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
     {
         return get_class($this) === get_class($testQuantity);
     }
+
+
+    /**
+     * Get the unit definition array
+     * @return Array $unitDefinitions
+     */
+    public static function getUnitDefinitions() {
+        if (!is_array(static::$unitDefinitions)) {
+            static::$unitDefinitions = [];
+            static::initialize();
+        }
+
+        return static::$unitDefinitions;
+    }
 }

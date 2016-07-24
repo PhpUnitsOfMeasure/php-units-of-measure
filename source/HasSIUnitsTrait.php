@@ -17,6 +17,7 @@ trait HasSIUnitsTrait
      * patterns.  The current allowed replacement identifiers are:
      *   %p = the abbreviated SI prefix, like 'M' for 'megameter' or 'k' for 'kilogram'
      *   %P = the full SI prefix, like 'mega' for 'megameter' or 'kilo' for 'kilogram'
+     *   %U = uppercase version of %P
      *
      * So for instance, in order to generate 'kg', 'mg', and 'g' names for SI units, the
      * appropriate pattern would be '%pg'.  Similarly, to generate 'kilogram', 'milligram',
@@ -164,7 +165,8 @@ trait HasSIUnitsTrait
                     $pattern,
                     [
                         '%p' => $prefixDefinition['abbr_prefix'],
-                        '%P' => $prefixDefinition['long_prefix']
+                        '%P' => $prefixDefinition['long_prefix'],
+                        '%U' => strtoupper($prefixDefinition['long_prefix'])
                     ]
                 );
             };
