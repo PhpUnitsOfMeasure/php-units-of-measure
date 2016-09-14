@@ -32,6 +32,7 @@ class Force extends AbstractPhysicalQuantity
 		// kilonewton
 		$newUnit = UnitOfMeasure::linearUnitFactory('kN', 1000);
 		$newUnit->addAlias('kilonewton');
+		$newUnit->addAlias('kilonewtons');
 		static::addUnit($newUnit);
 
 		// kip
