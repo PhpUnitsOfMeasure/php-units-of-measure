@@ -9,8 +9,10 @@ class ForceTest extends AbstractPhysicalQuantityTestCase
     protected $supportedUnitsWithAliases = [
         'N',
         'newton',
+        'newtons',
         'kN',
         'kilonewton',
+        'kilonewtons',
         'kip',
         'kips'
     ];
