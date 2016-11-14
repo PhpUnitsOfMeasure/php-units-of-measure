@@ -71,7 +71,17 @@ interface PhysicalQuantityInterface
      * @return boolean True if the quantities are the same, false if not.
      */
     public function isEquivalentQuantity(PhysicalQuantityInterface $testQuantity);
-    
+
+    /**
+     * @return float
+     */
+    public function getOriginalValue();
+
+    /**
+     * @return string
+     */
+    public function getOriginalUnit();
+
     /**
      * Verify if the given value respond to an already defined unit of meaure of the current
      * phisical quantity.
@@ -81,7 +91,7 @@ interface PhysicalQuantityInterface
      * @return boolean True if $name has been defined into the current physical quantity, false if not.
      */
     public static function isUnitDefined($name);
-    
+
     /**
      * Return a list of all the unit of measure defined in the current physical quantity
      *

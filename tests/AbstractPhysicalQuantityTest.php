@@ -253,6 +253,15 @@ class AbstractPhysicalQuantityTest extends TestCase
         $this->assertEquals($allUnits, $expected);
     }
 
+    public function testGetOriginalValue()
+    {
+        $value = 2;
+        $unit = 'u';
+        $physicalQuantity = new Wonkicity($value, $unit);
+        $this->assertEquals($value, $physicalQuantity->getOriginalValue());
+        $this->assertEquals($unit, $physicalQuantity->getOriginalUnit());
+    }
+
     /**
      * Attempting to register these units should throw a DuplicateUnitNameOrAlias.
      * 1) The name of the new unit to test
