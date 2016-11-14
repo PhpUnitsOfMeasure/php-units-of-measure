@@ -71,4 +71,14 @@ interface PhysicalQuantityInterface
      * @return boolean True if the quantities are the same, false if not.
      */
     public function isEquivalentQuantity(PhysicalQuantityInterface $testQuantity);
+
+    /**
+     * @return float
+     */
+    public function getOriginalValue();
+
+    /**
+     * @return string
+     */
+    public function getOriginalUnit();
 }

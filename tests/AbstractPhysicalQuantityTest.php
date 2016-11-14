@@ -216,6 +216,15 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
       $this->assertEquals($array, $expected);
     }
 
+    public function testGetOriginalValue()
+    {
+        $value = 2;
+        $unit = 'u';
+        $physicalQuantity = new Wonkicity($value, $unit);
+        $this->assertEquals($value, $physicalQuantity->getOriginalValue());
+        $this->assertEquals($unit, $physicalQuantity->getOriginalUnit());
+    }
+
     /**
      * Attempting to register these units should throw a DuplicateUnitNameOrAlias.
      * 1) The name of the new unit to test
