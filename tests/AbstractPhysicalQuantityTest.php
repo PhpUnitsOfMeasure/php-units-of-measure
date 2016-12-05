@@ -42,19 +42,19 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
      */
     protected function getTestUnitOfMeasureSafe($name, $aliases = [])
     {
-    	$newUnit = new UnitOfMeasure(
-    			$name,
-    			function ($valueInNativeUnit) {
-    				return $valueInNativeUnit / 1;
-    			},
-    			function ($valueInThisUnit) {
-    				return $valueInThisUnit * 1;
-    			}
-    			);
-    	foreach ($aliases as $alias) {
-    		$newUnit->addAlias($alias);
-    	}
-    	return $newUnit;
+        $newUnit = new UnitOfMeasure(
+            $name,
+            function ($valueInNativeUnit) {
+                return $valueInNativeUnit / 1;
+            },
+            function ($valueInThisUnit) {
+                return $valueInThisUnit * 1;
+            }
+        );
+        foreach ($aliases as $alias) {
+            $newUnit->addAlias($alias);
+        }
+        return $newUnit;
     }
 
     /**
@@ -245,23 +245,23 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
      */
     public function testIsUnitDefined()
     {
-    	/* The following code still doesn't work: see #63.
-		 * It is possible to enable this line (instead of the line after) to verify if #63 has been closed
-    	
-    		$newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
-    	*/
-    	$newUnit = $this->getTestUnitOfMeasureSafe('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
-    	Wonkicity::addUnit($newUnit);
-    	
-    	$someExistingUnits = array('u', 'uvees', 'v', 'vorp', 'noconflict', 'definitelynoconflict_1', 'definitelynoconflict_2');
-    	$unexistingUnits = array('kg', 'l', 'definitelynoconflict_');
-    	
-    	foreach ($someExistingUnits as $someExistingUnit) {
-    		$this->assertTrue(Wonkicity::isUnitDefined($someExistingUnit));
-    	}
-    	foreach ($unexistingUnits as $unexistingUnit) {
-    		$this->assertFalse(Wonkicity::isUnitDefined($unexistingUnit));
-    	}
+        /* The following code still doesn't work: see #63.
+         * It is possible to enable this line (instead of the line after) to verify if #63 has been closed
+        
+            $newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+        */
+        $newUnit = $this->getTestUnitOfMeasureSafe('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+        Wonkicity::addUnit($newUnit);
+        
+        $someExistingUnits = array('u', 'uvees', 'v', 'vorp', 'noconflict', 'definitelynoconflict_1', 'definitelynoconflict_2');
+        $unexistingUnits = array('kg', 'l', 'definitelynoconflict_');
+        
+        foreach ($someExistingUnits as $someExistingUnit) {
+            $this->assertTrue(Wonkicity::isUnitDefined($someExistingUnit));
+        }
+        foreach ($unexistingUnits as $unexistingUnit) {
+            $this->assertFalse(Wonkicity::isUnitDefined($unexistingUnit));
+        }
     }
     
     /**
@@ -269,21 +269,21 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
      */
     public function testListAllUnits()
     {
-    	/* The following code still doesn't work: see #63.
-    	 * It is possible to enable this line (instead of the line after) to verify if #63 has been closed
-    	  
-    	 $newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
-    	 */
-    	$newUnit = $this->getTestUnitOfMeasureSafe('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
-    	Wonkicity::addUnit($newUnit);
-    	
-    	$allUnits = Wonkicity::listAllUnits();
-    	$expected = array(
-    		'u' => array('uvee', 'uvees'),
-    		'v' => array('vorp', 'vorps'),
-    		'noconflict' => array('definitelynoconflict_1', 'definitelynoconflict_2'),
-    	);
-    	$this->assertEquals($allUnits, $expected);
+        /* The following code still doesn't work: see #63.
+         * It is possible to enable this line (instead of the line after) to verify if #63 has been closed
+          
+         $newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+         */
+        $newUnit = $this->getTestUnitOfMeasureSafe('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+        Wonkicity::addUnit($newUnit);
+        
+        $allUnits = Wonkicity::listAllUnits();
+        $expected = array(
+            'u' => array('uvee', 'uvees'),
+            'v' => array('vorp', 'vorps'),
+            'noconflict' => array('definitelynoconflict_1', 'definitelynoconflict_2'),
+        );
+        $this->assertEquals($allUnits, $expected);
     }
 
     /**

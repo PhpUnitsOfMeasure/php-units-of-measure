@@ -214,26 +214,28 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
     /**
      * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::isUnitDefined
      */
-    public static function isUnitDefined($name) {
-    	$units = static::getUnitDefinitions();
-    	foreach ($units as $unit) {
-    		if ($name === $unit->getName() || $unit->isAliasOf($name)) {
-    			return true;
-    		}
-    	}
-    	return false;
+    public static function isUnitDefined($name)
+    {
+        $units = static::getUnitDefinitions();
+        foreach ($units as $unit) {
+            if ($name === $unit->getName() || $unit->isAliasOf($name)) {
+                return true;
+            }
+        }
+        return false;
     }
     
     /**
      * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::listAllUnits
      */
-    public static function listAllUnits() {
-    	$return = array();
-    	$units = static::getUnitDefinitions();
-    	foreach ($units as $unit) {
-    		$return[$unit->getName()] = $unit->getAliases();
-    	}
-    	return $return;
+    public static function listAllUnits()
+    {
+        $return = array();
+        $units = static::getUnitDefinitions();
+        foreach ($units as $unit) {
+            $return[$unit->getName()] = $unit->getAliases();
+        }
+        return $return;
     }
 
     /**
