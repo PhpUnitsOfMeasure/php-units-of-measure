@@ -5,6 +5,7 @@ namespace PhpUnitsOfMeasureTest;
 use PHPUnit_Framework_TestCase;
 use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasureInterface;
+use PhpUnitsOfMeasure\UnitOfMeasure; // can be removed after #63 is closed
 use PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch;
 use PhpUnitsOfMeasure\Exception\DuplicateUnitNameOrAlias;
 use PhpUnitsOfMeasure\Exception\NonNumericValue;
@@ -32,6 +33,28 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
             ->willReturn($aliases);
 
         return $newUnit;
+    }
+    
+    /**
+     *  This function is a workaround introduced for #63, waiting for a most suitable solution.
+     *  When #63 is closed, this method can be removed, and any call to its should be
+     *  replaced with calls to the original $this->getTestUnitOfMeasure(...)
+     */
+    protected function getTestUnitOfMeasureSafe($name, $aliases = [])
+    {
+    	$newUnit = new UnitOfMeasure(
+    			$name,
+    			function ($valueInNativeUnit) {
+    				return $valueInNativeUnit / 1;
+    			},
+    			function ($valueInThisUnit) {
+    				return $valueInThisUnit * 1;
+    			}
+    			);
+    	foreach ($aliases as $alias) {
+    		$newUnit->addAlias($alias);
+    	}
+    	return $newUnit;
     }
 
     /**
@@ -215,6 +238,52 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
 
         $expected = array(Wonkicity::getUnit('u'), Wonkicity::getUnit('v'));
         $this->assertEquals($array, $expected);
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::isUnitDefined
+     */
+    public function testIsUnitDefined()
+    {
+    	/* The following code still doesn't work: see #63.
+		 * It is possible to enable this line (instead of the line after) to verify if #63 has been closed
+    	
+    		$newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+    	*/
+    	$newUnit = $this->getTestUnitOfMeasureSafe('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+    	Wonkicity::addUnit($newUnit);
+    	
+    	$someExistingUnits = array('u', 'uvees', 'v', 'vorp', 'noconflict', 'definitelynoconflict_1', 'definitelynoconflict_2');
+    	$unexistingUnits = array('kg', 'l', 'definitelynoconflict_');
+    	
+    	foreach ($someExistingUnits as $someExistingUnit) {
+    		$this->assertTrue(Wonkicity::isUnitDefined($someExistingUnit));
+    	}
+    	foreach ($unexistingUnits as $unexistingUnit) {
+    		$this->assertFalse(Wonkicity::isUnitDefined($unexistingUnit));
+    	}
+    }
+    
+    /**
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::listAllUnits
+     */
+    public function testListAllUnits()
+    {
+    	/* The following code still doesn't work: see #63.
+    	 * It is possible to enable this line (instead of the line after) to verify if #63 has been closed
+    	  
+    	 $newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+    	 */
+    	$newUnit = $this->getTestUnitOfMeasureSafe('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+    	Wonkicity::addUnit($newUnit);
+    	
+    	$allUnits = Wonkicity::listAllUnits();
+    	$expected = array(
+    		'u' => array('uvee', 'uvees'),
+    		'v' => array('vorp', 'vorps'),
+    		'noconflict' => array('definitelynoconflict_1', 'definitelynoconflict_2'),
+    	);
+    	$this->assertEquals($allUnits, $expected);
     }
 
     /**
