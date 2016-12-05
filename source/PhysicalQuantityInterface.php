@@ -86,6 +86,8 @@ interface PhysicalQuantityInterface
      * Return a list of all the unit of measure defined in the current physical quantity
      * 
      * @return array of all units as strings.
+     * 		Keys of the array are the units of measure; for any key the value is
+     * 		another array containing all aliases.
      */
     public static function listAllUnits();
 }
