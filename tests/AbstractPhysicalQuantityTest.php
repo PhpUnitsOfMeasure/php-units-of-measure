@@ -30,6 +30,12 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
             ->willReturn($name);
         $newUnit->method('getAliases')
             ->willReturn($aliases);
+        $newUnit->method('isAliasOf')
+            ->will($this->returnCallback(
+                function ($value) use ($aliases) {
+                    return in_array($value, $aliases);
+                }
+            ));
 
         return $newUnit;
     }
