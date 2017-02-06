@@ -253,14 +253,14 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
         $newUnit = $this->getTestUnitOfMeasureSafe('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
         Wonkicity::addUnit($newUnit);
         
-        $someExistingUnits = array('u', 'uvees', 'v', 'vorp', 'noconflict', 'definitelynoconflict_1', 'definitelynoconflict_2');
-        $unexistingUnits = array('kg', 'l', 'definitelynoconflict_');
+        $someExistingUnits = ['u', 'uvees', 'v', 'vorp', 'noconflict', 'definitelynoconflict_1', 'definitelynoconflict_2'];
+        $unexistingUnits = ['kg', 'l', 'definitelynoconflict_'];
         
         foreach ($someExistingUnits as $someExistingUnit) {
-            $this->assertTrue(Wonkicity::isUnitDefined($someExistingUnit));
+            $this->assertTrue(Wonkicity::isUnitDefined($someExistingUnit), "$someExistingUnit is not defined");
         }
         foreach ($unexistingUnits as $unexistingUnit) {
-            $this->assertFalse(Wonkicity::isUnitDefined($unexistingUnit));
+            $this->assertFalse(Wonkicity::isUnitDefined($unexistingUnit), "$unexistingUnit is not defined");
         }
     }
     
@@ -278,11 +278,10 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
         Wonkicity::addUnit($newUnit);
         
         $allUnits = Wonkicity::listAllUnits();
-        $expected = array(
-            'u' => array('uvee', 'uvees'),
-            'v' => array('vorp', 'vorps'),
-            'noconflict' => array('definitelynoconflict_1', 'definitelynoconflict_2'),
-        );
+        $expected = [];
+        $expected['u'] = ['uvee', 'uvees'];
+        $expected['v'] = ['vorp', 'vorps'];
+        $expected['noconflict'] = ['definitelynoconflict_1', 'definitelynoconflict_2'];
         $this->assertEquals($allUnits, $expected);
     }
 

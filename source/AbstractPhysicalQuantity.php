@@ -230,7 +230,7 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
      */
     public static function listAllUnits()
     {
-        $return = array();
+        $return = [];
         $units = static::getUnitDefinitions();
         foreach ($units as $unit) {
             $return[$unit->getName()] = $unit->getAliases();
