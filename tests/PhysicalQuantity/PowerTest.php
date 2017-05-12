@@ -40,14 +40,13 @@ class PowerTest extends AbstractPhysicalQuantityTestCase
 
     public function testToKilowatt()
     {
-        $quantity = new Energy(1000, 'W');
+        $quantity = new Power(1000, 'W');
         $this->assertEquals(1, $quantity->toUnit('kW'));
     }
 
     public function testToWatt()
     {
-        $quantity = new Energy(1, 'kW');
+        $quantity = new Power(1, 'kW');
         $this->assertEquals(1000, $quantity->toUnit('W'));
     }
-
 }
