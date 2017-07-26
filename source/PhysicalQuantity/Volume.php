@@ -141,6 +141,14 @@ class Volume extends AbstractPhysicalQuantity
         $newUnit->addAlias('tablespoon');
         $newUnit->addAlias('tablespoons');
         static::addUnit($newUnit);
+        
+        // pinch
+        $newUnit = UnitOfMeasure::linearUnitFactory('pinch', 0.0000003080575);
+        static::addUnit($newUnit);
+        
+        // dash
+        $newUnit = UnitOfMeasure::linearUnitFactory('dash', 0.000000616115);
+        static::addUnit($newUnit);
 
         // Gallon
         $newUnit = UnitOfMeasure::linearUnitFactory('gal', 3.7854118e-3);
