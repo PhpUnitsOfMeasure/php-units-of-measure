@@ -224,6 +224,41 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::isUnitDefined
+     */
+    public function testIsUnitDefined()
+    {
+        $newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+        Wonkicity::addUnit($newUnit);
+        
+        $someExistingUnits = ['u', 'uvees', 'v', 'vorp', 'noconflict', 'definitelynoconflict_1', 'definitelynoconflict_2'];
+        $unexistingUnits = ['kg', 'l', 'definitelynoconflict_'];
+        
+        foreach ($someExistingUnits as $someExistingUnit) {
+            $this->assertTrue(Wonkicity::isUnitDefined($someExistingUnit), "$someExistingUnit is not defined");
+        }
+        foreach ($unexistingUnits as $unexistingUnit) {
+            $this->assertFalse(Wonkicity::isUnitDefined($unexistingUnit), "$unexistingUnit is not defined");
+        }
+    }
+    
+    /**
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::listAllUnits
+     */
+    public function testListAllUnits()
+    {
+        $newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+        Wonkicity::addUnit($newUnit);
+        
+        $allUnits = Wonkicity::listAllUnits();
+        $expected = [];
+        $expected['u'] = ['uvee', 'uvees'];
+        $expected['v'] = ['vorp', 'vorps'];
+        $expected['noconflict'] = ['definitelynoconflict_1', 'definitelynoconflict_2'];
+        $this->assertEquals($allUnits, $expected);
+    }
+
+    /**
      * Attempting to register these units should throw a DuplicateUnitNameOrAlias.
      * 1) The name of the new unit to test
      * 2) The set of aliases for the new unit to test
