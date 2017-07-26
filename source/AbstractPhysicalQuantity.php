@@ -13,6 +13,23 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
     // protected static $unitDefinitions;
 
     /**
+     * Static cache for unit lookups.
+     *
+     * @var UnitOfMeasureInterface[]
+     */
+    private static $unitCache = [];
+
+    /**
+     * Create a cache key for the unit lookup cache.
+     *
+     * @var UnitOfMeasureInterface[]
+     */
+    private static function buildUnitCacheKey($unit)
+    {
+        return get_called_class() . '#' . $unit;
+    }
+
+    /**
      * Register a new unit of measure for all instances of this this physical quantity.
      *
      * @throws Exception\DuplicateUnitNameOrAlias If the unit name or any alias already exists
@@ -47,9 +64,14 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
             static::initialize();
         }
 
+        $key = static::buildUnitCacheKey($unit);
+        if (isset(self::$unitCache[$key])) {
+            return self::$unitCache[$key];
+        }
+
         foreach (static::$unitDefinitions as $unitOfMeasure) {
             if ($unit === $unitOfMeasure->getName() || $unitOfMeasure->isAliasOf($unit)) {
-                return $unitOfMeasure;
+                return self::$unitCache[$key] = $unitOfMeasure;
             }
         }
 
