@@ -48,5 +48,4 @@ class Storage extends AbstractPhysicalQuantity
         static::addUnit($unit);
 
     }
-
 }

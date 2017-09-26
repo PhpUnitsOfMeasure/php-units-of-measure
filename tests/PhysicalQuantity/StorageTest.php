@@ -45,5 +45,4 @@ class StorageTest extends AbstractPhysicalQuantityTestCase
     {
         $this->assertEquals(3377699720527872, (new Storage(3, 'PB'))->toUnit('byte'));
     }
-
 }
