@@ -307,14 +307,14 @@ composer.phar update --verbose --prefer-dist
 All the tests associated with this project can be manually run with:
 
 ``` bash
-vendor/bin/phpunit -c ./tests/phpunit.xml.dist ./tests
+composer test
 ```
 
 ### CodeSniffer
 Codesniffer verifies that coding standards are being met.  Once the project is built with development dependencies, you can run the checks with:
 
 ``` bash
-vendor/bin/phpcs --encoding=utf-8 --extensions=php --standard=./tests/phpcs.xml -nsp ./
+composer phpcs
 ```
 
 ### Continuous Integration

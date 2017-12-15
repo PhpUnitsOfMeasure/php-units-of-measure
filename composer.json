@@ -38,6 +38,11 @@
     "replace": {
         "triplepoint/php-units-of-measure": "*"
     },
+
+    "scripts": {
+        "test": "phpunit -c ./tests/phpunit.xml.dist ./tests",
+        "phpcs": "phpcs --encoding=utf-8 --extensions=php --standard=./tests/phpcs.xml -nsp ./"
+    },
     
     "autoload": {
         "psr-4": {
