@@ -1,7 +1,7 @@
 <?php
 namespace PhpUnitsOfMeasure;
 
-abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
+abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface, \JsonSerializable
 {
     /**
      * The collection of units in which this quantity can be represented.
@@ -187,6 +187,19 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
     public function __toString()
     {
         return trim($this->originalValue . ' ' . static::getUnit($this->originalUnit)->getName());
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'value' => $this->originalValue,
+            'unit' => static::getUnit($this->originalUnit)->getName(),
+        ];
     }
 
     /**

@@ -142,6 +142,15 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider jsonSerializeProvider
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::jsonSerialize
+     */
+    public function testJsonSerialize(AbstractPhysicalQuantity $value, $serialized)
+    {
+        $this->assertSame($serialized, json_decode(json_encode($value), true));
+    }
+
+    /**
      *
      * @dataProvider quantityConversionsProvider
      */
@@ -305,6 +314,23 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
             [new Wonkicity(2, 'vorps'), '2 v'],
             [new Woogosity(2, 'plurps'), '2 p'],
             [new Woogosity(2, 'millilupees'), '2 ml'],
+        ];
+    }
+
+    /**
+     * Provide some string conversion testing data
+     * 1) The object which will be json serialized
+     * 2) the expected resulting array from the conversion
+     */
+    public function jsonSerializeProvider()
+    {
+        return [
+            [new Wonkicity(2, 'u'), ['value' => 2, 'unit' => 'u']],
+            [new Wonkicity(2, 'uvee'), ['value' => 2, 'unit' => 'u']],
+            [new Wonkicity(2, 'v'), ['value' => 2, 'unit' => 'v']],
+            [new Wonkicity(2, 'vorps'), ['value' => 2, 'unit' => 'v']],
+            [new Woogosity(2, 'plurps'), ['value' => 2, 'unit' => 'p']],
+            [new Woogosity(2, 'millilupees'), ['value' => 2, 'unit' => 'ml']],
         ];
     }
 
