@@ -133,6 +133,74 @@ class LengthTest extends AbstractPhysicalQuantityTestCase
         'au',
         'astronomical unit',
         'astronomical units',
+        'ly',
+        'LY',
+        'light year',
+        'light years',
+        'pc',
+        'parsec',
+        'parsecs',
+        'Ypc',
+        'yottaparsec',
+        'yottaparsecs',
+        'Zpc',
+        'zettaparsec',
+        'zettaparsecs',
+        'Epc',
+        'exaparsec',
+        'exaparsecs',
+        'Ppc',
+        'petaparsec',
+        'petaparsecs',
+        'Tpc',
+        'teraparsec',
+        'teraparsecs',
+        'Gpc',
+        'gigaparsec',
+        'gigaparsecs',
+        'Mpc',
+        'megaparsec',
+        'megaparsecs',
+        'kpc',
+        'kiloparsec',
+        'kiloparsecs',
+        'hpc',
+        'hectoparsec',
+        'hectoparsecs',
+        'dapc',
+        'decaparsec',
+        'decaparsecs',
+        'dpc',
+        'deciparsec',
+        'deciparsecs',
+        'cpc',
+        'centiparsec',
+        'centiparsecs',
+        'mpc',
+        'milliparsec',
+        'milliparsecs',
+        'µpc',
+        'microparsec',
+        'microparsecs',
+        'npc',
+        'nanoparsec',
+        'nanoparsecs',
+        'ppc',
+        'picoparsec',
+        'picoparsecs',
+        'fpc',
+        'femtoparsec',
+        'femtoparsecs',
+        'apc',
+        'attoparsec',
+        'attoparsecs',
+        'zpc',
+        'zeptoparsec',
+        'zeptoparsecs',
+        'ypc',
+        'yoctoparsec',
+        'yoctoparsecs',
+
     ];
 
     protected function instantiateTestQuantity()
@@ -174,5 +242,23 @@ class LengthTest extends AbstractPhysicalQuantityTestCase
     {
         $quantity = new Length(150000000, 'km');
         $this->assertEquals(1.0026880683402668, $quantity->toUnit('AU'));
+    }
+
+    public function testToLightYear()
+    {
+        $quantity = new Length(150000000000000, 'km');
+        $this->assertEquals(15.855012510369232, $quantity->toUnit('ly'));
+    }
+
+    public function testToParSec()
+    {
+        $quantity = new Length(150000000000000, 'km');
+        $this->assertEquals(4.861168934166548, $quantity->toUnit('pc'));
+    }
+
+    public function testToMilliParSec()
+    {
+        $quantity = new Length(150000000000000, 'km');
+        $this->assertEquals(4861.168934166548, $quantity->toUnit('mpc'));
     }
 }

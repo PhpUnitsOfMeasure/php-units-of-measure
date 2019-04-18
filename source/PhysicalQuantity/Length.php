@@ -75,5 +75,28 @@ class Length extends AbstractPhysicalQuantity
         $newUnit->addAlias('astronomical unit');
         $newUnit->addAlias('astronomical units');
         static::addUnit($newUnit);
+
+        // Light Year
+        $newUnit = UnitOfMeasure::linearUnitFactory('ly', 9460730472580800);
+        $newUnit->addAlias('LY');
+        $newUnit->addAlias('light year');
+        $newUnit->addAlias('light years');
+        static::addUnit($newUnit);
+
+        // Light Year
+        $parsec = UnitOfMeasure::linearUnitFactory('pc', 3.085677581491367279E+16); // parsec == au * 648000 / pi (30856775814913672.789139379577965)
+        $parsec->addAlias('parsec');
+        $parsec->addAlias('parsecs');
+        static::addUnit($parsec);
+
+        static::addMissingSIPrefixedUnits(
+            $parsec,
+            1,
+            '%ppc',
+            [
+                '%Pparsec',
+                '%Pparsecs'
+            ]
+        );
     }
 }
