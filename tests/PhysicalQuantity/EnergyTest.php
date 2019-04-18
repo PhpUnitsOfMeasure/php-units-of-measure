@@ -56,6 +56,20 @@ class EnergyTest extends AbstractPhysicalQuantityTestCase
         'PJ',
         'petajoule',
         'petajoules',
+
+        'eV',
+        'electronvolt',
+        'electronvolts',
+        'MeV',
+        'megaelectronvolt',
+        'megaelectronvolts',
+
+        'cal',
+        'calorie',
+        'calories',
+        'Mcal',
+        'megacalorie',
+        'megacalories',
     ];
 
     protected function instantiateTestQuantity()
@@ -85,5 +99,17 @@ class EnergyTest extends AbstractPhysicalQuantityTestCase
     {
         $quantity = new Energy(1, 'Wh');
         $this->assertEquals(3600, $quantity->toUnit('joule'));
+    }
+
+    public function testToMegaCal()
+    {
+        $quantity = new Energy(1, 'kWh');
+        $this->assertEquals(0.8604206500956023, $quantity->toUnit('Mcal'));
+    }
+
+    public function testToMegaElectronvolt()
+    {
+        $quantity = new Energy(1, 'kWh');
+        $this->assertEquals(2.2469432853179728e19, $quantity->toUnit('MeV'));
     }
 }

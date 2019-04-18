@@ -29,6 +29,22 @@ class Energy extends AbstractPhysicalQuantity
             ]
         );
 
+        // Electronvolt
+        $ev = UnitOfMeasure::linearUnitFactory('eV', 1.6021766208e-19);
+        $ev->addAlias('electronvolt');
+        $ev->addAlias('electronvolts');
+        static::addUnit($ev);
+
+        static::addMissingSIPrefixedUnits(
+            $ev,
+            1,
+            '%peV',
+            [
+                '%Pelectronvolt',
+                '%Pelectronvolts',
+            ]
+        );
+
         // Watt hour
         $wattHour = UnitOfMeasure::linearUnitFactory('Wh', 3600);
         $wattHour->addAlias('watt hour');
@@ -42,6 +58,22 @@ class Energy extends AbstractPhysicalQuantity
             [
                 '%Pwatt hour',
                 '%Pwatt hours',
+            ]
+        );
+
+        // Calorie
+        $calorie = UnitOfMeasure::linearUnitFactory('cal', 4.184);
+        $calorie->addAlias('calorie');
+        $calorie->addAlias('calories');
+        static::addUnit($calorie);
+
+        static::addMissingSIPrefixedUnits(
+            $calorie,
+            1,
+            '%pcal',
+            [
+                '%Pcalorie',
+                '%Pcalories',
             ]
         );
     }
