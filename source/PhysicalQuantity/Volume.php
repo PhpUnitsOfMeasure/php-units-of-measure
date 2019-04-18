@@ -2,10 +2,13 @@
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
+use PhpUnitsOfMeasure\HasSIUnitsTrait;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 
 class Volume extends AbstractPhysicalQuantity
 {
+    use HasSIUnitsTrait;
+
     protected static $unitDefinitions;
 
     protected static function initialize()
@@ -19,41 +22,19 @@ class Volume extends AbstractPhysicalQuantity
         $cubicmeter->addAlias('cubic metres');
         static::addUnit($cubicmeter);
 
-        // Cubic millimeter
-        $newUnit = UnitOfMeasure::linearUnitFactory('mm^3', 1e-9);
-        $newUnit->addAlias('mm³');
-        $newUnit->addAlias('cubic millimeter');
-        $newUnit->addAlias('cubic millimeters');
-        $newUnit->addAlias('cubic millimetre');
-        $newUnit->addAlias('cubic millimetres');
-        static::addUnit($newUnit);
-
-        // Cubic centimeter
-        $newUnit = UnitOfMeasure::linearUnitFactory('cm^3', 1e-6);
-        $newUnit->addAlias('cm³');
-        $newUnit->addAlias('cubic centimeter');
-        $newUnit->addAlias('cubic centimeters');
-        $newUnit->addAlias('cubic centimetre');
-        $newUnit->addAlias('cubic centimetres');
-        static::addUnit($newUnit);
-
-        // Cubic decimeter
-        $newUnit = UnitOfMeasure::linearUnitFactory('dm^3', 1e-3);
-        $newUnit->addAlias('dm³');
-        $newUnit->addAlias('cubic decimeter');
-        $newUnit->addAlias('cubic decimeters');
-        $newUnit->addAlias('cubic decimetre');
-        $newUnit->addAlias('cubic decimetres');
-        static::addUnit($newUnit);
-
-        // Cubic kilometer
-        $newUnit = UnitOfMeasure::linearUnitFactory('km^3', 1e9);
-        $newUnit->addAlias('km³');
-        $newUnit->addAlias('cubic kilometer');
-        $newUnit->addAlias('cubic kilometers');
-        $newUnit->addAlias('cubic kilometre');
-        $newUnit->addAlias('cubic kilometres');
-        static::addUnit($newUnit);
+        static::addMissingSIPrefixedUnits(
+            $cubicmeter,
+            1,
+            '%pm^3',
+            [
+                '%pm³',
+                'cubic %Pmeter',
+                'cubic %Pmeters',
+                'cubic %Pmetre',
+                'cubic %Pmetres'
+            ],
+            3 // square power factor
+        );
 
         // Cubic foot
         $newUnit = UnitOfMeasure::linearUnitFactory('ft^3', 2.831685e-2);
@@ -148,6 +129,7 @@ class Volume extends AbstractPhysicalQuantity
         $newUnit->addAlias('gallons');
         $newUnit->addAlias('us gal');
         static::addUnit($newUnit);
+
         // Quart
         $newUnit = UnitOfMeasure::linearUnitFactory('qt', 9.4635295e-4);
         $newUnit->addAlias('quart');
@@ -155,6 +137,7 @@ class Volume extends AbstractPhysicalQuantity
         $newUnit->addAlias('qts');
         $newUnit->addAlias('liq qt');
         static::addUnit($newUnit);
+
         // Fluid Ounce
         $newUnit = UnitOfMeasure::linearUnitFactory('fl oz', 2.957353e-5);
         $newUnit->addAlias('fluid ounce');
@@ -163,6 +146,7 @@ class Volume extends AbstractPhysicalQuantity
         $newUnit->addAlias('fl. oz.');
         $newUnit->addAlias('oz. fl.');
         static::addUnit($newUnit);
+
         // Pint
         $newUnit = UnitOfMeasure::linearUnitFactory('pt', 4.73176475e-4);
         $newUnit->addAlias('pint');
