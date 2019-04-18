@@ -59,6 +59,7 @@ class Volume extends AbstractPhysicalQuantity
 
         // Liter
         $liter = UnitOfMeasure::linearUnitFactory('l', 1e-3);
+        $liter->addAlias('L');
         $liter->addAlias('liter');
         $liter->addAlias('liters');
         $liter->addAlias('litre');
@@ -70,6 +71,7 @@ class Volume extends AbstractPhysicalQuantity
             1,
             '%pl',
             [
+                '%pL',
                 '%Pliter',
                 '%Pliters',
                 '%Plitre',
