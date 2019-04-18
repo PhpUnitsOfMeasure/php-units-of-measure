@@ -5,6 +5,7 @@
 - Additional units for energy: electronvolt, calorie
 - Additional units for length: light year, parsec
 - Additional units for mass: Hundredweight, US short Ton, US long Ton, Asian picul
+- Additional units for pressure: Torr, Technical atmosphere, Kilo and Mega pound per Square Inch
 - Fixed native unit for mass as gram
 
 
