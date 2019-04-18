@@ -66,8 +66,8 @@ class Volume extends AbstractPhysicalQuantity
         static::addUnit($liter);
 
         static::addMissingSIPrefixedUnits(
-            $cubicmeter,
-            1e-3,
+            $liter,
+            1,
             '%pl',
             [
                 '%Pliter',
