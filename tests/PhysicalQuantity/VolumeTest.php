@@ -113,6 +113,30 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(100000, $area->toUnit('l'));
     }
 
+    public function testToMilliLitres()
+    {
+        $area = new Volume(1, 'l');
+        $this->assertEquals(1000, $area->toUnit('ml'));
+        $area = new Volume(100, 'l');
+        $this->assertEquals(100000, $area->toUnit('ml'));
+    }
+
+    public function testToHectoLitres()
+    {
+        $area = new Volume(1, 'l');
+        $this->assertEquals(0.01, $area->toUnit('hl'));
+        $area = new Volume(100, 'l');
+        $this->assertEquals(1, $area->toUnit('hl'));
+    }
+
+    public function testToKiloLitres()
+    {
+        $area = new Volume(1, 'l');
+        $this->assertEquals(0.001, $area->toUnit('kl'));
+        $area = new Volume(100, 'l');
+        $this->assertEquals(0.1, $area->toUnit('kl'));
+    }
+
     public function testToGallon()
     {
         $area = new Volume(1, 'm^3');

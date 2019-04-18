@@ -57,53 +57,25 @@ class Volume extends AbstractPhysicalQuantity
         $newUnit->addAlias('cubic yards');
         static::addUnit($newUnit);
 
-        // Milliliters
-        $newUnit = UnitOfMeasure::linearUnitFactory('ml', 1e-6);
-        $newUnit->addAlias('milliliter');
-        $newUnit->addAlias('milliliters');
-        $newUnit->addAlias('millilitre');
-        $newUnit->addAlias('millilitres');
-        static::addUnit($newUnit);
-
-        // Centiliters
-        $newUnit = UnitOfMeasure::linearUnitFactory('cl', 1e-5);
-        $newUnit->addAlias('centiliter');
-        $newUnit->addAlias('centiliters');
-        $newUnit->addAlias('centilitre');
-        $newUnit->addAlias('centilitres');
-        static::addUnit($newUnit);
-
-        // Deciliter
-        $newUnit = UnitOfMeasure::linearUnitFactory('dl', 1e-4);
-        $newUnit->addAlias('deciliter');
-        $newUnit->addAlias('deciliters');
-        $newUnit->addAlias('decilitre');
-        $newUnit->addAlias('decilitres');
-        static::addUnit($newUnit);
-
         // Liter
-        $newUnit = UnitOfMeasure::linearUnitFactory('l', 1e-3);
-        $newUnit->addAlias('liter');
-        $newUnit->addAlias('liters');
-        $newUnit->addAlias('litre');
-        $newUnit->addAlias('litres');
-        static::addUnit($newUnit);
+        $liter = UnitOfMeasure::linearUnitFactory('l', 1e-3);
+        $liter->addAlias('liter');
+        $liter->addAlias('liters');
+        $liter->addAlias('litre');
+        $liter->addAlias('litres');
+        static::addUnit($liter);
 
-        // Decaliter
-        $newUnit = UnitOfMeasure::linearUnitFactory('dal', 1e-2);
-        $newUnit->addAlias('decaliter');
-        $newUnit->addAlias('decaliters');
-        $newUnit->addAlias('decalitre');
-        $newUnit->addAlias('decalitres');
-        static::addUnit($newUnit);
-
-        // Hectoliter
-        $newUnit = UnitOfMeasure::linearUnitFactory('hl', 1e-1);
-        $newUnit->addAlias('hectoliter');
-        $newUnit->addAlias('hectoliters');
-        $newUnit->addAlias('hectolitre');
-        $newUnit->addAlias('hectolitres');
-        static::addUnit($newUnit);
+        static::addMissingSIPrefixedUnits(
+            $cubicmeter,
+            1e-3,
+            '%pl',
+            [
+                '%Pliter',
+                '%Pliters',
+                '%Plitre',
+                '%Plitres'
+            ]
+        );
 
         // Cup
         $newUnit = UnitOfMeasure::linearUnitFactory('cup', 2.365882e-4);

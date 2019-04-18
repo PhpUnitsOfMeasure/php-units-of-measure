@@ -1,7 +1,7 @@
 ## v2.2.0 (April XXth, 2019)
 - Added option power factor for Si factor, ie for square (2) and cubic (3)
 - Added Si prefixes for area unit square meter (m^2)
-- Added Si prefixes for volume unit cubic meter (m^3)
+- Added Si prefixes for volume unit cubic meter (m^3) and litres
 - Additional units for energy: electronvolt, calorie
 - Additional units for length: light year, parsec
 
