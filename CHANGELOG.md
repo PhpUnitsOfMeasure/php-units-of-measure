@@ -4,6 +4,8 @@
 - Added Si prefixes for volume unit cubic meter (m^3) and litres
 - Additional units for energy: electronvolt, calorie
 - Additional units for length: light year, parsec
+- Additional units for mass: Hundredweight, US short Ton, US long Ton, Asian picul
+- Fixed native unit for mass as gram
 
 
 ## v2.1.0 (July 24th, 2016)

@@ -71,10 +71,13 @@ class MassTest extends AbstractPhysicalQuantityTestCase
         'yoctogram',
         'yoctograms',
         't',
+        'T',
         'ton',
         'tons',
         'tonne',
         'tonnes',
+        'MT',
+        'mT',
         'lb',
         'lbs',
         'pound',
@@ -85,11 +88,22 @@ class MassTest extends AbstractPhysicalQuantityTestCase
         'st',
         'stone',
         'stones',
+        'cwt',
+        'hundredweight',
+        'hundredweights',
+        'ukt',
+        'uk long ton',
+        'uk long tons',
+        'ust',
+        'us short ton',
+        'us short tons',
+        'picul',
+        'tam',
     ];
 
     protected function instantiateTestQuantity()
     {
-        return new Mass(1, 'kg');
+        return new Mass(1, 'g');
     }
 
     public function testToGrams()
@@ -114,5 +128,29 @@ class MassTest extends AbstractPhysicalQuantityTestCase
     {
         $quantity = new Mass(14, 'pound');
         $this->assertEquals(1, $quantity->toUnit('st'));
+    }
+
+    public function testToHundredweight()
+    {
+        $quantity = new Mass(5, 'kg');
+        $this->assertEquals(0.098420653, $quantity->toUnit('cwt'), '', 0.00000001);
+    }
+
+    public function testToUSshortTon()
+    {
+        $quantity = new Mass(5, 'kg');
+        $this->assertEquals(0.0055115566, $quantity->toUnit('ust'), '', 0.000000001);
+    }
+
+    public function testToUSlongTon()
+    {
+        $quantity = new Mass(5, 'kg');
+        $this->assertEquals(0.0049210326, $quantity->toUnit('ukt'), '', 0.000000001);
+    }
+
+    public function testToPicul()
+    {
+        $quantity = new Mass(5, 'kg');
+        $this->assertEquals(0.08267335, $quantity->toUnit('picul'), '', 0.00000001);
     }
 }
