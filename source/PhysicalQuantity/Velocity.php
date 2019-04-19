@@ -114,7 +114,8 @@ class Velocity extends AbstractPhysicalQuantity
         static::addUnit($newUnit);
 
         // knot
-        $newUnit = UnitOfMeasure::linearUnitFactory('knot', 0.514444);
+        $newUnit = UnitOfMeasure::linearUnitFactory('kn', 0.514444);
+        $newUnit->addAlias('knot');
         $newUnit->addAlias('knots');
         static::addUnit($newUnit);
 
