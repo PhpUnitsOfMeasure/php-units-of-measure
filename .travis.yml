@@ -16,8 +16,8 @@ before_script:
     - composer install --verbose --prefer-dist --no-interaction -o
 
 script:
-    - ./vendor/bin/phpunit -c ./tests/phpunit.xml.dist ./tests
-    - ./vendor/bin/phpcs --encoding=utf-8 --extensions=php --standard=./tests/phpcs.xml -nsp ./
+    - composer test
+    - composer phpcs
 
 notifications:
     email: false
