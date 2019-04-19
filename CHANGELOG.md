@@ -2,10 +2,12 @@
 - Added option power factor for Si factor, ie for square (2) and cubic (3)
 - Added Si prefixes for area unit square meter (m^2)
 - Added Si prefixes for volume unit cubic meter (m^3) and litres
+- Added Si prefixes for velocity unit m/s, m/min and m/h
 - Additional units for energy: electronvolt, calorie
 - Additional units for length: light year, parsec
 - Additional units for mass: Hundredweight, US short Ton, US long Ton, Asian picul
 - Additional units for pressure: Torr, Technical atmosphere, Kilo and Mega pound per Square Inch
+- Additional units for velocity: Mach, meters/min, feet per minute, miles per second
 - Fixed native unit for mass as gram
 
 
