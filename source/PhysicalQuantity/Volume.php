@@ -33,25 +33,25 @@ class Volume extends AbstractPhysicalQuantity
                 'cubic %Pmetre',
                 'cubic %Pmetres'
             ],
-            3 // square power factor
+            3 // cubic power factor
         );
 
         // Cubic foot
-        $newUnit = UnitOfMeasure::linearUnitFactory('ft^3', 2.831685e-2);
+        $newUnit = UnitOfMeasure::linearUnitFactory('ft^3', pow(0.3048, 3));
         $newUnit->addAlias('ft³');
         $newUnit->addAlias('cubic foot');
         $newUnit->addAlias('cubic feet');
         static::addUnit($newUnit);
 
         // Cubic inch
-        $newUnit = UnitOfMeasure::linearUnitFactory('in^3', 1.638706e-5);
+        $newUnit = UnitOfMeasure::linearUnitFactory('in^3', pow(0.0254, 3));
         $newUnit->addAlias('in³');
         $newUnit->addAlias('cubic inch');
         $newUnit->addAlias('cubic inches');
         static::addUnit($newUnit);
 
         // Cubic yard
-        $newUnit = UnitOfMeasure::linearUnitFactory('yd^3', 7.645549e-1);
+        $newUnit = UnitOfMeasure::linearUnitFactory('yd^3', pow(0.9144, 3));
         $newUnit->addAlias('yd³');
         $newUnit->addAlias('cubic yard');
         $newUnit->addAlias('cubic yards');
