@@ -10,6 +10,7 @@
 - Additional units for mass: Hundredweight, US short Ton, US long Ton, Asian picul
 - Additional units for pressure: Torr, Technical atmosphere, Kilo and Mega pound per Square Inch
 - Additional units for velocity: Mach, meters/min, feet per minute, miles per second
+- Additional unit for power: dBm
 - Fixed native unit for mass as gram
 
 
