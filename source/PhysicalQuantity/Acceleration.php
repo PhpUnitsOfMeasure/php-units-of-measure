@@ -2,10 +2,13 @@
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
+use PhpUnitsOfMeasure\HasSIUnitsTrait;
 use PhpUnitsOfMeasure\UnitOfMeasure;
 
 class Acceleration extends AbstractPhysicalQuantity
 {
+    use HasSIUnitsTrait;
+
     protected static $unitDefinitions;
 
     protected static function initialize()
@@ -18,5 +21,18 @@ class Acceleration extends AbstractPhysicalQuantity
         $meterpersecondsquared->addAlias('metre per second squared');
         $meterpersecondsquared->addAlias('metres per second squared');
         static::addUnit($meterpersecondsquared);
+
+        static::addMissingSIPrefixedUnits(
+            $meterpersecondsquared,
+            1,
+            '%pm/s^2',
+            [
+                '%pm/s²',
+                '%Pmeter per second squared',
+                '%Pmeters per second squared',
+                '%Pmetre per second squared',
+                '%Pmetres per second squared',
+            ]
+        );
     }
 }

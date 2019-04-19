@@ -2,8 +2,9 @@
 - Added option power factor for Si factor, ie for square (2) and cubic (3)
 - Added lowercase aliases for temperature units
 - Added Si prefixes for area unit square meter (m^2)
-- Added Si prefixes for volume unit cubic meter (m^3) and litres
-- Added Si prefixes for velocity unit m/s, m/min and m/h
+- Added Si prefixes for volume units cubic meter (m^3) and litres
+- Added Si prefixes for velocity units m/s, m/min and m/h
+- Added Si prefixes for acceleration unit m/s^2
 - Additional units for energy: electronvolt, calorie
 - Additional units for length: light year, parsec
 - Additional units for mass: Hundredweight, US short Ton, US long Ton, Asian picul
