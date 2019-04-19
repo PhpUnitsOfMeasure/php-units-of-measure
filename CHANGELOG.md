@@ -1,5 +1,6 @@
 ## v2.2.0 (April XXth, 2019)
 - Added option power factor for Si factor, ie for square (2) and cubic (3)
+- Added new Physical Quantity volume flow with commonly used units
 - Added lowercase aliases for temperature units
 - Added Si prefixes for area unit square meter (m^2)
 - Added Si prefixes for volume units cubic meter (m^3) and litres
