@@ -9,6 +9,7 @@ class StorageTest extends AbstractPhysicalQuantityTestCase
 
     protected function instantiateTestQuantity()
     {
+        return new Storage(1, 'byte');
     }
 
     public function testByteToByte()

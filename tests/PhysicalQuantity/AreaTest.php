@@ -86,7 +86,7 @@ class AreaTest extends AbstractPhysicalQuantityTestCase
         'centimeter squared',
         'centimeters squared',
         'centimetre squared',
-        'centimetres squared',        
+        'centimetres squared',
         'mm^2',
         'mm²',
         'millimeter squared',
