@@ -2,6 +2,9 @@
 
 namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
+use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
+use PhpUnitsOfMeasure\UnitOfMeasure;
+
 class Metric extends AbstractPhysicalQuantity
 {
     protected static $unitDefinitions;
