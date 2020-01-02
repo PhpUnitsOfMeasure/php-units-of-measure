@@ -30,6 +30,12 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
             ->willReturn($name);
         $newUnit->method('getAliases')
             ->willReturn($aliases);
+        $newUnit->method('isAliasOf')
+            ->will($this->returnCallback(
+                function ($value) use ($aliases) {
+                    return in_array($value, $aliases);
+                }
+            ));
 
         return $newUnit;
     }
@@ -207,13 +213,49 @@ class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
     /**
      * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::getUnitDefinitions
      */
-    public function testGetAllUnits() {
-      $array = Wonkicity::getUnitDefinitions();
+    public function testGetAllUnits()
+    {
+        $array = Wonkicity::getUnitDefinitions();
 
-      $this->assertTrue(is_array($array));
+        $this->assertTrue(is_array($array));
 
-      $expected = array(Wonkicity::getUnit('u'), Wonkicity::getUnit('v'));
-      $this->assertEquals($array, $expected);
+        $expected = array(Wonkicity::getUnit('u'), Wonkicity::getUnit('v'));
+        $this->assertEquals($array, $expected);
+    }
+
+    /**
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::isUnitDefined
+     */
+    public function testIsUnitDefined()
+    {
+        $newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+        Wonkicity::addUnit($newUnit);
+        
+        $someExistingUnits = ['u', 'uvees', 'v', 'vorp', 'noconflict', 'definitelynoconflict_1', 'definitelynoconflict_2'];
+        $unexistingUnits = ['kg', 'l', 'definitelynoconflict_'];
+        
+        foreach ($someExistingUnits as $someExistingUnit) {
+            $this->assertTrue(Wonkicity::isUnitDefined($someExistingUnit), "$someExistingUnit is not defined");
+        }
+        foreach ($unexistingUnits as $unexistingUnit) {
+            $this->assertFalse(Wonkicity::isUnitDefined($unexistingUnit), "$unexistingUnit is not defined");
+        }
+    }
+    
+    /**
+     * @covers \PhpUnitsOfMeasure\AbstractPhysicalQuantity::listAllUnits
+     */
+    public function testListAllUnits()
+    {
+        $newUnit = $this->getTestUnitOfMeasure('noconflict', ['definitelynoconflict_1', 'definitelynoconflict_2']);
+        Wonkicity::addUnit($newUnit);
+        
+        $allUnits = Wonkicity::listAllUnits();
+        $expected = [];
+        $expected['u'] = ['uvee', 'uvees'];
+        $expected['v'] = ['vorp', 'vorps'];
+        $expected['noconflict'] = ['definitelynoconflict_1', 'definitelynoconflict_2'];
+        $this->assertEquals($allUnits, $expected);
     }
 
     public function testGetOriginalValue()

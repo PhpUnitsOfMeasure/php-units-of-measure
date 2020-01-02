@@ -13,6 +13,23 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
     // protected static $unitDefinitions;
 
     /**
+     * Static cache for unit lookups.
+     *
+     * @var UnitOfMeasureInterface[]
+     */
+    private static $unitCache = [];
+
+    /**
+     * Create a cache key for the unit lookup cache.
+     *
+     * @var UnitOfMeasureInterface[]
+     */
+    private static function buildUnitCacheKey($unit)
+    {
+        return get_called_class() . '#' . $unit;
+    }
+
+    /**
      * Register a new unit of measure for all instances of this this physical quantity.
      *
      * @throws Exception\DuplicateUnitNameOrAlias If the unit name or any alias already exists
@@ -47,9 +64,14 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
             static::initialize();
         }
 
+        $key = static::buildUnitCacheKey($unit);
+        if (isset(self::$unitCache[$key])) {
+            return self::$unitCache[$key];
+        }
+
         foreach (static::$unitDefinitions as $unitOfMeasure) {
             if ($unit === $unitOfMeasure->getName() || $unitOfMeasure->isAliasOf($unit)) {
-                return $unitOfMeasure;
+                return self::$unitCache[$key] = $unitOfMeasure;
             }
         }
 
@@ -211,12 +233,39 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
         return get_class($this) === get_class($testQuantity);
     }
 
+    /**
+     * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::isUnitDefined
+     */
+    public static function isUnitDefined($name)
+    {
+        $units = static::getUnitDefinitions();
+        foreach ($units as $unit) {
+            if ($name === $unit->getName() || $unit->isAliasOf($name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * @see \PhpUnitsOfMeasure\PhysicalQuantityInterface::listAllUnits
+     */
+    public static function listAllUnits()
+    {
+        $return = [];
+        $units = static::getUnitDefinitions();
+        foreach ($units as $unit) {
+            $return[$unit->getName()] = $unit->getAliases();
+        }
+        return $return;
+    }
 
     /**
      * Get the unit definition array
      * @return Array $unitDefinitions
      */
-    public static function getUnitDefinitions() {
+    public static function getUnitDefinitions()
+    {
         if (!is_array(static::$unitDefinitions)) {
             static::$unitDefinitions = [];
             static::initialize();

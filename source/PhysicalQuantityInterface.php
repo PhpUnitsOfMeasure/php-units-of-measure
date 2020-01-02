@@ -81,4 +81,23 @@ interface PhysicalQuantityInterface
      * @return string
      */
     public function getOriginalUnit();
+
+    /**
+     * Verify if the given value respond to an already defined unit of meaure of the current
+     * phisical quantity.
+     *
+     * @param string $name the string to verify
+     *
+     * @return boolean True if $name has been defined into the current physical quantity, false if not.
+     */
+    public static function isUnitDefined($name);
+
+    /**
+     * Return a list of all the unit of measure defined in the current physical quantity
+     *
+     * @return array of all units as strings.
+     *     Keys of the array are the units of measure; for any key the value is
+     *     another array containing all aliases.
+     */
+    public static function listAllUnits();
 }

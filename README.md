@@ -277,14 +277,13 @@ In the United States, the standards body for measurement is NIST, and they've pu
 Also note that any new physical quantities should have the appropriate SI unit chosen for their native unit of measure.
 
 ### Pull Requests and Merging
-The workflow for this repository loosely follows [gitflow](http://nvie.com/posts/a-successful-git-branching-model/) and goes as follows:
-- To develop new contributions, fork or branch from the `develop` branch of the main repository
-- Pull requests and contribution merges are always made to the `develop` branch of the main repository
-- From time to time, `develop` is merged into `master` by a project maintainer using --no-ff, and a new tag and version are released
+The workflow for this repository goes as follows:
+- To develop new contributions, fork or branch from the `master` branch of the main repository
+- Pull requests and contribution merges are always made to the `master` branch of the main repository
+- From time to time, commits of `master` are tagged and a new version is released
+- At present, there is no support for maintaining bug-fix branches of older project versions.  This is something we can revisit if a need arises.
 
-In this way, no feature-development work is ever directly contributed to `master`; merges to master only ever come from `develop` when a new version is being cut or from a bugfix branch, and are never fast-forward merges.  this maintains the `master` branch as a series of released production versions of the code, while `develop` is always the sum of the approved and merged contributions from developers.
-
-End users of this repository should only use tagged commits in production.  Users interested in the current 'soon-to-be-released' code may use `develop`, with the understanding that it changes quickly.  All other existing branches (if any) should be considered 'feature' branches in development, and not yet ready for use.
+End users of this repository should only use tagged commits in production.  Users interested in the current 'soon-to-be-released' code may use `master`, with the understanding that it may change unexpectedly.  All other existing branches (if any) should be considered 'feature' branches in development, and not yet ready for use.
 
 ### Local Testing Environment
 There's a Vagrant virtual machine configuration included which is suitable for running the necessary unit tests.  To bring up the machine, make sure you have Vagrant and Virtualbox installed, and from the project root directory:
