@@ -2,7 +2,7 @@
 
 namespace PhpUnitsOfMeasureTest;
 
-use PHPUnit_Framework_TestCase;
+use \PHPUnit\Framework\TestCase;
 
 use PhpUnitsOfMeasure\UnitOfMeasure;
 use PhpUnitsOfMeasure\AbstractDerivedPhysicalQuantity;
@@ -32,7 +32,7 @@ use PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Woogosity;
  *
  * @runTestsInSeparateProcesses
  */
-class DemonstrationTests extends PHPUnit_Framework_TestCase
+class DemonstrationTests extends \PHPUnit\Framework\TestCase
 {
     public function testInstantiatingQuantities()
     {

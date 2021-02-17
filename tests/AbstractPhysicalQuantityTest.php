@@ -2,7 +2,7 @@
 
 namespace PhpUnitsOfMeasureTest;
 
-use PHPUnit_Framework_TestCase;
+use \PHPUnit\Framework\TestCase;
 use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasureInterface;
 use PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch;
@@ -20,7 +20,7 @@ use PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Woogosity;
  *
  * @runTestsInSeparateProcesses
  */
-class AbstractPhysicalQuantityTest extends PHPUnit_Framework_TestCase
+class AbstractPhysicalQuantityTest extends \PHPUnit\Framework\TestCase
 {
     protected function getTestUnitOfMeasure($name, $aliases = [])
     {

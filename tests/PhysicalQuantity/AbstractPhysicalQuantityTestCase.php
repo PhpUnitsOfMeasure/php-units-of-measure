@@ -2,12 +2,12 @@
 
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
-use PHPUnit_Framework_TestCase;
+use \PHPUnit\Framework\TestCase;
 
 /**
  * This is a parent class for all the PhysicalQuantity childrens' test cases.
  */
-abstract class AbstractPhysicalQuantityTestCase extends PHPUnit_Framework_TestCase
+abstract class AbstractPhysicalQuantityTestCase extends \PHPUnit\Framework\TestCase
 {
     protected $supportedUnitsWithAliases = [];
 
