@@ -23,11 +23,11 @@ jobs:
     - php: 8.0
       dist: xenial
       before_script:
-        - composer require "phpunit/phpunit":"^6.5.14"
+        - composer require "phpunit/phpunit":"9.*"
     - php: nightly
       dist: xenial
       before_script:
-        - composer require "phpunit/phpunit":"^6.5.14"
+        - composer require "phpunit/phpunit":"9.*"
   allow_failures:
     - php: nightly
     
