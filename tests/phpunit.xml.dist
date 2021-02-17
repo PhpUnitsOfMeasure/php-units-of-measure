@@ -13,9 +13,9 @@
     </testsuites>
 
     <filter>
-        <blacklist>
+        <exclude>
             <directory suffix=".php">../vendor</directory>
-        </blacklist>
+        </exclude>
         <whitelist>
             <directory suffix=".php">../source</directory>
         </whitelist>
