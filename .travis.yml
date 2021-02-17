@@ -1,14 +1,6 @@
 language: php
 dist: trusty
 
-php:
-  - 5.6
-  - 7.0
-  - 7.1
-  - 7.2
-  - 7.3
-  - 7.4
-
 before_script:
     - composer self-update
     - composer install --verbose --prefer-dist --no-interaction -o
@@ -22,12 +14,20 @@ notifications:
 
 jobs:
   include:
+#    - php: 5.6
+#    - php: 7.0
+#    - php: 7.1
+#    - php: 7.2
+#    - php: 7.3
+    - php: 7.4
     - php: 8.0
       dist: xenial
       before_script:
         - composer require "phpunit/phpunit":"^6.5.14"
     - php: nightly
       dist: xenial
+      before_script:
+        - composer require "phpunit/phpunit":"^6.5.14"
   allow_failures:
     - php: nightly
     
