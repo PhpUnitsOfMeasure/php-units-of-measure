@@ -319,4 +319,4 @@ composer phpcs
 
 ### Continuous Integration
 The above tests are automatically run against Github commits with Travis-CI.
-- https://travis-ci.org/PhpUnitsOfMeasure/php-units-of-measure
+- https://travis-ci.org/landy2005/php-units-of-measure
