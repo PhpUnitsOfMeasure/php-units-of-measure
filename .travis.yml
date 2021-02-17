@@ -24,6 +24,8 @@ jobs:
   include:
     - php: 8.0
       dist: xenial
+      before_script:
+        - composer require "phpunit/phpunit":"^6.5.14"
     - php: nightly
       dist: xenial
   allow_failures:
