@@ -178,7 +178,7 @@ class AbstractPhysicalQuantityTest extends \PHPUnit\Framework\TestCase
         $diffString
     ) {
         if ($shouldThrowException) {
-            $this->setExpectedException('PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch');
+            $this->expectException('PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch');
         }
 
         $sum = $firstValue->add($secondValue);
@@ -200,7 +200,7 @@ class AbstractPhysicalQuantityTest extends \PHPUnit\Framework\TestCase
         $diffString
     ) {
         if ($shouldThrowException) {
-            $this->setExpectedException('PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch');
+            $this->expectException('PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch');
         }
 
         $difference = $firstValue->subtract($secondValue);
