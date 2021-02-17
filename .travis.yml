@@ -1,15 +1,14 @@
 language: php
-sudo: false
 dist: trusty
 
 php:
-  - '5.6'
-  - '7.0'
-  - '7.1'
-  - '7.2'
-  - '7.3'
-  - '7.4'
-  - '8.0'
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
+  - 8.0
   - nightly
 
 before_script:
@@ -23,7 +22,10 @@ script:
 notifications:
     email: false
 
-matrix:
+jobs:
+  include:
+    - php: 8.0
+      dist: xenial
   allow_failures:
     - php: nightly
     
