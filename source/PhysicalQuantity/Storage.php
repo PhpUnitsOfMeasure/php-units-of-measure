@@ -46,6 +46,5 @@ class Storage extends AbstractPhysicalQuantity
         $unit = UnitOfMeasure::linearUnitFactory('petabyte', 1125899906842624);
         $unit->addAlias('PB');
         static::addUnit($unit);
-
     }
 }
