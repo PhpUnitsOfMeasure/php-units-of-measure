@@ -40,7 +40,10 @@
     },
 
     "scripts": {
-        "test": "phpunit -c ./tests/phpunit.xml.dist ./tests",
+        "test": [
+          "@putenv XDEBUG_MODE=coverage",
+          "phpunit -c ./tests/phpunit.xml.dist ./tests"
+        ],
         "phpcs": "phpcs --encoding=utf-8 --extensions=php --standard=./tests/phpcs.xml -nsp ./"
     },
     
