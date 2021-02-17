@@ -1,5 +1,5 @@
 # PHP Units of Measure
-master: [![Build Status](https://travis-ci.org/PhpUnitsOfMeasure/php-units-of-measure.png?branch=master)](https://travis-ci.org/PhpUnitsOfMeasure/php-units-of-measure)
+master: [![Build Status](https://travis-ci.org/landy2005/php-units-of-measure.png?branch=master)](https://travis-ci.org/landy2005/php-units-of-measure)
 
 ## Introduction
 This is a PHP library for representing and converting physical units of measure.  The utility of this library is in encapsulating physical quantities in such a way that you don't have to keep track of which unit they're represented in.  For instance:
