@@ -111,8 +111,7 @@ class AbstractPhysicalQuantityTest extends TestCase
         AbstractPhysicalQuantity $value,
         $arbitraryUnit,
         $valueInArbitraryUnit
-    ): void
-    {
+    ): void {
         $this->expectException(\PhpUnitsOfMeasure\Exception\UnknownUnitOfMeasure::class);
         $value->toUnit('someUnknownUnit');
     }
@@ -125,8 +124,7 @@ class AbstractPhysicalQuantityTest extends TestCase
         AbstractPhysicalQuantity $value,
         $arbitraryUnit,
         $valueInArbitraryUnit
-    ): void
-    {
+    ): void {
         $this->assertSame($valueInArbitraryUnit, $value->toUnit($arbitraryUnit));
     }
 
@@ -146,8 +144,7 @@ class AbstractPhysicalQuantityTest extends TestCase
         AbstractPhysicalQuantity $value,
         $arbitraryUnit,
         $valueInArbitraryUnit
-    ): void
-    {
+    ): void {
         serialize($value);
     }
 
@@ -158,8 +155,7 @@ class AbstractPhysicalQuantityTest extends TestCase
         AbstractPhysicalQuantity $value,
         $arbitraryUnit,
         $valueInArbitraryUnit
-    ): void
-    {
+    ): void {
         $unserializedValue = unserialize(serialize($value));
 
         $this->assertSame($valueInArbitraryUnit, $unserializedValue->toUnit($arbitraryUnit));
@@ -175,8 +171,7 @@ class AbstractPhysicalQuantityTest extends TestCase
         AbstractPhysicalQuantity $secondValue,
         $sumString,
         $diffString
-    ): void
-    {
+    ): void {
         if ($shouldThrowException) {
             $this->expectException(PhysicalQuantityMismatch::class);
         }
@@ -198,11 +193,9 @@ class AbstractPhysicalQuantityTest extends TestCase
         AbstractPhysicalQuantity $secondValue,
         $sumString,
         $diffString
-    ): void
-    {
+    ): void {
         if ($shouldThrowException) {
             $this->expectException(PhysicalQuantityMismatch::class);
-
         }
 
         $difference = $firstValue->subtract($secondValue);
