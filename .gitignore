@@ -25,3 +25,6 @@ Desktop.ini
 
 # Vagrant files
 /.vagrant/
+
+.phpunit.result.cache
+tests/clover.xml
