@@ -273,4 +273,20 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
 
         return static::$unitDefinitions;
     }
+
+    /**
+     * @return float
+     */
+    public function getOriginalValue()
+    {
+        return $this->originalValue;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOriginalUnit()
+    {
+        return $this->originalUnit;
+    }
 }
