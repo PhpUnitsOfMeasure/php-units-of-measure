@@ -1,5 +1,5 @@
 ## v2.2.1 (November 2nd, 2023)
-- Drop support of php < 7.4
+- Drop support of php < 7.2
 
 ## v2.2.0 (February 17th, 2021)
 - Added support for php 8.0
