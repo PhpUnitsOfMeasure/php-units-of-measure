@@ -357,7 +357,7 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
     public function testToCubicMillimeterSecond(): void
     {
         $area = new VolumeFlow(1, 'm^3/s');
-        $this->assertEqualsWithDelta(1e9, $area->toUnit('mm^3/s'), '', 0.000001);
+        $this->assertEqualsWithDelta(1e9, $area->toUnit('mm^3/s'), 0.000001);
         $area = new VolumeFlow(100, 'm^3/s');
         $this->assertEquals(1e11, $area->toUnit('mm^3/s'));
     }
@@ -397,8 +397,8 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
     public function testToCFM()
     {
         $area = new VolumeFlow(1, 'CMM');
-        $this->assertEqualsWithDelta(35.314667, $area->toUnit('CFM'), '', 0.000001);
+        $this->assertEqualsWithDelta(35.314667, $area->toUnit('CFM'), 0.000001);
         $area = new VolumeFlow(100, 'm^3/s');
-        $this->assertEqualsWithDelta(211888.000328, $area->toUnit('CFM'), '', 0.000001);
+        $this->assertEqualsWithDelta(211888.000328, $area->toUnit('CFM'), 0.000001);
     }
 }
