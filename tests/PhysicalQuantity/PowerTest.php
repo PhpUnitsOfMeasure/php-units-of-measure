@@ -3,10 +3,11 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Power;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class PowerTest extends AbstractPhysicalQuantityTestCase
 {
-    protected $supportedUnitsWithAliases = [
+    protected array $supportedUnitsWithAliases = [
         'W',
         'watt',
         'watts',
@@ -33,18 +34,18 @@ class PowerTest extends AbstractPhysicalQuantityTestCase
         'petawatts',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new Power(1, 'W');
     }
 
-    public function testToKilowatt()
+    public function testToKilowatt(): void
     {
         $quantity = new Power(1000, 'W');
         $this->assertEquals(1, $quantity->toUnit('kW'));
     }
 
-    public function testToWatt()
+    public function testToWatt(): void
     {
         $quantity = new Power(1, 'kW');
         $this->assertEquals(1000, $quantity->toUnit('W'));

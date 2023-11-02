@@ -9,7 +9,7 @@ class Wigginess extends AbstractPhysicalQuantity
 {
     protected static $unitDefinitions;
 
-    protected static function initialize()
+    protected static function initialize(): void
     {
         $native = UnitOfMeasure::nativeUnitFactory('s');
         $native->addAlias('sopee');

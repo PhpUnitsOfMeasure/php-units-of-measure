@@ -43,17 +43,17 @@ isTooTallToRideThisTrain( new Length(2, 'm') );
 ```
 
 ## Installation
-This library is best included in your projects via Composer.  See the [Composer website](http://getcomposer.org/) for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/php-units-of-measure/php-units-of-measure).
+This library is best included in your projects via Composer.  See the [Composer website](https://getcomposer.org/) for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/php-units-of-measure/php-units-of-measure).
 
-If you'd prefer to manually include this library as a dependency in your project, then it is recommended that you use a [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant PHP autoloader.  The mapping between this project's root namespace and its base directory is:
+If you'd prefer to manually include this library as a dependency in your project, then it is recommended that you use a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant PHP autoloader.  The mapping between this project's root namespace and its base directory is:
 - vendor namespace 'PhpUnitsOfMeasure\' maps to the library's base directory 'source/'
 
 See the documentation of your autoloader for further instructions.
 
 ### Project Tags and Versions
-This project follows the guidelines set out in [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html).  In general, versions are of the form 'X.Y.Z', and increments to X denote backward-incompatible major changes.
+This project follows the guidelines set out in [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).  In general, versions are of the form 'X.Y.Z', and increments to X denote backward-incompatible major changes.
 
-It is recommended that if your project includes this project as a dependency and you are using an automated dependency management tool such as [Composer](http://getcomposer.org/), then you should 'pin' the major version (X) and allow only variations in 'Y' (minor changes) and 'Z' (bugfixes).  See the documentation of your dependency manager for more details.
+It is recommended that if your project includes this project as a dependency and you are using an automated dependency management tool such as [Composer](https://getcomposer.org/), then you should 'pin' the major version (X) and allow only variations in 'Y' (minor changes) and 'Z' (bugfixes).  See the documentation of your dependency manager for more details.
 
 
 ## Use
@@ -239,7 +239,7 @@ class Length extends AbstractPhysicalQuantity
 Now any program which uses `Length` will start with the cubits unit already built in.  Note that here we used the more concise linear unit factory method, but the result is equivalent to the expanded form calling the `UnitOfMeasure` constructor, as used above.  Also, notice that the `static` keyword was used instead of the class name, though either would be acceptable in this case.
 
 ### Adding New Physical Quantities
-[Physical quantities](http://en.wikipedia.org/wiki/Physical_quantity) are categories of measurable values, like mass, length, force, etc.
+[Physical quantities](https://en.wikipedia.org/wiki/Physical_quantity) are categories of measurable values, like mass, length, force, etc.
 
 For physical quantities that are not already present in this library, it will be necessary to write a class to support a new one.  All physical quantities implement the `\PhpUnitsOfMeasure\PhysicalQuantityInterface` interface, typically extend the `\PhpUnitsOfMeasure\AbstractPhysicalQuantity` class, and typically have only an `initialize()` method which creates the quantity's units of measure.  See above for typical examples of physical quantity classes and of how to add new units to a quantity class.
 

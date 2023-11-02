@@ -3,10 +3,11 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Time;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class TimeTest extends AbstractPhysicalQuantityTestCase
 {
-    protected $supportedUnitsWithAliases = [
+    protected array $supportedUnitsWithAliases = [
         's',
         'sec',
         'secs',
@@ -140,48 +141,48 @@ class TimeTest extends AbstractPhysicalQuantityTestCase
         'julian years',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new Time(1, 'sec');
     }
 
-    public function testToSeconds()
+    public function testToSeconds(): void
     {
         $angle = new Time(5, 'm');
         $this->assertEquals(300, $angle->toUnit('seconds'));
     }
 
-    public function testToMinutes()
+    public function testToMinutes(): void
     {
         $angle = new Time(360, 'sec');
         $this->assertEquals(6, $angle->toUnit('min'));
     }
 
-    public function testToHours()
+    public function testToHours(): void
     {
         $angle = new Time(120, 'mins');
         $this->assertEquals(2, $angle->toUnit('hrs'));
     }
 
-    public function testToDays()
+    public function testToDays(): void
     {
         $angle = new Time(72, 'hours');
         $this->assertEquals(3, $angle->toUnit('days'));
     }
 
-    public function testToWeeks()
+    public function testToWeeks(): void
     {
         $angle = new Time(14, 'd');
         $this->assertEquals(2, $angle->toUnit('week'));
     }
 
-    public function testToGregorianYears()
+    public function testToGregorianYears(): void
     {
         $angle = new Time(365.2425, 'd');
         $this->assertEquals(1, $angle->toUnit('yr'));
     }
 
-    public function testToJulianYears()
+    public function testToJulianYears(): void
     {
         $angle = new Time(365.25, 'd');
         $this->assertEquals(1, $angle->toUnit('jyr'));

@@ -12,7 +12,7 @@ class Woogosity extends AbstractPhysicalQuantity
 
     protected static $unitDefinitions;
 
-    protected static function initialize()
+    protected static function initialize(): void
     {
         $native = UnitOfMeasure::nativeUnitFactory('l');
         $native->addAlias('lupee');

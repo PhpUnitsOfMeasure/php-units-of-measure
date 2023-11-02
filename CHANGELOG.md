@@ -1,4 +1,8 @@
-## v2.2.0 (April XXth, 2019)
+## v2.2.1 (xxx)
+- Drop support of php < 7.4
+
+## v2.2.0 (Feb 17th, 2021)
+- Added support for php 8.0
 - Added option power factor for Si factor, ie for square (2) and cubic (3)
 - Added new Physical Quantity volume flow with commonly used units
 - Added lowercase aliases for temperature units
@@ -13,7 +17,6 @@
 - Additional units for velocity: Mach, meters/min, feet per minute, miles per second
 - Additional unit for power: dBm
 - Fixed native unit for mass as gram
-
 
 ## v2.1.0 (July 24th, 2016)
 - Added getUnitDefinitions() method to PhysicalQuantity classes, to get a raw list of UnitofMeasure objects defined on that quantity

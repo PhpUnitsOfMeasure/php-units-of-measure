@@ -3,10 +3,11 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Mass;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class MassTest extends AbstractPhysicalQuantityTestCase
 {
-    protected $supportedUnitsWithAliases = [
+    protected array $supportedUnitsWithAliases = [
         'kg',
         'kilogram',
         'kilograms',
@@ -101,30 +102,30 @@ class MassTest extends AbstractPhysicalQuantityTestCase
         'tam',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new Mass(1, 'g');
     }
 
-    public function testToGrams()
+    public function testToGrams(): void
     {
         $quantity = new Mass(5, 'kg');
         $this->assertEquals(5000, $quantity->toUnit('g'));
     }
 
-    public function testToMilligrams()
+    public function testToMilligrams(): void
     {
         $quantity = new Mass(5, 'kg');
         $this->assertEquals(5*1e6, $quantity->toUnit('mg'));
     }
 
-    public function testToPounds()
+    public function testToPounds(): void
     {
         $quantity = new Mass(16, 'oz');
         $this->assertEquals(1, $quantity->toUnit('pound'));
     }
 
-    public function testToStones()
+    public function testToStones(): void
     {
         $quantity = new Mass(14, 'pound');
         $this->assertEquals(1, $quantity->toUnit('st'));
