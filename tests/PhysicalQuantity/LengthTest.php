@@ -245,19 +245,19 @@ class LengthTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(1.0026880683402668, $quantity->toUnit('AU'));
     }
 
-    public function testToLightYear()
+    public function testToLightYear(): void
     {
         $quantity = new Length(150000000000000, 'km');
         $this->assertEquals(15.855012510369232, $quantity->toUnit('ly'));
     }
 
-    public function testToParSec()
+    public function testToParSec(): void
     {
         $quantity = new Length(150000000000000, 'km');
         $this->assertEquals(4.861168934166548, $quantity->toUnit('pc'));
     }
 
-    public function testToMilliParSec()
+    public function testToMilliParSec(): void
     {
         $quantity = new Length(150000000000000, 'km');
         $this->assertEquals(4861.168934166548, $quantity->toUnit('mpc'));

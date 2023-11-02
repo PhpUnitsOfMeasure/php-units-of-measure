@@ -90,7 +90,7 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         return new Volume(1, 'm^3');
     }
 
-    public function testToCubicDecimeter()
+    public function testToCubicDecimeter(): void
     {
         $area = new Volume(1, 'm^3');
         $this->assertEquals(1000, $area->toUnit('dm^3'));
@@ -98,15 +98,15 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(100000, $area->toUnit('dm^3'));
     }
 
-    public function testToCubicMillimeter()
+    public function testToCubicMillimeter(): void
     {
         $area = new Volume(1, 'm^3');
-        $this->assertEquals(1e9, $area->toUnit('mm^3'), '', 0.000001);
+        $this->assertEqualsWithDelta(1e9, $area->toUnit('mm^3'), '', 0.000001);
         $area = new Volume(100, 'm^3');
         $this->assertEquals(1e11, $area->toUnit('mm^3'));
     }
 
-    public function testToLitres()
+    public function testToLitres(): void
     {
         $area = new Volume(1, 'm^3');
         $this->assertEquals(1000, $area->toUnit('l'));
@@ -114,7 +114,7 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(100000, $area->toUnit('l'));
     }
 
-    public function testToMilliLitres()
+    public function testToMilliLitres(): void
     {
         $area = new Volume(1, 'l');
         $this->assertEquals(1000, $area->toUnit('ml'));
@@ -122,7 +122,7 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(100000, $area->toUnit('ml'));
     }
 
-    public function testToHectoLitres()
+    public function testToHectoLitres(): void
     {
         $area = new Volume(1, 'l');
         $this->assertEquals(0.01, $area->toUnit('hl'));
@@ -130,7 +130,7 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(1, $area->toUnit('hl'));
     }
 
-    public function testToKiloLitres()
+    public function testToKiloLitres(): void
     {
         $area = new Volume(1, 'l');
         $this->assertEquals(0.001, $area->toUnit('kl'));
@@ -138,11 +138,11 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(0.1, $area->toUnit('kl'));
     }
 
-    public function testToGallon()
+    public function testToGallon(): void
     {
         $area = new Volume(1, 'm^3');
-        $this->assertEquals(264.172051, $area->toUnit('gal'), '', 0.000001);
+        $this->assertEqualsWithDelta(264.172051, $area->toUnit('gal'), '', 0.000001);
         $area = new Volume(100, 'm^3');
-        $this->assertEquals(26417.205124, $area->toUnit('gal'), '', 0.000001);
+        $this->assertEqualsWithDelta(26417.205124, $area->toUnit('gal'), '', 0.000001);
     }
 }

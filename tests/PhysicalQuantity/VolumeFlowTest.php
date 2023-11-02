@@ -3,10 +3,11 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\VolumeFlow;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
 {
-    protected $supportedUnitsWithAliases = [
+    protected array $supportedUnitsWithAliases = [
         'm^3/s',
         'm³/s',
         'cubic meter per second',
@@ -331,12 +332,12 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
         'us gal/d'
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new VolumeFlow(1, 'm^3/s');
     }
 
-    public function testToCubicDecimeterSecond()
+    public function testToCubicDecimeterSecond(): void
     {
         $area = new VolumeFlow(1, 'm^3/s');
         /*
@@ -353,15 +354,15 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
     }
 
 
-    public function testToCubicMillimeterSecond()
+    public function testToCubicMillimeterSecond(): void
     {
         $area = new VolumeFlow(1, 'm^3/s');
-        $this->assertEquals(1e9, $area->toUnit('mm^3/s'), '', 0.000001);
+        $this->assertEqualsWithDelta(1e9, $area->toUnit('mm^3/s'), '', 0.000001);
         $area = new VolumeFlow(100, 'm^3/s');
         $this->assertEquals(1e11, $area->toUnit('mm^3/s'));
     }
 
-    public function testToLitresSecond()
+    public function testToLitresSecond(): void
     {
         $area = new VolumeFlow(1, 'm^3/s');
         $this->assertEquals(1000, $area->toUnit('l/s'));
@@ -369,7 +370,7 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(100000, $area->toUnit('l/s'));
     }
 
-    public function testToMilliLitresSecond()
+    public function testToMilliLitresSecond(): void
     {
         $area = new VolumeFlow(1, 'l/s');
         $this->assertEquals(1000, $area->toUnit('ml/s'));
@@ -377,7 +378,7 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(100000, $area->toUnit('ml/s'));
     }
 
-    public function testToHectoLitresSecond()
+    public function testToHectoLitresSecond(): void
     {
         $area = new VolumeFlow(1, 'l/s');
         $this->assertEquals(0.01, $area->toUnit('hl/s'));
@@ -385,7 +386,7 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(1, $area->toUnit('hl/s'));
     }
 
-    public function testToKiloLitresSecond()
+    public function testToKiloLitresSecond(): void
     {
         $area = new VolumeFlow(1, 'l/s');
         $this->assertEquals(0.001, $area->toUnit('kl/s'));
@@ -396,8 +397,8 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
     public function testToCFM()
     {
         $area = new VolumeFlow(1, 'CMM');
-        $this->assertEquals(35.314667, $area->toUnit('CFM'), '', 0.000001);
+        $this->assertEqualsWithDelta(35.314667, $area->toUnit('CFM'), '', 0.000001);
         $area = new VolumeFlow(100, 'm^3/s');
-        $this->assertEquals(211888.000328, $area->toUnit('CFM'), '', 0.000001);
+        $this->assertEqualsWithDelta(211888.000328, $area->toUnit('CFM'), '', 0.000001);
     }
 }

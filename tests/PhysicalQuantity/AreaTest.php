@@ -199,7 +199,7 @@ class AreaTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(1, $area->toUnit('decare'));
     }
 
-    public function testToDecimeterSquare()
+    public function testToDecimeterSquare(): void
     {
         $area = new Area(1, 'm^2');
         $this->assertEquals(100, $area->toUnit('dm^2'));
@@ -207,7 +207,7 @@ class AreaTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(10000, $area->toUnit('dm^2'));
     }
 
-    public function testToMillimeterSquare()
+    public function testToMillimeterSquare(): void
     {
         $area = new Area(1, 'm^2');
         $this->assertEquals(1e6, $area->toUnit('mm^2'));

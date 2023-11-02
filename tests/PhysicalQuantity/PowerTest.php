@@ -51,7 +51,7 @@ class PowerTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(1000, $quantity->toUnit('W'));
     }
 
-    public function testToDecibelsMilliWatt()
+    public function testToDecibelsMilliWatt(): void
     {
         $quantity = new Power(0.01, 'mW');
         $this->assertEquals(-20, $quantity->toUnit('dBm'));
@@ -61,7 +61,7 @@ class PowerTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(70, $quantity->toUnit('dBm'));
     }
 
-    public function testFromDecibelsMilliWatt()
+    public function testFromDecibelsMilliWatt(): void
     {
         $quantity = new Power(-20, 'dBm');
         $this->assertEquals(0.00001, $quantity->toUnit('W'));

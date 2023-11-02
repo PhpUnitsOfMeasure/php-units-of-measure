@@ -131,27 +131,27 @@ class MassTest extends AbstractPhysicalQuantityTestCase
         $this->assertEquals(1, $quantity->toUnit('st'));
     }
 
-    public function testToHundredweight()
+    public function testToHundredweight(): void
     {
         $quantity = new Mass(5, 'kg');
-        $this->assertEquals(0.098420653, $quantity->toUnit('cwt'), '', 0.00000001);
+        $this->assertEqualsWithDelta(0.098420653, $quantity->toUnit('cwt'), '', 0.00000001);
     }
 
-    public function testToUSshortTon()
+    public function testToUSshortTon(): void
     {
         $quantity = new Mass(5, 'kg');
-        $this->assertEquals(0.0055115566, $quantity->toUnit('ust'), '', 0.000000001);
+        $this->assertEqualsWithDelta(0.0055115566, $quantity->toUnit('ust'), '', 0.000000001);
     }
 
-    public function testToUSlongTon()
+    public function testToUSlongTon(): void
     {
         $quantity = new Mass(5, 'kg');
-        $this->assertEquals(0.0049210326, $quantity->toUnit('ukt'), '', 0.000000001);
+        $this->assertEqualsWithDelta(0.0049210326, $quantity->toUnit('ukt'), '', 0.000000001);
     }
 
-    public function testToPicul()
+    public function testToPicul(): void
     {
         $quantity = new Mass(5, 'kg');
-        $this->assertEquals(0.08267335, $quantity->toUnit('picul'), '', 0.00000001);
+        $this->assertEqualsWithDelta(0.08267335, $quantity->toUnit('picul'), '', 0.00000001);
     }
 }
