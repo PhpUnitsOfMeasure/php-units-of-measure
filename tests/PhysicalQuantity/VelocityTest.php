@@ -3,10 +3,11 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Velocity;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class VelocityTest extends AbstractPhysicalQuantityTestCase
 {
-    protected $supportedUnitsWithAliases = [
+    protected array $supportedUnitsWithAliases = [
         'm/s',
         'meters/sec',
         'meters per second',
@@ -29,30 +30,30 @@ class VelocityTest extends AbstractPhysicalQuantityTestCase
         'knots',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new Velocity(1, 'm/s');
     }
 
-    public function testToKilometersPerHour()
+    public function testToKilometersPerHour(): void
     {
         $speed = new Velocity(1, 'km/h');
         $this->assertEquals(0.277778, $speed->toUnit('m/s'));
     }
 
-    public function testToFeetPerSecond()
+    public function testToFeetPerSecond(): void
     {
         $speed = new Velocity(2, 'm/s');
         $this->assertEquals(6.561679790026246, $speed->toUnit('ft/s'));
     }
 
-    public function testToKmPerHour()
+    public function testToKmPerHour(): void
     {
         $speed = new Velocity(2, 'mph');
         $this->assertEquals(3.2186854250516594, $speed->toUnit('km/h'));
     }
 
-    public function testToKnot()
+    public function testToKnot(): void
     {
         $speed = new Velocity(2, 'm/s');
         $this->assertEquals(3.8876923435786983, $speed->toUnit('knot'));

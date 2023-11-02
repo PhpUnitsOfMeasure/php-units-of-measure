@@ -3,10 +3,11 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Temperature;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class TemperatureTest extends AbstractPhysicalQuantityTestCase
 {
-    protected $supportedUnitsWithAliases = [
+    protected array $supportedUnitsWithAliases = [
         'K',
         '°K',
         'kelvin',
@@ -79,7 +80,7 @@ class TemperatureTest extends AbstractPhysicalQuantityTestCase
         'romer',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new Temperature(1, 'K');
     }
