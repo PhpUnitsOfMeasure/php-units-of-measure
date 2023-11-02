@@ -350,7 +350,7 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
         */
         $this->assertEqualsWithDelta(1000, $area->toUnit('dm^3/s'), 0.000001);
         $area = new VolumeFlow(100, 'm^3/s');
-        $this->assertEquals(100000, $area->toUnit('dm^3/s'));
+        $this->assertEqualsWithDelta(100000, $area->toUnit('dm^3/s'), 0.000001);
     }
 
 
@@ -375,7 +375,7 @@ class VolumeFlowTest extends AbstractPhysicalQuantityTestCase
         $area = new VolumeFlow(1, 'l/s');
         $this->assertEqualsWithDelta(1000, $area->toUnit('ml/s'), 0.000001);
         $area = new VolumeFlow(100, 'l/s');
-        $this->assertEquals(100000, $area->toUnit('ml/s'));
+        $this->assertEqualsWithDelta(100000, $area->toUnit('ml/s'), 0.000001);
     }
 
     public function testToHectoLitresSecond(): void
