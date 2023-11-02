@@ -7,7 +7,7 @@ use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class AreaTest extends AbstractPhysicalQuantityTestCase
 {
-    protected array $supportedUnitsWithAliases = [
+    protected $supportedUnitsWithAliases = [
         'm^2',
         'm²',
         'meter squared',

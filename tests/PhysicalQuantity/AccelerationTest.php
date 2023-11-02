@@ -7,7 +7,7 @@ use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class AccelerationTest extends AbstractPhysicalQuantityTestCase
 {
-    protected array $supportedUnitsWithAliases = [
+    protected $supportedUnitsWithAliases = [
         'm/s^2',
         'm/s²',
         'meter per second squared',

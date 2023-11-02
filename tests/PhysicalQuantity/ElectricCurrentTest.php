@@ -7,7 +7,7 @@ use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class ElectricCurrentTest extends AbstractPhysicalQuantityTestCase
 {
-    protected array $supportedUnitsWithAliases = [
+    protected $supportedUnitsWithAliases = [
         'A',
         'amp',
         'amps',

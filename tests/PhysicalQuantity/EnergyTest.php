@@ -7,7 +7,7 @@ use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class EnergyTest extends AbstractPhysicalQuantityTestCase
 {
-    protected array $supportedUnitsWithAliases = [
+    protected $supportedUnitsWithAliases = [
         'Wh',
         'watt hour',
         'watt hours',

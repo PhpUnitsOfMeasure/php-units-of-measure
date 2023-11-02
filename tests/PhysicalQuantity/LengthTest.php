@@ -7,7 +7,7 @@ use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class LengthTest extends AbstractPhysicalQuantityTestCase
 {
-    protected array $supportedUnitsWithAliases = [
+    protected $supportedUnitsWithAliases = [
         'm',
         'meter',
         'meters',

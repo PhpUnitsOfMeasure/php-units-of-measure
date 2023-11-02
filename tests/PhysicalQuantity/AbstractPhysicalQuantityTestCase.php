@@ -10,7 +10,7 @@ use PhpUnitsOfMeasure\PhysicalQuantityInterface;
  */
 abstract class AbstractPhysicalQuantityTestCase extends TestCase
 {
-    protected array $supportedUnitsWithAliases = [];
+    protected $supportedUnitsWithAliases = [];
 
     /**
      * Verify that the object instantiates without error.
