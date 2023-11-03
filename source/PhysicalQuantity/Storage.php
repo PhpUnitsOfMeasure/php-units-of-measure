@@ -4,24 +4,50 @@ namespace PhpUnitsOfMeasure\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
 use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasIECUnitsTrait;
 
 class Storage extends AbstractPhysicalQuantity
 {
+    use HasIECUnitsTrait;
 
     protected static $unitDefinitions;
 
     protected static function initialize()
     {
-        // Byte
-        $unit = UnitOfMeasure::nativeUnitFactory('byte');
-        $unit->addAlias('B');
-        static::addUnit($unit);
-
         // Bit
-        $unit = UnitOfMeasure::linearUnitFactory('bit', 0.125);
-        $unit->addAlias('b');
-        static::addUnit($unit);
+        $bit = UnitOfMeasure::nativeUnitFactory('bit');
+        $bit->addAlias('b');
+        static::addUnit($bit);
 
+        static::addMissingIECPrefixedUnits(
+            $bit,
+            1,
+            '%Pbit',
+            [
+                '%pb',
+                '%Pbits',
+            ]
+        );
+
+        // Byte
+        $byte = UnitOfMeasure::linearUnitFactory('byte', 8);
+        $byte->addAlias('B');
+        static::addUnit($byte);
+
+        static::addMissingIECPrefixedUnits(
+            $byte,
+            1,
+            '%Pbyte',
+            [
+                '%Pbytes',
+                '%pB',
+                '%pByte',
+                '%pBytes',
+            ],
+            1024
+        );
+
+        /*
         // kilobyte (KB)
         $unit = UnitOfMeasure::linearUnitFactory('kilobyte', 1024);
         $unit->addAlias('KB');
@@ -46,5 +72,6 @@ class Storage extends AbstractPhysicalQuantity
         $unit = UnitOfMeasure::linearUnitFactory('petabyte', 1125899906842624);
         $unit->addAlias('PB');
         static::addUnit($unit);
+        */
     }
 }
