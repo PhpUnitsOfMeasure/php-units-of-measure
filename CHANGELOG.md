@@ -1,3 +1,8 @@
+## v2.2.2 (November 3nd, 2023)
+- Added ronna (R) and quetta (Q) si prefixes.
+- Added IEC prefixed units support for Storage
+- Added Storage units
+
 ## v2.2.1 (November 2nd, 2023)
 - Drop support of php < 7.2
 
