@@ -93,6 +93,18 @@ trait HasIECUnitsTrait
 
             // Partial list of SI prefixes (not all used for storages)
             [
+                'abbr_prefix' => 'Q',
+                'long_prefix' => 'quetta',
+                'factor'      => 1e30,
+                'si'          => 10
+            ],
+            [
+                'abbr_prefix' => 'R',
+                'long_prefix' => 'ronna',
+                'factor'      => 1e27,
+                'si'          => 9
+            ],
+            [
                 'abbr_prefix' => 'Y',
                 'long_prefix' => 'yotta',
                 'factor'      => 1e24,
