@@ -36,7 +36,7 @@ class Power extends AbstractPhysicalQuantity
                 return 10 * log10($x) + 30;
             },
             function ($x) {
-                return pow(10, ($x / 10)) / 1000;
+                return (10 ** ($x / 10)) / 1000;
             }
         );
         $newUnit->addAlias('dbm');

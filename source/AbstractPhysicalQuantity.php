@@ -26,7 +26,7 @@ abstract class AbstractPhysicalQuantity implements PhysicalQuantityInterface
      */
     private static function buildUnitCacheKey($unit)
     {
-        return get_called_class() . '#' . $unit;
+        return static::class . '#' . $unit;
     }
 
     /**

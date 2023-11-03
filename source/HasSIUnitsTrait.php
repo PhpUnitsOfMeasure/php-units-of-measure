@@ -33,17 +33,17 @@ trait HasSIUnitsTrait
      * then pass 1e-3 in the 2nd parameter to indicate that a gram is 1/1000 of the given unit.
      *
      * @param  UnitOfMeasure $siUnit             A unit in this physical quantity that is an SI unit of measure
-     * @param  integer       $toBaseSiUnitFactor The power-of-ten factor that converts the given SI unit into the not-prefixed SI base unit (ie 1e-3 for kilograms)
-     * @param  string        $namePattern        The pattern to apply to the base unit's name to generate a new SI unit name
+     * @param float          $toBaseSiUnitFactor The power-of-ten factor that converts the given SI unit into the not-prefixed SI base unit (ie 1e-3 for kilograms)
+     * @param string         $namePattern        The pattern to apply to the base unit's name to generate a new SI unit name
      * @param  array         $aliasPatterns      The collection of alias patterns to use in generating a new SI unit's aliases
-     * @param  integer       $powerFactor        Use power factor for squares, qubic and other multiplication of SI factor (ie. square is 2, qubic is 3)
+     * @param integer|null   $powerFactor        Use power factor for squares, qubic and other multiplication of SI factor (ie. square is 2, qubic is 3)
      */
     protected static function addMissingSIPrefixedUnits(
         UnitOfMeasure $siUnit,
-        $toBaseSiUnitFactor,
-        $namePattern,
-        array $aliasPatterns = [],
-        $powerFactor = null
+        float         $toBaseSiUnitFactor,
+        string        $namePattern,
+        array         $aliasPatterns = [],
+        int           $powerFactor = null
     ) {
         /**
          * The standard set of SI prefixes
@@ -178,8 +178,8 @@ trait HasSIUnitsTrait
 
             // Determine the factor that converts the new unit into the physical quantity's
             //   native unit of measure.
-            if (is_int($powerFactor) && $powerFactor != 0) {
-                $prefixDefinition['factor'] = pow($prefixDefinition['factor'], $powerFactor);
+            if (is_int($powerFactor) && $powerFactor !== 0) {
+                $prefixDefinition['factor'] = $prefixDefinition['factor'] ** $powerFactor;
             }
             $toNativeUnitFactor = $noPrefixToNativeUnitFactor * $prefixDefinition['factor'];
 
