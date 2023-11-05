@@ -3,6 +3,7 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Volume;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class VolumeTest extends AbstractPhysicalQuantityTestCase
 {
@@ -84,8 +85,64 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         'cups',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new Volume(1, 'm^3');
+    }
+
+    public function testToCubicDecimeter(): void
+    {
+        $area = new Volume(1, 'm^3');
+        $this->assertEqualsWithDelta(1000, $area->toUnit('dm^3'), 0.000001);
+        $area = new Volume(100, 'm^3');
+        $this->assertEqualsWithDelta(100000, $area->toUnit('dm^3'), 0.000001);
+    }
+
+    public function testToCubicMillimeter(): void
+    {
+        $area = new Volume(1, 'm^3');
+        $this->assertEqualsWithDelta(1e9, $area->toUnit('mm^3'), 0.000001);
+        $area = new Volume(100, 'm^3');
+        $this->assertEquals(1e11, $area->toUnit('mm^3'));
+    }
+
+    public function testToLitres(): void
+    {
+        $area = new Volume(1, 'm^3');
+        $this->assertEquals(1000, $area->toUnit('l'));
+        $area = new Volume(100, 'm^3');
+        $this->assertEquals(100000, $area->toUnit('l'));
+    }
+
+    public function testToMilliLitres(): void
+    {
+        $area = new Volume(1, 'l');
+        $this->assertEqualsWithDelta(1000, $area->toUnit('ml'), 0.000001);
+        $area = new Volume(100, 'l');
+        $this->assertEqualsWithDelta(100000, $area->toUnit('ml'), 0.000001);
+    }
+
+    public function testToHectoLitres(): void
+    {
+        $area = new Volume(1, 'l');
+        $this->assertEquals(0.01, $area->toUnit('hl'));
+        $area = new Volume(100, 'l');
+        $this->assertEquals(1, $area->toUnit('hl'));
+    }
+
+    public function testToKiloLitres(): void
+    {
+        $area = new Volume(1, 'l');
+        $this->assertEquals(0.001, $area->toUnit('kl'));
+        $area = new Volume(100, 'l');
+        $this->assertEquals(0.1, $area->toUnit('kl'));
+    }
+
+    public function testToGallon(): void
+    {
+        $area = new Volume(1, 'm^3');
+        $this->assertEqualsWithDelta(264.172051, $area->toUnit('gal'), 0.000001);
+        $area = new Volume(100, 'm^3');
+        $this->assertEqualsWithDelta(26417.205124, $area->toUnit('gal'), 0.000001);
     }
 }

@@ -2,16 +2,10 @@
 
 namespace PhpUnitsOfMeasureTest;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use PhpUnitsOfMeasure\UnitOfMeasure;
-use PhpUnitsOfMeasure\AbstractDerivedPhysicalQuantity;
-use PhpUnitsOfMeasure\DerivedPhysicalQuantityFactory;
-use PhpUnitsOfMeasure\PhysicalQuantity\UnknownDerivedPhysicalQuantity;
-use PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Plooposity;
-use PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Pumpalumpiness;
 use PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess;
-use PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wonkicity;
 use PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Woogosity;
 
 /**
@@ -32,9 +26,9 @@ use PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Woogosity;
  *
  * @runTestsInSeparateProcesses
  */
-class DemonstrationTests extends PHPUnit_Framework_TestCase
+class DemonstrationTests extends TestCase
 {
-    public function testInstantiatingQuantities()
+    public function testInstantiatingQuantities(): void
     {
         // New quantities are created like this, with
         // the class name being the physical quantity that
@@ -44,25 +38,25 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         // Note that each unit can be referred to by several names
         // (for example sopee, sopees, s).
         $a = new Wigginess(1, 'sopee');
-        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
+        $this->assertInstanceOf(Wigginess::class, $a);
 
         $a = new Wigginess(2.123, 'sopees');
-        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
+        $this->assertInstanceOf(Wigginess::class, $a);
 
         $a = new Wigginess(2.6, 's');
-        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
+        $this->assertInstanceOf(Wigginess::class, $a);
 
         $a = new Wigginess(1, 'tumpet');
-        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
+        $this->assertInstanceOf(Wigginess::class, $a);
 
         $a = new Wigginess(2.123, 'tumpets');
-        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
+        $this->assertInstanceOf(Wigginess::class, $a);
 
         $a = new Wigginess(2.6, 't');
-        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $a);
+        $this->assertInstanceOf(Wigginess::class, $a);
     }
 
-    public function testStringConversionForQuantities()
+    public function testStringConversionForQuantities(): void
     {
         // Casting physical quantity objects to strings will
         // produce a reasonable string describing the quantity.
@@ -73,7 +67,7 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         $this->assertSame('21.123 t', (string) $a);
     }
 
-    public function testUnitConversionForQuantities()
+    public function testUnitConversionForQuantities(): void
     {
         // Creating equivalent quantities from existing
         // quantities in different units of measure is done
@@ -90,7 +84,7 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         $this->assertSame(21/2.5, $a->toUnit('t'));
     }
 
-    public function testCreatingNewUnitsForQuantities()
+    public function testCreatingNewUnitsForQuantities(): void
     {
         // New units of measure can be defined and registered
         // with physical quantities on the fly.
@@ -150,7 +144,7 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         $this->assertSame((21*2.5)-100, $b->toUnit('eeee'));
     }
 
-    public function testAutomaticSIUnitsForQuantities()
+    public function testAutomaticSIUnitsForQuantities(): void
     {
         // SI units have a standard prefix naming convention to easily
         // provide powers-of-ten versions of a standard unit.  For instance,
@@ -164,14 +158,14 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         // for an example of how this is done.
         $a = new Woogosity(21, 'plurp');
 
-        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Woogosity', $a);
+        $this->assertInstanceOf(Woogosity::class, $a);
         $this->assertSame(21*4.5 * 1e3, $a->toUnit('millilupees'));
         $this->assertSame(21*4.5 * 1e3, $a->toUnit('ml'));
         $this->assertSame(21*4.5 / 1e6, $a->toUnit('megalupees'));
         $this->assertSame(21*4.5 / 1e6, $a->toUnit('Ml'));
     }
 
-    public function testAddQuantities()
+    public function testAddQuantities(): void
     {
         // Two quantities of equivalent value can be summed
         // by calling the add method.
@@ -179,11 +173,11 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         $b = new Wigginess(2, 'tumpet');
         $c = $a->add($b);
 
-        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $c);
+        $this->assertInstanceOf(Wigginess::class, $c);
         $this->assertSame(3 + (2*2.5), $c->toUnit('sopee'));
     }
 
-    public function testSubtractQuantities()
+    public function testSubtractQuantities(): void
     {
         // Similar to the add method, subtract called on the
         // left-hand-side operand object will subtract the
@@ -192,7 +186,7 @@ class DemonstrationTests extends PHPUnit_Framework_TestCase
         $b = new Wigginess(2, 'tumpet');
         $c = $a->subtract($b);
 
-        $this->assertInstanceOf('PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Wigginess', $c);
+        $this->assertInstanceOf(Wigginess::class, $c);
         $this->assertSame(3 - (2*2.5), $c->toUnit('sopee'));
     }
 }

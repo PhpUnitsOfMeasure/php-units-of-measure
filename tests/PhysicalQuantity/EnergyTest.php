@@ -3,6 +3,7 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Energy;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class EnergyTest extends AbstractPhysicalQuantityTestCase
 {
@@ -56,34 +57,60 @@ class EnergyTest extends AbstractPhysicalQuantityTestCase
         'PJ',
         'petajoule',
         'petajoules',
+
+        'eV',
+        'electronvolt',
+        'electronvolts',
+        'MeV',
+        'megaelectronvolt',
+        'megaelectronvolts',
+
+        'cal',
+        'calorie',
+        'calories',
+        'Mcal',
+        'megacalorie',
+        'megacalories',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new Energy(1, 'Wh');
     }
 
-    public function testToKilowattHour()
+    public function testToKilowattHour(): void
     {
         $quantity = new Energy(1000, 'Wh');
         $this->assertEquals(1, $quantity->toUnit('kWh'));
     }
 
-    public function testToWattHour()
+    public function testToWattHour(): void
     {
         $quantity = new Energy(1, 'kWh');
         $this->assertEquals(1000, $quantity->toUnit('Wh'));
     }
 
-    public function testToMegaJoule()
+    public function testToMegaJoule(): void
     {
         $quantity = new Energy(1, 'kWh');
         $this->assertEquals(3.6, $quantity->toUnit('megajoule'));
     }
 
-    public function testToJoule()
+    public function testToJoule(): void
     {
         $quantity = new Energy(1, 'Wh');
         $this->assertEquals(3600, $quantity->toUnit('joule'));
+    }
+
+    public function testToMegaCal(): void
+    {
+        $quantity = new Energy(1, 'kWh');
+        $this->assertEquals(0.8604206500956023, $quantity->toUnit('Mcal'));
+    }
+
+    public function testToMegaElectronvolt(): void
+    {
+        $quantity = new Energy(1, 'kWh');
+        $this->assertEquals(2.2469432853179728e19, $quantity->toUnit('MeV'));
     }
 }

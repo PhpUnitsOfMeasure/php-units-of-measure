@@ -3,6 +3,7 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Pressure;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class PressureTest extends AbstractPhysicalQuantityTestCase
 {
@@ -49,6 +50,7 @@ class PressureTest extends AbstractPhysicalQuantityTestCase
         'zeptopascal',
         'yPa',
         'yoctopascal',
+        'at',
         'atm',
         'atmosphere',
         'atmospheres',
@@ -80,10 +82,12 @@ class PressureTest extends AbstractPhysicalQuantityTestCase
         'millimetres of mercury',
         'torr',
         'psi',
+        'ksi',
+        'Mpsi',
         'pounds per square inch',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new Pressure(1, 'Pa');
     }

@@ -3,6 +3,7 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\Mass;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class MassTest extends AbstractPhysicalQuantityTestCase
 {
@@ -71,10 +72,13 @@ class MassTest extends AbstractPhysicalQuantityTestCase
         'yoctogram',
         'yoctograms',
         't',
+        'T',
         'ton',
         'tons',
         'tonne',
         'tonnes',
+        'MT',
+        'mT',
         'lb',
         'lbs',
         'pound',
@@ -85,34 +89,69 @@ class MassTest extends AbstractPhysicalQuantityTestCase
         'st',
         'stone',
         'stones',
+        'cwt',
+        'hundredweight',
+        'hundredweights',
+        'ukt',
+        'uk long ton',
+        'uk long tons',
+        'ust',
+        'us short ton',
+        'us short tons',
+        'picul',
+        'tam',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
-        return new Mass(1, 'kg');
+        return new Mass(1, 'g');
     }
 
-    public function testToGrams()
+    public function testToGrams(): void
     {
         $quantity = new Mass(5, 'kg');
         $this->assertEquals(5000, $quantity->toUnit('g'));
     }
 
-    public function testToMilligrams()
+    public function testToMilligrams(): void
     {
         $quantity = new Mass(5, 'kg');
         $this->assertEquals(5*1e6, $quantity->toUnit('mg'));
     }
 
-    public function testToPounds()
+    public function testToPounds(): void
     {
         $quantity = new Mass(16, 'oz');
         $this->assertEquals(1, $quantity->toUnit('pound'));
     }
 
-    public function testToStones()
+    public function testToStones(): void
     {
         $quantity = new Mass(14, 'pound');
         $this->assertEquals(1, $quantity->toUnit('st'));
+    }
+
+    public function testToHundredweight(): void
+    {
+        $quantity = new Mass(5, 'kg');
+        $this->assertEqualsWithDelta(0.098420653, (float)$quantity->toUnit('cwt'), 0.00000001);
+    }
+
+    public function testToUSshortTon(): void
+    {
+        $quantity = new Mass(5, 'kg');
+        $this->assertEqualsWithDelta(0.0055115566, $quantity->toUnit('ust'), 0.000000001);
+    }
+
+    public function testToUSlongTon(): void
+    {
+        $quantity = new Mass(5, 'kg');
+        $this->assertEqualsWithDelta(0.0049210326, $quantity->toUnit('ukt'), 0.000000001);
+    }
+
+    public function testToPicul(): void
+    {
+        $quantity = new Mass(5, 'kg');
+        $this->assertEqualsWithDelta(0.08267335, $quantity->toUnit('picul'), 0.00000001);
     }
 }

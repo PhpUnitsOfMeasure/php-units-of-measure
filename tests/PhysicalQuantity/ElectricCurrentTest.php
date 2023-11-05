@@ -3,6 +3,7 @@
 namespace PhpUnitsOfMeasureTest\PhysicalQuantity;
 
 use PhpUnitsOfMeasure\PhysicalQuantity\ElectricCurrent;
+use PhpUnitsOfMeasure\PhysicalQuantityInterface;
 
 class ElectricCurrentTest extends AbstractPhysicalQuantityTestCase
 {
@@ -114,7 +115,7 @@ class ElectricCurrentTest extends AbstractPhysicalQuantityTestCase
         'yoctoamperes',
     ];
 
-    protected function instantiateTestQuantity()
+    protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
         return new ElectricCurrent(1, 'A');
     }
