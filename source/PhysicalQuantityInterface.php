@@ -40,7 +40,7 @@ interface PhysicalQuantityInterface
      *
      * @throws \PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch when there is a mismatch between physical quantities
      *
-     * @return PhysicalQuantityInterface the new quantity
+     * @return static the new quantity
      */
     public function add(PhysicalQuantityInterface $quantity);
 
@@ -55,7 +55,7 @@ interface PhysicalQuantityInterface
      *
      * @throws \PhpUnitsOfMeasure\Exception\PhysicalQuantityMismatch when there is a mismatch between physical quantities
      *
-     * @return PhysicalQuantityInterface the new quantity
+     * @return static the new quantity
      */
     public function subtract(PhysicalQuantityInterface $quantity);
 
