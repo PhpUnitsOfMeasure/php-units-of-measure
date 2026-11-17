@@ -77,4 +77,16 @@ class QuantityTest extends AbstractPhysicalQuantityTestCase
     {
         return new Quantity(1, 'mol');
     }
+
+    public function testToMilli(): void
+    {
+        $value = new Quantity(1, 'mol');
+        $this->assertEqualsWithDelta(1000, $value->toUnit('mmol'), 0.000001);
+    }
+
+    public function testToKilo(): void
+    {
+        $value = new Quantity(1, 'mol');
+        $this->assertEqualsWithDelta(0.001, $value->toUnit('kmol'), 0.000001);
+    }
 }
