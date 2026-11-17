@@ -441,6 +441,7 @@ The workflow for this repository goes as follows:
 - To develop new contributions, fork or branch from the `master` branch of the main repository
 - Pull requests and contribution merges are always made to the `master` branch of the main repository
 - From time to time, commits of `master` are tagged and a new version is released
+- To release, add a `## vX.Y.Z (date)` section to `CHANGELOG.md` on `master`, then run the *Release* workflow (Actions → Release → Run workflow) with the version `vX.Y.Z`: it creates the tag and the GitHub release with the notes from that section
 - At present, there is no support for maintaining bug-fix branches of older project versions.  This is something we can revisit if a need arises.
 
 End users of this repository should only use tagged commits in production.  Users interested in the current 'soon-to-be-released' code may use `master`, with the understanding that it may change unexpectedly.  All other existing branches (if any) should be considered 'feature' branches in development, and not yet ready for use.
