@@ -75,6 +75,22 @@ $quantity = new Mass(6, 'pounds');
 echo $quantity; // '6 lbs'
 ```
 
+### Arithmetic Operators
+There's also support for addition and subtraction.  The values of the physical quantity objects are immutable, and so these arithmetic methods return new quantity objects representing the results:
+
+``` php
+use PhpUnitsOfMeasure\PhysicalQuantity\Volume;
+
+$first  = new Volume(6, 'liters');
+$second = new Volume(6, 'cups');
+
+$sum = $first->add($second);
+echo $sum; // 7.4195292 l
+
+$difference = $first->subtract($second);
+echo $difference; // 4.5804708 l
+```
+
 ### Binary (IEC) Prefixes for Storage
 `Storage` has two series of units, based on `bit` and on `byte` (`1 byte = 8 bit`):
 
@@ -92,22 +108,6 @@ echo (new Storage(1, 'KiB'))->toUnit('B');     // 1024
 echo (new Storage(1, 'kB'))->toUnit('B');      // 1024
 echo (new Storage(1, 'kb'))->toUnit('bit');    // 1000
 echo (new Storage(1, 'GiB'))->toUnit('Mib');   // 8192
-```
-
-### Arithmetic Operators
-There's also support for addition and subtraction.  The values of the physical quantity objects are immutable, and so these arithmetic methods return new quantity objects representing the results:
-
-``` php
-use PhpUnitsOfMeasure\PhysicalQuantity\Volume;
-
-$first  = new Volume(6, 'liters');
-$second = new Volume(6, 'cups');
-
-$sum = $first->add($second);
-echo $sum; // 7.4195292 l
-
-$difference = $first->subtract($second);
-echo $difference; // 4.5804708 l
 ```
 
 ### Adding new Units of Measure to Existing Quantities
@@ -223,41 +223,6 @@ Of note, the second parameter (1e-3) is denoting that while kilograms are the na
 
 The 3rd and 4th parameters contain templates for the units' names and alternate aliases, respectively. The replacement strings '%p' and '%P' are used to denote the abbreviated and long-form metric prefixes.  For instance, '%pg' would generate the series `..., 'mg', 'cg', 'dg', 'g', ...`, while the template '%Pgram' would generate the series `..., 'milligram', 'centigram', 'decigram', 'gram', ...` .
 
-##### Automatically Generating Binary (IEC) Units
-Similarly, the `HasIECUnitsTrait` trait provides `addMissingIECPrefixedUnits()`, which generates the binary prefixes (`Ki` ... `Yi`, powers of 1024) and the decimal multiples (`k` ... `Q`) from a single unit. It takes the same first four parameters and patterns as the SI method. The optional 5th parameter is the base used for the decimal multiples: by default they are powers of 1000, with `1024` they are powers of 1024 (as for bytes in `Storage`):
-
-``` php
-namespace PhpUnitsOfMeasure\PhysicalQuantity;
-
-use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
-use PhpUnitsOfMeasure\UnitOfMeasure;
-use PhpUnitsOfMeasure\HasIECUnitsTrait;
-
-class Storage extends AbstractPhysicalQuantity
-{
-    use HasIECUnitsTrait;
-
-    protected static $unitDefinitions;
-
-    protected static function initialize()
-    {
-        $bit = UnitOfMeasure::nativeUnitFactory('bit');
-        $bit->addAlias('b');
-        static::addUnit($bit);
-
-        // kilobit = 1000 bit, kibibit = 1024 bit
-        static::addMissingIECPrefixedUnits($bit, 1, '%Pbit', ['%pb', '%Pbits']);
-
-        $byte = UnitOfMeasure::linearUnitFactory('byte', 8);
-        $byte->addAlias('B');
-        static::addUnit($byte);
-
-        // kilobyte = kibibyte = 1024 byte
-        static::addMissingIECPrefixedUnits($byte, 1, '%Pbyte', ['%Pbytes', '%pB'], 1024);
-    }
-}
-```
-
 #### Permanently Adding a New Unit of Measure to a Physical Quantity
 The examples above for adding new units of measure to physical quantities allow you to register new units for the duration of the PHP execution, but are lost once execution terminates; it would be necessary to repeat this process every time you created a new program with `Length` measurements and wanted to use cubits.
 
@@ -291,6 +256,41 @@ class Length extends AbstractPhysicalQuantity
 ```
 
 Now any program which uses `Length` will start with the cubits unit already built in.  Note that here we used the more concise linear unit factory method, but the result is equivalent to the expanded form calling the `UnitOfMeasure` constructor, as used above.  Also, notice that the `static` keyword was used instead of the class name, though either would be acceptable in this case.
+
+#### Automatically Generating Binary (IEC) Units
+Similarly, the `HasIECUnitsTrait` trait provides `addMissingIECPrefixedUnits()`, which generates the binary prefixes (`Ki` ... `Yi`, powers of 1024) and the decimal multiples (`k` ... `Q`) from a single unit. It takes the same first four parameters and patterns as the SI method. The optional 5th parameter is the base used for the decimal multiples: by default they are powers of 1000, with `1024` they are powers of 1024 (as for bytes in `Storage`):
+
+``` php
+namespace PhpUnitsOfMeasure\PhysicalQuantity;
+
+use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
+use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasIECUnitsTrait;
+
+class Storage extends AbstractPhysicalQuantity
+{
+    use HasIECUnitsTrait;
+
+    protected static $unitDefinitions;
+
+    protected static function initialize()
+    {
+        $bit = UnitOfMeasure::nativeUnitFactory('bit');
+        $bit->addAlias('b');
+        static::addUnit($bit);
+
+        // kilobit = 1000 bit, kibibit = 1024 bit
+        static::addMissingIECPrefixedUnits($bit, 1, '%Pbit', ['%pb', '%Pbits']);
+
+        $byte = UnitOfMeasure::linearUnitFactory('byte', 8);
+        $byte->addAlias('B');
+        static::addUnit($byte);
+
+        // kilobyte = kibibyte = 1024 byte
+        static::addMissingIECPrefixedUnits($byte, 1, '%Pbyte', ['%Pbytes', '%pB'], 1024);
+    }
+}
+```
 
 ### Adding New Physical Quantities
 [Physical quantities](https://en.wikipedia.org/wiki/Physical_quantity) are categories of measurable values, like mass, length, force, etc.
