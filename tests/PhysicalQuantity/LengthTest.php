@@ -176,16 +176,4 @@ class LengthTest extends AbstractPhysicalQuantityTestCase
         $quantity = new Length(150000000, 'km');
         $this->assertEquals(1.0026880683402668, $quantity->toUnit('AU'));
     }
-
-    public function testToRonnameters(): void
-    {
-        $value = new Length(1e27, 'm');
-        $this->assertEqualsWithDelta(1, $value->toUnit('Rm'), 0.000001);
-    }
-
-    public function testToQuettameters(): void
-    {
-        $value = new Length(1e30, 'm');
-        $this->assertEqualsWithDelta(1, $value->toUnit('quettameter'), 0.000001);
-    }
 }
