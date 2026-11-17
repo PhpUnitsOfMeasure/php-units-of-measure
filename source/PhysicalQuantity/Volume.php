@@ -104,6 +104,14 @@ class Volume extends AbstractPhysicalQuantity
         $newUnit->addAlias('us gal');
         static::addUnit($newUnit);
 
+        // Imperial Gallon
+        $newUnit = UnitOfMeasure::linearUnitFactory('imp gal', 4.54609e-3);
+        $newUnit->addAlias('imperial gallon');
+        $newUnit->addAlias('imperial gal');
+        $newUnit->addAlias('imp gallon');
+        $newUnit->addAlias('impg');
+        static::addUnit($newUnit);
+
         // Quart
         $newUnit = UnitOfMeasure::linearUnitFactory('qt', 9.4635295e-4);
         $newUnit->addAlias('quart');

@@ -59,8 +59,8 @@ class Angle extends AbstractPhysicalQuantity
         // Arcsecond
         $arcsecond = UnitOfMeasure::linearUnitFactory('arcsec', M_PI / 180 / 3600);
         $arcsecond->addAlias('″');
-        $arcminute->addAlias('arcsecond');
-        $arcminute->addAlias('arcseconds');
+        $arcsecond->addAlias('arcsecond');
+        $arcsecond->addAlias('arcseconds');
         $arcsecond->addAlias('asec');
         $arcsecond->addAlias('as');
         static::addUnit($arcsecond);

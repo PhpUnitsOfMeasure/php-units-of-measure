@@ -266,4 +266,12 @@ class AngleTest extends AbstractPhysicalQuantityTestCase
         $angle = new Angle(720, 'degree');
         $this->assertEquals(M_PI * 4, $angle->toUnit('rad'));
     }
+
+    public function testArcsecondIsNotAnArcminute(): void
+    {
+        $angle = new Angle(1, 'deg');
+        $this->assertEquals(3600, $angle->toUnit('arcsecond'));
+        $this->assertEquals(3600, $angle->toUnit('arcseconds'));
+        $this->assertEquals(60, $angle->toUnit('arcminute'));
+    }
 }
