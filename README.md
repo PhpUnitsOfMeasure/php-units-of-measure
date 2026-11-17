@@ -42,6 +42,9 @@ function isTooTallToRideThisTrain( Length $height )
 isTooTallToRideThisTrain( new Length(2, 'm') );
 ```
 
+## Requirements
+- PHP 7.4 or newer
+
 ## Installation
 This library is best included in your projects via Composer.  See the [Composer website](https://getcomposer.org/) for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/php-units-of-measure/php-units-of-measure).
 
@@ -55,6 +58,39 @@ This project follows the guidelines set out in [Semantic Versioning 2.0.0](https
 
 It is recommended that if your project includes this project as a dependency and you are using an automated dependency management tool such as [Composer](https://getcomposer.org/), then you should 'pin' the major version (X) and allow only variations in 'Y' (minor changes) and 'Z' (bugfixes).  See the documentation of your dependency manager for more details.
 
+
+## Supported Physical Quantities
+All classes live in the `PhpUnitsOfMeasure\PhysicalQuantity` namespace. Every quantity has a native unit; all other units convert to and from it.
+
+| Class | Native unit | Prefixes | Other units (names; many aliases are also accepted) |
+|---|---|---|---|
+| `Acceleration` | `m/s^2` | SI | – |
+| `Angle` | `rad` | SI (`rad`, `deg`, `arcsec`) | `deg`, `arcmin`, `arcsec` |
+| `Area` | `m^2` | SI, squared (`km^2` = 10⁶ m²) | `ft^2`, `in^2`, `mi^2`, `yd^2`, `a`, `daa`, `ha`, `ac` |
+| `ElectricCurrent` | `A` | SI | – |
+| `Energy` | `J` | SI (`J`, `eV`, `Wh`, `cal`) | `eV`, `Wh`, `cal` |
+| `Length` | `m` | SI (`m`, `pc`) | `ft`, `in`, `mi`, `yd`, `M` (nautical mile), `mil` (Scandinavian), `AU`, `ly`, `pc` |
+| `LuminousIntensity` | `cd` | SI | – |
+| `Mass` | `g` | SI (`g`, `t`) | `t`, `gr`, `lb`, `oz`, `st`, `cwt`, `ust`, `ukt`, `picul` |
+| `Power` | `W` | SI | `dBm` |
+| `Pressure` | `Pa` | SI (`Pa`, `bar`) | `atm`, `at`, `torr`, `bar`, `inHg`, `mmHg`, `psi`, `ksi`, `Mpsi` |
+| `Quantity` | `mol` | SI | – |
+| `SolidAngle` | `sr` | SI | – |
+| `Storage` | `bit` | IEC + SI (`bit`, `byte`) | `byte` |
+| `Temperature` | `K` | SI | `°C`, `°F`, `°Ra`, `°De`, `°N`, `°Ré`, `°Rø` |
+| `Time` | `s` | SI | `m` (minute), `h`, `d`, `w`, `yr`, `jyr`, `decade`, `century`, `millennium` |
+| `Velocity` | `m/s` | SI (`m/s`, `m/min`, `m/h`) | `ft/s`, `ft/min`, `mps`, `mph`, `kn`, `mach` |
+| `Volume` | `m^3` | SI, cubed (`cm^3` = 10⁻⁶ m³), and on `l` | `ft^3`, `in^3`, `yd^3`, `l`, `cup`, `tsp`, `tbsp`, `gal`, `imp gal`, `qt`, `fl oz`, `pt` |
+| `VolumeFlow` | `m^3/s` | SI, cubed (`m^3/s`), and on `l/s` | `m^3/min`, `m^3/h`, `l/min`, `l/h`, `ft^3/s`, `ft^3/min`, `ft^3/h`, `gal/s`, `gal/min`, `gal/h`, `gal/d` |
+
+The full list of units and aliases of a quantity is available at runtime:
+
+``` php
+use PhpUnitsOfMeasure\PhysicalQuantity\Pressure;
+
+print_r(Pressure::listAllUnits()); // ['Pa' => ['pascal', 'pascals'], 'QPa' => ['quettapascal', 'quettapascals'], ...]
+var_dump(Pressure::isUnitDefined('mmHg')); // true
+```
 
 ## Use
 ### Conversion
@@ -268,6 +304,17 @@ echo $length->toUnit('m'); // '1.2192'
 ```
 
 And of course, if you need to add the alias permanently, you can do so in the initialize() method of the quantity's class, as shown above.
+
+### Original Value and Unit
+The value and unit the quantity was created with are available via getters:
+
+``` php
+use PhpUnitsOfMeasure\PhysicalQuantity\Length;
+
+$length = new Length(6.16, 'feet');
+echo $length->getOriginalValue(); // 6.16
+echo $length->getOriginalUnit();  // 'feet'
+```
 
 ## Testing and Contributing
 Pull requests are welcome, especially regarding new units of measure or new physical quantities.  However, please note that there are many sources for conversion factors, and not all are careful to respect known precision.
