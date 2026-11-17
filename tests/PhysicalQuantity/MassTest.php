@@ -104,7 +104,7 @@ class MassTest extends AbstractPhysicalQuantityTestCase
 
     protected function instantiateTestQuantity(): PhysicalQuantityInterface
     {
-        return new Mass(1, 'kg');
+        return new Mass(1, 'g');
     }
 
     public function testToGrams(): void

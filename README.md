@@ -200,7 +200,7 @@ class Mass extends AbstractPhysicalQuantity
 
 Here we're generating the native unit for mass, kilogram, adding it to the quantity as usual, and then using it to generate the spectrum of SI units by calling the `addMissingSIPrefixedUnits()` static method provided by the `HasSIUnitsTrait` trait.
 
-Of note, the second parameter (1e-3) is denoting that while kilograms are the native unit for Mass, there's a factor of 1/1000 between the kilogram and the base metric unit of mass: the gram.  For units such as seconds or meters where the native unit for the physical quantity is also the base unit for the metric prefix system, this factor would be 1.
+Of note, the second parameter (1e-3) is denoting that while kilograms are the native unit in this example, there's a factor of 1/1000 between the kilogram and the base metric unit of mass: the gram.  For units such as seconds or meters where the native unit for the physical quantity is also the base unit for the metric prefix system, this factor would be 1. (The bundled `Mass` class uses the gram as its native unit, so it passes 1 here.)
 
 The 3rd and 4th parameters contain templates for the units' names and alternate aliases, respectively. The replacement strings '%p' and '%P' are used to denote the abbreviated and long-form metric prefixes.  For instance, '%pg' would generate the series `..., 'mg', 'cg', 'dg', 'g', ...`, while the template '%Pgram' would generate the series `..., 'milligram', 'centigram', 'decigram', 'gram', ...` .
 
