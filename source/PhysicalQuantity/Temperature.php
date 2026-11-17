@@ -15,6 +15,7 @@ class Temperature extends AbstractPhysicalQuantity
     {
         // Kelvin
         $kelvin = UnitOfMeasure::nativeUnitFactory('K');
+        $kelvin->addAlias('k');
         $kelvin->addAlias('°K');
         $kelvin->addAlias('kelvin');
         static::addUnit($kelvin);
@@ -24,6 +25,7 @@ class Temperature extends AbstractPhysicalQuantity
             1,
             '%pK',
             [
+                '%pk',
                 '%Pkelvin',
             ]
         );
@@ -38,6 +40,7 @@ class Temperature extends AbstractPhysicalQuantity
                 return $x + 273.15;
             }
         );
+        $newUnit->addAlias('c');
         $newUnit->addAlias('C');
         $newUnit->addAlias('celsius');
         static::addUnit($newUnit);
@@ -52,13 +55,18 @@ class Temperature extends AbstractPhysicalQuantity
                 return ($x + 459.67) * 5/9;
             }
         );
+        $newUnit->addAlias('f');
         $newUnit->addAlias('F');
         $newUnit->addAlias('fahrenheit');
         static::addUnit($newUnit);
 
         // Degree Rankine
-        $newUnit = UnitOfMeasure::linearUnitFactory('°R', 5/9);
+        $newUnit = UnitOfMeasure::linearUnitFactory('°Ra', 5/9);
+        $newUnit->addAlias('°R');
+        $newUnit->addAlias('r');
         $newUnit->addAlias('R');
+        $newUnit->addAlias('ra');
+        $newUnit->addAlias('Ra');
         $newUnit->addAlias('rankine');
         static::addUnit($newUnit);
 
@@ -72,6 +80,10 @@ class Temperature extends AbstractPhysicalQuantity
                 return 373.15 - $x * 2/3;
             }
         );
+        $newUnit->addAlias('°D');
+        $newUnit->addAlias('D');
+        $newUnit->addAlias('d');
+        $newUnit->addAlias('de');
         $newUnit->addAlias('De');
         $newUnit->addAlias('delisle');
         static::addUnit($newUnit);
@@ -102,6 +114,7 @@ class Temperature extends AbstractPhysicalQuantity
         );
         $newUnit->addAlias('°Re');
         $newUnit->addAlias('Ré');
+        $newUnit->addAlias('re');
         $newUnit->addAlias('Re');
         $newUnit->addAlias('réaumur');
         $newUnit->addAlias('reaumur');
@@ -119,6 +132,7 @@ class Temperature extends AbstractPhysicalQuantity
         );
         $newUnit->addAlias('°Ro');
         $newUnit->addAlias('Rø');
+        $newUnit->addAlias('ro');
         $newUnit->addAlias('Ro');
         $newUnit->addAlias('rømer');
         $newUnit->addAlias('romer');
