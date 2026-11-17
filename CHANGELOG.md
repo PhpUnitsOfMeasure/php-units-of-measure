@@ -1,4 +1,4 @@
-## Unreleased
+## v2.2.3 (November 17th, 2026)
 - Drop support of php < 7.4, require phpunit ^9.6
 - Added support for php 8.3, 8.4 and 8.5
 - Added getOriginalValue() and getOriginalUnit() getters
