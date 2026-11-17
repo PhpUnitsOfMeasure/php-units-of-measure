@@ -77,4 +77,16 @@ class SolidAngleTest extends AbstractPhysicalQuantityTestCase
     {
         return new SolidAngle(1, 'steradian');
     }
+
+    public function testToMilli(): void
+    {
+        $value = new SolidAngle(1, 'sr');
+        $this->assertEqualsWithDelta(1000, $value->toUnit('msr'), 0.000001);
+    }
+
+    public function testToKilo(): void
+    {
+        $value = new SolidAngle(1, 'sr');
+        $this->assertEqualsWithDelta(0.001, $value->toUnit('ksr'), 0.000001);
+    }
 }
