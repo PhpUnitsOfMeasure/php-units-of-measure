@@ -75,6 +75,39 @@ $quantity = new Mass(6, 'pounds');
 echo $quantity; // '6 lbs'
 ```
 
+### Metric (SI) Prefixes
+Most metric units (`m`, `g`, `s`, `Pa`, `l`, `m^2`, `m^3`, ...) are available with every SI prefix, both in the short (`k` + `Pa` = `kPa`) and long form (`kilo` + `pascal` = `kilopascal`):
+
+| Prefix | Symbol | Factor | | Prefix | Symbol | Factor |
+|---|---|---|---|---|---|---|
+| quetta | `Q` | 10³⁰ | | deci | `d` | 10⁻¹ |
+| ronna | `R` | 10²⁷ | | centi | `c` | 10⁻² |
+| yotta | `Y` | 10²⁴ | | milli | `m` | 10⁻³ |
+| zetta | `Z` | 10²¹ | | micro | `µ` | 10⁻⁶ |
+| exa | `E` | 10¹⁸ | | nano | `n` | 10⁻⁹ |
+| peta | `P` | 10¹⁵ | | pico | `p` | 10⁻¹² |
+| tera | `T` | 10¹² | | femto | `f` | 10⁻¹⁵ |
+| giga | `G` | 10⁹ | | atto | `a` | 10⁻¹⁸ |
+| mega | `M` | 10⁶ | | zepto | `z` | 10⁻²¹ |
+| kilo | `k` | 10³ | | yocto | `y` | 10⁻²⁴ |
+| hecto | `h` | 10² | | | | |
+| deca | `da` | 10¹ | | | | |
+
+For squared and cubic units the prefix is raised to the same power, as expected:
+
+``` php
+use PhpUnitsOfMeasure\PhysicalQuantity\Area;
+use PhpUnitsOfMeasure\PhysicalQuantity\Volume;
+use PhpUnitsOfMeasure\PhysicalQuantity\Pressure;
+
+echo (new Pressure(1, 'atm'))->toUnit('kPa');            // 101.325
+echo (new Area(1, 'km^2'))->toUnit('m^2');               // 1000000
+echo (new Volume(1, 'cubic decimeter'))->toUnit('l');    // 1
+echo (new Volume(250, 'ml'))->toUnit('cl');              // 25
+```
+
+Where a prefixed name would collide with an already defined unit, the explicitly defined unit wins (for example `m` in `Time` is the minute).
+
 ### Arithmetic Operators
 There's also support for addition and subtraction.  The values of the physical quantity objects are immutable, and so these arithmetic methods return new quantity objects representing the results:
 
@@ -202,7 +235,33 @@ Here we're generating the native unit for mass, kilogram, adding it to the quant
 
 Of note, the second parameter (1e-3) is denoting that while kilograms are the native unit for Mass, there's a factor of 1/1000 between the kilogram and the base metric unit of mass: the gram.  For units such as seconds or meters where the native unit for the physical quantity is also the base unit for the metric prefix system, this factor would be 1.
 
-The 3rd and 4th parameters contain templates for the units' names and alternate aliases, respectively. The replacement strings '%p' and '%P' are used to denote the abbreviated and long-form metric prefixes.  For instance, '%pg' would generate the series `..., 'mg', 'cg', 'dg', 'g', ...`, while the template '%Pgram' would generate the series `..., 'milligram', 'centigram', 'decigram', 'gram', ...` .
+The 3rd and 4th parameters contain templates for the units' names and alternate aliases, respectively. The replacement strings are:
+- `%p` – the abbreviated prefix (`k`, `M`, `µ`, ...);
+- `%P` – the long-form prefix (`kilo`, `mega`, `micro`, ...);
+- `%U` – the long-form prefix in upper case (`KILO`, `MEGA`, ...).
+
+For instance, '%pg' would generate the series `..., 'mg', 'cg', 'dg', 'g', ...`, while the template '%Pgram' would generate the series `..., 'milligram', 'centigram', 'decigram', 'gram', ...` .
+
+The optional 5th parameter is a power factor for squared, cubic and other powered units. With a power factor of 2, each prefix factor is squared (`km^2` = (10³)² m²):
+
+``` php
+// Inside Area::initialize()
+$metersquared = UnitOfMeasure::nativeUnitFactory('m^2');
+static::addUnit($metersquared);
+
+static::addMissingSIPrefixedUnits(
+    $metersquared,
+    1,
+    '%pm^2',
+    [
+        '%pm²',
+        'square %Pmeter',
+    ],
+    2 // square power factor
+);
+```
+
+Units that are already registered (by name or by any alias) are never overwritten: a generated unit is skipped if its name or one of its aliases is already in use. So any unit with an explicit, non-standard definition should be added before calling `addMissingSIPrefixedUnits()`.
 
 #### Permanently Adding a New Unit of Measure to a Physical Quantity
 The examples above for adding new units of measure to physical quantities allow you to register new units for the duration of the PHP execution, but are lost once execution terminates; it would be necessary to repeat this process every time you created a new program with `Length` measurements and wanted to use cubits.
