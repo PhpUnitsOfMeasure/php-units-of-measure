@@ -42,6 +42,9 @@ function isTooTallToRideThisTrain( Length $height )
 isTooTallToRideThisTrain( new Length(2, 'm') );
 ```
 
+## Requirements
+- PHP 7.4 or newer (tested on PHP 7.4 – 8.5)
+
 ## Installation
 This library is best included in your projects via Composer.  See the [Composer website](https://getcomposer.org/) for more details, and see the [Packagist.org site for this library](https://packagist.org/packages/php-units-of-measure/php-units-of-measure).
 
@@ -55,6 +58,39 @@ This project follows the guidelines set out in [Semantic Versioning 2.0.0](https
 
 It is recommended that if your project includes this project as a dependency and you are using an automated dependency management tool such as [Composer](https://getcomposer.org/), then you should 'pin' the major version (X) and allow only variations in 'Y' (minor changes) and 'Z' (bugfixes).  See the documentation of your dependency manager for more details.
 
+
+## Supported Physical Quantities
+All classes live in the `PhpUnitsOfMeasure\PhysicalQuantity` namespace. Every quantity has a native unit; all other units convert to and from it.
+
+| Class | Native unit | Prefixes | Other units (names; many aliases are also accepted) |
+|---|---|---|---|
+| `Acceleration` | `m/s^2` | SI | – |
+| `Angle` | `rad` | SI (`rad`, `deg`, `arcsec`) | `deg`, `arcmin`, `arcsec` |
+| `Area` | `m^2` | SI, squared (`km^2` = 10⁶ m²) | `ft^2`, `in^2`, `mi^2`, `yd^2`, `a`, `daa`, `ha`, `ac` |
+| `ElectricCurrent` | `A` | SI | – |
+| `Energy` | `J` | SI (`J`, `eV`, `Wh`, `cal`) | `eV`, `Wh`, `cal` |
+| `Length` | `m` | SI (`m`, `pc`) | `ft`, `in`, `mi`, `yd`, `M` (nautical mile), `mil` (Scandinavian), `AU`, `ly`, `pc` |
+| `LuminousIntensity` | `cd` | SI | – |
+| `Mass` | `g` | SI (`g`, `t`) | `t`, `gr`, `lb`, `oz`, `st`, `cwt`, `ust`, `ukt`, `picul` |
+| `Power` | `W` | SI | `dBm` |
+| `Pressure` | `Pa` | SI (`Pa`, `bar`) | `atm`, `at`, `torr`, `bar`, `inHg`, `mmHg`, `psi`, `ksi`, `Mpsi` |
+| `Quantity` | `mol` | SI | – |
+| `SolidAngle` | `sr` | SI | – |
+| `Storage` | `bit` | IEC + SI (`bit`, `byte`) | `byte` |
+| `Temperature` | `K` | SI | `°C`, `°F`, `°Ra`, `°De`, `°N`, `°Ré`, `°Rø` |
+| `Time` | `s` | SI | `m` (minute), `h`, `d`, `w`, `yr`, `jyr`, `decade`, `century`, `millennium` |
+| `Velocity` | `m/s` | SI (`m/s`, `m/min`, `m/h`) | `ft/s`, `ft/min`, `mps`, `mph`, `kn`, `mach` |
+| `Volume` | `m^3` | SI, cubed (`cm^3` = 10⁻⁶ m³), and on `l` | `ft^3`, `in^3`, `yd^3`, `l`, `cup`, `tsp`, `tbsp`, `gal`, `imp gal`, `qt`, `fl oz`, `pt` |
+| `VolumeFlow` | `m^3/s` | SI, cubed (`m^3/s`), and on `l/s` | `m^3/min`, `m^3/h`, `l/min`, `l/h`, `ft^3/s`, `ft^3/min`, `ft^3/h`, `gal/s`, `gal/min`, `gal/h`, `gal/d` |
+
+The full list of units and aliases of a quantity is available at runtime:
+
+``` php
+use PhpUnitsOfMeasure\PhysicalQuantity\Pressure;
+
+print_r(Pressure::listAllUnits()); // ['Pa' => ['pascal', 'pascals'], 'QPa' => ['quettapascal', 'quettapascals'], ...]
+var_dump(Pressure::isUnitDefined('mmHg')); // true
+```
 
 ## Use
 ### Conversion
@@ -73,6 +109,69 @@ use PhpUnitsOfMeasure\PhysicalQuantity\Mass;
 
 $quantity = new Mass(6, 'pounds');
 echo $quantity; // '6 lbs'
+```
+
+### Original Value and Unit
+The value and unit the quantity was created with are available via getters:
+
+``` php
+use PhpUnitsOfMeasure\PhysicalQuantity\Length;
+
+$length = new Length(6.16, 'feet');
+echo $length->getOriginalValue(); // 6.16
+echo $length->getOriginalUnit();  // 'feet'
+```
+
+### Metric (SI) Prefixes
+Units marked "SI" in the table above are available with every SI prefix, both in the short (`k` + `Pa` = `kPa`) and long form (`kilo` + `pascal` = `kilopascal`):
+
+| Prefix | Symbol | Factor | | Prefix | Symbol | Factor |
+|---|---|---|---|---|---|---|
+| quetta | `Q` | 10³⁰ | | deci | `d` | 10⁻¹ |
+| ronna | `R` | 10²⁷ | | centi | `c` | 10⁻² |
+| yotta | `Y` | 10²⁴ | | milli | `m` | 10⁻³ |
+| zetta | `Z` | 10²¹ | | micro | `µ` | 10⁻⁶ |
+| exa | `E` | 10¹⁸ | | nano | `n` | 10⁻⁹ |
+| peta | `P` | 10¹⁵ | | pico | `p` | 10⁻¹² |
+| tera | `T` | 10¹² | | femto | `f` | 10⁻¹⁵ |
+| giga | `G` | 10⁹ | | atto | `a` | 10⁻¹⁸ |
+| mega | `M` | 10⁶ | | zepto | `z` | 10⁻²¹ |
+| kilo | `k` | 10³ | | yocto | `y` | 10⁻²⁴ |
+| hecto | `h` | 10² | | | | |
+| deca | `da` | 10¹ | | | | |
+
+For squared and cubic units the prefix is raised to the same power, as expected:
+
+``` php
+use PhpUnitsOfMeasure\PhysicalQuantity\Area;
+use PhpUnitsOfMeasure\PhysicalQuantity\Volume;
+use PhpUnitsOfMeasure\PhysicalQuantity\Pressure;
+
+echo (new Pressure(1, 'atm'))->toUnit('kPa');            // 101.325
+echo (new Area(1, 'km^2'))->toUnit('m^2');               // 1000000
+echo (new Volume(1, 'cubic decimeter'))->toUnit('l');    // 1
+echo (new Volume(250, 'ml'))->toUnit('cl');              // 25
+```
+
+Where a prefixed name would collide with an already defined unit, the explicitly defined unit wins (for example `m` in `Time` is the minute, not a milli-something, and `Mass` has `ft` for femtotonne).
+
+### Binary (IEC) Prefixes for Storage
+`Storage` has two series of units, based on `bit` and on `byte` (`1 byte = 8 bit`):
+
+- Binary IEC prefixes are always powers of 1024: `Ki` (kibi, 2¹⁰), `Mi` (mebi, 2²⁰), `Gi`, `Ti`, `Pi`, `Ei`, `Zi`, `Yi` (yobi, 2⁸⁰).
+- SI prefixes from `k` to `Q` are also available, but their meaning differs between the series:
+  - for **bits** they are decimal: `kilobit` = 1000 bit;
+  - for **bytes** they follow the common binary convention: `kilobyte` / `kB` = 1024 byte, `MB` = 1024² byte, and so on.
+- Only multiples are defined, there are no sub-multiples (no `millibit`).
+- Unit names are the long forms (`kilobit`, `mebibyte`). Short aliases: `kb`, `Mib` for bits; `kB`, `MiB`, `kByte`, `MiBytes` for bytes. Short aliases are case-sensitive: `kb` is a kilobit, `kB` is a kilobyte.
+
+``` php
+use PhpUnitsOfMeasure\PhysicalQuantity\Storage;
+
+echo (new Storage(1, 'KiB'))->toUnit('B');     // 1024
+echo (new Storage(1, 'kB'))->toUnit('B');      // 1024
+echo (new Storage(1, 'kb'))->toUnit('bit');    // 1000
+echo (new Storage(1, 'GiB'))->toUnit('Mib');   // 8192
 ```
 
 ### Arithmetic Operators
@@ -202,7 +301,68 @@ Here we're generating the native unit for mass, kilogram, adding it to the quant
 
 Of note, the second parameter (1e-3) is denoting that while kilograms are the native unit for Mass, there's a factor of 1/1000 between the kilogram and the base metric unit of mass: the gram.  For units such as seconds or meters where the native unit for the physical quantity is also the base unit for the metric prefix system, this factor would be 1.
 
-The 3rd and 4th parameters contain templates for the units' names and alternate aliases, respectively. The replacement strings '%p' and '%P' are used to denote the abbreviated and long-form metric prefixes.  For instance, '%pg' would generate the series `..., 'mg', 'cg', 'dg', 'g', ...`, while the template '%Pgram' would generate the series `..., 'milligram', 'centigram', 'decigram', 'gram', ...` .
+The 3rd and 4th parameters contain templates for the units' names and alternate aliases, respectively. The replacement strings are:
+- `%p` – the abbreviated prefix (`k`, `M`, `µ`, ...);
+- `%P` – the long-form prefix (`kilo`, `mega`, `micro`, ...);
+- `%U` – the long-form prefix in upper case (`KILO`, `MEGA`, ...).
+
+For instance, '%pg' would generate the series `..., 'mg', 'cg', 'dg', 'g', ...`, while the template '%Pgram' would generate the series `..., 'milligram', 'centigram', 'decigram', 'gram', ...` .
+
+The optional 5th parameter is a power factor for squared, cubic and other powered units. With a power factor of 2, each prefix factor is squared (`km^2` = (10³)² m²):
+
+``` php
+// Inside Area::initialize()
+$metersquared = UnitOfMeasure::nativeUnitFactory('m^2');
+static::addUnit($metersquared);
+
+static::addMissingSIPrefixedUnits(
+    $metersquared,
+    1,
+    '%pm^2',
+    [
+        '%pm²',
+        'square %Pmeter',
+    ],
+    2 // square power factor
+);
+```
+
+Units that are already registered (by name or by any alias) are never overwritten: a generated unit is skipped if its name or one of its aliases is already in use. So any unit with an explicit, non-standard definition should be added before calling `addMissingSIPrefixedUnits()`.
+
+##### Automatically Generating Binary (IEC) Units
+Similarly, the `HasIECUnitsTrait` trait provides `addMissingIECPrefixedUnits()`, which generates the binary prefixes (`Ki` ... `Yi`, powers of 1024) and the decimal multiples (`k` ... `Q`) from a single unit. It takes the same first four parameters and patterns as the SI method. The optional 5th parameter is the base used for the decimal multiples: by default they are powers of 1000, with `1024` they are powers of 1024 (as for bytes in `Storage`):
+
+``` php
+namespace PhpUnitsOfMeasure\PhysicalQuantity;
+
+use PhpUnitsOfMeasure\AbstractPhysicalQuantity;
+use PhpUnitsOfMeasure\UnitOfMeasure;
+use PhpUnitsOfMeasure\HasIECUnitsTrait;
+
+class Storage extends AbstractPhysicalQuantity
+{
+    use HasIECUnitsTrait;
+
+    protected static $unitDefinitions;
+
+    protected static function initialize()
+    {
+        $bit = UnitOfMeasure::nativeUnitFactory('bit');
+        $bit->addAlias('b');
+        static::addUnit($bit);
+
+        // kilobit = 1000 bit, kibibit = 1024 bit
+        static::addMissingIECPrefixedUnits($bit, 1, '%Pbit', ['%pb', '%Pbits']);
+
+        $byte = UnitOfMeasure::linearUnitFactory('byte', 8);
+        $byte->addAlias('B');
+        static::addUnit($byte);
+
+        // kilobyte = kibibyte = 1024 byte
+        static::addMissingIECPrefixedUnits($byte, 1, '%Pbyte', ['%Pbytes', '%pB'], 1024);
+    }
+}
+```
 
 #### Permanently Adding a New Unit of Measure to a Physical Quantity
 The examples above for adding new units of measure to physical quantities allow you to register new units for the duration of the PHP execution, but are lost once execution terminates; it would be necessary to repeat this process every time you created a new program with `Length` measurements and wanted to use cubits.
@@ -285,23 +445,14 @@ The workflow for this repository goes as follows:
 
 End users of this repository should only use tagged commits in production.  Users interested in the current 'soon-to-be-released' code may use `master`, with the understanding that it may change unexpectedly.  All other existing branches (if any) should be considered 'feature' branches in development, and not yet ready for use.
 
-### Local Testing Environment
-There's a Vagrant virtual machine configuration included which is suitable for running the necessary unit tests.  To bring up the machine, make sure you have Vagrant and Virtualbox installed, and from the project root directory:
-
-
-``` bash
-vagrant up
-vagrant ssh
-cd /project
-```
-
 ### Setting Up for Testing
-The virtual machine development environment already has Composer installed.  Once you're ssh'ed into the virtual machine, install this project's dev dependencies:
+You need PHP 7.4+ and Composer. Install this project's dev dependencies:
 
 ``` bash
-rm -rf vendor
-composer.phar update --verbose --prefer-dist
+composer install --prefer-dist
 ```
+
+There's also a Vagrant virtual machine configuration included (`vagrant up`, `vagrant ssh`, `cd /project`), if you prefer an isolated environment.
 
 ### Unit Tests
 All the tests associated with this project can be manually run with:
@@ -318,5 +469,4 @@ composer phpcs
 ```
 
 ### Continuous Integration
-The above tests are automatically run against Github commits with Travis-CI.
-- https://travis-ci.org/landy2005/php-units-of-measure
+The above tests and CodeSniffer checks are automatically run with GitHub Actions on every push and pull request, against PHP 7.4 – 8.5 (see `.github/workflows/ci.yaml`).

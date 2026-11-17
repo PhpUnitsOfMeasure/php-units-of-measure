@@ -5,6 +5,9 @@
 - Added Imperial Gallon unit for volume
 - Return type of add() and subtract() documented as static
 - Fixed arcsecond and arcseconds aliases pointing to the arcminute unit
+- Fixed PHP 8.4 deprecation of implicitly nullable parameters in HasSIUnitsTrait and HasIECUnitsTrait
+- Added tests for SI/IEC prefix generation, round-trip conversion of all units and missing unit conversions
+- Documented supported quantities, SI and IEC prefixes in README
 
 ## v2.2.2 (November 3nd, 2023)
 - Added ronna (R) and quetta (Q) si prefixes.
