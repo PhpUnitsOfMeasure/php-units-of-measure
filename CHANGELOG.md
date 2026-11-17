@@ -1,3 +1,11 @@
+## Unreleased
+- Drop support of php < 7.4, require phpunit ^9.6
+- Added support for php 8.3, 8.4 and 8.5
+- Added getOriginalValue() and getOriginalUnit() getters
+- Added Imperial Gallon unit for volume
+- Return type of add() and subtract() documented as static
+- Fixed arcsecond and arcseconds aliases pointing to the arcminute unit
+
 ## v2.2.2 (November 3nd, 2023)
 - Added ronna (R) and quetta (Q) si prefixes.
 - Added IEC prefixed units support for Storage
