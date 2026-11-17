@@ -28,5 +28,19 @@ class Power extends AbstractPhysicalQuantity
                 '%Pwatts',
             ]
         );
+
+        // decibels-milliwatt
+        $newUnit = new UnitOfMeasure(
+            'dBm',
+            function ($x) {
+                return 10 * log10($x) + 30;
+            },
+            function ($x) {
+                return (10 ** ($x / 10)) / 1000;
+            }
+        );
+        $newUnit->addAlias('dbm');
+        $newUnit->addAlias('decibels-milliwatt');
+        static::addUnit($newUnit);
     }
 }

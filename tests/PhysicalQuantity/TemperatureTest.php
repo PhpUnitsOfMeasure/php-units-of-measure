@@ -84,4 +84,87 @@ class TemperatureTest extends AbstractPhysicalQuantityTestCase
     {
         return new Temperature(1, 'K');
     }
+
+    public function testToCelsius(): void
+    {
+        $value = new Temperature(313.15, 'K');
+        $this->assertEqualsWithDelta(40, $value->toUnit('C'), 0.000001);
+    }
+
+    public function testToFahrenheit(): void
+    {
+        $value = new Temperature(313.15, 'K');
+        $this->assertEqualsWithDelta(104, $value->toUnit('F'), 0.000001);
+    }
+
+    public function testToRankine(): void
+    {
+        $value = new Temperature(313.15, 'K');
+        $this->assertEqualsWithDelta(563.67, $value->toUnit('Ra'), 0.000001);
+    }
+    public function testToDelisle(): void
+    {
+        $value = new Temperature(313.15, 'K');
+        $this->assertEqualsWithDelta(90, $value->toUnit('D'), 0.000001);
+    }
+
+    public function testToNewton(): void
+    {
+        $value = new Temperature(313.15, 'K');
+        $this->assertEqualsWithDelta(13.2, $value->toUnit('N'), 0.000001);
+    }
+
+    public function testToReaumur(): void
+    {
+        $value = new Temperature(313.15, 'K');
+        $this->assertEqualsWithDelta(32, $value->toUnit('Re'), 0.000001);
+    }
+
+    public function testToRomer(): void
+    {
+        $value = new Temperature(313.15, 'K');
+        $this->assertEqualsWithDelta(28.5, $value->toUnit('Ro'), 0.000001);
+    }
+
+    public function testFromCelsius(): void
+    {
+        $value = new Temperature(100, '°C');
+        $this->assertEqualsWithDelta(373.15, $value->toUnit('K'), 0.000001);
+    }
+
+    public function testFromFahrenheit(): void
+    {
+        $value = new Temperature(212, '°F');
+        $this->assertEqualsWithDelta(373.15, $value->toUnit('K'), 0.000001);
+    }
+
+    public function testFromRankine(): void
+    {
+        $value = new Temperature(671.67, '°Ra');
+        $this->assertEqualsWithDelta(373.15, $value->toUnit('K'), 0.000001);
+    }
+
+    public function testFromDelisle(): void
+    {
+        $value = new Temperature(0, '°De');
+        $this->assertEqualsWithDelta(373.15, $value->toUnit('K'), 0.000001);
+    }
+
+    public function testFromNewton(): void
+    {
+        $value = new Temperature(33, '°N');
+        $this->assertEqualsWithDelta(373.15, $value->toUnit('K'), 0.000001);
+    }
+
+    public function testFromReaumur(): void
+    {
+        $value = new Temperature(80, '°Ré');
+        $this->assertEqualsWithDelta(373.15, $value->toUnit('K'), 0.000001);
+    }
+
+    public function testFromRomer(): void
+    {
+        $value = new Temperature(60, '°Rø');
+        $this->assertEqualsWithDelta(373.15, $value->toUnit('K'), 0.000001);
+    }
 }
