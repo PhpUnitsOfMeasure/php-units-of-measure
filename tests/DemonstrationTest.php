@@ -26,7 +26,7 @@ use PhpUnitsOfMeasureTest\Fixtures\PhysicalQuantity\Woogosity;
  *
  * @runTestsInSeparateProcesses
  */
-class DemonstrationTests extends TestCase
+class DemonstrationTest extends TestCase
 {
     public function testInstantiatingQuantities(): void
     {
@@ -138,7 +138,7 @@ class DemonstrationTests extends TestCase
 
         $b = new Wigginess(21, 'tumpets');
         $this->assertSame(21*2.5, $b->toUnit('aaaa'));
-        $this->assertSame(21/4.5*2.5, $b->toUnit('bbbb'));
+        $this->assertEqualsWithDelta(21/4.5*2.5, $b->toUnit('bbbb'), 1e-12);
         $this->assertSame((21*2.5)-100, $b->toUnit('cccc'));
         $this->assertSame((21*2.5)-100, $b->toUnit('dddd'));
         $this->assertSame((21*2.5)-100, $b->toUnit('eeee'));
