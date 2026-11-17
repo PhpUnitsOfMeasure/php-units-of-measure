@@ -145,4 +145,16 @@ class VolumeTest extends AbstractPhysicalQuantityTestCase
         $area = new Volume(100, 'm^3');
         $this->assertEqualsWithDelta(26417.205124, $area->toUnit('gal'), 0.000001);
     }
+
+    public function testImperialGallonToLitres(): void
+    {
+        $value = new Volume(1, 'imp gal');
+        $this->assertEqualsWithDelta(4.54609, $value->toUnit('l'), 0.00001);
+    }
+
+    public function testImperialGallonToUsGallons(): void
+    {
+        $value = new Volume(1, 'imp gal');
+        $this->assertEqualsWithDelta(1.20095, $value->toUnit('gal'), 0.00001);
+    }
 }

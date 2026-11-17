@@ -43,7 +43,7 @@ trait HasSIUnitsTrait
         float         $toBaseSiUnitFactor,
         string        $namePattern,
         array         $aliasPatterns = [],
-        int           $powerFactor = null
+        ?int          $powerFactor = null
     ) {
         /**
          * The standard set of SI prefixes

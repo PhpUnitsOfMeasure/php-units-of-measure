@@ -56,4 +56,16 @@ class LuminousIntensityTest extends AbstractPhysicalQuantityTestCase
     {
         return new LuminousIntensity(1, 'cd');
     }
+
+    public function testToMilli(): void
+    {
+        $value = new LuminousIntensity(1, 'cd');
+        $this->assertEqualsWithDelta(1000, $value->toUnit('mcd'), 0.000001);
+    }
+
+    public function testToKilo(): void
+    {
+        $value = new LuminousIntensity(1, 'cd');
+        $this->assertEqualsWithDelta(0.001, $value->toUnit('kcd'), 0.000001);
+    }
 }

@@ -34,6 +34,27 @@ abstract class AbstractPhysicalQuantityTestCase extends TestCase
     }
 
     /**
+     * Converting a value into every unit and back must return the original value.
+     */
+    public function testRoundTripConversion(): void
+    {
+        $quantity = $this->instantiateTestQuantity();
+        $class = get_class($quantity);
+        $nativeValue = $quantity->toNativeUnit();
+
+        foreach (array_keys($quantity::listAllUnits()) as $unit) {
+            $value = $quantity->toUnit($unit);
+            $back = (new $class($value, $unit))->toNativeUnit();
+            $this->assertEqualsWithDelta(
+                $nativeValue,
+                $back,
+                abs($nativeValue) * 1e-9 + 1e-12,
+                "Round trip through unit '$unit' failed"
+            );
+        }
+    }
+
+    /**
      * Build a test object of the target physical quantity.
      */
     abstract protected function instantiateTestQuantity(): PhysicalQuantityInterface;

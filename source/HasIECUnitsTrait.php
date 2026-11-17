@@ -43,7 +43,7 @@ trait HasIECUnitsTrait
         float         $toBaseIecUnitFactor,
         string        $namePattern,
         array         $aliasPatterns = [],
-        int           $siBase = null
+        ?int          $siBase = null
     ) {
         /**
          * The standard set of IEC prefixes

@@ -91,4 +91,70 @@ class PressureTest extends AbstractPhysicalQuantityTestCase
     {
         return new Pressure(1, 'Pa');
     }
+
+    public function testToAtmospheres(): void
+    {
+        $value = new Pressure(101325, 'Pa');
+        $this->assertEqualsWithDelta(1, $value->toUnit('atm'), 0.000001);
+    }
+
+    public function testToTechnicalAtmospheres(): void
+    {
+        $value = new Pressure(98066.5, 'Pa');
+        $this->assertEqualsWithDelta(1, $value->toUnit('at'), 0.000001);
+    }
+
+    public function testToTorr(): void
+    {
+        $value = new Pressure(101325, 'Pa');
+        $this->assertEqualsWithDelta(760, $value->toUnit('torr'), 0.000001);
+    }
+
+    public function testToBar(): void
+    {
+        $value = new Pressure(100000, 'Pa');
+        $this->assertEqualsWithDelta(1, $value->toUnit('bar'), 0.000001);
+    }
+
+    public function testToMillibar(): void
+    {
+        $value = new Pressure(100000, 'Pa');
+        $this->assertEqualsWithDelta(1000, $value->toUnit('mbar'), 0.000001);
+    }
+
+    public function testToKilopascal(): void
+    {
+        $value = new Pressure(100000, 'Pa');
+        $this->assertEqualsWithDelta(100, $value->toUnit('kPa'), 0.000001);
+    }
+
+    public function testToInchesOfMercury(): void
+    {
+        $value = new Pressure(101325, 'Pa');
+        $this->assertEqualsWithDelta(29.921, $value->toUnit('inHg'), 0.001);
+    }
+
+    public function testToMillimetersOfMercury(): void
+    {
+        $value = new Pressure(101325, 'Pa');
+        $this->assertEqualsWithDelta(760, $value->toUnit('mmHg'), 0.001);
+    }
+
+    public function testToPsi(): void
+    {
+        $value = new Pressure(101325, 'Pa');
+        $this->assertEqualsWithDelta(14.6959, $value->toUnit('psi'), 0.0001);
+    }
+
+    public function testToKsi(): void
+    {
+        $value = new Pressure(6894757.293168, 'Pa');
+        $this->assertEqualsWithDelta(1, $value->toUnit('ksi'), 0.000001);
+    }
+
+    public function testToMpsi(): void
+    {
+        $value = new Pressure(6894757293.168, 'Pa');
+        $this->assertEqualsWithDelta(1, $value->toUnit('Mpsi'), 0.000001);
+    }
 }
