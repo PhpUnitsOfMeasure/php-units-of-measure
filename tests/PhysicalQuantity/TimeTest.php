@@ -187,4 +187,22 @@ class TimeTest extends AbstractPhysicalQuantityTestCase
         $angle = new Time(365.25, 'd');
         $this->assertEquals(1, $angle->toUnit('jyr'));
     }
+
+    public function testToDecades(): void
+    {
+        $value = new Time(315569520, 's');
+        $this->assertEqualsWithDelta(1, $value->toUnit('decade'), 0.000001);
+    }
+
+    public function testToCenturies(): void
+    {
+        $value = new Time(3155695200, 's');
+        $this->assertEqualsWithDelta(1, $value->toUnit('century'), 0.000001);
+    }
+
+    public function testToMillennia(): void
+    {
+        $value = new Time(31556952000, 's');
+        $this->assertEqualsWithDelta(1, $value->toUnit('millennium'), 0.000001);
+    }
 }

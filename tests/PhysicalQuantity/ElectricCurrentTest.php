@@ -119,4 +119,16 @@ class ElectricCurrentTest extends AbstractPhysicalQuantityTestCase
     {
         return new ElectricCurrent(1, 'A');
     }
+
+    public function testToMilli(): void
+    {
+        $value = new ElectricCurrent(1, 'A');
+        $this->assertEqualsWithDelta(1000, $value->toUnit('mA'), 0.000001);
+    }
+
+    public function testToKilo(): void
+    {
+        $value = new ElectricCurrent(1, 'A');
+        $this->assertEqualsWithDelta(0.001, $value->toUnit('kA'), 0.000001);
+    }
 }
